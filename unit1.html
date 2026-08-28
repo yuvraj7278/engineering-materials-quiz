@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Materials Quiz</title>
+    <style>
+        /* Clean, modern interface */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #86868b;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #d2d2d7;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .btn {
+            width: 100%;
+            text-align: left;
+            padding: 14px 18px;
+            font-size: 16px;
+            background: #ffffff;
+            border: 1px solid #d2d2d7;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn:hover:not(:disabled) {
+            background: #f5f5f7;
+            border-color: #86868b;
+        }
+        .btn:disabled {
+            cursor: default;
+        }
+        .correct {
+            background: #e3fcef !important;
+            border-color: #34c759 !important;
+            color: #0c5c27 !important;
+            font-weight: 500;
+        }
+        .wrong {
+            background: #fce8e8 !important;
+            border-color: #ff3b30 !important;
+            color: #8a0a14 !important;
+        }
+        .action-btn {
+            text-align: center;
+            background: #0071e3;
+            color: white;
+            border: none;
+            font-weight: 600;
+            margin-top: 24px;
+        }
+        .action-btn:hover {
+            background: #0077ed;
+        }
+        .hidden {
+            display: none;
+        }
+        .feedback {
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        #result-screen {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" style="text-decoration: none; color: #0071e3; font-weight: 600; font-size: 14px; display: inline-block; margin-bottom: 16px;">← Back to Main Menu</a>
+    <!-- Quiz Screen -->
+    <div id="quiz-screen">
+        <div class="status-bar">
+            <span id="progress">Question 1 / 63</span>
+            <span id="score-tracker">Score: 0</span>
+        </div>
+        
+        <h2 id="question-text">Question loading...</h2>
+        
+        <div class="options" id="options-container">
+            <!-- Buttons injected via JS -->
+        </div>
+        
+        <div id="feedback-message" class="feedback hidden"></div>
+        
+        <button id="next-btn" class="btn action-btn hidden">Next Question</button>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="hidden">
+        <h2>Quiz Complete!</h2>
+        <p id="final-score" style="font-size: 18px; margin: 20px 0;"></p>
+        
+        <button id="retry-btn" class="btn action-btn hidden">Resolve Incorrect Questions</button>
+        <button id="restart-btn" class="btn action-btn" style="background: #1d1d1f; margin-top: 12px;">Restart Full Question Bank</button>
+    </div>
+</div>
+
+<script>
+    // Full Question Bank (63 Questions)
+    const masterQuestionBank = [
+        { q: "Ferrous Metals do not possess the following property", opts: ["stiffness", "strength", "elasticity", "high electrical conductivity"], ans: 3 },
+        { q: "Ceramics usually consist of", opts: ["oxides", "nitrides", "carbides & borides", "all of the above"], ans: 3 },
+        { q: "out of the following which is not a example of ceramics.", opts: ["sand", "brick", "lubricants", "concrete"], ans: 2 },
+        { q: "out of the following which is not a example of organic materials.", opts: ["rubber", "plastics", "cement", "paper"], ans: 2 },
+        { q: "which materials have good thermal conductivity?", opts: ["insulaters", "semiconductors", "conductors", "none of the above"], ans: 2 },
+        { q: "Density of Aluminium is", opts: ["2.7 gm/cc", "1.7 gm/cc", "3.7 gm/cc", "4.7 gm/cc"], ans: 0 },
+        { q: "Unit of Density", opts: ["kg/m³", "kg/m²", "kg/m⁴", "kg.m"], ans: 0 },
+        { q: "colour of Al is", opts: ["White", "grey", "reddish", "none of the above"], ans: 0 },
+        { q: "Melting point of copper is", opts: ["1539 deg. Celcius", "1031 deg. Celcius", "1231 deg. Celcius", "659 deg. Celcius"], ans: 1 },
+        { q: "..material possesses high impact strength than brittle materials.", opts: ["Malleable", "Tough", "Stiff", "Ductile"], ans: 1 },
+        { q: "Copper is extremely tough but is not.", opts: ["Steel", "Iron", "Cast Iron", "Aluminium"], ans: 2 },
+        { q: "is the most malleable metal.", opts: ["Silver", "Gold", "Steel", "C.I."], ans: 1 },
+        { q: "is lack of ductility.", opts: ["Malleability", "Hardness", "Toughness", "Brittleness"], ans: 3 },
+        { q: "Melting point of iron is", opts: ["1131 deg. Celcius", "1539 deg. Celcius", "1659 deg. Celcius", "1712 deg. Celcius"], ans: 1 },
+        { q: "is a brittle material.", opts: ["Steel", "aluminium", "Cast iron", "Copper"], ans: 2 },
+        { q: "Which of the following is not example of organic material?", opts: ["Fiber Glass", "Lubricants", "Wood", "Rubber"], ans: 0 },
+        { q: "Which of the following is not example of organic material?", opts: ["Fiber Glass", "Lubricants", "Wood", "Rubber"], ans: 0 },
+        { q: "is major ingredient for steel.", opts: ["Copper", "Carbon", "Cromium", "Iron"], ans: 3 },
+        { q: "Material consists of", opts: ["atoms", "molecules", "matter", "none of these"], ans: 2 },
+        { q: "Fiber glass acquires strength from...", opts: ["glass", "fiber", "polymer", "meterial"], ans: 0 },
+        { q: "Fiber glass acquires flexibility from", opts: ["glass", "fiber", "polymer", "meterial"], ans: 1 },
+        { q: "Melting point is defined as the Temperature", opts: ["maximum", "moderate", "minimum", "high"], ans: 2 },
+        { q: "helps in differentiating heavy and light metals", opts: ["weight", "volume", "density", "mass"], ans: 2 },
+        { q: "strength refers to the force needed to fracture the material.", opts: ["yield strength", "impact strength", "ultimate strength", "tensile strength"], ans: 2 },
+        { q: "The ability of material to resist plastic deformation is called", opts: ["yield strength", "impact strength", "formability", "malleability"], ans: 0 },
+        { q: "is considered tensile property.", opts: ["physical property", "ductility", "formability", "malleability"], ans: 1 },
+        { q: "is a compressive property.", opts: ["physical property", "ductility", "formability", "malleability"], ans: 3 },
+        { q: "The ability of material to regain its original state on removal of load is called....", opts: ["plasticity", "ductility", "malleability", "elasticity"], ans: 3 },
+        { q: "Which of the following determine the behavior of engineering materials under the applied forces and loads?", opts: ["physical property", "chemical property", "strength", "mechanical property"], ans: 3 },
+        { q: "Is also defined as the slope on the linear portion of a stress strain curve within the elastic limit.", opts: ["brittleness", "hardness", "toughness", "stiffness"], ans: 3 },
+        { q: "impact strength depends upon", opts: ["density", "colour", "melting point", "structure"], ans: 3 },
+        { q: "is shown as the maximum point on the stress strain curve.", opts: ["yield strength", "tensile strength", "impact strength", "ultimate strength"], ans: 3 },
+        { q: "Also defined as the ability of material to absorb energy during plastic deformation up to fracture.", opts: ["stiffness", "toughness", "brittleness", "hardness"], ans: 1 },
+        { q: "hardness is resistance to", opts: ["deformation", "plasticity", "elasticity", "penetration"], ans: 3 },
+        { q: "fatigue failure occurs when a material is subjected to Loads", opts: ["fluctuating", "compressive", "tensile", "shear"], ans: 0 },
+        { q: "Is the capacity of material to undergo deformation under tension without rupture.", opts: ["malleability", "ductility", "stiffness", "tensile strength"], ans: 1 },
+        { q: "which of the following is not the characteristic of ceramics?", opts: ["hardness", "brittleness", "abrasiveness", "ductility"], ans: 3 },
+        { q: "is made use in stamping images on coins and ornamental work.", opts: ["elasticity", "plasticity", "strength", "malleability"], ans: 1 },
+        { q: "of a material is very helpful in indentification of metal.", opts: ["structure", "density", "melting point", "colour"], ans: 3 },
+        { q: "physical properties are those properties which decribes a material under conditions in which Forces are not concerned.", opts: ["tensile", "compressive", "internal", "external"], ans: 3 },
+        { q: "A small impression for a given load and indentor that the material is", opts: ["soft", "tough", "stiff", "hard"], ans: 3 },
+        { q: "which of the following is not the example of semiconductor?", opts: ["Si", "Ge", "sn", "zn"], ans: 3 },
+        { q: "contain the compounds of nitrogen", opts: ["acrylics", "polyethylene", "nylon", "pvc"], ans: 2 },
+        { q: "materials consist of more than one material type.", opts: ["Natural organic material", "synthetic organic material", "manufactured organic material", "composite material"], ans: 3 },
+        { q: "is a good example of an aggregate composite.", opts: ["cement", "plaster", "concrete", "sand"], ans: 2 },
+        { q: "is that out of which anything is made.", opts: ["matter", "substance", "material", "atom"], ans: 2 },
+        { q: "are dimensionally stable at room temperature.", opts: ["non- metals", "metalloids", "organic material", "metal"], ans: 3 },
+        { q: "Materials are poor conductor of heat, electricity, temperature.", opts: ["Ceramic", "Composite", "organic", "inorganic"], ans: 2 },
+        { q: "In polyethylene (C₂H₄)n n ranges from.", opts: ["10 to 100", "100 to 10000", "100 to 1000", "10 to 1000"], ans: 2 },
+        { q: "fractures normally occur along the grain boundaries", opts: ["stiff", "ductile", "tough", "brittle"], ans: 1 },
+        { q: "Is highly plastic material.", opts: ["gold", "steel", "cast iron", "none of the above"], ans: 3 },
+        { q: "In a unit cell of face centred cubic space lattice, there are", opts: ["six atoms", "nine atoms", "fourteen atoms", "seventeen atoms"], ans: 2 },
+        { q: "The type of space lattice found in alpha (&alpha;) iron is", opts: ["face centred cubic space lattice", "body centred cubic space lattice", "close packed hexagonal space lattice", "none of the above"], ans: 1 },
+        { q: "A solid solution in which solute atoms replace some solvent atoms so that they lie at normal atom sites of the crystal structure is called", opts: ["Interstitial solid solution", "substitutional solid solution", "intermetallic compounds", "mechanical mixtures"], ans: 1 },
+        { q: "Strength of material is the ability of the material to resist------", opts: ["Deformation due to stress", "Fracture due to high load.", "External forces applied with yielding or breakdown", "None of the above"], ans: 2 },
+        { q: "Ability of material to resist deformation due to stress is called as", opts: ["Toughness", "stiffness", "plasticity", "hardness"], ans: 1 },
+        { q: "Ability of material to resist fracture due to high impact load is called as", opts: ["Toughness", "stiffness", "plasticity", "hardness"], ans: 0 },
+        { q: "Property of the material due to which they can be drawn in to the wire is called", opts: ["Ductility", "malleability", "toughness", "plasticity"], ans: 0 },
+        { q: "Ability of the material to undergo permanent deformation under tension is called as:", opts: ["toughness", "stiffness", "plasticity", "hardness"], ans: 2 },
+        { q: "Property of the material due to which it can be rolled or hammered in to thin sheets is called as", opts: ["brittleness", "ductility", "malleability", "fatigue"], ans: 2 },
+        { q: "Property of material due to which it breaks with little permanent distortion is called as----", opts: ["brittleness", "ductility", "malleability", "fatigue"], ans: 0 },
+        { q: "The ability of a material to absorb energy in the plastic range is called---", opts: ["resilience", "toughness", "hardness", "brittleness"], ans: 1 },
+        { q: "is defined as the destruction of the material by chemical or electrochemical reaction with its environment.", opts: ["hardness", "melting point", "corrosion", "machining"], ans: 2 }
+    ];
+
+    let currentPool = [];
+    let wrongQuestions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    const quizScreen = document.getElementById('quiz-screen');
+    const resultScreen = document.getElementById('result-screen');
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const nextBtn = document.getElementById('next-btn');
+    const progress = document.getElementById('progress');
+    const scoreTracker = document.getElementById('score-tracker');
+    const feedbackMessage = document.getElementById('feedback-message');
+    const retryBtn = document.getElementById('retry-btn');
+    const restartBtn = document.getElementById('restart-btn');
+
+    // Utility to shuffle an array (Fisher-Yates)
+    function shuffleArray(array) {
+        let arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function startQuiz(poolToUse) {
+        currentPool = shuffleArray(poolToUse);
+        wrongQuestions = [];
+        currentQuestionIndex = 0;
+        score = 0;
+        
+        quizScreen.classList.remove('hidden');
+        resultScreen.classList.add('hidden');
+        
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        nextBtn.classList.add('hidden');
+        feedbackMessage.classList.add('hidden');
+        optionsContainer.innerHTML = '';
+        
+        const qData = currentPool[currentQuestionIndex];
+        
+        progress.textContent = `Question ${currentQuestionIndex + 1} / ${currentPool.length}`;
+        scoreTracker.textContent = `Score: ${score}`;
+        questionText.innerHTML = `${currentQuestionIndex + 1}. ${qData.q}`;
+
+        qData.opts.forEach((opt, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerHTML = `${String.fromCharCode(65 + index)}. ${opt}`; // A, B, C, D
+            btn.onclick = () => checkAnswer(index, btn);
+            optionsContainer.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedIndex, selectedBtn) {
+        const qData = currentPool[currentQuestionIndex];
+        const correctIndex = qData.ans;
+        const allBtns = optionsContainer.querySelectorAll('.btn');
+
+        // Disable all buttons to prevent multiple clicks
+        allBtns.forEach(btn => btn.disabled = true);
+
+        feedbackMessage.classList.remove('hidden');
+
+        if (selectedIndex === correctIndex) {
+            selectedBtn.classList.add('correct');
+            feedbackMessage.textContent = "✅ Correct!";
+            feedbackMessage.style.color = "#0c5c27";
+            score++;
+            scoreTracker.textContent = `Score: ${score}`;
+        } else {
+            selectedBtn.classList.add('wrong');
+            allBtns[correctIndex].classList.add('correct');
+            feedbackMessage.textContent = "❌ Incorrect.";
+            feedbackMessage.style.color = "#8a0a14";
+            
+            // Add to wrong stack if not already there
+            if (!wrongQuestions.includes(qData)) {
+                wrongQuestions.push(qData);
+            }
+        }
+
+        nextBtn.classList.remove('hidden');
+    }
+
+    nextBtn.onclick = () => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < currentPool.length) {
+            loadQuestion();
+        } else {
+            endQuiz();
+        }
+    };
+
+    function endQuiz() {
+        quizScreen.classList.add('hidden');
+        resultScreen.classList.remove('hidden');
+        
+        document.getElementById('final-score').textContent = 
+            `You scored ${score} out of ${currentPool.length}!`;
+
+        if (wrongQuestions.length > 0) {
+            retryBtn.classList.remove('hidden');
+            retryBtn.textContent = `Resolve ${wrongQuestions.length} Incorrect Question(s)`;
+        } else {
+            retryBtn.classList.add('hidden');
+            document.getElementById('final-score').innerHTML += "<br>🎉 Perfect score! Awesome job.";
+        }
+    }
+
+    retryBtn.onclick = () => {
+        startQuiz(wrongQuestions);
+    };
+
+    restartBtn.onclick = () => {
+        startQuiz(masterQuestionBank);
+    };
+
+    // Init the app
+    startQuiz(masterQuestionBank);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Materials Quiz Portal</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f7;
+            --card-bg: #ffffff;
+            --text-main: #1d1d1f;
+            --text-muted: #86868b;
+            --accent-blue: #0071e3;
+            --border-color: #d2d2d7;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .hub-container {
+            width: 100%;
+            max-width: 680px;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin: 0 0 8px 0;
+            font-weight: 600;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin: 0;
+        }
+
+        .quiz-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .quiz-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .quiz-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .quiz-info h2 {
+            font-size: 18px;
+            margin: 0 0 4px 0;
+        }
+
+        .quiz-info p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .badge {
+            background: #e8f2ff;
+            color: var(--accent-blue);
+            font-weight: 600;
+            font-size: 13px;
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="hub-container">
+    <header>
+        <h1>Engineering Materials Quiz Portal</h1>
+        <p class="subtitle">Select a unit module to begin practicing</p>
+    </header>
+
+    <div class="quiz-grid">
+        <a href="unit1.html" class="quiz-card">
+            <div class="quiz-info">
+                <h2>Unit 1 Quiz</h2>
+                <p>Engineering Materials & Fundamentals</p>
+            </div>
+            <span class="badge">63 Questions</span>
+        </a>
+
+        <a href="unit2.html" class="quiz-card">
+            <div class="quiz-info">
+                <h2>Unit 2 Quiz</h2>
+                <p>Equilibrium Diagrams & Phase Transformations</p>
+            </div>
+            <span class="badge">54 Questions</span>
+        </a>
+
+        <a href="unit3.html" class="quiz-card">
+            <div class="quiz-info">
+                <h2>Unit 3 Quiz</h2>
+                <p>Ferrous & Non-Ferrous Alloys</p>
+            </div>
+            <span class="badge">81 Questions</span>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

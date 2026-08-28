@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 3 MCQ Quiz</title>
+    <style>
+        /* macOS-inspired clean UI */
+        :root {
+            --bg-color: #f5f5f7;
+            --window-bg: #ffffff;
+            --text-main: #1d1d1f;
+            --text-muted: #86868b;
+            --border-color: #d2d2d7;
+            --accent-blue: #0071e3;
+            --accent-blue-hover: #0077ed;
+            --correct-bg: #e3fcef;
+            --correct-border: #34c759;
+            --correct-text: #0c5c27;
+            --wrong-bg: #fce8e8;
+            --wrong-border: #ff3b30;
+            --wrong-text: #8a0a14;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 680px;
+            background: var(--window-bg);
+            padding: 32px 40px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            width: 100%;
+            text-align: left;
+            padding: 14px 18px;
+            font-size: 15px;
+            background: var(--window-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+            color: var(--text-main);
+        }
+
+        .btn:hover:not(:disabled) {
+            background: var(--bg-color);
+            border-color: #a1a1a6;
+        }
+
+        .btn:disabled {
+            cursor: default;
+        }
+
+        .correct {
+            background: var(--correct-bg) !important;
+            border-color: var(--correct-border) !important;
+            color: var(--correct-text) !important;
+            font-weight: 500;
+        }
+
+        .wrong {
+            background: var(--wrong-bg) !important;
+            border-color: var(--wrong-border) !important;
+            color: var(--wrong-text) !important;
+        }
+
+        .action-btn {
+            text-align: center;
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            font-weight: 600;
+            margin-top: 24px;
+            box-shadow: 0 2px 5px rgba(0, 113, 227, 0.3);
+        }
+
+        .action-btn:hover {
+            background: var(--accent-blue-hover);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .feedback {
+            margin-top: 18px;
+            font-weight: 600;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        #result-screen {
+            text-align: center;
+        }
+
+        .score-display {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 24px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" style="text-decoration: none; color: #0071e3; font-weight: 600; font-size: 14px; display: inline-block; margin-bottom: 16px;">← Back to Main Menu</a>
+    <!-- Quiz Screen -->
+    <div id="quiz-screen">
+        <div class="status-bar">
+            <span id="progress">Question 1 / 81</span>
+            <span id="score-tracker">Score: 0</span>
+        </div>
+        
+        <h2 id="question-text">Question loading...</h2>
+        
+        <div class="options" id="options-container">
+            <!-- Buttons injected via JS -->
+        </div>
+        
+        <div id="feedback-message" class="feedback hidden"></div>
+        
+        <button id="next-btn" class="btn action-btn hidden">Next Question</button>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="hidden">
+        <h2>Quiz Complete</h2>
+        <div id="final-score" class="score-display"></div>
+        
+        <button id="retry-btn" class="btn action-btn hidden">Resolve Incorrect Questions</button>
+        <button id="restart-btn" class="btn action-btn" style="background: var(--text-main); margin-top: 12px;">Restart Full Question Bank</button>
+    </div>
+</div>
+
+<script>
+    // Full Question Bank (81 Questions) extracted directly from unit3mcq.pdf
+    const masterQuestionBank = [
+        { q: "Ferritic stainless steel contain", opts: ["12 to 18% Chromium", "13 to 27% Cromium", "Above 18% Chromium", "None of the above"], ans: 1 },
+        { q: "Austenitic stainless steel contain", opts: ["12 to 18% Cromium", "13 to 27% Cromium", "Above 18% Cromium", "None of the above"], ans: 2 },
+        { q: "Martensitic stainless steel contain", opts: ["12 to 18% Cromium", "13 to 27% Cromium", "Above 18% Cromium", "None of the above"], ans: 0 },
+        { q: "Ferromanganese contain 74 to 82%", opts: ["si", "al", "mg", "mn"], ans: 3 },
+        { q: "Ferrosilicon contain 05 to 17%", opts: ["si", "al", "mg", "mn"], ans: 0 },
+        { q: "pig iron is classified into", opts: ["Basic pig iron", "Foundry pig iron", "Ferroalloys", "All of these"], ans: 3 },
+        { q: "Steel is produced from ________ process/furnace.", opts: ["Bessemer converter", "Open hearth furnce", "Electric furnace", "All of these"], ans: 3 },
+        { q: "The solubility of carbon in Austenite is", opts: ["1.5% carbon", "2.5% carbon", "2% carbon", "None of the above"], ans: 2 },
+        { q: "Alpha ferrite at room temp. Can dissolve", opts: ["0.008% carbon", "0.25% carbon", "0.2% carbon", "None of the above"], ans: 0 },
+        { q: "Cementite becomes non magnetic/paramagnetic after", opts: ["200 deg. Celcius", "250 deg. Celcius", "210 deg. Celcius", "220 deg. Celcius"], ans: 2 },
+        { q: "Cupola furnace is used to manufacture", opts: ["Cast iron", "Pig iron", "Wrought iron", "Steel"], ans: 0 },
+        { q: "On the basis of appearance of fractures cast irons are classified as", opts: ["White cast iron", "malleable cast iron", "grey cast iron & nodular cast iron", "all of the above"], ans: 3 },
+        { q: "The cast iron containing graphite in the form of flakes are called", opts: ["White cast iron", "Malleable cast iron", "Grey cast irons", "Nodular cast iron"], ans: 2 },
+        { q: "Due to which property copper is widely used for electrical conductors", opts: ["Non magnetic & Good corrosion resistance", "High electrical & thermal conductivity", "good ductility & malleability", "all of the above"], ans: 3 },
+        { q: "the mechanical properties of brasses depend on the amount of", opts: ["zinc", "tin", "mg", "none of the above"], ans: 0 },
+        { q: "Brasses are classified either on the basis of structure or colour as", opts: ["alpha brasses", "alpha beta brasses", "red brasses & yellow brasses", "all of the above"], ans: 3 },
+        { q: "addition of 1% tin to muntz metal increases corrosion resistance to marine environment & the brass is called as", opts: ["alpha brass", "gliding metal", "leaded brass", "naval brass"], ans: 3 },
+        { q: "commercially important bronzes are", opts: ["alumimium bronze", "tin bronze", "silicon bronze", "all of the above"], ans: 3 },
+        { q: "Aluminium bronzes are characterised by", opts: ["Good strength", "Good ductility & toughness", "Good bearing properties & corrosion resistance", "all of the above"], ans: 3 },
+        { q: "Aluminim shows excellent corrosion & oxidation resistance due to the formation of", opts: ["alumium oxide", "ferrous oxide", "aluminium trioxide", "none of the above"], ans: 0 },
+        { q: "Aluminim is soft & ductile due to", opts: ["FCC Structure", "BFCC Structure", "Tetrahedral Structure", "none of the above"], ans: 0 },
+        { q: "silicon bronzes are characterised by", opts: ["high corrosion resistance", "high tensile strength", "very high toughness & machinability", "all of the above"], ans: 3 },
+        { q: "Some of the important tin bronzes", opts: ["Gun metal", "Phosphor bronze", "Wrought Phosphor bronze & cast Phosphor bronze", "all of the above"], ans: 3 },
+        { q: "Brass is an alloy of", opts: ["copper and zinc", "copper and tin", "copper, tin and zinc", "none of these"], ans: 0 },
+        { q: "An alloy of copper, tin and zinc is known as", opts: ["Brass", "Bronze", "gun metal", "muntz metal"], ans: 1 },
+        { q: "Muntz metal (Yellow brass) contains", opts: ["70% copper and 30% zinc", "60% copper and 40% zinc", "59% copper, 40% zinc and 1% tin", "60.45% copper, 35.2% zinc and 5.35% nickel"], ans: 1 },
+        { q: "Babbit metal is a", opts: ["lead-base alloy", "copper-base alloy", "tin-base alloy", "cadmium-base alloy"], ans: 2 },
+        { q: "The metal suitable for bearing subjected to light loads, is", opts: ["silicon bronze", "white metal", "monel metal", "phosphor bronze"], ans: 3 },
+        { q: "The metal suitable for bearings subjected to heavy loads, is", opts: ["silicon bronze", "white metal", "monel metal", "phosphor bronze"], ans: 1 },
+        { q: "Phosphor bronze has", opts: ["high resitance to corrosion", "good wearing qualities and high elasticity", "valuable cold working property", "all of the above"], ans: 0 },
+        { q: "Silicon when added to copper improves", opts: ["machinability", "hardness", "hardness & strength", "strength & ductility"], ans: 2 },
+        { q: "The casting ability of aluminium increases when ________ is added to aluminium.", opts: ["silicon", "lead & bismuth", "magnesium", "copper"], ans: 0 },
+        { q: "Chromium when added to steel ________ the tensile strength.", opts: ["does not effect", "Decreases", "Increases", "dont know"], ans: 2 },
+        { q: "An alloy of copper, tin and zinc is known as", opts: ["Brass", "Bronze", "gun metal", "muntz metal"], ans: 2 },
+        { q: "Duralumin has better strength than Y-alloy at high temperature.", opts: ["True", "false", "dont know", "can't say"], ans: 1 },
+        { q: "Copper has high electrical & thermal conductivity.", opts: ["true", "false", "don't know", "can't say"], ans: 0 },
+        { q: "The alloy, mainly used for corrosion resistance in stainless steels is", opts: ["silicon", "manganese", "carbon", "cromium"], ans: 3 },
+        { q: "Duralumin contains", opts: ["3.5 to 4.5% copper, 0.4 to 0.7% magnesium, 0.4 to 0.7% manganese and rest aluminium", "3.5 to 4.5% copper, 1.2 to 1.7% managanese, 1.8 to 2.3% nickel, 0.6% si/mg/fe, rest Al", "4 to 4.5% magnesium, 3 to 4% copper and rest aluminium", "5 to 6% tin, 2 to 3% copper and rest aluminium"], ans: 0 },
+        { q: "Types of bronzes is", opts: ["Gun metal", "Al bronze", "Phosphor bronze", "All of the above"], ans: 3 },
+        { q: "The aluminium with 3.5 to 4.5% cu and 0.4 to 0.7% MN & MG is called", opts: ["duralumin", "Y-alloy", "magnalium", "hindalium"], ans: 0 },
+        { q: "Y-alloy contains", opts: ["3.5 to 4.5% copper, 0.4 to 0.7% magnesium, 0.4 to 0.7% manganese and rest aluminium", "3.5 to 4.5% copper, 1.2 to 1.7% manganese, 1.8 to 2.3% nickel, 0.6% si/mg/fe, rest Al", "4 to 4.5% magnesium, 3 to 4% copper and rest aluminium", "5 to 6% tin, 2 to 3% copper and rest aluminium"], ans: 1 },
+        { q: "The main alloying elements high speed steel in order of increasing proportion are", opts: ["vanadium, chromium, tungsten", "tungsten, titanium, vanadium", "chromium, tungsten, titanium, vanadium", "chromium, titanium"], ans: 0 },
+        { q: "Which of the following metal is used in making electrical resistance wire for electric furnaces and heating elements?", opts: ["Babbit metal", "Monel metal", "Nichrome", "Phosphor bronze"], ans: 2 },
+        { q: "German silver contains", opts: ["1% silver", "2% silver", "5% silver", "no silver"], ans: 3 },
+        { q: "Type of bearing are/ is", opts: ["Rolling contact bearing", "sliding contact bearing", "plain bearing", "All of the above"], ans: 3 },
+        { q: "Out of the given options which is not a not ferrous metal", opts: ["Cu", "Al", "Ni", "Iron"], ans: 3 },
+        { q: "Cu is used for", opts: ["Electrical parts", "Heat exchangers", "House hold utensils", "All of the above"], ans: 3 },
+        { q: "In high speed steels, manganese is used to tougher the metal and to increase its", opts: ["yield point", "critical temperature", "melting point", "Hardness"], ans: 1 },
+        { q: "The machinability of aluminium increases when ________ is added to aluminium.", opts: ["Copper", "Magnesium", "Silicon", "lead and bismuth"], ans: 3 },
+        { q: "Corrosion resistance of steel is increased by adding nickel and chromium.", opts: ["Agree", "Disagree", "don't know", "can't predict"], ans: 0 },
+        { q: "Ball bearings are, usually, made from", opts: ["low carbon steel", "high carbon steel", "medium carbon steel", "chrome steel"], ans: 3 },
+        { q: "Aluminium has low density and addition of silicon improves its fluidity and therefore, its castability.", opts: ["Correct", "Incorrect", "don't know", "can't predict"], ans: 0 },
+        { q: "Babbit metal is a", opts: ["lead-base alloy", "copper-base alloy", "tin-base alloy", "cadmium-base alloy"], ans: 1 },
+        { q: "The metal suitable for bearings subjected to heavy loads, is", opts: ["silicon bronze", "white metal", "monel metal", "phosphor bronze"], ans: 1 },
+        { q: "Out of the below option which is type of brass", opts: ["Si bronze", "Gun metal", "Muntz metal", "Al bronze"], ans: 1 },
+        { q: "Which of the following statement is incorrect about duralumin?", opts: ["It is prone to age hardening", "It can be forged", "It has good machining properties", "It is lighter than pure aluminium"], ans: 3 },
+        { q: "The austenitic stainless steel contains", opts: ["18% chromium and 8% nickel", "8% chromium and 18% nickel", "14% chromium and 0.35% carbon", "14% nickel and 0.35% carbon"], ans: 0 },
+        { q: "The nuts and bolts are made from silicon steel.", opts: ["Correct", "Incorrect", "don't know", "can't predict"], ans: 1 },
+        { q: "Silicon in cast iron", opts: ["makes the iron soft and easily machinable", "increases hardness and brittleness", "aids fusibility and fluidity", "makes the iron white and hard"], ans: 0 },
+        { q: "The steel widely used for making precision measuring instruments is", opts: ["nickel steel", "nickel-chrome steel", "high speed steel", "chrome-vanadium steel"], ans: 0 },
+        { q: "The high speed steel has ________ percentage of tungsten.", opts: ["maximum", "minimum", "don't know", "can't predict"], ans: 0 },
+        { q: "The essential constituent of a hardened steel is", opts: ["pearlite", "austenite", "martensite", "troostite"], ans: 2 },
+        { q: "The addition of manganese to aluminium improves corrosion resistance.", opts: ["Correct", "Incorrect", "don't know", "can't say"], ans: 0 },
+        { q: "The temperature point at which the change ends on heating the steel is called", opts: ["lower critical point", "upper critical point", "point of recalescence", "point of decalescence"], ans: 1 },
+        { q: "Admirality gun metal contains", opts: ["60% copper, 35% zinc and 5% manganese", "76% copper, 20% silicon and 4% zinc", "82% copper, 12% zinc and 6% manganese", "88% copper, 10% tin and 2% zinc"], ans: 3 },
+        { q: "The percentage of phosphorus is phosphor bronze is", opts: ["0.1", "1", "11.1", "98"], ans: 0 },
+        { q: "In high speed steels, vanadium adds to the property of red hardness and tungsten and chromium add to high wear resistance.", opts: ["True", "False", "don't know", "can't say"], ans: 0 },
+        { q: "Phosphor bronze has", opts: ["high resistance to corrosion", "good wearing qualities and high elasticity", "valuable cold working property", "all of these"], ans: 1 },
+        { q: "Which of the following material has maximum malleability?", opts: ["Lead", "Soft steel", "Wrought iron", "Copper"], ans: 0 },
+        { q: "Hardness of steel is increased by adding sulphur, lead and phosphorus.", opts: ["Yes", "No", "don't know", "can't say"], ans: 1 },
+        { q: "The silicon steel is widely used for", opts: ["connecting rods", "cutting tools", "generators and transformers in the form of laminated cores", "motor car crankshafts"], ans: 2 },
+        { q: "Babbit metal contains", opts: ["50% tin and 50% antimony", "66% tin, 30% copper and 4% antimony", "88% tin, 4% copper and 8% antimony", "92% tin, 6% copper and 2% antimony"], ans: 2 },
+        { q: "Aluminium bronze has high resistance to corrosion.", opts: ["True", "False", "don't know", "can't say"], ans: 0 },
+        { q: "Manganese bronze contains more copper than silicon bronze.", opts: ["Yes", "No", "don't know", "can't say"], ans: 1 },
+        { q: "Muntz metal (Yellow brass) contains", opts: ["70% copper and 30% zinc", "60% copper and 40% zinc", "59% copper, 40% zinc and 1% tin", "60.45% copper, 35.2% zinc and 5.35% nickel"], ans: 1 },
+        { q: "The casting ability of aluminium increases when ________ is added to aluminium.", opts: ["copper", "magnesium", "silicon", "lead and bismuth"], ans: 2 },
+        { q: "Manganese bronze has", opts: ["good wearing qualities and high elasticity", "high yield point, high fatigue limit", "high resistance to corrosion", "valuable cold working property"], ans: 2 },
+        { q: "Silicon bronze contains", opts: ["60% copper, 35% zinc and 5% manganese", "88% copper, 10% tin and 2% zinc", "96% copper, 3% silicon and 1% manganese", "76% copper, 20% silicon and 4% zinc"], ans: 2 },
+        { q: "In corrosion resistant properties, bronzes are ________ to brasses.", opts: ["superior", "inferier", "don't know", "can't say"], ans: 0 },
+        { q: "Bronze is the alloy of----.", opts: ["copper and tin", "copper and zinc", "copper and iron", "tin and zinc"], ans: 0 },
+        { q: "Gun metal-----", opts: ["is tin bronze", "used for making gun barrels", "contains copper, tin and zinc.", "all of the above"], ans: 3 }
+    ];
+
+    let currentPool = [];
+    let wrongQuestions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    const quizScreen = document.getElementById('quiz-screen');
+    const resultScreen = document.getElementById('result-screen');
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const nextBtn = document.getElementById('next-btn');
+    const progress = document.getElementById('progress');
+    const scoreTracker = document.getElementById('score-tracker');
+    const feedbackMessage = document.getElementById('feedback-message');
+    const retryBtn = document.getElementById('retry-btn');
+    const restartBtn = document.getElementById('restart-btn');
+
+    // Fisher-Yates Shuffle
+    function shuffleArray(array) {
+        let arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function startQuiz(poolToUse) {
+        currentPool = shuffleArray(poolToUse);
+        wrongQuestions = [];
+        currentQuestionIndex = 0;
+        score = 0;
+        
+        quizScreen.classList.remove('hidden');
+        resultScreen.classList.add('hidden');
+        
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        nextBtn.classList.add('hidden');
+        feedbackMessage.classList.add('hidden');
+        optionsContainer.innerHTML = '';
+        
+        const qData = currentPool[currentQuestionIndex];
+        
+        progress.textContent = `Question ${currentQuestionIndex + 1} of ${currentPool.length}`;
+        scoreTracker.textContent = `Score: ${score}`;
+        questionText.innerHTML = `${currentQuestionIndex + 1}. ${qData.q}`;
+
+        qData.opts.forEach((opt, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerHTML = `${String.fromCharCode(65 + index)}. ${opt}`;
+            btn.onclick = () => checkAnswer(index, btn);
+            optionsContainer.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedIndex, selectedBtn) {
+        const qData = currentPool[currentQuestionIndex];
+        const correctIndex = qData.ans;
+        const allBtns = optionsContainer.querySelectorAll('.btn');
+
+        // Prevent multiple selections
+        allBtns.forEach(btn => btn.disabled = true);
+        feedbackMessage.classList.remove('hidden');
+
+        if (selectedIndex === correctIndex) {
+            selectedBtn.classList.add('correct');
+            feedbackMessage.textContent = "✅ Correct!";
+            feedbackMessage.style.color = "var(--correct-text)";
+            score++;
+            scoreTracker.textContent = `Score: ${score}`;
+        } else {
+            selectedBtn.classList.add('wrong');
+            allBtns[correctIndex].classList.add('correct');
+            feedbackMessage.textContent = "❌ Incorrect.";
+            feedbackMessage.style.color = "var(--wrong-text)";
+            
+            // Push to review deck if it's not already in there
+            if (!wrongQuestions.includes(qData)) {
+                wrongQuestions.push(qData);
+            }
+        }
+        nextBtn.classList.remove('hidden');
+    }
+
+    nextBtn.onclick = () => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < currentPool.length) {
+            loadQuestion();
+        } else {
+            endQuiz();
+        }
+    };
+
+    function endQuiz() {
+        quizScreen.classList.add('hidden');
+        resultScreen.classList.remove('hidden');
+        
+        document.getElementById('final-score').innerHTML = 
+            `You scored <span style="color: var(--accent-blue);">${score}</span> out of ${currentPool.length}!`;
+
+        if (wrongQuestions.length > 0) {
+            retryBtn.classList.remove('hidden');
+            retryBtn.textContent = `Review ${wrongQuestions.length} Incorrect Question(s)`;
+        } else {
+            retryBtn.classList.add('hidden');
+            document.getElementById('final-score').innerHTML += "<br><br>🎉 Perfect score! Excellent work.";
+        }
+    }
+
+    retryBtn.onclick = () => {
+        startQuiz(wrongQuestions);
+    };
+
+    restartBtn.onclick = () => {
+        startQuiz(masterQuestionBank);
+    };
+
+    // Initialize application
+    startQuiz(masterQuestionBank);
+</script>
+</body>
+</html>

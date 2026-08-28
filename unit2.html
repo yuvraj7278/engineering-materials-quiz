@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMT Unit 2 Quiz</title>
+    <style>
+        /* Clean, modern interface */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #86868b;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #d2d2d7;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .btn {
+            width: 100%;
+            text-align: left;
+            padding: 14px 18px;
+            font-size: 16px;
+            background: #ffffff;
+            border: 1px solid #d2d2d7;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn:hover:not(:disabled) {
+            background: #f5f5f7;
+            border-color: #86868b;
+        }
+        .btn:disabled {
+            cursor: default;
+        }
+        .correct {
+            background: #e3fcef !important;
+            border-color: #34c759 !important;
+            color: #0c5c27 !important;
+            font-weight: 500;
+        }
+        .wrong {
+            background: #fce8e8 !important;
+            border-color: #ff3b30 !important;
+            color: #8a0a14 !important;
+        }
+        .action-btn {
+            text-align: center;
+            background: #0071e3;
+            color: white;
+            border: none;
+            font-weight: 600;
+            margin-top: 24px;
+        }
+        .action-btn:hover {
+            background: #0077ed;
+        }
+        .hidden {
+            display: none;
+        }
+        .feedback {
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        #result-screen {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" style="text-decoration: none; color: #0071e3; font-weight: 600; font-size: 14px; display: inline-block; margin-bottom: 16px;">← Back to Main Menu</a>
+    <!-- Quiz Screen -->
+    <div id="quiz-screen">
+        <div class="status-bar">
+            <span id="progress">Question 1 / 54</span>
+            <span id="score-tracker">Score: 0</span>
+        </div>
+        
+        <h2 id="question-text">Question loading...</h2>
+        
+        <div class="options" id="options-container">
+            <!-- Buttons injected via JS -->
+        </div>
+        
+        <div id="feedback-message" class="feedback hidden"></div>
+        
+        <button id="next-btn" class="btn action-btn hidden">Next Question</button>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="hidden">
+        <h2>Quiz Complete!</h2>
+        <p id="final-score" style="font-size: 18px; margin: 20px 0;"></p>
+        
+        <button id="retry-btn" class="btn action-btn hidden">Resolve Incorrect Questions</button>
+        <button id="restart-btn" class="btn action-btn" style="background: #1d1d1f; margin-top: 12px;">Restart Full Question Bank</button>
+    </div>
+</div>
+
+<script>
+    // Full Question Bank (54 Questions)
+    const masterQuestionBank = [
+        { q: "What is the crystalline structure of alpha iron?", opts: ["Face Centered Cubic (F.C.C.)", "Body Centered Cubic (B.C.C.)", "Hexagonal Close Packed (H.C.P.)", "Amorphous"], ans: 1 },
+        { q: "Between which temperatures does gamma iron exist?", opts: ["Room temperature to 910°C", "910°C to 1404°C", "1404°C to 1539°C", "1539°C to 1800°C"], ans: 1 },
+        { q: "Which form of iron is ferromagnetic at room temperature?", opts: ["Alpha iron", "Gamma iron", "Delta iron", "None of the above"], ans: 0 },
+        { q: "What is the structure of gamma iron?", opts: ["Body Centered Cubic (B.C.C.)", "Face Centered Cubic (F.C.C.)", "Hexagonal Close Packed (H.C.P.)", "Simple Cubic"], ans: 1 },
+        { q: "Which allotrope of iron has the same structure as alpha iron but with a longer cube edge?", opts: ["Gamma iron", "Delta iron", "Beta iron", "None of the above"], ans: 1 },
+        { q: "What is the temperature range for the existence of delta iron?", opts: ["Room temperature to 910°C", "910°C to 1404°C", "1404°C to 1539°C", "1539°C to 1700°C"], ans: 2 },
+        { q: "What is the melting point of pure iron?", opts: ["910°C", "1404°C", "1539°C", "1600°C"], ans: 2 },
+        { q: "What type of property is allotropy?", opts: ["Chemical", "Mechanical", "Crystallographic", "Magnetic"], ans: 2 },
+        { q: "At what temperature does the transformation from alpha to gamma iron occur?", opts: ["910°C", "1404°C", "1539°C", "720°C"], ans: 0 },
+        { q: "Which form of iron is stable just below its melting point?", opts: ["Alpha iron", "Gamma iron", "Delta iron", "None of the above"], ans: 2 },
+        { q: "What is the structure of iron at room temperature up to 912°C?", opts: ["Face Centered Cubic (FCC)", "Hexagonal Close Packed (HCP)", "Body Centered Cubic (BCC)", "Simple Cubic"], ans: 2 },
+        { q: "What is the phase name of iron between room temperature and 912°C?", opts: ["Austenite", "Martensite", "δ-ferrite", "α-ferrite"], ans: 3 },
+        { q: "Between which temperature ranges does γ-Austenite exist in pure iron?", opts: ["912°C to 1395°C", "912°C to 1539°C", "1395°C to 1539°C", "Room temperature to 912°C"], ans: 0 },
+        { q: "What is the crystal structure of γ-iron (austenite)?", opts: ["Body Centered Cubic (BCC)", "Face Centered Cubic (FCC)", "Hexagonal Close Packed (HCP)", "Orthorhombic"], ans: 1 },
+        { q: "What phase of iron exists between 1395°C to 1539°C?", opts: ["α-ferrite", "γ-Austenite", "δ-ferrite", "Liquid iron"], ans: 2 },
+        { q: "Which crystal structure reappears in δ-ferrite after 1395°C?", opts: ["FCC", "HCP", "BCC", "None"], ans: 2 },
+        { q: "What happens to iron after it reaches 1539°C?", opts: ["It becomes α-ferrite", "It forms δ-ferrite", "It changes to liquid", "It transforms to martensite"], ans: 2 },
+        { q: "In which temperature range does iron exist in the FCC structure?", opts: ["912°C to 1395°C", "Room temperature to 912°C", "1395°C to 1539°C", "Above 1539°C"], ans: 0 },
+        { q: "Which of the following is true about α-ferrite?", opts: ["It is stable above 1395°C", "It has FCC structure", "It is ferromagnetic at room temperature", "It is the liquid phase of iron"], ans: 2 },
+        { q: "What is a solid solution?", opts: ["A mixture of two solids without any bonding", "A solution of metals only in gaseous form", "A solid in which two metals remain mutually dissolved after crystallization", "A compound of non-metals only"], ans: 2 },
+        { q: "In a solid solution, the metal present in larger quantity is called:", opts: ["Solute", "Solvent", "Precipitate", "Alloy"], ans: 1 },
+        { q: "The metal present in smaller quantity in a solid solution is known as:", opts: ["Solvent", "Matrix", "Solute", "Compound"], ans: 2 },
+        { q: "In which type of solid solution does the solute atom replace the solvent atom in the crystal lattice?", opts: ["Ordered solid solution", "Interstitial solid solution", "Substitutional solid solution", "Amorphous solid"], ans: 2 },
+        { q: "Substitutional solid solutions can be:", opts: ["Only ordered", "Only disordered", "Both ordered and disordered", "Neither ordered nor disordered"], ans: 2 },
+        { q: "In interstitial solid solutions, solute atoms occupy:", opts: ["Surface of the crystal", "Voids or holes between solvent atoms", "Edges of the crystal lattice", "Outer orbitals of solvent atoms"], ans: 1 },
+        { q: "Which of the following is a characteristic of interstitial solid solutions?", opts: ["Solute atoms are larger than solvent atoms", "Solute atoms displace solvent atoms", "Solute atoms occupy interstices without replacing solvent atoms", "Solute atoms create a separate phase"], ans: 2 },
+        { q: "What is the main difference between Substitutional and interstitial solid solutions?", opts: ["Chemical bonding", "Type of metal used", "Position of solute atoms in the lattice", "Temperature of formation"], ans: 2 },
+        { q: "Which of the following conditions favors formation of substitutional solid solutions?", opts: ["Large size difference between solute and solvent", "Similar atomic radii of solute and solvent", "Solute is a non-metal", "Solvent has a very high melting point"], ans: 1 },
+        { q: "Which type of solid solution would carbon in iron (as in steel) form?", opts: ["Substitutional", "Interstitial", "Ordered substitutional", "Compound"], ans: 1 },
+        { q: "The Iron-Carbon equilibrium diagram is a type of:", opts: ["Unary phase diagram", "Binary phase diagram", "Ternary phase diagram", "Quaternary phase diagram"], ans: 1 },
+        { q: "What is the maximum carbon content considered in the Iron-Carbon equilibrium diagram (Fe-C)?", opts: ["2.0%", "4.3%", "6.67%", "8.0%"], ans: 2 },
+        { q: "At 0.8% carbon and 723°C, the structure formed is called:", opts: ["Cementite", "Ferrite", "Pearlite", "Austenite"], ans: 2 },
+        { q: "The eutectoid composition in the iron-carbon diagram is:", opts: ["0.8% C", "4.3% C", "2.0% C", "6.67% C"], ans: 0 },
+        { q: "The eutectoid temperature in the iron-carbon diagram is:", opts: ["1495°C", "1147°C", "723°C", "1130°C"], ans: 2 },
+        { q: "The eutectic reaction in Fe-C system is:", opts: ["Austenite → Ferrite + Cementite", "Liquid → Austenite + Cementite", "Liquid → δ-ferrite + Austenite", "Cementite → Austenite + Liquid"], ans: 1 },
+        { q: "The eutectic composition in the Fe-C diagram occurs at:", opts: ["0.8% C", "2.0% C", "4.3% C", "6.67% C"], ans: 2 },
+        { q: "Which of the following phases is soft and ductile?", opts: ["Cementite", "Pearlite", "Ferrite", "Martensite"], ans: 2 },
+        { q: "The phase Fe3C is known as:", opts: ["Austenite", "Cementite", "Pearlite", "Bainite"], ans: 1 },
+        { q: "The transformation of austenite into pearlite upon cooling is known as:", opts: ["Eutectic reaction", "Eutectoid reaction", "Peritectic reaction", "Allotropic transformation"], ans: 1 },
+        { q: "Which structure is a mixture of ferrite and cementite?", opts: ["Austenite", "Martensite", "Pearlite", "Cementite"], ans: 2 },
+        { q: "At what temperature does the eutectic reaction occur in Fe-C diagram?", opts: ["1147°C", "723°C", "1495°C", "910°C"], ans: 0 },
+        { q: "In the Fe-C diagram, hypo eutectoid steels contain:", opts: ["Less than 0.8% carbon", "More than 0.8% carbon", "Exactly 0.8% carbon", "More than 6.67% carbon"], ans: 0 },
+        { q: "What is the phase present at 6.67% carbon in the Fe-C diagram?", opts: ["Pearlite", "Cementite (Fe3C)", "Austenite", "Ferrite"], ans: 1 },
+        { q: "Which of the following structures is hardest and most brittle?", opts: ["Ferrite", "Cementite", "Austenite", "Pearlite"], ans: 1 },
+        { q: "What are critical temperatures in the Fe-Fe3C diagram?", opts: ["Temperatures at which metals melt completely", "Temperatures where phase changes occur during heating or cooling", "Temperatures of maximum hardness", "Temperatures at which alloys evaporate"], ans: 1 },
+        { q: "The upper critical temperature A3 is the temperature below which:", opts: ["Austenite starts to form in hypereutectoid alloys", "Ferrite starts to form from austenite in hypo eutectoid alloys", "Cementite starts to form from austenite in hypereutectoid alloys", "Pearlite forms from austenite"], ans: 1 },
+        { q: "The upper critical temperature ACM is the temperature below which:", opts: ["Ferrite starts to form from austenite in hypo eutectoid alloys", "Cementite starts to form from austenite in hypereutectoid alloys", "Pearlite starts to form from austenite", "Austenite completely disappears"], ans: 1 },
+        { q: "The lower critical temperature A1 corresponds to:", opts: ["The melting point of iron", "The temperature of austenite-to-pearlite eutectoid transformation", "The temperature at which ferrite forms", "The temperature at which cementite dissolves"], ans: 1 },
+        { q: "Below the temperature A1:", opts: ["Austenite exists in the structure", "Austenite does not exist", "Only liquid phase is present", "Cementite is completely absent"], ans: 1 },
+        { q: "Which of the following points represents the temperature below which ferrite starts to form in hypo eutectoid alloys?", opts: ["A1", "A3", "ACM", "Eutectic point"], ans: 1 },
+        { q: "In hypereutectoid steels, cementite starts to form from austenite below the critical temperature:", opts: ["A1", "A3", "ACM", "Eutectoid temperature"], ans: 2 },
+        { q: "The eutectic reaction occurs during:", opts: ["Heating of pure iron", "Cooling of hypoeutectoid steel", "Cooling of liquid alloy with 4.3% Carbon", "Cooling of hypereutectoid steel"], ans: 2 },
+        { q: "Steel Contains Carbon percentage between:", opts: ["0 to 1.1%", "0 to 2.1%", "0 to 4.1%", "0 to 3.1%"], ans: 1 },
+        { q: "Eutectoid reaction occurs at:", opts: ["0.8% Carbon", "0.2% Carbon", "0.5% Carbon", "None of the above"], ans: 0 }
+    ];
+
+    let currentPool = [];
+    let wrongQuestions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    const quizScreen = document.getElementById('quiz-screen');
+    const resultScreen = document.getElementById('result-screen');
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const nextBtn = document.getElementById('next-btn');
+    const progress = document.getElementById('progress');
+    const scoreTracker = document.getElementById('score-tracker');
+    const feedbackMessage = document.getElementById('feedback-message');
+    const retryBtn = document.getElementById('retry-btn');
+    const restartBtn = document.getElementById('restart-btn');
+
+    function shuffleArray(array) {
+        let arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function startQuiz(poolToUse) {
+        currentPool = shuffleArray(poolToUse);
+        wrongQuestions = [];
+        currentQuestionIndex = 0;
+        score = 0;
+        
+        quizScreen.classList.remove('hidden');
+        resultScreen.classList.add('hidden');
+        
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        nextBtn.classList.add('hidden');
+        feedbackMessage.classList.add('hidden');
+        optionsContainer.innerHTML = '';
+        
+        const qData = currentPool[currentQuestionIndex];
+        
+        progress.textContent = `Question ${currentQuestionIndex + 1} / ${currentPool.length}`;
+        scoreTracker.textContent = `Score: ${score}`;
+        questionText.innerHTML = `${currentQuestionIndex + 1}. ${qData.q}`;
+
+        qData.opts.forEach((opt, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerHTML = `${String.fromCharCode(65 + index)}. ${opt}`;
+            btn.onclick = () => checkAnswer(index, btn);
+            optionsContainer.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedIndex, selectedBtn) {
+        const qData = currentPool[currentQuestionIndex];
+        const correctIndex = qData.ans;
+        const allBtns = optionsContainer.querySelectorAll('.btn');
+
+        allBtns.forEach(btn => btn.disabled = true);
+        feedbackMessage.classList.remove('hidden');
+
+        if (selectedIndex === correctIndex) {
+            selectedBtn.classList.add('correct');
+            feedbackMessage.textContent = "✅ Correct!";
+            feedbackMessage.style.color = "#0c5c27";
+            score++;
+            scoreTracker.textContent = `Score: ${score}`;
+        } else {
+            selectedBtn.classList.add('wrong');
+            allBtns[correctIndex].classList.add('correct');
+            feedbackMessage.textContent = "❌ Incorrect.";
+            feedbackMessage.style.color = "#8a0a14";
+            
+            if (!wrongQuestions.includes(qData)) {
+                wrongQuestions.push(qData);
+            }
+        }
+        nextBtn.classList.remove('hidden');
+    }
+
+    nextBtn.onclick = () => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < currentPool.length) {
+            loadQuestion();
+        } else {
+            endQuiz();
+        }
+    };
+
+    function endQuiz() {
+        quizScreen.classList.add('hidden');
+        resultScreen.classList.remove('hidden');
+        
+        document.getElementById('final-score').textContent = 
+            `You scored ${score} out of ${currentPool.length}!`;
+
+        if (wrongQuestions.length > 0) {
+            retryBtn.classList.remove('hidden');
+            retryBtn.textContent = `Resolve ${wrongQuestions.length} Incorrect Question(s)`;
+        } else {
+            retryBtn.classList.add('hidden');
+            document.getElementById('final-score').innerHTML += "<br>🎉 Perfect score! Excellent work.";
+        }
+    }
+
+    retryBtn.onclick = () => {
+        startQuiz(wrongQuestions);
+    };
+
+    restartBtn.onclick = () => {
+        startQuiz(masterQuestionBank);
+    };
+
+    startQuiz(masterQuestionBank);
+
+</script>
+</body>
+</html>
