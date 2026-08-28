@@ -153,44 +153,215 @@
 </div>
 
 <script>
-    // Master banks from Units 1, 2, and 3
+    // FULL Unit 1 Bank (63 Questions)
     const unit1Bank = [
         { q: "Ferrous Metals do not possess the following property", opts: ["stiffness", "strength", "elasticity", "high electrical conductivity"], ans: 3 },
         { q: "Ceramics usually consist of", opts: ["oxides", "nitrides", "carbides & borides", "all of the above"], ans: 3 },
         { q: "out of the following which is not a example of ceramics.", opts: ["sand", "brick", "lubricants", "concrete"], ans: 2 },
+        { q: "out of the following which is not a example of organic materials.", opts: ["rubber", "plastics", "cement", "paper"], ans: 2 },
+        { q: "which materials have good thermal conductivity?", opts: ["insulaters", "semiconductors", "conductors", "none of the above"], ans: 2 },
         { q: "Density of Aluminium is", opts: ["2.7 gm/cc", "1.7 gm/cc", "3.7 gm/cc", "4.7 gm/cc"], ans: 0 },
+        { q: "Unit of Density", opts: ["kg/m³", "kg/m²", "kg/m⁴", "kg.m"], ans: 0 },
+        { q: "colour of Al is", opts: ["White", "grey", "reddish", "none of the above"], ans: 0 },
         { q: "Melting point of copper is", opts: ["1539 deg. Celcius", "1031 deg. Celcius", "1231 deg. Celcius", "659 deg. Celcius"], ans: 1 },
+        { q: "..material possesses high impact strength than brittle materials.", opts: ["Malleable", "Tough", "Stiff", "Ductile"], ans: 1 },
+        { q: "Copper is extremely tough but is not.", opts: ["Steel", "Iron", "Cast Iron", "Aluminium"], ans: 2 },
         { q: "is the most malleable metal.", opts: ["Silver", "Gold", "Steel", "C.I."], ans: 1 },
         { q: "is lack of ductility.", opts: ["Malleability", "Hardness", "Toughness", "Brittleness"], ans: 3 },
         { q: "Melting point of iron is", opts: ["1131 deg. Celcius", "1539 deg. Celcius", "1659 deg. Celcius", "1712 deg. Celcius"], ans: 1 },
         { q: "is a brittle material.", opts: ["Steel", "aluminium", "Cast iron", "Copper"], ans: 2 },
+        { q: "Which of the following is not example of organic material?", opts: ["Fiber Glass", "Lubricants", "Wood", "Rubber"], ans: 0 },
+        { q: "is major ingredient for steel.", opts: ["Copper", "Carbon", "Cromium", "Iron"], ans: 3 },
+        { q: "Material consists of", opts: ["atoms", "molecules", "matter", "none of these"], ans: 2 },
+        { q: "Fiber glass acquires strength from...", opts: ["glass", "fiber", "polymer", "meterial"], ans: 0 },
+        { q: "Fiber glass acquires flexibility from", opts: ["glass", "fiber", "polymer", "meterial"], ans: 1 },
+        { q: "Melting point is defined as the Temperature", opts: ["maximum", "moderate", "minimum", "high"], ans: 2 },
+        { q: "helps in differentiating heavy and light metals", opts: ["weight", "volume", "density", "mass"], ans: 2 },
+        { q: "strength refers to the force needed to fracture the material.", opts: ["yield strength", "impact strength", "ultimate strength", "tensile strength"], ans: 2 },
+        { q: "The ability of material to resist plastic deformation is called", opts: ["yield strength", "impact strength", "formability", "malleability"], ans: 0 },
+        { q: "is considered tensile property.", opts: ["physical property", "ductility", "formability", "malleability"], ans: 1 },
+        { q: "is a compressive property.", opts: ["physical property", "ductility", "formability", "malleability"], ans: 3 },
+        { q: "The ability of material to regain its original state on removal of load is called....", opts: ["plasticity", "ductility", "malleability", "elasticity"], ans: 3 },
+        { q: "Which of the following determine the behavior of engineering materials under the applied forces and loads?", opts: ["physical property", "chemical property", "strength", "mechanical property"], ans: 3 },
+        { q: "Is also defined as the slope on the linear portion of a stress strain curve within the elastic limit.", opts: ["brittleness", "hardness", "toughness", "stiffness"], ans: 3 },
+        { q: "impact strength depends upon", opts: ["density", "colour", "melting point", "structure"], ans: 3 },
+        { q: "is shown as the maximum point on the stress strain curve.", opts: ["yield strength", "tensile strength", "impact strength", "ultimate strength"], ans: 3 },
+        { q: "Also defined as the ability of material to absorb energy during plastic deformation up to fracture.", opts: ["stiffness", "toughness", "brittleness", "hardness"], ans: 1 },
         { q: "hardness is resistance to", opts: ["deformation", "plasticity", "elasticity", "penetration"], ans: 3 },
         { q: "fatigue failure occurs when a material is subjected to Loads", opts: ["fluctuating", "compressive", "tensile", "shear"], ans: 0 },
+        { q: "Is the capacity of material to undergo deformation under tension without rupture.", opts: ["malleability", "ductility", "stiffness", "tensile strength"], ans: 1 },
+        { q: "which of the following is not the characteristic of ceramics?", opts: ["hardness", "brittleness", "abrasiveness", "ductility"], ans: 3 },
+        { q: "is made use in stamping images on coins and ornamental work.", opts: ["elasticity", "plasticity", "strength", "malleability"], ans: 1 },
+        { q: "of a material is very helpful in indentification of metal.", opts: ["structure", "density", "melting point", "colour"], ans: 3 },
+        { q: "physical properties are those properties which decribes a material under conditions in which Forces are not concerned.", opts: ["tensile", "compressive", "internal", "external"], ans: 3 },
+        { q: "A small impression for a given load and indentor that the material is", opts: ["soft", "tough", "stiff", "hard"], ans: 3 },
+        { q: "which of the following is not the example of semiconductor?", opts: ["Si", "Ge", "sn", "zn"], ans: 3 },
+        { q: "contain the compounds of nitrogen", opts: ["acrylics", "polyethylene", "nylon", "pvc"], ans: 2 },
+        { q: "materials consist of more than one material type.", opts: ["Natural organic material", "synthetic organic material", "manufactured organic material", "composite material"], ans: 3 },
+        { q: "is a good example of an aggregate composite.", opts: ["cement", "plaster", "concrete", "sand"], ans: 2 },
+        { q: "is that out of which anything is made.", opts: ["matter", "substance", "material", "atom"], ans: 2 },
+        { q: "are dimensionally stable at room temperature.", opts: ["non- metals", "metalloids", "organic material", "metal"], ans: 3 },
+        { q: "Materials are poor conductor of heat, electricity, temperature.", opts: ["Ceramic", "Composite", "organic", "inorganic"], ans: 2 },
+        { q: "In polyethylene (C₂H₄)n n ranges from.", opts: ["10 to 100", "100 to 10000", "100 to 1000", "10 to 1000"], ans: 2 },
+        { q: "fractures normally occur along the grain boundaries", opts: ["stiff", "ductile", "tough", "brittle"], ans: 1 },
+        { q: "Is highly plastic material.", opts: ["gold", "steel", "cast iron", "none of the above"], ans: 3 },
+        { q: "In a unit cell of face centred cubic space lattice, there are", opts: ["six atoms", "nine atoms", "fourteen atoms", "seventeen atoms"], ans: 2 },
+        { q: "The type of space lattice found in alpha (&alpha;) iron is", opts: ["face centred cubic space lattice", "body centred cubic space lattice", "close packed hexagonal space lattice", "none of the above"], ans: 1 },
+        { q: "A solid solution in which solute atoms replace some solvent atoms so that they lie at normal atom sites of the crystal structure is called", opts: ["Interstitial solid solution", "substitutional solid solution", "intermetallic compounds", "mechanical mixtures"], ans: 1 },
+        { q: "Strength of material is the ability of the material to resist------", opts: ["Deformation due to stress", "Fracture due to high load.", "External forces applied with yielding or breakdown", "None of the above"], ans: 2 },
+        { q: "Ability of material to resist deformation due to stress is called as", opts: ["Toughness", "stiffness", "plasticity", "hardness"], ans: 1 },
+        { q: "Ability of material to resist fracture due to high impact load is called as", opts: ["Toughness", "stiffness", "plasticity", "hardness"], ans: 0 },
+        { q: "Property of the material due to which they can be drawn in to the wire is called", opts: ["Ductility", "malleability", "toughness", "plasticity"], ans: 0 },
+        { q: "Ability of the material to undergo permanent deformation under tension is called as:", opts: ["toughness", "stiffness", "plasticity", "hardness"], ans: 2 },
+        { q: "Property of the material due to which it can be rolled or hammered in to thin sheets is called as", opts: ["brittleness", "ductility", "malleability", "fatigue"], ans: 2 },
+        { q: "Property of material due to which it breaks with little permanent distortion is called as----", opts: ["brittleness", "ductility", "malleability", "fatigue"], ans: 0 },
+        { q: "The ability of a material to absorb energy in the plastic range is called---", opts: ["resilience", "toughness", "hardness", "brittleness"], ans: 1 },
         { q: "is defined as the destruction of the material by chemical or electrochemical reaction with its environment.", opts: ["hardness", "melting point", "corrosion", "machining"], ans: 2 }
     ];
 
+    // FULL Unit 2 Bank (54 Questions)
     const unit2Bank = [
-        { q: "What is the crystalline structure of alpha iron?", opts: ["F.C.C.", "B.C.C.", "H.C.P.", "Amorphous"], ans: 1 },
-        { q: "What is the structure of gamma iron?", opts: ["B.C.C.", "F.C.C.", "H.C.P.", "Simple Cubic"], ans: 1 },
+        { q: "What is the crystalline structure of alpha iron?", opts: ["Face Centered Cubic (F.C.C.)", "Body Centered Cubic (B.C.C.)", "Hexagonal Close Packed (H.C.P.)", "Amorphous"], ans: 1 },
+        { q: "Between which temperatures does gamma iron exist?", opts: ["Room temperature to 910°C", "910°C to 1404°C", "1404°C to 1539°C", "1539°C to 1800°C"], ans: 1 },
+        { q: "Which form of iron is ferromagnetic at room temperature?", opts: ["Alpha iron", "Gamma iron", "Delta iron", "None of the above"], ans: 0 },
+        { q: "What is the structure of gamma iron?", opts: ["Body Centered Cubic (B.C.C.)", "Face Centered Cubic (F.C.C.)", "Hexagonal Close Packed (H.C.P.)", "Simple Cubic"], ans: 1 },
+        { q: "Which allotrope of iron has the same structure as alpha iron but with a longer cube edge?", opts: ["Gamma iron", "Delta iron", "Beta iron", "None of the above"], ans: 1 },
+        { q: "What is the temperature range for the existence of delta iron?", opts: ["Room temperature to 910°C", "910°C to 1404°C", "1404°C to 1539°C", "1539°C to 1700°C"], ans: 2 },
         { q: "What is the melting point of pure iron?", opts: ["910°C", "1404°C", "1539°C", "1600°C"], ans: 2 },
+        { q: "What type of property is allotropy?", opts: ["Chemical", "Mechanical", "Crystallographic", "Magnetic"], ans: 2 },
+        { q: "At what temperature does the transformation from alpha to gamma iron occur?", opts: ["910°C", "1404°C", "1539°C", "720°C"], ans: 0 },
+        { q: "Which form of iron is stable just below its melting point?", opts: ["Alpha iron", "Gamma iron", "Delta iron", "None of the above"], ans: 2 },
+        { q: "What is the structure of iron at room temperature up to 912°C?", opts: ["Face Centered Cubic (FCC)", "Hexagonal Close Packed (HCP)", "Body Centered Cubic (BCC)", "Simple Cubic"], ans: 2 },
+        { q: "What is the phase name of iron between room temperature and 912°C?", opts: ["Austenite", "Martensite", "δ-ferrite", "α-ferrite"], ans: 3 },
+        { q: "Between which temperature ranges does γ-Austenite exist in pure iron?", opts: ["912°C to 1395°C", "912°C to 1539°C", "1395°C to 1539°C", "Room temperature to 912°C"], ans: 0 },
+        { q: "What is the crystal structure of γ-iron (austenite)?", opts: ["Body Centered Cubic (BCC)", "Face Centered Cubic (FCC)", "Hexagonal Close Packed (HCP)", "Orthorhombic"], ans: 1 },
+        { q: "What phase of iron exists between 1395°C to 1539°C?", opts: ["α-ferrite", "γ-Austenite", "δ-ferrite", "Liquid iron"], ans: 2 },
+        { q: "Which crystal structure reappears in δ-ferrite after 1395°C?", opts: ["FCC", "HCP", "BCC", "None"], ans: 2 },
+        { q: "What happens to iron after it reaches 1539°C?", opts: ["It becomes α-ferrite", "It forms δ-ferrite", "It changes to liquid", "It transforms to martensite"], ans: 2 },
+        { q: "In which temperature range does iron exist in the FCC structure?", opts: ["912°C to 1395°C", "Room temperature to 912°C", "1395°C to 1539°C", "Above 1539°C"], ans: 0 },
+        { q: "Which of the following is true about α-ferrite?", opts: ["It is stable above 1395°C", "It has FCC structure", "It is ferromagnetic at room temperature", "It is the liquid phase of iron"], ans: 2 },
+        { q: "What is a solid solution?", opts: ["A mixture of two solids without any bonding", "A solution of metals only in gaseous form", "A solid in which two metals remain mutually dissolved after crystallization", "A compound of non-metals only"], ans: 2 },
         { q: "In a solid solution, the metal present in larger quantity is called:", opts: ["Solute", "Solvent", "Precipitate", "Alloy"], ans: 1 },
+        { q: "The metal present in smaller quantity in a solid solution is known as:", opts: ["Solvent", "Matrix", "Solute", "Compound"], ans: 2 },
+        { q: "In which type of solid solution does the solute atom replace the solvent atom in the crystal lattice?", opts: ["Ordered solid solution", "Interstitial solid solution", "Substitutional solid solution", "Amorphous solid"], ans: 2 },
+        { q: "Substitutional solid solutions can be:", opts: ["Only ordered", "Only disordered", "Both ordered and disordered", "Neither ordered nor disordered"], ans: 2 },
+        { q: "In interstitial solid solutions, solute atoms occupy:", opts: ["Surface of the crystal", "Voids or holes between solvent atoms", "Edges of the crystal lattice", "Outer orbitals of solvent atoms"], ans: 1 },
+        { q: "Which of the following is a characteristic of interstitial solid solutions?", opts: ["Solute atoms are larger than solvent atoms", "Solute atoms displace solvent atoms", "Solute atoms occupy interstices without replacing solvent atoms", "Solute atoms create a separate phase"], ans: 2 },
+        { q: "What is the main difference between Substitutional and interstitial solid solutions?", opts: ["Chemical bonding", "Type of metal used", "Position of solute atoms in the lattice", "Temperature of formation"], ans: 2 },
+        { q: "Which of the following conditions favors formation of substitutional solid solutions?", opts: ["Large size difference between solute and solvent", "Similar atomic radii of solute and solvent", "Solute is a non-metal", "Solvent has a very high melting point"], ans: 1 },
+        { q: "Which type of solid solution would carbon in iron (as in steel) form?", opts: ["Substitutional", "Interstitial", "Ordered substitutional", "Compound"], ans: 1 },
+        { q: "The Iron-Carbon equilibrium diagram is a type of:", opts: ["Unary phase diagram", "Binary phase diagram", "Ternary phase diagram", "Quaternary phase diagram"], ans: 1 },
+        { q: "What is the maximum carbon content considered in the Iron-Carbon equilibrium diagram (Fe-C)?", opts: ["2.0%", "4.3%", "6.67%", "8.0%"], ans: 2 },
+        { q: "At 0.8% carbon and 723°C, the structure formed is called:", opts: ["Cementite", "Ferrite", "Pearlite", "Austenite"], ans: 2 },
         { q: "The eutectoid composition in the iron-carbon diagram is:", opts: ["0.8% C", "4.3% C", "2.0% C", "6.67% C"], ans: 0 },
         { q: "The eutectoid temperature in the iron-carbon diagram is:", opts: ["1495°C", "1147°C", "723°C", "1130°C"], ans: 2 },
+        { q: "The eutectic reaction in Fe-C system is:", opts: ["Austenite → Ferrite + Cementite", "Liquid → Austenite + Cementite", "Liquid → δ-ferrite + Austenite", "Cementite → Austenite + Liquid"], ans: 1 },
+        { q: "The eutectic composition in the Fe-C diagram occurs at:", opts: ["0.8% C", "2.0% C", "4.3% C", "6.67% C"], ans: 2 },
         { q: "Which of the following phases is soft and ductile?", opts: ["Cementite", "Pearlite", "Ferrite", "Martensite"], ans: 2 },
         { q: "The phase Fe3C is known as:", opts: ["Austenite", "Cementite", "Pearlite", "Bainite"], ans: 1 },
-        { q: "Steel Contains Carbon percentage between:", opts: ["0 to 1.1%", "0 to 2.1%", "0 to 4.1%", "0 to 3.1%"], ans: 1 }
+        { q: "The transformation of austenite into pearlite upon cooling is known as:", opts: ["Eutectic reaction", "Eutectoid reaction", "Peritectic reaction", "Allotropic transformation"], ans: 1 },
+        { q: "Which structure is a mixture of ferrite and cementite?", opts: ["Austenite", "Martensite", "Pearlite", "Cementite"], ans: 2 },
+        { q: "At what temperature does the eutectic reaction occur in Fe-C diagram?", opts: ["1147°C", "723°C", "1495°C", "910°C"], ans: 0 },
+        { q: "In the Fe-C diagram, hypo eutectoid steels contain:", opts: ["Less than 0.8% carbon", "More than 0.8% carbon", "Exactly 0.8% carbon", "More than 6.67% carbon"], ans: 0 },
+        { q: "What is the phase present at 6.67% carbon in the Fe-C diagram?", opts: ["Pearlite", "Cementite (Fe3C)", "Austenite", "Ferrite"], ans: 1 },
+        { q: "Which of the following structures is hardest and most brittle?", opts: ["Ferrite", "Cementite", "Austenite", "Pearlite"], ans: 1 },
+        { q: "What are critical temperatures in the Fe-Fe3C diagram?", opts: ["Temperatures at which metals melt completely", "Temperatures where phase changes occur during heating or cooling", "Temperatures of maximum hardness", "Temperatures at which alloys evaporate"], ans: 1 },
+        { q: "The upper critical temperature A3 is the temperature below which:", opts: ["Austenite starts to form in hypereutectoid alloys", "Ferrite starts to form from austenite in hypo eutectoid alloys", "Cementite starts to form from austenite in hypereutectoid alloys", "Pearlite forms from austenite"], ans: 1 },
+        { q: "The upper critical temperature ACM is the temperature below which:", opts: ["Ferrite starts to form from austenite in hypo eutectoid alloys", "Cementite starts to form from austenite in hypereutectoid alloys", "Pearlite starts to form from austenite", "Austenite completely disappears"], ans: 1 },
+        { q: "The lower critical temperature A1 corresponds to:", opts: ["The melting point of iron", "The temperature of austenite-to-pearlite eutectoid transformation", "The temperature at which ferrite forms", "The temperature at which cementite dissolves"], ans: 1 },
+        { q: "Below the temperature A1:", opts: ["Austenite exists in the structure", "Austenite does not exist", "Only liquid phase is present", "Cementite is completely absent"], ans: 1 },
+        { q: "Which of the following points represents the temperature below which ferrite starts to form in hypo eutectoid alloys?", opts: ["A1", "A3", "ACM", "Eutectic point"], ans: 1 },
+        { q: "In hypereutectoid steels, cementite starts to form from austenite below the critical temperature:", opts: ["A1", "A3", "ACM", "Eutectoid temperature"], ans: 2 },
+        { q: "The eutectic reaction occurs during:", opts: ["Heating of pure iron", "Cooling of hypoeutectoid steel", "Cooling of liquid alloy with 4.3% Carbon", "Cooling of hypereutectoid steel"], ans: 2 },
+        { q: "Steel Contains Carbon percentage between:", opts: ["0 to 1.1%", "0 to 2.1%", "0 to 4.1%", "0 to 3.1%"], ans: 1 },
+        { q: "Eutectoid reaction occurs at:", opts: ["0.8% Carbon", "0.2% Carbon", "0.5% Carbon", "None of the above"], ans: 0 }
     ];
 
+    // FULL Unit 3 Bank (81 Questions)
     const unit3Bank = [
-        { q: "Ferritic stainless steel contain", opts: ["12 to 18% Chromium", "13 to 27% Chromium", "Above 18% Chromium", "None"], ans: 1 },
-        { q: "Austenitic stainless steel contain", opts: ["12 to 18% Chromium", "13 to 27% Chromium", "Above 18% Chromium", "None"], ans: 2 },
-        { q: "Brass is an alloy of", opts: ["copper and zinc", "copper and tin", "copper, tin and zinc", "none"], ans: 0 },
+        { q: "Ferritic stainless steel contain", opts: ["12 to 18% Chromium", "13 to 27% Cromium", "Above 18% Chromium", "None of the above"], ans: 1 },
+        { q: "Austenitic stainless steel contain", opts: ["12 to 18% Cromium", "13 to 27% Cromium", "Above 18% Cromium", "None of the above"], ans: 2 },
+        { q: "Martensitic stainless steel contain", opts: ["12 to 18% Cromium", "13 to 27% Cromium", "Above 18% Cromium", "None of the above"], ans: 0 },
+        { q: "Ferromanganese contain 74 to 82%", opts: ["si", "al", "mg", "mn"], ans: 3 },
+        { q: "Ferrosilicon contain 05 to 17%", opts: ["si", "al", "mg", "mn"], ans: 0 },
+        { q: "pig iron is classified into", opts: ["Basic pig iron", "Foundry pig iron", "Ferroalloys", "All of these"], ans: 3 },
+        { q: "Steel is produced from ________ process/furnace.", opts: ["Bessemer converter", "Open hearth furnce", "Electric furnace", "All of these"], ans: 3 },
+        { q: "The solubility of carbon in Austenite is", opts: ["1.5% carbon", "2.5% carbon", "2% carbon", "None of the above"], ans: 2 },
+        { q: "Alpha ferrite at room temp. Can dissolve", opts: ["0.008% carbon", "0.25% carbon", "0.2% carbon", "None of the above"], ans: 0 },
+        { q: "Cementite becomes non magnetic/paramagnetic after", opts: ["200 deg. Celcius", "250 deg. Celcius", "210 deg. Celcius", "220 deg. Celcius"], ans: 2 },
+        { q: "Cupola furnace is used to manufacture", opts: ["Cast iron", "Pig iron", "Wrought iron", "Steel"], ans: 0 },
+        { q: "On the basis of appearance of fractures cast irons are classified as", opts: ["White cast iron", "malleable cast iron", "grey cast iron & nodular cast iron", "all of the above"], ans: 3 },
+        { q: "The cast iron containing graphite in the form of flakes are called", opts: ["White cast iron", "Malleable cast iron", "Grey cast irons", "Nodular cast iron"], ans: 2 },
+        { q: "Due to which property copper is widely used for electrical conductors", opts: ["Non magnetic & Good corrosion resistance", "High electrical & thermal conductivity", "good ductility & malleability", "all of the above"], ans: 3 },
+        { q: "the mechanical properties of brasses depend on the amount of", opts: ["zinc", "tin", "mg", "none of the above"], ans: 0 },
+        { q: "Brasses are classified either on the basis of structure or colour as", opts: ["alpha brasses", "alpha beta brasses", "red brasses & yellow brasses", "all of the above"], ans: 3 },
+        { q: "addition of 1% tin to muntz metal increases corrosion resistance to marine environment & the brass is called as", opts: ["alpha brass", "gliding metal", "leaded brass", "naval brass"], ans: 3 },
+        { q: "commercially important bronzes are", opts: ["alumimium bronze", "tin bronze", "silicon bronze", "all of the above"], ans: 3 },
+        { q: "Aluminium bronzes are characterised by", opts: ["Good strength", "Good ductility & toughness", "Good bearing properties & corrosion resistance", "all of the above"], ans: 3 },
+        { q: "Aluminim shows excellent corrosion & oxidation resistance due to the formation of", opts: ["alumium oxide", "ferrous oxide", "aluminium trioxide", "none of the above"], ans: 0 },
+        { q: "Aluminim is soft & ductile due to", opts: ["FCC Structure", "BFCC Structure", "Tetrahedral Structure", "none of the above"], ans: 0 },
+        { q: "silicon bronzes are characterised by", opts: ["high corrosion resistance", "high tensile strength", "very high toughness & machinability", "all of the above"], ans: 3 },
+        { q: "Some of the important tin bronzes", opts: ["Gun metal", "Phosphor bronze", "Wrought Phosphor bronze & cast Phosphor bronze", "all of the above"], ans: 3 },
+        { q: "Brass is an alloy of", opts: ["copper and zinc", "copper and tin", "copper, tin and zinc", "none of these"], ans: 0 },
         { q: "An alloy of copper, tin and zinc is known as", opts: ["Brass", "Bronze", "gun metal", "muntz metal"], ans: 1 },
+        { q: "Muntz metal (Yellow brass) contains", opts: ["70% copper and 30% zinc", "60% copper and 40% zinc", "59% copper, 40% zinc and 1% tin", "60.45% copper, 35.2% zinc and 5.35% nickel"], ans: 1 },
+        { q: "Babbit metal is a", opts: ["lead-base alloy", "copper-base alloy", "tin-base alloy", "cadmium-base alloy"], ans: 2 },
+        { q: "The metal suitable for bearing subjected to light loads, is", opts: ["silicon bronze", "white metal", "monel metal", "phosphor bronze"], ans: 3 },
+        { q: "The metal suitable for bearings subjected to heavy loads, is", opts: ["silicon bronze", "white metal", "monel metal", "phosphor bronze"], ans: 1 },
+        { q: "Phosphor bronze has", opts: ["high resitance to corrosion", "good wearing qualities and high elasticity", "valuable cold working property", "all of the above"], ans: 0 },
+        { q: "Silicon when added to copper improves", opts: ["machinability", "hardness", "hardness & strength", "strength & ductility"], ans: 2 },
+        { q: "The casting ability of aluminium increases when ________ is added to aluminium.", opts: ["silicon", "lead & bismuth", "magnesium", "copper"], ans: 0 },
+        { q: "Chromium when added to steel ________ the tensile strength.", opts: ["does not effect", "Decreases", "Increases", "dont know"], ans: 2 },
+        { q: "An alloy of copper, tin and zinc is known as", opts: ["Brass", "Bronze", "gun metal", "muntz metal"], ans: 2 },
+        { q: "Duralumin has better strength than Y-alloy at high temperature.", opts: ["True", "false", "dont know", "can't say"], ans: 1 },
         { q: "Copper has high electrical & thermal conductivity.", opts: ["true", "false", "don't know", "can't say"], ans: 0 },
-        { q: "The alloy, mainly used for corrosion resistance in stainless steels is", opts: ["silicon", "manganese", "carbon", "chromium"], ans: 3 },
+        { q: "The alloy, mainly used for corrosion resistance in stainless steels is", opts: ["silicon", "manganese", "carbon", "cromium"], ans: 3 },
+        { q: "Duralumin contains", opts: ["3.5 to 4.5% copper, 0.4 to 0.7% magnesium, 0.4 to 0.7% manganese and rest aluminium", "3.5 to 4.5% copper, 1.2 to 1.7% managanese, 1.8 to 2.3% nickel, 0.6% si/mg/fe, rest Al", "4 to 4.5% magnesium, 3 to 4% copper and rest aluminium", "5 to 6% tin, 2 to 3% copper and rest aluminium"], ans: 0 },
+        { q: "Types of bronzes is", opts: ["Gun metal", "Al bronze", "Phosphor bronze", "All of the above"], ans: 3 },
+        { q: "The aluminium with 3.5 to 4.5% cu and 0.4 to 0.7% MN & MG is called", opts: ["duralumin", "Y-alloy", "magnalium", "hindalium"], ans: 0 },
+        { q: "Y-alloy contains", opts: ["3.5 to 4.5% copper, 0.4 to 0.7% magnesium, 0.4 to 0.7% manganese and rest aluminium", "3.5 to 4.5% copper, 1.2 to 1.7% manganese, 1.8 to 2.3% nickel, 0.6% si/mg/fe, rest Al", "4 to 4.5% magnesium, 3 to 4% copper and rest aluminium", "5 to 6% tin, 2 to 3% copper and rest aluminium"], ans: 1 },
+        { q: "The main alloying elements high speed steel in order of increasing proportion are", opts: ["vanadium, chromium, tungsten", "tungsten, titanium, vanadium", "chromium, tungsten, titanium, vanadium", "chromium, titanium"], ans: 0 },
+        { q: "Which of the following metal is used in making electrical resistance wire for electric furnaces and heating elements?", opts: ["Babbit metal", "Monel metal", "Nichrome", "Phosphor bronze"], ans: 2 },
         { q: "German silver contains", opts: ["1% silver", "2% silver", "5% silver", "no silver"], ans: 3 },
-        { q: "Bronze is the alloy of----.", opts: ["copper and tin", "copper and zinc", "copper and iron", "tin and zinc"], ans: 0 }
+        { q: "Type of bearing are/ is", opts: ["Rolling contact bearing", "sliding contact bearing", "plain bearing", "All of the above"], ans: 3 },
+        { q: "Out of the given options which is not a not ferrous metal", opts: ["Cu", "Al", "Ni", "Iron"], ans: 3 },
+        { q: "Cu is used for", opts: ["Electrical parts", "Heat exchangers", "House hold utensils", "All of the above"], ans: 3 },
+        { q: "In high speed steels, manganese is used to tougher the metal and to increase its", opts: ["yield point", "critical temperature", "melting point", "Hardness"], ans: 1 },
+        { q: "The machinability of aluminium increases when ________ is added to aluminium.", opts: ["Copper", "Magnesium", "Silicon", "lead and bismuth"], ans: 3 },
+        { q: "Corrosion resistance of steel is increased by adding nickel and chromium.", opts: ["Agree", "Disagree", "don't know", "can't predict"], ans: 0 },
+        { q: "Ball bearings are, usually, made from", opts: ["low carbon steel", "high carbon steel", "medium carbon steel", "chrome steel"], ans: 3 },
+        { q: "Aluminium has low density and addition of silicon improves its fluidity and therefore, its castability.", opts: ["Correct", "Incorrect", "don't know", "can't predict"], ans: 0 },
+        { q: "Babbit metal is a", opts: ["lead-base alloy", "copper-base alloy", "tin-base alloy", "cadmium-base alloy"], ans: 1 },
+        { q: "The metal suitable for bearings subjected to heavy loads, is", opts: ["silicon bronze", "white metal", "monel metal", "phosphor bronze"], ans: 1 },
+        { q: "Out of the below option which is type of brass", opts: ["Si bronze", "Gun metal", "Muntz metal", "Al bronze"], ans: 1 },
+        { q: "Which of the following statement is incorrect about duralumin?", opts: ["It is prone to age hardening", "It can be forged", "It has good machining properties", "It is lighter than pure aluminium"], ans: 3 },
+        { q: "The austenitic stainless steel contains", opts: ["18% chromium and 8% nickel", "8% chromium and 18% nickel", "14% chromium and 0.35% carbon", "14% nickel and 0.35% carbon"], ans: 0 },
+        { q: "The nuts and bolts are made from silicon steel.", opts: ["Correct", "Incorrect", "don't know", "can't predict"], ans: 1 },
+        { q: "Silicon in cast iron", opts: ["makes the iron soft and easily machinable", "increases hardness and brittleness", "aids fusibility and fluidity", "makes the iron white and hard"], ans: 0 },
+        { q: "The steel widely used for making precision measuring instruments is", opts: ["nickel steel", "nickel-chrome steel", "high speed steel", "chrome-vanadium steel"], ans: 0 },
+        { q: "The high speed steel has ________ percentage of tungsten.", opts: ["maximum", "minimum", "don't know", "can't predict"], ans: 0 },
+        { q: "The essential constituent of a hardened steel is", opts: ["pearlite", "austenite", "martensite", "troostite"], ans: 2 },
+        { q: "The addition of manganese to aluminium improves corrosion resistance.", opts: ["Correct", "Incorrect", "don't know", "can't say"], ans: 0 },
+        { q: "The temperature point at which the change ends on heating the steel is called", opts: ["lower critical point", "upper critical point", "point of recalescence", "point of decalescence"], ans: 1 },
+        { q: "Admirality gun metal contains", opts: ["60% copper, 35% zinc and 5% manganese", "76% copper, 20% silicon and 4% zinc", "82% copper, 12% zinc and 6% manganese", "88% copper, 10% tin and 2% zinc"], ans: 3 },
+        { q: "The percentage of phosphorus is phosphor bronze is", opts: ["0.1", "1", "11.1", "98"], ans: 0 },
+        { q: "In high speed steels, vanadium adds to the property of red hardness and tungsten and chromium add to high wear resistance.", opts: ["True", "False", "don't know", "can't say"], ans: 0 },
+        { q: "Phosphor bronze has", opts: ["high resistance to corrosion", "good wearing qualities and high elasticity", "valuable cold working property", "all of these"], ans: 1 },
+        { q: "Which of the following material has maximum malleability?", opts: ["Lead", "Soft steel", "Wrought iron", "Copper"], ans: 0 },
+        { q: "Hardness of steel is increased by adding sulphur, lead and phosphorus.", opts: ["Yes", "No", "don't know", "can't say"], ans: 1 },
+        { q: "The silicon steel is widely used for", opts: ["connecting rods", "cutting tools", "generators and transformers in the form of laminated cores", "motor car crankshafts"], ans: 2 },
+        { q: "Babbit metal contains", opts: ["50% tin and 50% antimony", "66% tin, 30% copper and 4% antimony", "88% tin, 4% copper and 8% antimony", "92% tin, 6% copper and 2% antimony"], ans: 2 },
+        { q: "Aluminium bronze has high resistance to corrosion.", opts: ["True", "False", "don't know", "can't say"], ans: 0 },
+        { q: "Manganese bronze contains more copper than silicon bronze.", opts: ["Yes", "No", "don't know", "can't say"], ans: 1 },
+        { q: "Muntz metal (Yellow brass) contains", opts: ["70% copper and 30% zinc", "60% copper and 40% zinc", "59% copper, 40% zinc and 1% tin", "60.45% copper, 35.2% zinc and 5.35% nickel"], ans: 1 },
+        { q: "The casting ability of aluminium increases when ________ is added to aluminium.", opts: ["copper", "magnesium", "silicon", "lead and bismuth"], ans: 2 },
+        { q: "Manganese bronze has", opts: ["good wearing qualities and high elasticity", "high yield point, high fatigue limit", "high resistance to corrosion", "valuable cold working property"], ans: 2 },
+        { q: "Silicon bronze contains", opts: ["60% copper, 35% zinc and 5% manganese", "88% copper, 10% tin and 2% zinc", "96% copper, 3% silicon and 1% manganese", "76% copper, 20% silicon and 4% zinc"], ans: 2 },
+        { q: "In corrosion resistant properties, bronzes are ________ to brasses.", opts: ["superior", "inferier", "don't know", "can't say"], ans: 0 },
+        { q: "Bronze is the alloy of----.", opts: ["copper and tin", "copper and zinc", "copper and iron", "tin and zinc"], ans: 0 },
+        { q: "Gun metal-----", opts: ["is tin bronze", "used for making gun barrels", "contains copper, tin and zinc.", "all of the above"], ans: 3 }
     ];
+
 
     let currentPool = [];
     let wrongQuestions = [];
@@ -199,19 +370,24 @@
     let timerInterval = null;
     let secondsLeft = 90 * 60; // 90 Minutes
 
-    function getRandomSample(arr, count) {
-        let shuffled = [...arr].sort(() => 0.5 - Math.random());
-        return shuffled.slice(0, count);
+    // Advanced Randomizer (Fisher-Yates) for perfect shuffling
+    function shuffleAndSlice(array, count) {
+        let arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr.slice(0, count);
     }
 
     function build30MarkTest() {
-        // Sample 10 from each unit
-        const q1 = getRandomSample(unit1Bank, 10).map(item => ({...item, unit: "Unit 1"}));
-        const q2 = getRandomSample(unit2Bank, 10).map(item => ({...item, unit: "Unit 2"}));
-        const q3 = getRandomSample(unit3Bank, 10).map(item => ({...item, unit: "Unit 3"}));
+        // Sample exactly 10 random questions from each massive bank
+        const q1 = shuffleAndSlice(unit1Bank, 10).map(item => ({...item, unit: "Unit 1"}));
+        const q2 = shuffleAndSlice(unit2Bank, 10).map(item => ({...item, unit: "Unit 2"}));
+        const q3 = shuffleAndSlice(unit3Bank, 10).map(item => ({...item, unit: "Unit 3"}));
         
-        // Combine & shuffle all 30
-        return [...q1, ...q2, ...q3].sort(() => 0.5 - Math.random());
+        // Combine the 30 questions and shuffle them so the units are mixed together
+        return shuffleAndSlice([...q1, ...q2, ...q3], 30);
     }
 
     function startTimer() {
