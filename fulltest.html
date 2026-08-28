@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>30 Marks Full Mock Test</title>
+    <title>30 Marks Full Mock Test - Pro</title>
     <style>
         :root {
             --bg-color: #f5f5f7;
@@ -13,12 +13,28 @@
             --border-color: #d2d2d7;
             --accent-blue: #0071e3;
             --accent-blue-hover: #0077ed;
+            --flag-color: #ff9f0a;
+            --answered-color: #34c759;
             --correct-bg: #e3fcef;
             --correct-border: #34c759;
             --correct-text: #0c5c27;
             --wrong-bg: #fce8e8;
             --wrong-border: #ff3b30;
             --wrong-text: #8a0a14;
+            --grid-unvisited: #e5e5ea;
+        }
+
+        body.dark-mode {
+            --bg-color: #000000;
+            --window-bg: #1c1c1e;
+            --text-main: #f5f5f7;
+            --text-muted: #98989d;
+            --border-color: #38383a;
+            --grid-unvisited: #2c2c2e;
+            --correct-bg: #0b3b24;
+            --correct-text: #34c759;
+            --wrong-bg: #4a0f12;
+            --wrong-text: #ff453a;
         }
 
         body {
@@ -29,42 +45,60 @@
             padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
+            transition: all 0.3s ease;
         }
         
-        .container {
+        .layout-wrapper {
+            display: flex;
+            gap: 20px;
             width: 100%;
-            max-width: 680px;
+            max-width: 1000px;
+            margin-top: 20px;
+        }
+
+        .main-panel {
+            flex: 2;
             background: var(--window-bg);
             padding: 32px 40px;
             border-radius: 18px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid var(--border-color);
+        }
+
+        .side-panel {
+            flex: 1;
+            background: var(--window-bg);
+            padding: 24px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
         }
 
         .status-bar {
             display: flex;
             justify-content: space-between;
             font-size: 14px;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-bottom: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
             padding-bottom: 12px;
             border-bottom: 1px solid var(--border-color);
         }
 
-        .timer-box {
-            color: var(--wrong-border);
-            font-weight: 700;
-        }
+        .timer-box { color: var(--wrong-border); font-size: 16px; }
 
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 24px;
-        }
+        .options { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
 
         .btn {
             width: 100%;
@@ -79,81 +113,167 @@
             color: var(--text-main);
         }
 
-        .btn:hover:not(:disabled) {
-            background: var(--bg-color);
-            border-color: #a1a1a6;
-        }
-
-        .btn:disabled {
-            cursor: default;
-        }
-
-        .correct {
-            background: var(--correct-bg) !important;
-            border-color: var(--correct-border) !important;
-            color: var(--correct-text) !important;
-        }
-
-        .wrong {
-            background: var(--wrong-bg) !important;
-            border-color: var(--wrong-border) !important;
-            color: var(--wrong-text) !important;
-        }
-
-        .action-btn {
-            text-align: center;
-            background: var(--accent-blue);
-            color: white;
-            border: none;
+        .btn:hover { border-color: var(--accent-blue); }
+        .btn.selected {
+            background: #e8f2ff;
+            border-color: var(--accent-blue);
+            color: #00448f;
             font-weight: 600;
-            margin-top: 24px;
+        }
+        body.dark-mode .btn.selected { background: #003366; color: #66b3ff; }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
         }
 
-        .action-btn:hover {
-            background: var(--accent-blue-hover);
+        .nav-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            background: var(--bg-color);
+            color: var(--text-main);
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+        }
+        
+        .nav-btn.primary { background: var(--accent-blue); color: white; border: none; }
+        .nav-btn.flag { background: var(--flag-color); color: white; border: none; }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-top: 15px;
         }
 
+        .grid-box {
+            aspect-ratio: 1;
+            border-radius: 6px;
+            border: none;
+            background: var(--grid-unvisited);
+            color: var(--text-main);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .grid-box.current { border: 2px solid var(--accent-blue); }
+        .grid-box.answered { background: var(--answered-color); color: white; }
+        .grid-box.flagged { background: var(--flag-color); color: white; }
+        
+        .legend { font-size: 12px; margin-top: 20px; color: var(--text-muted); line-height: 1.8; }
+        .legend span { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: middle; }
+        
         .hidden { display: none !important; }
-        .feedback { margin-top: 18px; font-weight: 600; text-align: center; }
-        #result-screen { text-align: center; }
-        .score-display { font-size: 24px; font-weight: 700; margin: 24px 0; }
+        
+        .analytics-box {
+            background: var(--bg-color);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        table.history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        table.history-table th, table.history-table td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: center;
+        }
+        table.history-table th {
+            background: var(--bg-color);
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <a href="index.html" style="text-decoration: none; color: #0071e3; font-weight: 600; font-size: 14px; display: inline-block; margin-bottom: 16px;">← Back to Main Menu</a>
-
-    <!-- Quiz Screen -->
-    <div id="quiz-screen">
-        <div class="status-bar">
-            <span id="progress">Question 1 / 30</span>
-            <span class="timer-box">Time Left: <span id="timer">90:00</span></span>
-            <span id="score-tracker">Score: 0</span>
+<div class="layout-wrapper" id="app-wrapper">
+    <!-- Main Exam Area -->
+    <div class="main-panel">
+        <div class="header-bar">
+            <div>
+                <a href="index.html" style="text-decoration: none; color: var(--accent-blue); font-weight: 600; font-size: 14px; margin-right: 15px;">← Exit</a>
+                <a href="#" onclick="showHistoryScreen(); return false;" style="text-decoration: none; color: var(--accent-blue); font-weight: 600; font-size: 14px;">📊 View Past Attempts</a>
+            </div>
+            <button class="nav-btn" onclick="toggleDarkMode()">🌓 Dark Mode</button>
         </div>
-        
-        <div id="unit-tag" style="font-size: 12px; font-weight: 700; color: #0071e3; text-transform: uppercase; margin-bottom: 6px;"></div>
-        <h2 id="question-text" style="font-size: 20px; margin-top: 0;">Loading...</h2>
-        
-        <div class="options" id="options-container"></div>
-        <div id="feedback-message" class="feedback hidden"></div>
-        
-        <button id="next-btn" class="btn action-btn hidden">Next Question</button>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen">
+            <div class="status-bar">
+                <span id="unit-tag" style="color: var(--accent-blue);"></span>
+                <span class="timer-box">⏳ <span id="timer">90:00</span></span>
+            </div>
+            
+            <h2 id="question-text" style="font-size: 18px; margin-top: 0; line-height: 1.4;">Loading...</h2>
+            <div class="options" id="options-container"></div>
+            
+            <div class="controls">
+                <button id="prev-btn" class="nav-btn" onclick="navigate(-1)">Previous</button>
+                <button id="flag-btn" class="nav-btn flag" onclick="toggleFlag()">Flag for Review</button>
+                <button id="next-btn" class="nav-btn primary" onclick="navigate(1)">Next</button>
+                <button id="submit-btn" class="nav-btn primary hidden" style="background: #34c759;" onclick="submitExam()">Submit Exam</button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden">
+            <h2>Test Submitted Successfully</h2>
+            <h1 style="text-align: center; color: var(--accent-blue); font-size: 36px; margin: 10px 0;" id="final-score"></h1>
+            
+            <div class="analytics-box" id="unit-analytics"></div>
+            
+            <h3 style="margin-top: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">Review Incorrect Answers:</h3>
+            <div id="review-container"></div>
+            
+            <button class="btn primary" style="background: var(--text-main); color: var(--bg-color); text-align: center; font-weight: bold; margin-top: 20px;" onclick="location.reload()">Start New Exam</button>
+        </div>
+
+        <!-- History Screen -->
+        <div id="history-screen" class="hidden">
+            <h2>Past Attempt History</h2>
+            <p style="color: var(--text-muted); font-size: 14px;">All previous tests saved directly on this device.</p>
+            <div id="history-content"></div>
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button class="nav-btn primary" onclick="location.reload()">Back to Exam</button>
+                <button class="nav-btn" style="color: var(--wrong-border); border-color: var(--wrong-border);" onclick="clearHistory()">Clear History</button>
+            </div>
+        </div>
     </div>
 
-    <!-- Result Screen -->
-    <div id="result-screen" class="hidden">
-        <h2>Test Completed!</h2>
-        <div id="final-score" class="score-display"></div>
-        <p id="time-taken-info" style="color: var(--text-muted);"></p>
+    <!-- Side Panel -->
+    <div class="side-panel" id="side-panel">
+        <h3 style="margin-top: 0;">Question Navigator</h3>
+        <div class="grid-container" id="q-grid"></div>
         
-        <button id="retry-btn" class="btn action-btn hidden">Review Incorrect Questions</button>
-        <button id="restart-btn" class="btn action-btn" style="background: var(--text-main); margin-top: 12px;">Start New 30 Marks Test</button>
+        <div class="legend">
+            <div><span style="background: var(--grid-unvisited); border: 1px solid #ccc;"></span> Unvisited</div>
+            <div><span style="background: var(--answered-color);"></span> Answered</div>
+            <div><span style="background: var(--flag-color);"></span> Flagged for Review</div>
+        </div>
+        
+        <button class="btn" style="text-align: center; margin-top: 20px; font-weight: bold; color: var(--wrong-border); border-color: var(--wrong-border);" onclick="submitExam()">End Exam Early</button>
     </div>
 </div>
 
 <script>
-    // FULL Unit 1 Bank (63 Questions)
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+    }
+
+    // Your complete full banks
     const unit1Bank = [
         { q: "Ferrous Metals do not possess the following property", opts: ["stiffness", "strength", "elasticity", "high electrical conductivity"], ans: 3 },
         { q: "Ceramics usually consist of", opts: ["oxides", "nitrides", "carbides & borides", "all of the above"], ans: 3 },
@@ -170,6 +290,7 @@
         { q: "is lack of ductility.", opts: ["Malleability", "Hardness", "Toughness", "Brittleness"], ans: 3 },
         { q: "Melting point of iron is", opts: ["1131 deg. Celcius", "1539 deg. Celcius", "1659 deg. Celcius", "1712 deg. Celcius"], ans: 1 },
         { q: "is a brittle material.", opts: ["Steel", "aluminium", "Cast iron", "Copper"], ans: 2 },
+        { q: "Which of the following is not example of organic material?", opts: ["Fiber Glass", "Lubricants", "Wood", "Rubber"], ans: 0 },
         { q: "Which of the following is not example of organic material?", opts: ["Fiber Glass", "Lubricants", "Wood", "Rubber"], ans: 0 },
         { q: "is major ingredient for steel.", opts: ["Copper", "Carbon", "Cromium", "Iron"], ans: 3 },
         { q: "Material consists of", opts: ["atoms", "molecules", "matter", "none of these"], ans: 2 },
@@ -219,7 +340,6 @@
         { q: "is defined as the destruction of the material by chemical or electrochemical reaction with its environment.", opts: ["hardness", "melting point", "corrosion", "machining"], ans: 2 }
     ];
 
-    // FULL Unit 2 Bank (54 Questions)
     const unit2Bank = [
         { q: "What is the crystalline structure of alpha iron?", opts: ["Face Centered Cubic (F.C.C.)", "Body Centered Cubic (B.C.C.)", "Hexagonal Close Packed (H.C.P.)", "Amorphous"], ans: 1 },
         { q: "Between which temperatures does gamma iron exist?", opts: ["Room temperature to 910°C", "910°C to 1404°C", "1404°C to 1539°C", "1539°C to 1800°C"], ans: 1 },
@@ -277,7 +397,6 @@
         { q: "Eutectoid reaction occurs at:", opts: ["0.8% Carbon", "0.2% Carbon", "0.5% Carbon", "None of the above"], ans: 0 }
     ];
 
-    // FULL Unit 3 Bank (81 Questions)
     const unit3Bank = [
         { q: "Ferritic stainless steel contain", opts: ["12 to 18% Chromium", "13 to 27% Cromium", "Above 18% Chromium", "None of the above"], ans: 1 },
         { q: "Austenitic stainless steel contain", opts: ["12 to 18% Cromium", "13 to 27% Cromium", "Above 18% Cromium", "None of the above"], ans: 2 },
@@ -362,15 +481,13 @@
         { q: "Gun metal-----", opts: ["is tin bronze", "used for making gun barrels", "contains copper, tin and zinc.", "all of the above"], ans: 3 }
     ];
 
-
     let currentPool = [];
-    let wrongQuestions = [];
     let currentQuestionIndex = 0;
-    let score = 0;
     let timerInterval = null;
-    let secondsLeft = 90 * 60; // 90 Minutes
+    let secondsLeft = 90 * 60; 
+    let userAnswers = new Array(30).fill(null);
+    let flaggedStatus = new Array(30).fill(false);
 
-    // Advanced Randomizer (Fisher-Yates) for perfect shuffling
     function shuffleAndSlice(array, count) {
         let arr = [...array];
         for (let i = arr.length - 1; i > 0; i--) {
@@ -380,141 +497,215 @@
         return arr.slice(0, count);
     }
 
-    function build30MarkTest() {
-        // Sample exactly 10 random questions from each massive bank
+    function initExam() {
         const q1 = shuffleAndSlice(unit1Bank, 10).map(item => ({...item, unit: "Unit 1"}));
         const q2 = shuffleAndSlice(unit2Bank, 10).map(item => ({...item, unit: "Unit 2"}));
         const q3 = shuffleAndSlice(unit3Bank, 10).map(item => ({...item, unit: "Unit 3"}));
         
-        // Combine the 30 questions and shuffle them so the units are mixed together
-        return shuffleAndSlice([...q1, ...q2, ...q3], 30);
+        currentPool = shuffleAndSlice([...q1, ...q2, ...q3], 30);
+        buildGrid();
+        startTimer();
+        loadQuestion(0);
+    }
+
+    function buildGrid() {
+        const grid = document.getElementById('q-grid');
+        grid.innerHTML = '';
+        for(let i=0; i<30; i++) {
+            let btn = document.createElement('button');
+            btn.className = 'grid-box';
+            btn.innerText = i + 1;
+            btn.onclick = () => loadQuestion(i);
+            grid.appendChild(btn);
+        }
+    }
+
+    function updateGridUI() {
+        const boxes = document.querySelectorAll('.grid-box');
+        boxes.forEach((box, index) => {
+            box.className = 'grid-box';
+            if (index === currentQuestionIndex) box.classList.add('current');
+            if (userAnswers[index] !== null) box.classList.add('answered');
+            if (flaggedStatus[index]) box.classList.add('flagged');
+        });
+    }
+
+    function loadQuestion(index) {
+        currentQuestionIndex = index;
+        const qData = currentPool[currentQuestionIndex];
+        
+        document.getElementById('unit-tag').textContent = `${qData.unit} | Question ${index + 1} of 30`;
+        document.getElementById('question-text').innerHTML = `${index + 1}. ${qData.q}`;
+        
+        document.getElementById('prev-btn').disabled = (index === 0);
+        
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        
+        if (index === 29) {
+            nextBtn.classList.add('hidden');
+            submitBtn.classList.remove('hidden');
+        } else {
+            nextBtn.classList.remove('hidden');
+            submitBtn.classList.add('hidden');
+        }
+
+        const optsContainer = document.getElementById('options-container');
+        optsContainer.innerHTML = '';
+        
+        qData.opts.forEach((opt, optIndex) => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            if (userAnswers[index] === optIndex) btn.classList.add('selected');
+            
+            btn.innerHTML = `${String.fromCharCode(65 + optIndex)}. ${opt}`;
+            btn.onclick = () => selectOption(optIndex);
+            optsContainer.appendChild(btn);
+        });
+
+        updateGridUI();
+    }
+
+    function selectOption(optIndex) {
+        userAnswers[currentQuestionIndex] = optIndex;
+        loadQuestion(currentQuestionIndex);
+    }
+
+    function toggleFlag() {
+        flaggedStatus[currentQuestionIndex] = !flaggedStatus[currentQuestionIndex];
+        updateGridUI();
+    }
+
+    function navigate(step) {
+        let newIndex = currentQuestionIndex + step;
+        if(newIndex >= 0 && newIndex < 30) {
+            loadQuestion(newIndex);
+        }
     }
 
     function startTimer() {
-        clearInterval(timerInterval);
-        secondsLeft = 90 * 60;
-        
         timerInterval = setInterval(() => {
             secondsLeft--;
             let mins = Math.floor(secondsLeft / 60);
             let secs = secondsLeft % 60;
-            document.getElementById('timer').textContent = 
-                `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-
-            if (secondsLeft <= 0) {
-                clearInterval(timerInterval);
-                endQuiz(true); // Auto submit on timeout
-            }
+            document.getElementById('timer').textContent = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            if (secondsLeft <= 0) submitExam();
         }, 1000);
     }
 
-    function startTest() {
-        currentPool = build30MarkTest();
-        wrongQuestions = [];
-        currentQuestionIndex = 0;
-        score = 0;
-        
-        document.getElementById('quiz-screen').classList.remove('hidden');
-        document.getElementById('result-screen').classList.add('hidden');
-        
-        startTimer();
-        loadQuestion();
+    function saveAttemptToLocalStorage(score, u1, u2, u3) {
+        let history = JSON.parse(localStorage.getItem('cbt_history')) || [];
+        let attempt = {
+            date: new Date().toLocaleString(),
+            score: score,
+            u1: u1,
+            u2: u2,
+            u3: u3
+        };
+        history.unshift(attempt); // Add newest to top
+        localStorage.setItem('cbt_history', JSON.stringify(history));
     }
 
-    function loadQuestion() {
-        document.getElementById('next-btn').classList.add('hidden');
-        document.getElementById('feedback-message').classList.add('hidden');
-        
-        const optsContainer = document.getElementById('options-container');
-        optsContainer.innerHTML = '';
-        
-        const qData = currentPool[currentQuestionIndex];
-        
-        document.getElementById('progress').textContent = `Question ${currentQuestionIndex + 1} / ${currentPool.length}`;
-        document.getElementById('score-tracker').textContent = `Score: ${score}`;
-        document.getElementById('unit-tag').textContent = qData.unit;
-        document.getElementById('question-text').innerHTML = `${currentQuestionIndex + 1}. ${qData.q}`;
-
-        qData.opts.forEach((opt, index) => {
-            const btn = document.createElement('button');
-            btn.className = 'btn';
-            btn.innerHTML = `${String.fromCharCode(65 + index)}. ${opt}`;
-            btn.onclick = () => checkAnswer(index, btn);
-            optsContainer.appendChild(btn);
-        });
-    }
-
-    function checkAnswer(selectedIndex, selectedBtn) {
-        const qData = currentPool[currentQuestionIndex];
-        const correctIndex = qData.ans;
-        const allBtns = document.getElementById('options-container').querySelectorAll('.btn');
-        const feedback = document.getElementById('feedback-message');
-
-        allBtns.forEach(btn => btn.disabled = true);
-        feedback.classList.remove('hidden');
-
-        if (selectedIndex === correctIndex) {
-            selectedBtn.classList.add('correct');
-            feedback.textContent = "✅ Correct!";
-            feedback.style.color = "var(--correct-text)";
-            score++;
-            document.getElementById('score-tracker').textContent = `Score: ${score}`;
-        } else {
-            selectedBtn.classList.add('wrong');
-            allBtns[correctIndex].classList.add('correct');
-            feedback.textContent = "❌ Incorrect.";
-            feedback.style.color = "var(--wrong-text)";
-            
-            if (!wrongQuestions.includes(qData)) {
-                wrongQuestions.push(qData);
-            }
-        }
-        
-        document.getElementById('next-btn').classList.remove('hidden');
-    }
-
-    document.getElementById('next-btn').onclick = () => {
-        currentQuestionIndex++;
-        if (currentQuestionIndex < currentPool.length) {
-            loadQuestion();
-        } else {
-            endQuiz(false);
-        }
-    };
-
-    function endQuiz(timeExpired) {
+    function showHistoryScreen() {
         clearInterval(timerInterval);
         document.getElementById('quiz-screen').classList.add('hidden');
-        document.getElementById('result-screen').classList.remove('hidden');
-        
-        const finalScore = document.getElementById('final-score');
-        const timeTakenInfo = document.getElementById('time-taken-info');
+        document.getElementById('result-screen').classList.add('hidden');
+        document.getElementById('side-panel').classList.add('hidden');
+        document.getElementById('history-screen').classList.remove('hidden');
 
-        let totalTimeSpent = (90 * 60) - secondsLeft;
-        let minsSpent = Math.floor(totalTimeSpent / 60);
-        let secsSpent = totalTimeSpent % 60;
+        let history = JSON.parse(localStorage.getItem('cbt_history')) || [];
+        let container = document.getElementById('history-content');
 
-        finalScore.innerHTML = `Final Score: <span style="color: var(--accent-blue);">${score} / 30</span> Marks`;
-        
-        if (timeExpired) {
-            timeTakenInfo.textContent = "⏰ Time's up! The test was automatically submitted.";
-        } else {
-            timeTakenInfo.textContent = `Completed in ${minsSpent} minute(s) and ${secsSpent} second(s).`;
+        if (history.length === 0) {
+            container.innerHTML = "<p style='color: var(--text-muted); margin-top: 20px;'>No previous attempts recorded yet. Complete a test to see your history!</p>";
+            return;
         }
 
-        const retryBtn = document.getElementById('retry-btn');
-        if (wrongQuestions.length > 0) {
-            retryBtn.classList.remove('hidden');
-            retryBtn.textContent = `Review ${wrongQuestions.length} Missed Questions`;
-        } else {
-            retryBtn.classList.add('hidden');
+        let html = `
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Date & Time</th>
+                        <th>Total Score</th>
+                        <th>Unit 1</th>
+                        <th>Unit 2</th>
+                        <th>Unit 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        history.forEach(item => {
+            html += `
+                <tr>
+                    <td>${item.date}</td>
+                    <td style="font-weight: bold; color: var(--accent-blue);">${item.score} / 30</td>
+                    <td>${item.u1} / 10</td>
+                    <td>${item.u2} / 10</td>
+                    <td>${item.u3} / 10</td>
+                </tr>
+            `;
+        });
+
+        html += `</tbody></table>`;
+        container.innerHTML = html;
+    }
+
+    function clearHistory() {
+        if(confirm("Are you sure you want to clear your attempt history?")) {
+            localStorage.removeItem('cbt_history');
+            showHistoryScreen();
         }
     }
 
-    document.getElementById('restart-btn').onclick = startTest;
-    
-    // Start automatically when page loads
-    startTest();
+    function submitExam() {
+        clearInterval(timerInterval);
+        
+        document.getElementById('quiz-screen').classList.add('hidden');
+        document.getElementById('side-panel').classList.add('hidden');
+        document.getElementById('result-screen').classList.remove('hidden');
+        
+        let totalScore = 0;
+        let u1Score = 0, u2Score = 0, u3Score = 0;
+        let reviewHTML = '';
+
+        for(let i=0; i<30; i++) {
+            const q = currentPool[i];
+            const uAns = userAnswers[i];
+            const isCorrect = (uAns === q.ans);
+            
+            if(isCorrect) {
+                totalScore++;
+                if(q.unit === "Unit 1") u1Score++;
+                if(q.unit === "Unit 2") u2Score++;
+                if(q.unit === "Unit 3") u3Score++;
+            } else {
+                let userPicked = uAns !== null ? q.opts[uAns] : "Not Answered";
+                reviewHTML += `
+                    <div style="background: var(--window-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--wrong-border); margin-bottom: 15px;">
+                        <p style="margin: 0 0 10px 0; font-weight: 600;">Q${i+1} (${q.unit}): ${q.q}</p>
+                        <p style="margin: 4px 0; color: var(--wrong-text);">Your Answer: ${userPicked}</p>
+                        <p style="margin: 4px 0; color: var(--correct-text); font-weight: 600;">Correct Answer: ${q.opts[q.ans]}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Save to LocalStorage automatically
+        saveAttemptToLocalStorage(totalScore, u1Score, u2Score, u3Score);
+
+        document.getElementById('final-score').textContent = `${totalScore} / 30`;
+        
+        document.getElementById('unit-analytics').innerHTML = `
+            <div><strong>Unit 1</strong><br>${u1Score} / 10</div>
+            <div><strong>Unit 2</strong><br>${u2Score} / 10</div>
+            <div><strong>Unit 3</strong><br>${u3Score} / 10</div>
+        `;
+        
+        document.getElementById('review-container').innerHTML = reviewHTML || "<p style='color: var(--correct-text); font-weight: bold;'>Perfect Score! No incorrect answers to review.</p>";
+    }
+
+    initExam();
 </script>
 </body>
 </html>
