@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEM 26 Final Question Bank Quiz</title>
+    <style>
+        /* macOS-inspired clean UI */
+        :root {
+            --bg-color: #f5f5f7;
+            --window-bg: #ffffff;
+            --text-main: #1d1d1f;
+            --text-muted: #86868b;
+            --border-color: #d2d2d7;
+            --accent-blue: #0071e3;
+            --accent-blue-hover: #0077ed;
+            --correct-bg: #e3fcef;
+            --correct-border: #34c759;
+            --correct-text: #0c5c27;
+            --wrong-bg: #fce8e8;
+            --wrong-border: #ff3b30;
+            --wrong-text: #8a0a14;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 680px;
+            background: var(--window-bg);
+            padding: 32px 40px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            width: 100%;
+            text-align: left;
+            padding: 14px 18px;
+            font-size: 15px;
+            background: var(--window-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+            color: var(--text-main);
+        }
+
+        .btn:hover:not(:disabled) {
+            background: var(--bg-color);
+            border-color: #a1a1a6;
+        }
+
+        .btn:disabled {
+            cursor: default;
+        }
+
+        .correct {
+            background: var(--correct-bg) !important;
+            border-color: var(--correct-border) !important;
+            color: var(--correct-text) !important;
+            font-weight: 500;
+        }
+
+        .wrong {
+            background: var(--wrong-bg) !important;
+            border-color: var(--wrong-border) !important;
+            color: var(--wrong-text) !important;
+        }
+
+        .action-btn {
+            text-align: center;
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            font-weight: 600;
+            margin-top: 24px;
+            box-shadow: 0 2px 5px rgba(0, 113, 227, 0.3);
+        }
+
+        .action-btn:hover {
+            background: var(--accent-blue-hover);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .feedback {
+            margin-top: 18px;
+            font-weight: 600;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        #result-screen {
+            text-align: center;
+        }
+
+        .score-display {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 24px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="quiz-screen">
+        <div class="status-bar">
+            <span id="progress">Question 1 / 60</span>
+            <span id="score-tracker">Score: 0</span>
+        </div>
+        
+        <h2 id="question-text">Question loading...</h2>
+        
+        <div class="options" id="options-container"></div>
+        
+        <div id="feedback-message" class="feedback hidden"></div>
+        
+        <button id="next-btn" class="btn action-btn hidden">Next Question</button>
+    </div>
+
+    <div id="result-screen" class="hidden">
+        <h2>Quiz Complete</h2>
+        <div id="final-score" class="score-display"></div>
+        
+        <button id="retry-btn" class="btn action-btn hidden">Resolve Incorrect Questions</button>
+        <button id="restart-btn" class="btn action-btn" style="background: var(--text-main); margin-top: 12px;">Restart Full Question Bank</button>
+    </div>
+</div>
+
+<script>
+    const masterQuestionBank = [
+    {
+        "q": "------------ is defined as the destruction of the material by chemical or electrochemical reaction with its environment.",
+        "opts": [
+            "Machinig",
+            "corrosion",
+            "Melting Point",
+            "Hardness"
+        ],
+        "ans": 1
+    },
+    {
+        "q": "\u2026\u2026\u2026\u2026\u2026.. helps in differentiating heavy and light metals",
+        "opts": [
+            "weight",
+            "volume",
+            "density",
+            "mass"
+        ],
+        "ans": 2
+    },
+    {
+        "q": "\u2026\u2026\u2026\u2026\u2026. Is the capacity of material to undergo deformation under tension without rupture.",
+        "opts": [
+            "malleability",
+            "ductility",
+            "stiffness",
+            "tensile strength"
+        ],
+        "ans": 1
+    },
+    {
+        "q": "A small impression for a given load and indentor that the material is \u2026\u2026\u2026\u2026\u2026",
+        "opts": [
+            "soft",
+            "tough",
+            "stiff",
+            "hard"
+        ],
+        "ans": 3
+    },
+    {
+        "q": "Which of the following determine the behavior of engineering materials under the applied forces and loads?",
+        "opts": [
+            "chemical properties",
+            "physical properties",
+            "mechanical properties",
+            "density"
+        ],
+        "ans": 2
+    },
+    {
+        "q": "\u2026\u2026\u2026\u2026\u2026\u2026\u2026 materials consist of more than one material type.",
+        "opts": [
+            "manufactured organic material",
+            "Natural organic material",
+            "synthetic organic material",
+            "composite material"
+        ],
+        "ans": 3
+    },
+    {
+        "q": "Copper is extremely tough but \u2026\u2026\u2026\u2026.. is not.",
+        "opts": [
+            "Steel",
+            "Iron",
+            "Cast Iron",
+            "Aluminium"
+        ],
+        "ans": 2
+    },
+    {
+        "q": "Which of the following is not an amorphous material?",
+        "opts": [
+            "lead",
+            "rubber",
+            "plastic",
+            "glass"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "colour of Al is \u2026\u2026\u2026\u2026\u2026\u2026.",
+        "opts": [
+            "White",
+            "grey",
+            "reddish",
+            "none of the above"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "\u2026\u2026\u2026\u2026.. is the most malleable metal.",
+        "opts": [
+            "Silver",
+            "Gold",
+            "Steel",
+            "C.I."
+        ],
+        "ans": 1
+    },
+    {
+        "q": "\u2026\u2026\u2026\u2026.. is a brittle material.",
+        "opts": [
+            "Cast iron",
+            "Steel",
+            "aluminium",
+            "Copper"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "\u2026\u2026\u2026\u2026\u2026 are dimensionally stable at room temperature.",
+        "opts": [
+            "non- metals",
+            "metalloids",
+            "organic material",
+            "metal"
+        ],
+        "ans": 3
+    },
+    {
+        "q": "The type of space lattice found in alpha (a) iron is_______________",
+        "opts": [
+            "face centred cubic space lattice",
+            "body centred cubic space lattice",
+            "close packed hexagonal space lattice",
+            "none of the above"
+        ],
+        "ans": 1
+    },
+    {
+        "q": "Property of the material due to which they can be drawn in to the wire is called",
+        "opts": [
+            "Ductility",
+            "malleability",
+            "toughness",
+            "plasticity"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "Which metals have an FCC crystal structure?",
+        "opts": [
+            "Mo, Nb, Rb",
+            "Cu, Ni , Ag",
+            "As, Sb, Bi",
+            "Ti, Zn, Mg"
+        ],
+        "ans": 1
+    },
+    {
+        "q": "Which of the following is a basic classification of Engineering Materials?",
+        "opts": [
+            "cant say",
+            "metals",
+            "non metals",
+            "Both Metals & Non-Metals"
+        ],
+        "ans": 3
+    },
+    {
+        "q": "Melting point of iron is \u2026\u2026\u2026\u2026\u2026",
+        "opts": [
+            "1131 deg. Celcius",
+            "1539 deg. Celcius",
+            "1659 deg. Celcius",
+            "1712 deg. Celcius"
+        ],
+        "ans": 1
+    },
+    {
+        "q": "Springs and rubbers come back to their original position after deformation , name the mechanical property",
+        "opts": [
+            "elasticity",
+            "plasticity",
+            "toughness",
+            "ductility"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "\u2026\u2026\u2026\u2026\u2026 is lack of ductility.",
+        "opts": [
+            "Malleability",
+            "Hardness",
+            "Toughness",
+            "Brittleness"
+        ],
+        "ans": 3
+    },
+    {
+        "q": "The property that resist to scratch is known as -----.",
+        "opts": [
+            "strength",
+            "toughness",
+            "hardness",
+            "melting point"
+        ],
+        "ans": 2
+    },
+    {
+        "q": "The eutectoid temperature in the iron-carbon diagram is:",
+        "opts": [
+            "723\u00b0C",
+            "1495\u00b0C",
+            "1147\u00b0C",
+            "1130\u00b0C"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "The eutectic composition in the Fe-C diagram occurs at:",
+        "opts": [
+            "0.8% C",
+            "4.3% C",
+            "2.0% C",
+            "6.67% C"
+        ],
+        "ans": 1
+    },
+    {
+        "q": "cast iron is __________ in nature.",
+        "opts": [
+            "ductile",
+            "soft",
+            "brittle",
+            "none of the above"
+        ],
+        "ans": 2
+    },
+    {
+        "q": "Which of the following structures is hardest and most brittle?",
+        "opts": [
+            "Ferrite",
+            " Cementite",
+            "Austenite",
+            "Pearlite"
+        ],
+        "ans": 1
+    },
+    {
+        "q": "In the Fe-C diagram, hypoeutectoid steels contain:",
+        "opts": [
+            "Less than 0.8 % carbon",
+            "More than 0.8% carbon",
+            "Exactly 0.8% carbon",
+            "More than 6.67% carbon"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "Various reactions occur in FE-C equilibrium diagram are",
+        "opts": [
+            "peritectic reaction",
+            "Eutectic reaction",
+            "Euctectoid reaction",
+            "All of the above"
+        ],
+        "ans": 3
+    },
+    {
+        "q": "What are critical temperatures in the Fe\u2013Fe\u2083C diagram?",
+        "opts": [
+            "Temperatures where phase changes occur during heating or cooling",
+            "Temperatures at which metals melt completely",
+            "Temperatures of maximum hardness",
+            "Temperatures at which alloys evaporate"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "Eutectoid reaction occurs at __________",
+        "opts": [
+            "0.8% carbon",
+            " 0.2% carbon",
+            "0.5% carbon",
+            "None of the above"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "The lower critical temperature A1 corresponds to:",
+        "opts": [
+            "The melting point of iron",
+            "The temperature of austenite-to-pearlite eutectoid transformation",
+            "The temperature at which ferrite forms",
+            ". The temperature at which cementite dissolves"
+        ],
+        "ans": 1
+    },
+    {
+        "q": "The eutectoid composition in the iron-carbon diagram is:",
+        "opts": [
+            "0.8% C",
+            "4.3% C",
+            "2.0% C",
+            "6.67% C"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "Steel is produced from  ____ process/furnace.",
+        "opts": [
+            "Bessemer converter",
+            "Open hearth furnce",
+            "Electric furnace",
+            "All of these"
+        ],
+        "ans": 3
+    },
+    {
+        "q": "Alpha ferrite at room temp. Can dissolve  ___________",
+        "opts": [
+            "0.008% carbon",
+            "0.25% carbon",
+            "02% carbon",
+            "None of the above"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "The upper critical temperature A3 is the temperature below which:",
+        "opts": [
+            "Pearlite forms from austenite",
+            "Austenite starts to form in hypereutectoid alloys",
+            "Cementite starts to form from austenite in hypereutectoid alloys",
+            "Ferrite starts to form from austenite in hypoeutectoid alloys"
+        ],
+        "ans": 3
+    },
+    {
+        "q": "Grey cast iron is ......... than white cast iron.",
+        "opts": [
+            "Softer",
+            "harder",
+            "all of the above",
+            "can not say"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "peritectic reaction takes place at a temperature of ------",
+        "opts": [
+            "727 degree centigrade",
+            "1147 degree centigrade",
+            "1492 degree centigrade",
+            "at room temperature"
+        ],
+        "ans": 2
+    },
+    {
+        "q": "Steel contain carbon percentage between",
+        "opts": [
+            "0 to  2%",
+            "0 to  1%",
+            " 0 to  4%",
+            "0 to  3%"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "Austenite is---------.",
+        "opts": [
+            "intestitial solid solution of carbon in FCC  gamma  iron",
+            "intestitial solid solution of carbon in BCC alpha iron",
+            "cementite and pearlite",
+            "ferrite and cementite"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "The eutectic reaction in Fe-C system is:",
+        "opts": [
+            " Liquid \u2192 Austenite + Cementite",
+            "Austenite \u2192 Ferrite + Cementite",
+            "Liquid \u2192 \u03b4-ferrite + Austenite",
+            "Cementite \u2192 Austenite + Liquid"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "Cementite is also called as _________",
+        "opts": [
+            "Alpha ferrite",
+            "Delta ferrite",
+            "Iron carbide",
+            "None of the above"
+        ],
+        "ans": 2
+    },
+    {
+        "q": "Which of the following phases is soft and ductile?",
+        "opts": [
+            "Ferrite",
+            "Cementite",
+            "Pearlite",
+            "Martensite"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "Cementite becomes non magnetic/paramagnetic after______",
+        "opts": [
+            "200 deg. Celcius",
+            "250 deg. Celcius",
+            "210 deg. Celcius",
+            "220 deg. Celcius"
+        ],
+        "ans": 2
+    },
+    {
+        "q": "Cast iron----------.",
+        "opts": [
+            "All of the mentioned options",
+            " contains carbon ranging from 2.1% to 4.67%. ",
+            "is Very brittle",
+            "has excellent machinability"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "corrosion and oxidation resistance of steel is increased by addition of ------",
+        "opts": [
+            "Chromium",
+            "Nickel",
+            "manganese",
+            "molybdenum"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "Machinability of cast iron is increased by addition of -----",
+        "opts": [
+            "carbon",
+            "silicon",
+            "phosphorous",
+            "manganese"
+        ],
+        "ans": 1
+    },
+    {
+        "q": "In grey cast iron----",
+        "opts": [
+            "carbon present in graphite flakes form",
+            "carbon present in combined iron carbide form",
+            "carbon present in plates of iron carbide",
+            "no carbon present"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "White Cast Iron contains -------------------.",
+        "opts": [
+            "carbon in form of iron carbide",
+            "carbon in graphite flake form",
+            "carbon in form of spheroids",
+            "Non of  the above"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "naval brass ----",
+        "opts": [
+            "contains copper ,tin and zinc",
+            "has excellent corrosion resistance in marine environment",
+            "found application in manufacturing marine hardware",
+            "all of the above"
+        ],
+        "ans": 3
+    },
+    {
+        "q": "Which of the following cast irons cannot be machined?",
+        "opts": [
+            "White cast iron",
+            "Grey cast iron",
+            "Malleable cast iron",
+            "Spheroidal graphite cast iron"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "Bronze is the alloy of----.",
+        "opts": [
+            "copper and tin",
+            "copper and zinc",
+            "copper and iron",
+            "tin and zinc"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "What is the typical range of carbon content in steel?",
+        "opts": [
+            "0.5% to 5%",
+            "0.02% to 2.14%",
+            "2.5% to 4%",
+            "4% to 5%"
+        ],
+        "ans": 1
+    },
+    {
+        "q": "Chromium is added in to steel to ------------.",
+        "opts": [
+            "All of the mentioned options",
+            "to Increases corrosion resistance",
+            " Increases abrasion resistance and wear resistance",
+            "to increase toughness of steel"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "Cupola furnace is used to manufacture___________",
+        "opts": [
+            "Cast iron",
+            "Pig iron",
+            "Wrought iron",
+            "Steel"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "Muntz metal (Yellow brass) contains___________________",
+        "opts": [
+            "70% copper and 30% zinc",
+            "60% copper and 40% zinc",
+            "59% copper, 40% zinc and 1% tin",
+            "60.45% copper, 35.2% zinc and 5.35% nickel"
+        ],
+        "ans": 1
+    },
+    {
+        "q": "Alloying elements are added in to the steel --------.",
+        "opts": [
+            "All of the mentioned options",
+            "improve toughness",
+            "improve machinability",
+            " improve case hardening properties"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "Copper has high electrical & thermal conductivity.",
+        "opts": [
+            "true",
+            "false",
+            "don't know",
+            "can't say"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "Physical properties of the copper are -------.",
+        "opts": [
+            "All of the mentioned options",
+            "reddish yellow colour",
+            "density -8.93gm/cc",
+            "FCC crystal structure"
+        ],
+        "ans": 0
+    },
+    {
+        "q": "Brass is an alloy of_________________",
+        "opts": [
+            "copper, tin and zinc",
+            "copper and tin",
+            "copper and zinc",
+            "none of these"
+        ],
+        "ans": 2
+    },
+    {
+        "q": "Babbit metal is a______________________",
+        "opts": [
+            "lead-base alloy",
+            "tin-base alloy",
+            "copper-base alloy",
+            "cadmium-base alloy"
+        ],
+        "ans": 1
+    },
+    {
+        "q": "On the basis of appearance of fractures cast irons are classified as ___________",
+        "opts": [
+            "malleable cast iron ",
+            "White cast iron ",
+            "grey cast iron  & nodular cast iron ",
+            "All of the mentioned options"
+        ],
+        "ans": 3
+    },
+    {
+        "q": "Composition of gun metal is ----------.",
+        "opts": [
+            "COPPER-88% ZINC-2%  ,Tin- 10%",
+            "COPPER-98% Tin- 10%",
+            " ZINC-90%  ,Tin- 10%",
+            "COPPER-80% ZINC-2%  ,Tin- 10% ,Cr - 8%"
+        ],
+        "ans": 0
+    }
+];
+
+    let currentPool = [];
+    let wrongQuestions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    const quizScreen = document.getElementById('quiz-screen');
+    const resultScreen = document.getElementById('result-screen');
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const nextBtn = document.getElementById('next-btn');
+    const progress = document.getElementById('progress');
+    const scoreTracker = document.getElementById('score-tracker');
+    const feedbackMessage = document.getElementById('feedback-message');
+    const retryBtn = document.getElementById('retry-btn');
+    const restartBtn = document.getElementById('restart-btn');
+
+    function shuffleArray(array) {
+        let arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function startQuiz(poolToUse) {
+        currentPool = shuffleArray(poolToUse);
+        wrongQuestions = [];
+        currentQuestionIndex = 0;
+        score = 0;
+        
+        quizScreen.classList.remove('hidden');
+        resultScreen.classList.add('hidden');
+        
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        nextBtn.classList.add('hidden');
+        feedbackMessage.classList.add('hidden');
+        optionsContainer.innerHTML = '';
+        
+        const qData = currentPool[currentQuestionIndex];
+        
+        progress.textContent = `Question ${currentQuestionIndex + 1} of ${currentPool.length}`;
+        scoreTracker.textContent = `Score: ${score}`;
+        questionText.innerHTML = `${currentQuestionIndex + 1}. ${qData.q}`;
+
+        qData.opts.forEach((opt, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerHTML = `${String.fromCharCode(65 + index)}. ${opt}`;
+            btn.onclick = () => checkAnswer(index, btn);
+            optionsContainer.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedIndex, selectedBtn) {
+        const qData = currentPool[currentQuestionIndex];
+        const correctIndex = qData.ans;
+        const allBtns = optionsContainer.querySelectorAll('.btn');
+
+        allBtns.forEach(btn => btn.disabled = true);
+        feedbackMessage.classList.remove('hidden');
+
+        if (selectedIndex === correctIndex) {
+            selectedBtn.classList.add('correct');
+            feedbackMessage.textContent = "✅ Correct!";
+            feedbackMessage.style.color = "var(--correct-text)";
+            score++;
+            scoreTracker.textContent = `Score: ${score}`;
+        } else {
+            selectedBtn.classList.add('wrong');
+            allBtns[correctIndex].classList.add('correct');
+            feedbackMessage.textContent = "❌ Incorrect.";
+            feedbackMessage.style.color = "var(--wrong-text)";
+            
+            if (!wrongQuestions.includes(qData)) {
+                wrongQuestions.push(qData);
+            }
+        }
+        nextBtn.classList.remove('hidden');
+    }
+
+    nextBtn.onclick = () => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < currentPool.length) {
+            loadQuestion();
+        } else {
+            endQuiz();
+        }
+    };
+
+    function endQuiz() {
+        quizScreen.classList.add('hidden');
+        resultScreen.classList.remove('hidden');
+        
+        document.getElementById('final-score').innerHTML = 
+            `You scored <span style="color: var(--accent-blue);">${score}</span> out of ${currentPool.length}!`;
+
+        if (wrongQuestions.length > 0) {
+            retryBtn.classList.remove('hidden');
+            retryBtn.textContent = `Review ${wrongQuestions.length} Incorrect Question(s)`;
+        } else {
+            retryBtn.classList.add('hidden');
+            document.getElementById('final-score').innerHTML += "<br><br>🎉 Perfect score! Excellent work.";
+        }
+    }
+
+    retryBtn.onclick = () => {
+        startQuiz(wrongQuestions);
+    };
+
+    restartBtn.onclick = () => {
+        startQuiz(masterQuestionBank);
+    };
+
+    startQuiz(masterQuestionBank);
+</script>
+</body>
+</html>
