@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMT Quiz - Units 4, 5 & 6 (Exact 72 Qs)</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f7;
+            --window-bg: #ffffff;
+            --text-main: #1d1d1f;
+            --text-muted: #86868b;
+            --border-color: #d2d2d7;
+            --accent-blue: #0071e3;
+            --accent-blue-hover: #0077ed;
+            --correct-bg: #e3fcef;
+            --correct-border: #34c759;
+            --correct-text: #0c5c27;
+            --wrong-bg: #fce8e8;
+            --wrong-border: #ff3b30;
+            --wrong-text: #8a0a14;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 720px;
+            background: var(--window-bg);
+            padding: 32px 40px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            width: 100%;
+            text-align: left;
+            padding: 14px 18px;
+            font-size: 15px;
+            background: var(--window-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+            color: var(--text-main);
+        }
+
+        .btn:hover:not(:disabled) {
+            background: var(--bg-color);
+            border-color: #a1a1a6;
+        }
+
+        .btn:disabled {
+            cursor: default;
+        }
+
+        .correct {
+            background: var(--correct-bg) !important;
+            border-color: var(--correct-border) !important;
+            color: var(--correct-text) !important;
+            font-weight: 500;
+        }
+
+        .wrong {
+            background: var(--wrong-bg) !important;
+            border-color: var(--wrong-border) !important;
+            color: var(--wrong-text) !important;
+        }
+
+        .action-btn {
+            text-align: center;
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            font-weight: 600;
+            margin-top: 24px;
+            box-shadow: 0 2px 5px rgba(0, 113, 227, 0.3);
+        }
+
+        .action-btn:hover {
+            background: var(--accent-blue-hover);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .feedback {
+            margin-top: 18px;
+            font-weight: 600;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        #selection-screen, #result-screen {
+            text-align: center;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .topic-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 18px;
+            font-size: 15px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-main);
+        }
+
+        .topic-btn:hover {
+            background: var(--bg-color);
+            border-color: var(--accent-blue);
+        }
+
+        .badge {
+            background: #e8f0fe;
+            color: #1a73e8;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .score-display {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 24px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Selection Screen -->
+    <div id="selection-screen">
+        <h2>EMT Test Bank Quiz Selection</h2>
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">All 72 exact questions (Unit 4: 21 Qs, Unit 5: 31 Qs, Unit 6: 20 Qs) strictly included without omissions.</p>
+        
+        <button class="action-btn btn" onclick="startQuiz('all')" style="margin-top: 0; font-size: 16px; padding: 16px;">🚀 Attempt Full Test Bank (72 Questions)</button>
+        
+        <div class="topic-grid">
+            <button class="topic-btn" onclick="startQuiz('Unit 4: Heat Treatment')">
+                <span>Unit 4: Heat Treatment</span>
+                <span class="badge">21 Qs</span>
+            </button>
+            <button class="topic-btn" onclick="startQuiz('Unit 5: Powder Metallurgy')">
+                <span>Unit 5: Powder Metallurgy</span>
+                <span class="badge">31 Qs</span>
+            </button>
+            <button class="topic-btn" onclick="startQuiz('Unit 6: Refractories & Fuels')">
+                <span>Unit 6: Refractories & Fuels</span>
+                <span class="badge">20 Qs</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quiz-screen" class="hidden">
+        <div class="status-bar">
+            <span id="progress">Question 1 / 72</span>
+            <span id="score-tracker">Score: 0</span>
+        </div>
+        
+        <h2 id="question-text">Question loading...</h2>
+        
+        <div class="options" id="options-container"></div>
+        
+        <div id="feedback-message" class="feedback hidden"></div>
+        
+        <button id="next-btn" class="btn action-btn hidden">Next Question</button>
+        <button onclick="goToSelection()" class="btn" style="margin-top: 12px; background: transparent; border: none; color: var(--text-muted); cursor: pointer; text-align: center; width: 100%;">← Back to Topic Selection</button>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="hidden">
+        <h2>Quiz Complete</h2>
+        <div id="final-score" class="score-display"></div>
+        
+        <button id="retry-btn" class="btn action-btn hidden">Resolve Incorrect Questions</button>
+        <button onclick="goToSelection()" class="btn action-btn" style="background: var(--text-main); margin-top: 12px;">Choose Another Topic</button>
+    </div>
+</div>
+
+<script>
+    const masterQuestionBank = [
+        // --- UNIT 4 (21 Questions) ---
+        {"q": "Q5. Which heat-treatment process involves rapid cooling after heating to produce a hard structure?", "opts": ["A. Annealing", "B. Normalizing", "C. Hardening", "D. Tempering"], "ans": 2, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q8. Which process normally cools the steel in still air?", "opts": ["A. Annealing", "B. Normalizing", "C. Hardening", "D. Carburizing"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q11. Which process introduces carbon into the surface of low-carbon steel?", "opts": ["A. Nitriding", "B. Carburizing", "C. Tempering", "D. Normalizing"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q14. Why is tempering generally performed after hardening?", "opts": ["A. To increase brittleness", "B. To remove all carbon", "C. To reduce brittleness and obtain a useful hardness-toughness combination", "D. To increase melting temperature"], "ans": 2, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q18. Which heat treatment generally gives the softest structure among annealing and normalizing?", "opts": ["A. Normalizing", "B. Annealing", "C. Hardening", "D. Tempering"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q20. Which sequence correctly represents the basic heat-treatment cycle?", "opts": ["A. Cooling heating soaking", "B. Soaking cooling heating", "C. Heating soaking cooling", "D. Heating cooling soaking"], "ans": 2, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q1. A steel component has become very hard after cold working and cannot be easily formed. Which heat treatment should be selected?", "opts": ["A. Hardening", "B. Annealing", "C. Normalizing", "D. Tempering"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q9. A manufacturer wants to make a steel component easier to machine without significantly changing its chemical composition. Which treatment is appropriate?", "opts": ["A. Annealing", "B. Carburizing", "C. Nitriding", "D. Hardening"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q11. Which property generally increases after proper annealing?", "opts": ["A. Brittleness", "B. Ductility", "C. Residual stress", "D. Hardness"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q2. In normalizing, the steel is cooled by:", "opts": ["A. Furnace cooling", "B. Water quenching", "C. Oil quenching", "D. Still air cooling"], "ans": 3, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q2. Which element is introduced during carburizing?", "opts": ["A. Nitrogen", "B. Carbon", "C. Chromium", "D. Aluminium"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q4. Which case-hardening process introduces both carbon and nitrogen?", "opts": ["A. Carburizing", "B. Nitriding", "C. Cyaniding", "D. Annealing"], "ans": 2, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q7. A gear requires a hard wear-resistant surface and a tough core. Which process is commonly used?", "opts": ["A. Carburizing", "B. Annealing", "C. Tempering", "D. Normalizing"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q12. Which process is particularly suitable when a relatively deep case is required?", "opts": ["A. Carburizing", "B. Nitriding", "C. Cyaniding", "D. Stress relieving"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q15. A small steel component needs rapid case hardening with carbon and nitrogen enrichment. Which process is appropriate?", "opts": ["Cyaniding", "Carburizing", "Nitriding", "Annealing"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q7. A gear requires high wear resistance. Which heat treatment would be appropriate?", "opts": ["A. Hardening", "B. Annealing", "C. Stress relieving", "D. Process annealing"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q10. Which statement is correct?", "opts": ["A. Hardening generally decreases wear resistance.", "B. Hardening produces a soft ferritic structure.", "C. Hardening increases hardness but may also increase brittleness.", "D. Hardening never causes distortion."], "ans": 2, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q1. Tempering is normally carried out after:", "opts": ["A. Annealing", "B. Normalizing", "C. Hardening", "D. Carburizing only"], "ans": 2, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q3. The main purpose of tempering is to:", "opts": ["A. Increase brittleness", "B. Reduce brittleness and increase toughness", "C. Produce maximum hardness", "D. Increase carbon content"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q7. Which property generally increases as tempering temperature increases?", "opts": ["A. Brittleness", "B. Toughness", "C. Hardness", "D. Residual stress"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Q11. A machine shaft requires a good combination of strength and toughness. Which treatment is generally appropriate after hardening?", "opts": ["A. High-temperature tempering", "B. Low-temperature tempering only", "C. Annealing", "D. Carburizing"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
+
+        // --- UNIT 5 (31 Questions) ---
+        {"q": "1. A component requires a complex shape with minimum material wastage. Which manufacturing process is most suitable?", "opts": ["A) Forging", "B) Powder metallurgy", "C) Rolling", "D) Sand casting"], "ans": 1, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "4. A porous bearing is required to retain lubricating oil within its structure. Which manufacturing method is preferred?", "opts": ["A) Forging", "B) Powder metallurgy", "C) Extrusion", "D) Rolling"], "ans": 1, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "5. Which sequence correctly represents the basic powder metallurgy process?", "opts": ["A) Mixing Compacting Sintering Finishing", "B) Melting Casting Rolling Finishing", "C) Forging Heating Welding Machining", "D) Rolling Casting Compacting Melting"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "6. During powder metallurgy, compacted metal powder is heated below its melting point to develop strength. This operation is called:", "opts": ["A) Annealing", "B) Sintering", "C) Tempering", "D) Normalizing"], "ans": 1, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "14. A compacted powder component has insufficient strength after pressing. Which subsequent operation can significantly increase its strength?", "opts": ["A) Sintering", "B) Marking", "C) Drilling only", "D) Inspection only"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "15. Which of the following is a major advantage of powder metallurgy?", "opts": ["A) High material wastage", "B) Ability to produce controlled porosity", "C) Necessity of melting every powder", "D) Very large machining allowance"], "ans": 1, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "20. Which application is most directly associated with controlled porosity in powder metallurgy?", "opts": ["A) Self-lubricating bearing", "B) Solid steel shaft", "C) Welded frame", "D) Forged crankshaft"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "25. A powder metallurgy component cracks during compaction. Which powder characteristic should the engineer investigate first?", "opts": ["A) Compressibility and compacting behaviour", "B) Colour", "C) Electrical insulation", "D) Surface reflectivity"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "29. A designer wants to manufacture a component containing two different materials that cannot easily be joined by conventional methods. Powder metallurgy may be selected because:", "opts": ["A) Different powders can be blended and compacted", "B) It always requires welding", "C) It does not allow material combinations", "D) It uses only pure metals"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "32. Which combination correctly matches the application with the advantage of powder metallurgy?", "opts": ["A) Porous bearing controlled porosity", "B) Cutting tool high material wastage", "C) Filter complete elimination of pores", "D) Gear inability to produce complex shapes"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "35. Which of the following is a limitation when manufacturing powder metallurgy components?", "opts": ["A) Difficulty in achieving complete density in some
