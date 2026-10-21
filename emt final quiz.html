@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMT Quiz - Units 4, 5 & 6 (Exact 72 Qs)</title>
+    <title>EMT Test Bank Quiz (Units 4, 5 & 6)</title>
     <style>
         :root {
             --bg-color: #f5f5f7;
@@ -111,6 +111,7 @@
             font-weight: 600;
             margin-top: 24px;
             box-shadow: 0 2px 5px rgba(0, 113, 227, 0.3);
+            cursor: pointer;
         }
 
         .action-btn:hover {
@@ -181,9 +182,9 @@
     <!-- Selection Screen -->
     <div id="selection-screen">
         <h2>EMT Test Bank Quiz Selection</h2>
-        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">All 72 exact questions (Unit 4: 21 Qs, Unit 5: 31 Qs, Unit 6: 20 Qs) strictly included without omissions.</p>
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Select a unit or practice the full question bank.</p>
         
-        <button class="action-btn btn" onclick="startQuiz('all')" style="margin-top: 0; font-size: 16px; padding: 16px;">🚀 Attempt Full Test Bank (72 Questions)</button>
+        <button class="action-btn btn" onclick="startQuiz('all')" style="margin-top: 0; font-size: 16px; padding: 16px;">🚀 Full Test Bank (72 Questions)</button>
         
         <div class="topic-grid">
             <button class="topic-btn" onclick="startQuiz('Unit 4: Heat Treatment')">
@@ -231,37 +232,218 @@
 <script>
     const masterQuestionBank = [
         // --- UNIT 4 (21 Questions) ---
-        {"q": "Q5. Which heat-treatment process involves rapid cooling after heating to produce a hard structure?", "opts": ["A. Annealing", "B. Normalizing", "C. Hardening", "D. Tempering"], "ans": 2, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q8. Which process normally cools the steel in still air?", "opts": ["A. Annealing", "B. Normalizing", "C. Hardening", "D. Carburizing"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q11. Which process introduces carbon into the surface of low-carbon steel?", "opts": ["A. Nitriding", "B. Carburizing", "C. Tempering", "D. Normalizing"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q14. Why is tempering generally performed after hardening?", "opts": ["A. To increase brittleness", "B. To remove all carbon", "C. To reduce brittleness and obtain a useful hardness-toughness combination", "D. To increase melting temperature"], "ans": 2, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q18. Which heat treatment generally gives the softest structure among annealing and normalizing?", "opts": ["A. Normalizing", "B. Annealing", "C. Hardening", "D. Tempering"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q20. Which sequence correctly represents the basic heat-treatment cycle?", "opts": ["A. Cooling heating soaking", "B. Soaking cooling heating", "C. Heating soaking cooling", "D. Heating cooling soaking"], "ans": 2, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q1. A steel component has become very hard after cold working and cannot be easily formed. Which heat treatment should be selected?", "opts": ["A. Hardening", "B. Annealing", "C. Normalizing", "D. Tempering"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q9. A manufacturer wants to make a steel component easier to machine without significantly changing its chemical composition. Which treatment is appropriate?", "opts": ["A. Annealing", "B. Carburizing", "C. Nitriding", "D. Hardening"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q11. Which property generally increases after proper annealing?", "opts": ["A. Brittleness", "B. Ductility", "C. Residual stress", "D. Hardness"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q2. In normalizing, the steel is cooled by:", "opts": ["A. Furnace cooling", "B. Water quenching", "C. Oil quenching", "D. Still air cooling"], "ans": 3, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q2. Which element is introduced during carburizing?", "opts": ["A. Nitrogen", "B. Carbon", "C. Chromium", "D. Aluminium"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q4. Which case-hardening process introduces both carbon and nitrogen?", "opts": ["A. Carburizing", "B. Nitriding", "C. Cyaniding", "D. Annealing"], "ans": 2, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q7. A gear requires a hard wear-resistant surface and a tough core. Which process is commonly used?", "opts": ["A. Carburizing", "B. Annealing", "C. Tempering", "D. Normalizing"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q12. Which process is particularly suitable when a relatively deep case is required?", "opts": ["A. Carburizing", "B. Nitriding", "C. Cyaniding", "D. Stress relieving"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q15. A small steel component needs rapid case hardening with carbon and nitrogen enrichment. Which process is appropriate?", "opts": ["Cyaniding", "Carburizing", "Nitriding", "Annealing"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q7. A gear requires high wear resistance. Which heat treatment would be appropriate?", "opts": ["A. Hardening", "B. Annealing", "C. Stress relieving", "D. Process annealing"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q10. Which statement is correct?", "opts": ["A. Hardening generally decreases wear resistance.", "B. Hardening produces a soft ferritic structure.", "C. Hardening increases hardness but may also increase brittleness.", "D. Hardening never causes distortion."], "ans": 2, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q1. Tempering is normally carried out after:", "opts": ["A. Annealing", "B. Normalizing", "C. Hardening", "D. Carburizing only"], "ans": 2, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q3. The main purpose of tempering is to:", "opts": ["A. Increase brittleness", "B. Reduce brittleness and increase toughness", "C. Produce maximum hardness", "D. Increase carbon content"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q7. Which property generally increases as tempering temperature increases?", "opts": ["A. Brittleness", "B. Toughness", "C. Hardness", "D. Residual stress"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
-        {"q": "Q11. A machine shaft requires a good combination of strength and toughness. Which treatment is generally appropriate after hardening?", "opts": ["A. High-temperature tempering", "B. Low-temperature tempering only", "C. Annealing", "D. Carburizing"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Which heat-treatment process involves rapid cooling after heating to produce a hard structure?", "opts": ["A. Annealing", "B. Normalizing", "C. Hardening", "D. Tempering"], "ans": 2, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Which process normally cools the steel in still air?", "opts": ["A. Annealing", "B. Normalizing", "C. Hardening", "D. Carburizing"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Which process introduces carbon into the surface of low-carbon steel?", "opts": ["A. Nitriding", "B. Carburizing", "C. Tempering", "D. Normalizing"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Why is tempering generally performed after hardening?", "opts": ["A. To increase brittleness", "B. To remove all carbon", "C. To reduce brittleness and obtain a useful hardness-toughness combination", "D. To increase melting temperature"], "ans": 2, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Which heat treatment generally gives the softest structure among annealing and normalizing?", "opts": ["A. Normalizing", "B. Annealing", "C. Hardening", "D. Tempering"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Which sequence correctly represents the basic heat-treatment cycle?", "opts": ["A. Cooling → heating → soaking", "B. Soaking → cooling → heating", "C. Heating → soaking → cooling", "D. Heating → cooling → soaking"], "ans": 2, "cat": "Unit 4: Heat Treatment"},
+        {"q": "A steel component has become very hard after cold working and cannot be easily formed. Which heat treatment should be selected?", "opts": ["A. Hardening", "B. Annealing", "C. Normalizing", "D. Tempering"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
+        {"q": "A manufacturer wants to make a steel component easier to machine without significantly changing its chemical composition. Which treatment is appropriate?", "opts": ["A. Annealing", "B. Carburizing", "C. Nitriding", "D. Hardening"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Which property generally increases after proper annealing?", "opts": ["A. Brittleness", "B. Ductility", "C. Residual stress", "D. Hardness"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
+        {"q": "In normalizing, the steel is cooled by:", "opts": ["A. Furnace cooling", "B. Water quenching", "C. Oil quenching", "D. Still air cooling"], "ans": 3, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Which element is introduced during carburizing?", "opts": ["A. Nitrogen", "B. Carbon", "C. Chromium", "D. Aluminium"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Which case-hardening process introduces both carbon and nitrogen?", "opts": ["A. Carburizing", "B. Nitriding", "C. Cyaniding", "D. Annealing"], "ans": 2, "cat": "Unit 4: Heat Treatment"},
+        {"q": "A gear requires a hard wear-resistant surface and a tough core. Which process is commonly used?", "opts": ["A. Carburizing", "B. Annealing", "C. Tempering", "D. Normalizing"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Which process is particularly suitable when a relatively deep case is required?", "opts": ["A. Carburizing", "B. Nitriding", "C. Cyaniding", "D. Stress relieving"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
+        {"q": "A small steel component needs rapid case hardening with carbon and nitrogen enrichment. Which process is appropriate?", "opts": ["A. Cyaniding", "B. Carburizing", "C. Nitriding", "D. Annealing"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
+        {"q": "A gear requires high wear resistance. Which heat treatment would be appropriate?", "opts": ["A. Hardening", "B. Annealing", "C. Stress relieving", "D. Process annealing"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Which statement is correct regarding hardening?", "opts": ["A. Hardening generally decreases wear resistance.", "B. Hardening produces a soft ferritic structure.", "C. Hardening increases hardness but may also increase brittleness.", "D. Hardening never causes distortion."], "ans": 2, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Tempering is normally carried out after:", "opts": ["A. Annealing", "B. Normalizing", "C. Hardening", "D. Carburizing only"], "ans": 2, "cat": "Unit 4: Heat Treatment"},
+        {"q": "The main purpose of tempering is to:", "opts": ["A. Increase brittleness", "B. Reduce brittleness and increase toughness", "C. Produce maximum hardness", "D. Increase carbon content"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
+        {"q": "Which property generally increases as tempering temperature increases?", "opts": ["A. Brittleness", "B. Toughness", "C. Hardness", "D. Residual stress"], "ans": 1, "cat": "Unit 4: Heat Treatment"},
+        {"q": "A machine shaft requires a good combination of strength and toughness. Which treatment is generally appropriate after hardening?", "opts": ["A. High-temperature tempering", "B. Low-temperature tempering only", "C. Annealing", "D. Carburizing"], "ans": 0, "cat": "Unit 4: Heat Treatment"},
 
         // --- UNIT 5 (31 Questions) ---
-        {"q": "1. A component requires a complex shape with minimum material wastage. Which manufacturing process is most suitable?", "opts": ["A) Forging", "B) Powder metallurgy", "C) Rolling", "D) Sand casting"], "ans": 1, "cat": "Unit 5: Powder Metallurgy"},
-        {"q": "4. A porous bearing is required to retain lubricating oil within its structure. Which manufacturing method is preferred?", "opts": ["A) Forging", "B) Powder metallurgy", "C) Extrusion", "D) Rolling"], "ans": 1, "cat": "Unit 5: Powder Metallurgy"},
-        {"q": "5. Which sequence correctly represents the basic powder metallurgy process?", "opts": ["A) Mixing Compacting Sintering Finishing", "B) Melting Casting Rolling Finishing", "C) Forging Heating Welding Machining", "D) Rolling Casting Compacting Melting"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
-        {"q": "6. During powder metallurgy, compacted metal powder is heated below its melting point to develop strength. This operation is called:", "opts": ["A) Annealing", "B) Sintering", "C) Tempering", "D) Normalizing"], "ans": 1, "cat": "Unit 5: Powder Metallurgy"},
-        {"q": "14. A compacted powder component has insufficient strength after pressing. Which subsequent operation can significantly increase its strength?", "opts": ["A) Sintering", "B) Marking", "C) Drilling only", "D) Inspection only"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
-        {"q": "15. Which of the following is a major advantage of powder metallurgy?", "opts": ["A) High material wastage", "B) Ability to produce controlled porosity", "C) Necessity of melting every powder", "D) Very large machining allowance"], "ans": 1, "cat": "Unit 5: Powder Metallurgy"},
-        {"q": "20. Which application is most directly associated with controlled porosity in powder metallurgy?", "opts": ["A) Self-lubricating bearing", "B) Solid steel shaft", "C) Welded frame", "D) Forged crankshaft"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
-        {"q": "25. A powder metallurgy component cracks during compaction. Which powder characteristic should the engineer investigate first?", "opts": ["A) Compressibility and compacting behaviour", "B) Colour", "C) Electrical insulation", "D) Surface reflectivity"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
-        {"q": "29. A designer wants to manufacture a component containing two different materials that cannot easily be joined by conventional methods. Powder metallurgy may be selected because:", "opts": ["A) Different powders can be blended and compacted", "B) It always requires welding", "C) It does not allow material combinations", "D) It uses only pure metals"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
-        {"q": "32. Which combination correctly matches the application with the advantage of powder metallurgy?", "opts": ["A) Porous bearing controlled porosity", "B) Cutting tool high material wastage", "C) Filter complete elimination of pores", "D) Gear inability to produce complex shapes"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
-        {"q": "35. Which of the following is a limitation when manufacturing powder metallurgy components?", "opts": ["A) Difficulty in achieving complete density in some
+        {"q": "A component requires a complex shape with minimum material wastage. Which manufacturing process is most suitable?", "opts": ["A) Forging", "B) Powder metallurgy", "C) Rolling", "D) Sand casting"], "ans": 1, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "A porous bearing is required to retain lubricating oil within its structure. Which manufacturing method is preferred?", "opts": ["A) Forging", "B) Powder metallurgy", "C) Extrusion", "D) Rolling"], "ans": 1, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Which sequence correctly represents the basic powder metallurgy process?", "opts": ["A) Mixing → Compacting → Sintering → Finishing", "B) Melting → Casting → Rolling → Finishing", "C) Forging → Heating → Welding → Machining", "D) Rolling → Casting → Compacting → Melting"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "During powder metallurgy, compacted metal powder is heated below its melting point to develop strength. This operation is called:", "opts": ["A) Annealing", "B) Sintering", "C) Tempering", "D) Normalizing"], "ans": 1, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "A compacted powder component has insufficient strength after pressing. Which subsequent operation can significantly increase its strength?", "opts": ["A) Sintering", "B) Marking", "C) Drilling only", "D) Inspection only"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Which of the following is a major advantage of powder metallurgy?", "opts": ["A) High material wastage", "B) Ability to produce controlled porosity", "C) Necessity of melting every powder", "D) Very large machining allowance"], "ans": 1, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Which application is most directly associated with controlled porosity in powder metallurgy?", "opts": ["A) Self-lubricating bearing", "B) Solid steel shaft", "C) Welded frame", "D) Forged crankshaft"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "A powder metallurgy component cracks during compaction. Which powder characteristic should the engineer investigate first?", "opts": ["A) Compressibility and compacting behaviour", "B) Colour", "C) Electrical insulation", "D) Surface reflectivity"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "A designer wants to manufacture a component containing two different materials that cannot easily be joined by conventional methods. Powder metallurgy may be selected because:", "opts": ["A) Different powders can be blended and compacted", "B) It always requires welding", "C) It does not allow material combinations", "D) It uses only pure metals"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Which combination correctly matches the application with the advantage of powder metallurgy?", "opts": ["A) Porous bearing - controlled porosity", "B) Cutting tool - high material wastage", "C) Filter - complete elimination of pores", "D) Gear - inability to produce complex shapes"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Which of the following is a limitation when manufacturing powder metallurgy components?", "opts": ["A) Difficulty in achieving complete density in some products", "B) Very low material utilization", "C) Inability to manufacture small parts", "D) Inability to produce repeatable components"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Which application is associated with powder metallurgy's ability to manufacture materials with unusual compositions?", "opts": ["A) Electrical contacts", "B) Wooden gears", "C) Glass bottles", "D) Rubber belts"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Which application uses powder metallurgy to manufacture hard, wear-resistant components?", "opts": ["A) Cutting-tool inserts", "B) Rubber seals", "C) Glass plates", "D) Wooden handles"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "A major limitation of powder metallurgy is that:", "opts": ["A) Tooling and dies can be expensive", "B) It always produces large quantities of scrap", "C) It cannot produce small components", "D) It requires all materials to be melted"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "A porous PM component is filled with resin to seal its pores. Which process is being used?", "opts": ["A) Impregnation", "B) Compaction", "C) Sintering", "D) Powder making"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "A company needs to manufacture a self-lubricating bearing. Which sequence is most appropriate?", "opts": ["A) Powder making → Blending → Compacting → Sintering → Oil impregnation", "B) Powder making → Welding → Forging → Painting → Impregnation", "C) Casting → Rolling → Welding → Sintering", "D) Forging → Machining → Blending"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "A porous bearing does not release sufficient lubricant during operation. Which stage should be investigated?", "opts": ["A) Oil impregnation", "B) Powder making", "C) Blending", "D) Compacting only"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "An engineer is manufacturing a self-lubricating porous bearing. Which sequence correctly represents the major operations?", "opts": ["A) Powder making → Blending → Compacting → Sintering → Impregnation", "B) Blending → Powder making → Sintering → Forging → Impregnation", "C) Compacting → Powder making → Welding → Sintering → Infiltration", "D) Powder making → Sintering → Blending → Casting → Impregnation"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Molten metal is forced through small openings and broken into fine droplets using a high-velocity fluid. Which powder-making method is being used?", "opts": ["A) Atomization", "B) Electrolysis", "C) Reduction", "D) Machining"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Which powder-making method directly converts molten metal into powder particles?", "opts": ["A) Atomization", "B) Reduction", "C) Electrolysis", "D) Mechanical milling"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Which powder-making method is based on a chemical reaction rather than mechanical size reduction?", "opts": ["A) Chemical reduction", "B) Ball milling", "C) Crushing", "D) Grinding"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "An engineer wants to manufacture a small gear using powder metallurgy. What should be done first?", "opts": ["A) Sintering", "B) Powder making", "C) Infiltration", "D) Impregnation"], "ans": 1, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "The main purpose of metal infiltration is to:", "opts": ["A) Reduce porosity and improve strength", "B) Produce metal powder", "C) Form a green compact", "D) Mix different powders"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Which sequence correctly represents the basic powder metallurgy process?", "opts": ["A) Powder making → Blending → Compacting → Sintering", "B) Sintering → Compacting → Blending → Powder making", "C) Blending → Sintering → Compacting → Powder making", "D) Compacting → Powder making → Powder making → Sintering → Blending"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Which property can be intentionally controlled using powder metallurgy?", "opts": ["A) Porosity", "B) Color only", "C) Melting point only", "D) Electrical voltage"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Which of the following is a limitation of powder metallurgy?", "opts": ["A) High material utilization", "B) Low machining requirement", "C) High tooling cost", "D) Good dimensional accuracy"], "ans": 2, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Which of the following is an application of powder metallurgy?", "opts": ["A) Cutting tools", "B) Wooden furniture", "C) Glass bottles", "D) Rubber tyres"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Atomization of molten metal is used to produce:", "opts": ["A) Metal sheets", "B) Metal powders", "C) Metal rods", "D) Metal plates"], "ans": 1, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Lubricants in powder metallurgy primarily help to:", "opts": ["A) Increase die friction", "B) Reduce friction during compaction", "C) Melt the powder", "D) Increase particle size"], "ans": 1, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Porous bearings are particularly useful because the pores act as:", "opts": ["A) Oil reservoirs", "B) Heat sources", "C) Cutting edges", "D) Electrical insulators"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+        {"q": "Which of the following is a typical porous bearing material?", "opts": ["A) Sintered bronze", "B) Cast glass", "C) Wrought aluminium foil", "D) Hardened rubber"], "ans": 0, "cat": "Unit 5: Powder Metallurgy"},
+
+        // --- UNIT 6 (20 Questions) ---
+        {"q": "Which refractory is classified as a basic refractory?", "opts": ["A) Silica", "B) Fireclay", "C) Magnesite", "D) Zircon"], "ans": 2, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "Refractories are mainly used for:", "opts": ["A) Electrical insulation only", "B) Withstanding high temperatures", "C) Lubrication", "D) Cooling machines"], "ans": 1, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "Which property indicates the ability of a refractory to withstand high temperature without melting or deforming?", "opts": ["A) Porosity", "B) Refractoriness", "C) Hardness", "D) Ductility"], "ans": 1, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "Which refractory is commonly used in the lining of blast furnaces?", "opts": ["A) Magnesite", "B) Plastic", "C) Wood", "D) Rubber"], "ans": 0, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "A refractory used in a steelmaking furnace should have high:", "opts": ["A) Refractoriness", "B) Solubility", "C) Volatility", "D) Flammability"], "ans": 0, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "Which of the following is a desirable property of furnace refractory?", "opts": ["A) Low refractoriness", "B) High thermal shock resistance", "C) High chemical reactivity", "D) High slag absorption"], "ans": 1, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "Refractories are commonly used for lining:", "opts": ["A) Furnaces and kilns", "B) Water tanks", "C) Wooden structures", "D) Automobile tyres"], "ans": 0, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "A refractory lining is frequently subjected to rapid heating and cooling. Which property should be prioritized?", "opts": ["A) Thermal shock resistance", "B) Electrical conductivity", "C) Ductility", "D) Solubility"], "ans": 0, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "Refractories are mainly used for (Alt):", "opts": ["A) Electrical insulation only", "B) Withstanding high temperatures", "C) Lubrication", "D) Cooling machines"], "ans": 1, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "Which refractory is commonly used in the lining of blast furnaces (Alt)?", "opts": ["A) Magnesite", "B) Plastic", "C) Wood", "D) Rubber"], "ans": 0, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "Which of the following is a desirable property of furnace refractory (Alt)?", "opts": ["A) Low refractoriness", "B) High thermal shock resistance", "C) High chemical reactivity", "D) High slag absorption"], "ans": 1, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "Refractories are commonly used for lining (Alt):", "opts": ["A) Furnaces and kilns", "B) Water tanks", "C) Wooden structures", "D) Automobile tyres"], "ans": 0, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "LPG is stored commercially in:", "opts": ["A) Liquid form under pressure", "B) Solid form", "C) Vacuum only", "D) Powder form"], "ans": 0, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "LPG is widely used for:", "opts": ["A) Domestic cooking", "B) Blast furnace charging", "C) Refractory manufacturing only", "D) Water purification"], "ans": 0, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "An LPG cylinder is used because LPG can be:", "opts": ["A) Easily liquefied under pressure", "B) Solidified at room temperature", "C) Stored only at atmospheric pressure", "D) Converted into coal"], "ans": 0, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "A household requires a portable gaseous fuel with high calorific value. Which fuel is most appropriate?", "opts": ["A) Blast furnace gas", "B) Producer gas", "C) LPG", "D) Water gas"], "ans": 2, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "A fuel gas contains a large proportion of nitrogen and therefore has low calorific value. It is most likely:", "opts": ["A) LPG", "B) Natural gas", "C) Producer gas", "D) Coke oven gas"], "ans": 2, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "Metallurgical coke is mainly produced by:", "opts": ["A) Burning coal in air", "B) Carbonization of coal in absence of air", "C) Heating limestone", "D) Distillation of petroleum"], "ans": 1, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "The major use of metallurgical coke is in:", "opts": ["A) Blast furnaces", "B) Refrigerators", "C) Boilers only", "D) Water treatment plants"], "ans": 0, "cat": "Unit 6: Refractories & Fuels"},
+        {"q": "An important property of a liquid fuel indicating its resistance to flow is:", "opts": ["A) Viscosity", "B) Porosity", "C) Refractoriness", "D) Hardness"], "ans": 0, "cat": "Unit 6: Refractories & Fuels"}
+    ];
+
+    let currentPool = [];
+    let wrongQuestions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    const selectionScreen = document.getElementById('selection-screen');
+    const quizScreen = document.getElementById('quiz-screen');
+    const resultScreen = document.getElementById('result-screen');
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const nextBtn = document.getElementById('next-btn');
+    const progress = document.getElementById('progress');
+    const scoreTracker = document.getElementById('score-tracker');
+    const feedbackMessage = document.getElementById('feedback-message');
+    const retryBtn = document.getElementById('retry-btn');
+
+    function shuffleArray(array) {
+        let arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function startQuiz(topic) {
+        if (topic === 'all') {
+            currentPool = shuffleArray(masterQuestionBank);
+        } else {
+            const filtered = masterQuestionBank.filter(q => q.cat === topic);
+            currentPool = shuffleArray(filtered);
+        }
+        
+        wrongQuestions = [];
+        currentQuestionIndex = 0;
+        score = 0;
+        
+        selectionScreen.classList.add('hidden');
+        resultScreen.classList.add('hidden');
+        quizScreen.classList.remove('hidden');
+        
+        loadQuestion();
+    }
+
+    function goToSelection() {
+        quizScreen.classList.add('hidden');
+        resultScreen.classList.add('hidden');
+        selectionScreen.classList.remove('hidden');
+    }
+
+    function loadQuestion() {
+        nextBtn.classList.add('hidden');
+        feedbackMessage.classList.add('hidden');
+        feedbackMessage.textContent = '';
+        optionsContainer.innerHTML = '';
+        
+        const qData = currentPool[currentQuestionIndex];
+        
+        progress.textContent = `Question ${currentQuestionIndex + 1} of ${currentPool.length}`;
+        scoreTracker.textContent = `Score: ${score}`;
+        questionText.innerHTML = `${currentQuestionIndex + 1}. ${qData.q}`;
+
+        qData.opts.forEach((opt, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.textContent = opt;
+            btn.onclick = function() {
+                checkAnswer(index, btn);
+            };
+            optionsContainer.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedIndex, selectedBtn) {
+        const qData = currentPool[currentQuestionIndex];
+        const correctIndex = qData.ans;
+        const allBtns = optionsContainer.querySelectorAll('.btn');
+
+        allBtns.forEach(btn => btn.disabled = true);
+        feedbackMessage.classList.remove('hidden');
+
+        if (selectedIndex === correctIndex) {
+            selectedBtn.classList.add('correct');
+            feedbackMessage.textContent = "✅ Correct!";
+            feedbackMessage.style.color = "var(--correct-text)";
+            score++;
+            scoreTracker.textContent = `Score: ${score}`;
+        } else {
+            selectedBtn.classList.add('wrong');
+            allBtns[correctIndex].classList.add('correct');
+            feedbackMessage.textContent = "❌ Incorrect.";
+            feedbackMessage.style.color = "var(--wrong-text)";
+            
+            if (!wrongQuestions.includes(qData)) {
+                wrongQuestions.push(qData);
+            }
+        }
+        nextBtn.classList.remove('hidden');
+    }
+
+    nextBtn.onclick = function() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < currentPool.length) {
+            loadQuestion();
+        } else {
+            endQuiz();
+        }
+    };
+
+    function endQuiz() {
+        quizScreen.classList.add('hidden');
+        resultScreen.classList.remove('hidden');
+        
+        document.getElementById('final-score').innerHTML = 
+            `You scored <span style="color: var(--accent-blue);">${score}</span> out of ${currentPool.length}!`;
+
+        if (wrongQuestions.length > 0) {
+            retryBtn.classList.remove('hidden');
+            retryBtn.textContent = `Review ${wrongQuestions.length} Incorrect Question(s)`;
+        } else {
+            retryBtn.classList.add('hidden');
+            document.getElementById('final-score').innerHTML += "<br><br>🎉 Perfect score! Excellent work.";
+        }
+    }
+
+    retryBtn.onclick = function() {
+        currentPool = shuffleArray(wrongQuestions);
+        wrongQuestions = [];
+        currentQuestionIndex = 0;
+        score = 0;
+        resultScreen.classList.add('hidden');
+        quizScreen.classList.remove('hidden');
+        loadQuestion();
+    };
+</script>
+</body>
+</html>
