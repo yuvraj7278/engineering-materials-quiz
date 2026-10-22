@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engineering Materials Quiz Portal</title>
+    <title>Cusrow Wadia Institute of Technology - Examination Department</title>
     <style>
         :root {
             --bg-color: #f5f5f7;
@@ -29,42 +29,67 @@
 
         .hub-container {
             width: 100%;
-            max-width: 680px;
+            max-width: 720px;
             background: var(--card-bg);
             padding: 40px;
-            border-radius: 18px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.06);
+            border: 1px solid rgba(255, 255, 255, 0.8);
         }
 
         header {
             text-align: center;
             margin-bottom: 32px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 24px;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .logo-container img {
+            width: 76px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .dept-title {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            margin-bottom: 6px;
         }
 
         h1 {
-            font-size: 28px;
-            margin: 0 0 8px 0;
+            font-size: 24px;
+            margin: 0 0 6px 0;
             font-weight: 600;
+            color: var(--text-main);
         }
 
         p.subtitle {
             color: var(--text-muted);
-            font-size: 15px;
+            font-size: 14px;
             margin: 0;
         }
 
         .quiz-grid {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
 
         .quiz-card {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 24px;
+            padding: 18px 22px;
             background: #ffffff;
             border: 1px solid var(--border-color);
             border-radius: 14px;
@@ -76,16 +101,17 @@
         .quiz-card:hover {
             border-color: var(--accent-blue);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
         }
 
         .quiz-info h2 {
-            font-size: 18px;
+            font-size: 17px;
             margin: 0 0 4px 0;
+            font-weight: 600;
         }
 
         .quiz-info p {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-muted);
             margin: 0;
         }
@@ -94,10 +120,17 @@
             background: #e8f2ff;
             color: var(--accent-blue);
             font-weight: 600;
-            font-size: 13px;
-            padding: 6px 14px;
+            font-size: 12px;
+            padding: 6px 12px;
             border-radius: 20px;
             white-space: nowrap;
+        }
+
+        footer.portal-footer {
+            text-align: center;
+            margin-top: 28px;
+            font-size: 12px;
+            color: var(--text-muted);
         }
     </style>
 </head>
@@ -105,8 +138,13 @@
 
 <div class="hub-container">
     <header>
-        <h1>Engineering Materials Quiz Portal</h1>
-        <p class="subtitle">Select a unit module to begin practicing</p>
+        <div class="logo-container">
+            <!-- Ensure your logo image file is named logo.png or update the src accordingly -->
+            <img src="logo.png" alt="CWIT Logo">
+        </div>
+        <div class="dept-title">Cusrow Wadia Institute of Technology, Pune - 01</div>
+        <h1>Examination Department</h1>
+        <p class="subtitle">Engineering Materials Quiz & Assessment Portal</p>
     </header>
 
     <div class="quiz-grid">
@@ -126,7 +164,6 @@
             <span class="badge" style="background: #34c759; color: white;">60 Questions</span>
         </a>
 
-        <!-- Newly Added Unit 4, 5 & 6 Page -->
         <a href="emt final quiz.html" class="quiz-card" style="border-color: #af52de; background: #faf5fc;">
             <div class="quiz-info">
                 <h2 style="color: #8940a5;">EMT Units 4, 5 & 6 Quiz</h2>
@@ -159,6 +196,10 @@
             <span class="badge">81 Questions</span>
         </a>
     </div>
+
+    <footer class="portal-footer">
+        Modern Education Society's &bull; Department of Mechanical Engineering
+    </footer>
 </div>
 
 </body>
