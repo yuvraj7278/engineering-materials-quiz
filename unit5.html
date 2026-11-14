@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMT Unit 5 Quiz - Powder Metallurgy</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f7;
+            --window-bg: #ffffff;
+            --text-main: #1d1d1f;
+            --text-muted: #86868b;
+            --border-color: #d2d2d7;
+            --accent-blue: #0071e3;
+            --accent-blue-hover: #0077ed;
+            --correct-bg: #e3fcef;
+            --correct-border: #34c759;
+            --correct-text: #0c5c27;
+            --wrong-bg: #fce8e8;
+            --wrong-border: #ff3b30;
+            --wrong-text: #8a0a14;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 680px;
+            background: var(--window-bg);
+            padding: 32px 40px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            width: 100%;
+            text-align: left;
+            padding: 14px 18px;
+            font-size: 15px;
+            background: var(--window-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+            color: var(--text-main);
+        }
+
+        .btn:hover:not(:disabled) {
+            background: var(--bg-color);
+            border-color: #a1a1a6;
+        }
+
+        .btn:disabled {
+            cursor: default;
+        }
+
+        .correct {
+            background: var(--correct-bg) !important;
+            border-color: var(--correct-border) !important;
+            color: var(--correct-text) !important;
+            font-weight: 500;
+        }
+
+        .wrong {
+            background: var(--wrong-bg) !important;
+            border-color: var(--wrong-border) !important;
+            color: var(--wrong-text) !important;
+        }
+
+        .action-btn {
+            text-align: center;
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            font-weight: 600;
+            margin-top: 24px;
+            box-shadow: 0 2px 5px rgba(0, 113, 227, 0.3);
+        }
+
+        .action-btn:hover {
+            background: var(--accent-blue-hover);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .feedback {
+            margin-top: 18px;
+            font-weight: 600;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        #selection-screen, #result-screen {
+            text-align: center;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .topic-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 18px;
+            font-size: 15px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-main);
+        }
+
+        .topic-btn:hover {
+            background: var(--bg-color);
+            border-color: var(--accent-blue);
+        }
+
+        .badge {
+            background: #e8f0fe;
+            color: #1a73e8;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .score-display {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 24px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Selection Screen -->
+    <div id="selection-screen">
+        <h2>Unit 5 Quiz - Powder Metallurgy</h2>
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Choose whether to attempt the full question bank or practice a specific section from Unit 5.</p>
+        
+        <button class="action-btn btn" onclick="startQuiz('all')" style="margin-top: 0; font-size: 16px; padding: 16px;">🚀 Attempt Full Quiz (30 Questions)</button>
+        
+        <div class="topic-grid">
+            <button class="topic-btn" onclick="startQuiz('Basics & Process Sequence')">
+                <span>1. Basics & Process Sequence</span>
+                <span class="badge">5 Qs</span>
+            </button>
+            <button class="topic-btn" onclick="startQuiz('Powder Production Methods')">
+                <span>2. Powder Production Methods</span>
+                <span class="badge">5 Qs</span>
+            </button>
+            <button class="topic-btn" onclick="startQuiz('Blending & Compacting')">
+                <span>3. Blending, Compacting & Sintering</span>
+                <span class="badge">5 Qs</span>
+            </button>
+            <button class="topic-btn" onclick="startQuiz('Secondary Operations')">
+                <span>4. Secondary Operations (Infiltration/Impregnation)</span>
+                <span class="badge">5 Qs</span>
+            </button>
+            <button class="topic-btn" onclick="startQuiz('Applications & Advantages')">
+                <span>5. Applications, Advantages & Limitations</span>
+                <span class="badge">10 Qs</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quiz-screen" class="hidden">
+        <div class="status-bar">
+            <span id="progress">Question 1 / 30</span>
+            <span id="score-tracker">Score: 0</span>
+        </div>
+        
+        <h2 id="question-text">Question loading...</h2>
+        
+        <div class="options" id="options-container"></div>
+        
+        <div id="feedback-message" class="feedback hidden"></div>
+        
+        <button id="next-btn" class="btn action-btn hidden">Next Question</button>
+        <button onclick="goToSelection()" class="btn" style="margin-top: 12px; background: transparent; border: none; color: var(--text-muted); cursor: pointer; text-align: center; width: 100%;">← Back to Topic Selection</button>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="hidden">
+        <h2>Quiz Complete</h2>
+        <div id="final-score" class="score-display"></div>
+        
+        <button id="retry-btn" class="btn action-btn hidden">Resolve Incorrect Questions</button>
+        <button onclick="goToSelection()" class="btn action-btn" style="background: var(--text-main); margin-top: 12px;">Choose Another Topic</button>
+    </div>
+</div>
+
+<script>
+    const masterQuestionBank = [
+    {
+        "q": "A component requires a complex shape with minimum material wastage. Which manufacturing process is most suitable?",
+        "opts": [
+            "Forging",
+            "Powder metallurgy",
+            "Rolling",
+            "Sand casting"
+        ],
+        "ans": 1,
+        "cat": "Basics & Process Sequence"
+    },
+    {
+        "q": "Which sequence correctly represents the basic powder metallurgy process?",
+        "opts": [
+            "Mixing → Compacting → Sintering → Finishing",
+            "Melting → Casting → Rolling → Finishing",
+            "Forging → Heating → Welding → Machining",
+            "Rolling → Casting → Compacting → Melting"
+        ],
+        "ans": 0,
+        "cat": "Basics & Process Sequence"
+    },
+    {
+        "q": "During powder metallurgy, compacted metal powder is heated below its melting point to develop strength. This operation is called:",
+        "opts": [
+            "Annealing",
+            "Sintering",
+            "Tempering",
+            "Normalizing"
+        ],
+        "ans": 1,
+        "cat": "Basics & Process Sequence"
+    },
+    {
+        "q": "The term green compact in powder metallurgy refers to:",
+        "opts": [
+            "A freshly painted component",
+            "A compacted powder component before sintering",
+            "A molten metal component",
+            "A heat-treated finished component"
+        ],
+        "ans": 1,
+        "cat": "Basics & Process Sequence"
+    },
+    {
+        "q": "A lubricant is added during blending of metal powders mainly to:",
+        "opts": [
+            "Reduce friction during compaction",
+            "Increase melting point",
+            "Remove the die",
+            "Melt the powder"
+        ],
+        "ans": 0,
+        "cat": "Basics & Process Sequence"
+    },
+    {
+        "q": "Molten metal is forced through small openings and broken into fine droplets using a high-velocity fluid. Which powder-making method is being used?",
+        "opts": [
+            "Atomization",
+            "Electrolysis",
+            "Reduction",
+            "Machining"
+        ],
+        "ans": 0,
+        "cat": "Powder Production Methods"
+    },
+    {
+        "q": "A PM manufacturer requires powder with a spherical particle shape for good flowability. Which method is generally preferred?",
+        "opts": [
+            "Atomization",
+            "Crushing",
+            "Mechanical filing",
+            "Grinding"
+        ],
+        "ans": 0,
+        "cat": "Powder Production Methods"
+    },
+    {
+        "q": "A manufacturer wants to produce copper powder with high purity by depositing copper from an electrolyte. Which method should be selected?",
+        "opts": [
+            "Electrolytic method",
+            "Atomization",
+            "Mechanical crushing",
+            "Gas reduction"
+        ],
+        "ans": 0,
+        "cat": "Powder Production Methods"
+    },
+    {
+        "q": "A metal oxide is converted into metal powder by heating it in a suitable reducing atmosphere. Which method is being used?",
+        "opts": [
+            "Chemical reduction",
+            "Atomization",
+            "Mechanical milling",
+            "Compaction"
+        ],
+        "ans": 0,
+        "cat": "Powder Production Methods"
+    },
+    {
+        "q": "An engineer wants to produce very fine powder from a brittle material using a ball mill. Which powder-making method is involved?",
+        "opts": [
+            "Mechanical milling",
+            "Atomization",
+            "Electrolysis",
+            "Chemical reduction"
+        ],
+        "ans": 0,
+        "cat": "Powder Production Methods"
+    },
+    {
+        "q": "Which property of metal powder is particularly important for obtaining uniform filling of a die?",
+        "opts": [
+            "Flowability",
+            "Melting point only",
+            "Electrical conductivity only",
+            "Hardness only"
+        ],
+        "ans": 0,
+        "cat": "Blending & Compacting"
+    },
+    {
+        "q": "Which characteristic of powder is most important when producing a component with high green density?",
+        "opts": [
+            "Compressibility",
+            "Colour",
+            "Odour",
+            "Surface shine"
+        ],
+        "ans": 0,
+        "cat": "Blending & Compacting"
+    },
+    {
+        "q": "If iron and graphite powders are not mixed uniformly before compaction, the final component may have:",
+        "opts": [
+            "Non-uniform composition",
+            "Higher dimensional accuracy",
+            "Zero porosity",
+            "Uniform properties everywhere"
+        ],
+        "ans": 0,
+        "cat": "Blending & Compacting"
+    },
+    {
+        "q": "The main purpose of applying pressure during compaction is to:",
+        "opts": [
+            "Give the powder the required shape and increase density",
+            "Melt the powder completely",
+            "Remove all alloying elements",
+            "Convert powder into liquid"
+        ],
+        "ans": 0,
+        "cat": "Blending & Compacting"
+    },
+    {
+        "q": "Why is a controlled atmosphere often used during sintering?",
+        "opts": [
+            "To prevent undesirable oxidation and reactions",
+            "To increase powder size",
+            "To remove the die",
+            "To increase machining allowance"
+        ],
+        "ans": 0,
+        "cat": "Blending & Compacting"
+    },
+    {
+        "q": "An iron-based sintered component has interconnected pores. Copper is introduced into these pores to improve its properties. This process is called:",
+        "opts": [
+            "Blending",
+            "Infiltration",
+            "Compacting",
+            "Powder making"
+        ],
+        "ans": 1,
+        "cat": "Secondary Operations"
+    },
+    {
+        "q": "The main purpose of metal infiltration in a sintered component is to:",
+        "opts": [
+            "Reduce porosity and improve strength",
+            "Increase powder size",
+            "Produce a green compact",
+            "Remove alloying elements"
+        ],
+        "ans": 0,
+        "cat": "Secondary Operations"
+    },
+    {
+        "q": "Oil is introduced into the pores of a sintered bearing. The primary purpose is to:",
+        "opts": [
+            "Provide self-lubrication",
+            "Increase powder size",
+            "Produce a green compact",
+            "Melt the bearing"
+        ],
+        "ans": 0,
+        "cat": "Secondary Operations"
+    },
+    {
+        "q": "A porous PM component is filled with resin to seal its pores. Which process is being used?",
+        "opts": [
+            "Impregnation",
+            "Compaction",
+            "Sintering",
+            "Powder making"
+        ],
+        "ans": 0,
+        "cat": "Secondary Operations"
+    },
+    {
+        "q": "A sintered component needs improved density by filling its interconnected pores with a lower-melting-point metal. Which process is selected?",
+        "opts": [
+            "Infiltration",
+            "Impregnation",
+            "Blending",
+            "Compacting"
+        ],
+        "ans": 0,
+        "cat": "Secondary Operations"
+    },
+    {
+        "q": "Why is powder metallurgy suitable for manufacturing self-lubricating bearings?",
+        "opts": [
+            "It produces completely solid components",
+            "It can produce controlled porosity",
+            "It requires extensive machining",
+            "It increases melting temperature"
+        ],
+        "ans": 1,
+        "cat": "Applications & Advantages"
+    },
+    {
+        "q": "A company wants to manufacture tungsten carbide cutting-tool tips. Which manufacturing process is most suitable?",
+        "opts": [
+            "Powder metallurgy",
+            "Sand casting",
+            "Rolling",
+            "Sheet-metal forming"
+        ],
+        "ans": 0,
+        "cat": "Applications & Advantages"
+    },
+    {
+        "q": "Which of the following is a major advantage of powder metallurgy?",
+        "opts": [
+            "High material wastage",
+            "Ability to produce controlled porosity",
+            "Necessity of melting every powder",
+            "Very large machining allowance"
+        ],
+        "ans": 1,
+        "cat": "Applications & Advantages"
+    },
+    {
+        "q": "A major limitation of powder metallurgy is that:",
+        "opts": [
+            "Tooling and dies can be expensive",
+            "It always produces large quantities of scrap",
+            "It cannot produce small components",
+            "It requires all materials to be melted"
+        ],
+        "ans": 0,
+        "cat": "Applications & Advantages"
+    },
+    {
+        "q": "The commonly used binder metal in cemented tungsten carbide tools is:",
+        "opts": [
+            "Copper",
+            "Aluminium",
+            "Cobalt",
+            "Zinc"
+        ],
+        "ans": 2,
+        "cat": "Applications & Advantages"
+    },
+    {
+        "q": "Which material is particularly difficult to manufacture by conventional melting but can be processed effectively using powder metallurgy?",
+        "opts": [
+            "Tungsten",
+            "Aluminium",
+            "Copper",
+            "Zinc"
+        ],
+        "ans": 0,
+        "cat": "Applications & Advantages"
+    },
+    {
+        "q": "Powder metallurgy is economical for:",
+        "opts": [
+            "Low-volume production",
+            "Mass production",
+            "One-off products",
+            "Repair work"
+        ],
+        "ans": 1,
+        "cat": "Applications & Advantages"
+    },
+    {
+        "q": "The high initial cost of dies in powder metallurgy is best justified by:",
+        "opts": [
+            "Mass production",
+            "Single-piece production",
+            "Prototype production only",
+            "Manual production"
+        ],
+        "ans": 0,
+        "cat": "Applications & Advantages"
+    },
+    {
+        "q": "Residual porosity in powder-metallurgy parts can result in:",
+        "opts": [
+            "Increased mechanical strength in all cases",
+            "Reduced mechanical properties",
+            "Complete elimination of defects",
+            "Higher melting temperature"
+        ],
+        "ans": 1,
+        "cat": "Applications & Advantages"
+    },
+    {
+        "q": "The size of a powder-metallurgy component is mainly limited by:",
+        "opts": [
+            "Cutting speed",
+            "Press and die capacity",
+            "Welding current",
+            "Coolant flow"
+        ],
+        "ans": 1,
+        "cat": "Applications & Advantages"
+    }
+    ];
+
+    let currentPool = [];
+    let wrongQuestions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    const selectionScreen = document.getElementById('selection-screen');
+    const quizScreen = document.getElementById('quiz-screen');
+    const resultScreen = document.getElementById('result-screen');
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const nextBtn = document.getElementById('next-btn');
+    const progress = document.getElementById('progress');
+    const scoreTracker = document.getElementById('score-tracker');
+    const feedbackMessage = document.getElementById('feedback-message');
+    const retryBtn = document.getElementById('retry-btn');
+
+    function shuffleArray(array) {
+        let arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function startQuiz(topic) {
+        if (topic === 'all') {
+            currentPool = shuffleArray(masterQuestionBank);
+        } else {
+            const filtered = masterQuestionBank.filter(q => q.cat === topic);
+            currentPool = shuffleArray(filtered);
+        }
+        
+        wrongQuestions = [];
+        currentQuestionIndex = 0;
+        score = 0;
+        
+        selectionScreen.classList.add('hidden');
+        resultScreen.classList.add('hidden');
+        quizScreen.classList.remove('hidden');
+        
+        loadQuestion();
+    }
+
+    function goToSelection() {
+        quizScreen.classList.add('hidden');
+        resultScreen.classList.add('hidden');
+        selectionScreen.classList.remove('hidden');
+    }
+
+    function loadQuestion() {
+        nextBtn.classList.add('hidden');
+        feedbackMessage.classList.add('hidden');
+        optionsContainer.innerHTML = '';
+        
+        const qData = currentPool[currentQuestionIndex];
+        
+        progress.textContent = `Question ${currentQuestionIndex + 1} of ${currentPool.length}`;
+        scoreTracker.textContent = `Score: ${score}`;
+        questionText.innerHTML = `${currentQuestionIndex + 1}. ${qData.q}`;
+
+        qData.opts.forEach((opt, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerHTML = `${String.fromCharCode(65 + index)}. ${opt}`;
+            btn.onclick = () => checkAnswer(index, btn);
+            optionsContainer.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedIndex, selectedBtn) {
+        const qData = currentPool[currentQuestionIndex];
+        const correctIndex = qData.ans;
+        const allBtns = optionsContainer.querySelectorAll('.btn');
+
+        allBtns.forEach(btn => btn.disabled = true);
+        feedbackMessage.classList.remove('hidden');
+
+        if (selectedIndex === correctIndex) {
+            selectedBtn.classList.add('correct');
+            feedbackMessage.textContent = "✅ Correct!";
+            feedbackMessage.style.color = "var(--correct-text)";
+            score++;
+            scoreTracker.textContent = `Score: ${score}`;
+        } else {
+            selectedBtn.classList.add('wrong');
+            allBtns[correctIndex].classList.add('correct');
+            feedbackMessage.textContent = "❌ Incorrect.";
+            feedbackMessage.style.color = "var(--wrong-text)";
+            
+            if (!wrongQuestions.includes(qData)) {
+                wrongQuestions.push(qData);
+            }
+        }
+        nextBtn.classList.add('hidden');
+        nextBtn.classList.remove('hidden');
+    }
+
+    nextBtn.onclick = () => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < currentPool.length) {
+            loadQuestion();
+        } else {
+            endQuiz();
+        }
+    };
+
+    function endQuiz() {
+        quizScreen.classList.add('hidden');
+        resultScreen.classList.remove('hidden');
+        
+        document.getElementById('final-score').innerHTML = 
+            `You scored <span style="color: var(--accent-blue);">${score}</span> out of ${currentPool.length}!`;
+
+        if (wrongQuestions.length > 0) {
+            retryBtn.classList.remove('hidden');
+            retryBtn.textContent = `Review ${wrongQuestions.length} Incorrect Question(s)`;
+        } else {
+            retryBtn.classList.add('hidden');
+            document.getElementById('final-score').innerHTML += "<br><br>🎉 Perfect score! Excellent work.";
+        }
+    }
+
+    retryBtn.onclick = () => {
+        currentPool = shuffleArray(wrongQuestions);
+        wrongQuestions = [];
+        currentQuestionIndex = 0;
+        score = 0;
+        resultScreen.classList.add('hidden');
+        quizScreen.classList.remove('hidden');
+        loadQuestion();
+    };
+</script>
+</body>
+</html>
