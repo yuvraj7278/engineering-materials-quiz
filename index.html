@@ -104,6 +104,13 @@
             box-shadow: 0 6px 16px rgba(0,0,0,0.04);
         }
 
+        /* Styling for Unit 5 before file is added */
+        .quiz-card.coming-soon {
+            opacity: 0.65;
+            background: #fafafa;
+            border-style: dashed;
+        }
+
         .quiz-info h2 {
             font-size: 17px;
             margin: 0 0 4px 0;
@@ -126,6 +133,59 @@
             white-space: nowrap;
         }
 
+        /* Collapsible Folder Styling */
+        .quiz-folder {
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            background: #f9f9fb;
+            overflow: hidden;
+            margin-top: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .quiz-folder summary {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 22px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .quiz-folder summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .folder-title-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .folder-icon {
+            font-size: 22px;
+        }
+
+        .folder-chevron {
+            font-size: 12px;
+            color: var(--text-muted);
+            transition: transform 0.2s ease;
+        }
+
+        .quiz-folder[open] .folder-chevron {
+            transform: rotate(180deg);
+        }
+
+        .folder-contents {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 0 18px 18px 18px;
+            border-top: 1px solid #e5e5ea;
+            padding-top: 16px;
+        }
+
         footer.portal-footer {
             text-align: center;
             margin-top: 28px;
@@ -139,7 +199,6 @@
 <div class="hub-container">
     <header>
         <div class="logo-container">
-            <!-- Ensure your logo image file is named logo.png or update the src accordingly -->
             <img src="logo.png" alt="CWIT Logo">
         </div>
         <div class="dept-title">Cusrow Wadia Institute of Technology, Pune - 01</div>
@@ -148,6 +207,7 @@
     </header>
 
     <div class="quiz-grid">
+        <!-- Main Full Mock Test -->
         <a href="fulltest.html" class="quiz-card" style="border-color: #0071e3; background: #fbfdff;">
             <div class="quiz-info">
                 <h2 style="color: #0071e3;">30 Marks Full Mock Test</h2>
@@ -156,22 +216,7 @@
             <span class="badge" style="background: #0071e3; color: white;">30 Marks</span>
         </a>
 
-        <a href="quizfinal.html" class="quiz-card" style="border-color: #34c759; background: #f4fbf7;">
-            <div class="quiz-info">
-                <h2 style="color: #248a3d;">MEM 26 Final Question Bank Quiz</h2>
-                <p>Comprehensive Question Bank with Retry Mode</p>
-            </div>
-            <span class="badge" style="background: #34c759; color: white;">60 Questions</span>
-        </a>
-
-        <a href="emt final quiz.html" class="quiz-card" style="border-color: #af52de; background: #faf5fc;">
-            <div class="quiz-info">
-                <h2 style="color: #8940a5;">EMT Units 4, 5 & 6 Quiz</h2>
-                <p>Heat Treatment, Powder Metallurgy, Refractories & Fuels</p>
-            </div>
-            <span class="badge" style="background: #af52de; color: white;">72 Questions</span>
-        </a>
-
+        <!-- Unit-wise Quizzes (1 to 6) -->
         <a href="unit1.html" class="quiz-card">
             <div class="quiz-info">
                 <h2>Unit 1 Quiz</h2>
@@ -204,6 +249,14 @@
             <span class="badge">Practice Quiz</span>
         </a>
 
+        <a href="unit5.html" class="quiz-card coming-soon">
+            <div class="quiz-info">
+                <h2>Unit 5 Quiz</h2>
+                <p>Powder Metallurgy & Non-Metallic Materials</p>
+            </div>
+            <span class="badge" style="background: #e5e5ea; color: #6e6e73;">Coming Soon</span>
+        </a>
+
         <a href="unit6.html" class="quiz-card">
             <div class="quiz-info">
                 <h2>Unit 6 Quiz</h2>
@@ -211,6 +264,41 @@
             </div>
             <span class="badge">Practice Quiz</span>
         </a>
+
+        <!-- Folder at the Bottom for Question Banks & Combined Quizzes -->
+        <details class="quiz-folder">
+            <summary>
+                <div class="folder-title-group">
+                    <span class="folder-icon">📁</span>
+                    <div class="quiz-info">
+                        <h2>Question Banks & Combined Quizzes</h2>
+                        <p>Click to expand full question banks and multi-unit tests</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span class="badge" style="background: #e5e5ea; color: #1d1d1f;">2 Quizzes</span>
+                    <span class="folder-chevron">▼</span>
+                </div>
+            </summary>
+
+            <div class="folder-contents">
+                <a href="quizfinal.html" class="quiz-card" style="border-color: #34c759; background: #f4fbf7;">
+                    <div class="quiz-info">
+                        <h2 style="color: #248a3d;">MEM 26 Final Question Bank Quiz</h2>
+                        <p>Comprehensive Question Bank with Retry Mode</p>
+                    </div>
+                    <span class="badge" style="background: #34c759; color: white;">60 Questions</span>
+                </a>
+
+                <a href="emt final quiz.html" class="quiz-card" style="border-color: #af52de; background: #faf5fc;">
+                    <div class="quiz-info">
+                        <h2 style="color: #8940a5;">EMT Units 4, 5 & 6 Quiz</h2>
+                        <p>Heat Treatment, Powder Metallurgy, Refractories & Fuels</p>
+                    </div>
+                    <span class="badge" style="background: #af52de; color: white;">72 Questions</span>
+                </a>
+            </div>
+        </details>
     </div>
 
     <footer class="portal-footer">
