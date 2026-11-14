@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMT Unit 4 Heat Treatment Quiz</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f7;
+            --window-bg: #ffffff;
+            --text-main: #1d1d1f;
+            --text-muted: #86868b;
+            --border-color: #d2d2d7;
+            --accent-blue: #0071e3;
+            --accent-blue-hover: #0077ed;
+            --correct-bg: #e3fcef;
+            --correct-border: #34c759;
+            --correct-text: #0c5c27;
+            --wrong-bg: #fce8e8;
+            --wrong-border: #ff3b30;
+            --wrong-text: #8a0a14;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 680px;
+            background: var(--window-bg);
+            padding: 32px 40px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            width: 100%;
+            text-align: left;
+            padding: 14px 18px;
+            font-size: 15px;
+            background: var(--window-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+            color: var(--text-main);
+        }
+
+        .btn:hover:not(:disabled) {
+            background: var(--bg-color);
+            border-color: #a1a1a6;
+        }
+
+        .btn:disabled {
+            cursor: default;
+        }
+
+        .correct {
+            background: var(--correct-bg) !important;
+            border-color: var(--correct-border) !important;
+            color: var(--correct-text) !important;
+            font-weight: 500;
+        }
+
+        .wrong {
+            background: var(--wrong-bg) !important;
+            border-color: var(--wrong-border) !important;
+            color: var(--wrong-text) !important;
+        }
+
+        .action-btn {
+            text-align: center;
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            font-weight: 600;
+            margin-top: 24px;
+            box-shadow: 0 2px 5px rgba(0, 113, 227, 0.3);
+        }
+
+        .action-btn:hover {
+            background: var(--accent-blue-hover);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .feedback {
+            margin-top: 18px;
+            font-weight: 600;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        #selection-screen, #result-screen {
+            text-align: center;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .topic-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 18px;
+            font-size: 15px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-main);
+        }
+
+        .topic-btn:hover {
+            background: var(--bg-color);
+            border-color: var(--accent-blue);
+        }
+
+        .badge {
+            background: #e8f0fe;
+            color: #1a73e8;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .score-display {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 24px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Selection Screen -->
+    <div id="selection-screen">
+        <h2>Select Quiz Mode / Topic</h2>
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Choose whether to attempt the full question bank or practice a specific heat treatment topic.</p>
+        
+        <button class="action-btn btn" onclick="startQuiz('all')" style="margin-top: 0; font-size: 16px; padding: 16px;">🚀 Attempt Full Quiz (94 Questions)</button>
+        
+        <div class="topic-grid">
+            <button class="topic-btn" onclick="startQuiz('General Heat Treatment')">
+                <span>1. General Heat Treatment & Mixed Concepts</span>
+                <span class="badge">25 Qs</span>
+            </button>
+            <button class="topic-btn" onclick="startQuiz('Annealing')">
+                <span>2. Annealing</span>
+                <span class="badge">15 Qs</span>
+            </button>
+            <button class="topic-btn" onclick="startQuiz('Normalizing')">
+                <span>3. Normalizing</span>
+                <span class="badge">20 Qs</span>
+            </button>
+            <button class="topic-btn" onclick="startQuiz('Case Hardening')">
+                <span>4. Case Hardening</span>
+                <span class="badge">12 Qs</span>
+            </button>
+            <button class="topic-btn" onclick="startQuiz('Hardening')">
+                <span>5. Hardening</span>
+                <span class="badge">10 Qs</span>
+            </button>
+            <button class="topic-btn" onclick="startQuiz('Tempering')">
+                <span>6. Tempering</span>
+                <span class="badge">12 Qs</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quiz-screen" class="hidden">
+        <div class="status-bar">
+            <span id="progress">Question 1 / 94</span>
+            <span id="score-tracker">Score: 0</span>
+        </div>
+        
+        <h2 id="question-text">Question loading...</h2>
+        
+        <div class="options" id="options-container"></div>
+        
+        <div id="feedback-message" class="feedback hidden"></div>
+        
+        <button id="next-btn" class="btn action-btn hidden">Next Question</button>
+        <button onclick="goToSelection()" class="btn" style="margin-top: 12px; background: transparent; border: none; color: var(--text-muted); cursor: pointer; text-align: center; width: 100%;">← Back to Topic Selection</button>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="hidden">
+        <h2>Quiz Complete</h2>
+        <div id="final-score" class="score-display"></div>
+        
+        <button id="retry-btn" class="btn action-btn hidden">Resolve Incorrect Questions</button>
+        <button onclick="goToSelection()" class="btn action-btn" style="background: var(--text-main); margin-top: 12px;">Choose Another Topic</button>
+    </div>
+</div>
+
+<script>
+    const masterQuestionBank = [
+    {
+        "q": "A steel component is very hard but is breaking under impact. Which treatment is most appropriate?",
+        "opts": [
+            "Annealing",
+            "Normalizing",
+            "Tempering",
+            "Carburizing"
+        ],
+        "ans": 2,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "A forged steel component needs to be softened and made easier to machine. Which treatment should be selected?",
+        "opts": [
+            "Hardening",
+            "Annealing",
+            "Nitriding",
+            "Induction hardening"
+        ],
+        "ans": 1,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "A machine component requires improved grain structure and higher strength than the annealed condition. Which process is suitable?",
+        "opts": [
+            "Normalizing",
+            "Tempering",
+            "Nitriding",
+            "Carburizing"
+        ],
+        "ans": 0,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "A gear requires a hard wear-resistant surface and a tough core. Which treatment is most suitable?",
+        "opts": [
+            "Annealing",
+            "Carburizing",
+            "Tempering only",
+            "Normalizing"
+        ],
+        "ans": 1,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "Which heat-treatment process involves rapid cooling after heating to produce a hard structure?",
+        "opts": [
+            "Annealing",
+            "Normalizing",
+            "Hardening",
+            "Tempering"
+        ],
+        "ans": 2,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "The principal microstructure produced by hardening suitable carbon steel is:",
+        "opts": [
+            "Ferrite",
+            "Pearlite",
+            "Martensite",
+            "Cementite"
+        ],
+        "ans": 2,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "Which process generally uses furnace cooling?",
+        "opts": [
+            "Hardening",
+            "Annealing",
+            "Normalizing",
+            "Flame hardening"
+        ],
+        "ans": 1,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "Which process normally cools the steel in still air?",
+        "opts": [
+            "Annealing",
+            "Normalizing",
+            "Hardening",
+            "Carburizing"
+        ],
+        "ans": 1,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "The main purpose of tempering hardened steel is to:",
+        "opts": [
+            "Increase brittleness",
+            "Reduce toughness",
+            "Reduce brittleness and residual stresses",
+            "Increase carbon content"
+        ],
+        "ans": 2,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "A shaft requires a hard surface but a relatively tough interior. Which category of treatment should be considered?",
+        "opts": [
+            "Surface hardening",
+            "Full annealing",
+            "Stress relieving only",
+            "Normalizing only"
+        ],
+        "ans": 0,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "Which process introduces carbon into the surface of low-carbon steel?",
+        "opts": [
+            "Nitriding",
+            "Carburizing",
+            "Tempering",
+            "Normalizing"
+        ],
+        "ans": 1,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "Which process introduces nitrogen into the surface of steel?",
+        "opts": [
+            "Carburizing",
+            "Annealing",
+            "Nitriding",
+            "Hardening"
+        ],
+        "ans": 2,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "A component has excessive residual stresses after manufacturing. Which treatment can be used primarily to reduce them?",
+        "opts": [
+            "Stress relieving",
+            "Carburizing",
+            "Nitriding",
+            "Hardening"
+        ],
+        "ans": 0,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "Why is tempering generally performed after hardening?",
+        "opts": [
+            "To increase brittleness",
+            "To remove all carbon",
+            "To reduce brittleness and obtain a useful hardness-toughness combination",
+            "To increase melting temperature"
+        ],
+        "ans": 2,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "Which treatment is most suitable when maximum softness and machinability are required?",
+        "opts": [
+            "Hardening",
+            "Annealing",
+            "Nitriding",
+            "Induction hardening"
+        ],
+        "ans": 1,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "Which process is particularly suitable for selective hardening of the surface of a component?",
+        "opts": [
+            "Flame hardening",
+            "Full annealing",
+            "Normalizing",
+            "Tempering"
+        ],
+        "ans": 0,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "In induction hardening, the steel surface is heated primarily by:",
+        "opts": [
+            "Chemical reaction",
+            "Electromagnetic induction",
+            "Direct flame only",
+            "Furnace radiation only"
+        ],
+        "ans": 1,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "Which heat treatment generally gives the softest structure among annealing and normalizing?",
+        "opts": [
+            "Normalizing",
+            "Annealing",
+            "Hardening",
+            "Tempering"
+        ],
+        "ans": 1,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "A student needs to manufacture a steel component that must withstand severe wear at its surface while maintaining a tough core. Which combination is most appropriate?",
+        "opts": [
+            "Carburizing + hardening",
+            "Annealing only",
+            "Normalizing only",
+            "Tempering only"
+        ],
+        "ans": 0,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "Which sequence correctly represents the basic heat-treatment cycle?",
+        "opts": [
+            "Cooling -> heating -> soaking",
+            "Soaking -> cooling -> heating",
+            "Heating -> soaking -> cooling",
+            "Heating -> cooling -> soaking"
+        ],
+        "ans": 2,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "Two identical steel gears are manufactured. Gear A needs maximum machinability before machining, while Gear B needs high surface wear resistance after machining. Which treatments are most appropriate?",
+        "opts": [
+            "A-Annealing, B-Carburizing",
+            "A-Hardening, B-Annealing",
+            "A-Nitriding, B-Annealing",
+            "A-Tempering, B-Normalizing"
+        ],
+        "ans": 0,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "A hardened shaft is found to be too brittle for shock loading. What is the most logical corrective treatment?",
+        "opts": [
+            "Further hardening",
+            "Tempering",
+            "Carburizing",
+            "Normalizing without changing hardness"
+        ],
+        "ans": 1,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "A manufacturer wants to increase hardness only near the surface without hardening the entire cross-section. Which option is most appropriate?",
+        "opts": [
+            "Surface hardening",
+            "Full annealing",
+            "Full normalizing",
+            "Stress relieving"
+        ],
+        "ans": 0,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "Which statement correctly compares annealing and normalizing?",
+        "opts": [
+            "Both always use furnace cooling",
+            "Annealing generally produces a softer structure because cooling is slower",
+            "Normalizing always produces martensite",
+            "Annealing produces greater hardness than hardening"
+        ],
+        "ans": 1,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "A designer wants a component with a combination of high hardness and reasonable toughness rather than maximum hardness. Which treatment sequence is generally appropriate?",
+        "opts": [
+            "Annealing only",
+            "Hardening followed by tempering",
+            "Normalizing followed by annealing",
+            "Carburizing followed by annealing"
+        ],
+        "ans": 1,
+        "cat": "General Heat Treatment"
+    },
+    {
+        "q": "A steel component has become very hard after cold working and cannot be easily formed. Which heat treatment should be selected?",
+        "opts": [
+            "Hardening",
+            "Annealing",
+            "Normalizing",
+            "Tempering"
+        ],
+        "ans": 1,
+        "cat": "Annealing"
+    },
+    {
+        "q": "A low-carbon steel sheet is repeatedly cold worked and starts losing its ductility. Which process is most suitable?",
+        "opts": [
+            "Process annealing",
+            "Hardening",
+            "Nitriding",
+            "Flame hardening"
+        ],
+        "ans": 0,
+        "cat": "Annealing"
+    },
+    {
+        "q": "A welded steel frame contains considerable residual stresses. Which heat treatment would be most appropriate?",
+        "opts": [
+            "Hardening",
+            "Stress-relief annealing",
+            "Carburizing",
+            "Spheroidizing"
+        ],
+        "ans": 1,
+        "cat": "Annealing"
+    },
+    {
+        "q": "A high-carbon steel component needs improved machinability before machining. Which annealing treatment is particularly suitable?",
+        "opts": [
+            "Process annealing",
+            "Spheroidizing annealing",
+            "Stress-relief annealing",
+            "Normalizing"
+        ],
+        "ans": 1,
+        "cat": "Annealing"
+    },
+    {
+        "q": "Why is furnace cooling used in full annealing?",
+        "opts": [
+            "To produce rapid transformation",
+            "To obtain a soft structure through slow cooling",
+            "To increase hardness",
+            "To form maximum martensite"
+        ],
+        "ans": 1,
+        "cat": "Annealing"
+    },
+    {
+        "q": "Hypoeutectoid steel for full annealing is generally heated to:",
+        "opts": [
+            "Below Ac1",
+            "Ac1 + 5°C",
+            "Ac3 + 30-50°C",
+            "Room temperature"
+        ],
+        "ans": 2,
+        "cat": "Annealing"
+    },
+    {
+        "q": "What is the main purpose of stress-relief annealing?",
+        "opts": [
+            "Increase surface hardness",
+            "Produce martensite",
+            "Remove residual stresses",
+            "Increase carbon content"
+        ],
+        "ans": 2,
+        "cat": "Annealing"
+    },
+    {
+        "q": "Which annealing process is commonly associated with high-carbon/tool steels?",
+        "opts": [
+            "Spheroidizing",
+            "Process annealing",
+            "Stress relieving only",
+            "Flame hardening"
+        ],
+        "ans": 0,
+        "cat": "Annealing"
+    },
+    {
+        "q": "A manufacturer wants to make a steel component easier to machine without significantly changing its chemical composition. Which treatment is appropriate?",
+        "opts": [
+            "Annealing",
+            "Carburizing",
+            "Nitriding",
+            "Hardening"
+        ],
+        "ans": 0,
+        "cat": "Annealing"
+    },
+    {
+        "q": "During annealing, the steel is first heated and held at the required temperature. This holding period is called:",
+        "opts": [
+            "Quenching",
+            "Tempering",
+            "Soaking",
+            "Normalizing"
+        ],
+        "ans": 2,
+        "cat": "Annealing"
+    },
+    {
+        "q": "Which property generally increases after proper annealing?",
+        "opts": [
+            "Brittleness",
+            "Ductility",
+            "Residual stress",
+            "Hardness"
+        ],
+        "ans": 1,
+        "cat": "Annealing"
+    },
+    {
+        "q": "Which property generally decreases during full annealing?",
+        "opts": [
+            "Ductility",
+            "Toughness",
+            "Hardness",
+            "Machinability"
+        ],
+        "ans": 2,
+        "cat": "Annealing"
+    },
+    {
+        "q": "A cold-rolled low-carbon steel sheet must undergo further forming. Which treatment should be used to restore its formability?",
+        "opts": [
+            "Process annealing",
+            "Hardening",
+            "Nitriding",
+            "Carburizing"
+        ],
+        "ans": 0,
+        "cat": "Annealing"
+    },
+    {
+        "q": "A steel part must be softened as much as practically possible before machining. Which process is generally preferred?",
+        "opts": [
+            "Full annealing",
+            "Hardening",
+            "Normalizing",
+            "Induction hardening"
+        ],
+        "ans": 0,
+        "cat": "Annealing"
+    },
+    {
+        "q": "Which statement about annealing is correct?",
+        "opts": [
+            "It always involves rapid quenching.",
+            "It generally increases hardness significantly.",
+            "It involves controlled heating and slow cooling to obtain desired properties.",
+            "It is used only for surface hardening."
+        ],
+        "ans": 2,
+        "cat": "Annealing"
+    },
+    {
+        "q": "A forged steel component has a coarse grain structure and requires grain refinement. Which heat treatment is most appropriate?",
+        "opts": [
+            "Annealing",
+            "Normalizing",
+            "Tempering",
+            "Nitriding"
+        ],
+        "ans": 1,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "In normalizing, the steel is cooled by:",
+        "opts": [
+            "Furnace cooling",
+            "Water quenching",
+            "Oil quenching",
+            "Still air cooling"
+        ],
+        "ans": 3,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "Compared with annealing, normalizing generally produces:",
+        "opts": [
+            "Lower strength and lower hardness",
+            "Higher strength and hardness",
+            "No change in microstructure",
+            "Maximum martensite"
+        ],
+        "ans": 1,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "A steel casting has a coarse and non-uniform microstructure. Which treatment can be used to improve it?",
+        "opts": [
+            "Normalizing",
+            "Nitriding",
+            "Tempering",
+            "Carburizing"
+        ],
+        "ans": 0,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "Hypo eutectoid steel is normalized by heating approximately:",
+        "opts": [
+            "Below Ac1",
+            "Ac1 - 30°C",
+            "Ac3 + 30-50°C",
+            "Below room temperature"
+        ],
+        "ans": 2,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "The major difference between annealing and normalizing is:",
+        "opts": [
+            "Heating temperature only",
+            "Chemical composition",
+            "Cooling rate",
+            "Carbon content"
+        ],
+        "ans": 2,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "Why does normalizing generally produce finer grains than full annealing?",
+        "opts": [
+            "It uses water quenching",
+            "It uses faster cooling in air",
+            "It does not involve heating",
+            "It increases carbon content"
+        ],
+        "ans": 1,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "A forged shaft needs improved strength and a refined grain structure. Which treatment would you select?",
+        "opts": [
+            "Normalizing",
+            "Stress relieving only",
+            "Carburizing",
+            "Spheroidizing"
+        ],
+        "ans": 0,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "Which of the following is NOT a normalizing application?",
+        "opts": [
+            "Grain refinement",
+            "Homogenization of structure",
+            "Improving mechanical properties",
+            "Producing maximum surface hardness"
+        ],
+        "ans": 3,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "During normalizing, the holding period at the required temperature is called:",
+        "opts": [
+            "Quenching",
+            "Soaking",
+            "Tempering",
+            "Case hardening"
+        ],
+        "ans": 1,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "A manufacturer wants a treatment that is generally faster than full annealing while providing increased strength. Which process is suitable?",
+        "opts": [
+            "Normalizing",
+            "Full annealing",
+            "Spheroidizing",
+            "Stress relieving"
+        ],
+        "ans": 0,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "Which microstructural characteristic is normally desired after normalizing?",
+        "opts": [
+            "Very coarse grains",
+            "Fine and relatively uniform grains",
+            "Only martensite",
+            "Only cementite"
+        ],
+        "ans": 1,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "A steel component has undergone forging and contains an undesirable coarse-grained structure. What should be done?",
+        "opts": [
+            "Normalize it",
+            "Nitrate it",
+            "Temper it without hardening",
+            "Carburize it"
+        ],
+        "ans": 0,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "A normalized steel component is generally ______ than the same steel in the fully annealed condition.",
+        "opts": [
+            "Softer",
+            "Stronger and harder",
+            "More brittle in all cases",
+            "Unchanged"
+        ],
+        "ans": 1,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "Which cooling method gives the fastest cooling among the following?",
+        "opts": [
+            "Furnace cooling",
+            "Still air cooling",
+            "Water quenching",
+            "Controlled furnace cooling"
+        ],
+        "ans": 2,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "A steel shaft is forged and subsequently shows coarse grains. The designer wants to improve its structure without producing the very high hardness associated with quenching. Which treatment should be selected?",
+        "opts": [
+            "Hardening",
+            "Normalizing",
+            "Nitriding",
+            "Carburizing"
+        ],
+        "ans": 1,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "Two identical steel components are treated. Component A is furnace cooled, while Component B is cooled in still air after heating above the critical temperature. Which statement is generally correct?",
+        "opts": [
+            "A is normalized and B is annealed",
+            "A is annealed and B is normalized",
+            "Both are hardened",
+            "Both are tempered"
+        ],
+        "ans": 1,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "A manufacturer wants to reduce the coarse-grained structure of a steel casting and obtain more uniform mechanical properties. Which process is most appropriate?",
+        "opts": [
+            "Normalizing",
+            "Hardening",
+            "Nitriding",
+            "Tempering"
+        ],
+        "ans": 0,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "Why is normalizing commonly used before subsequent hardening?",
+        "opts": [
+            "To add carbon to the steel",
+            "To obtain a more uniform and refined starting microstructure",
+            "To make the steel completely soft",
+            "To eliminate all alloying elements"
+        ],
+        "ans": 1,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "A student claims that normalizing and annealing are identical because both involve heating above the critical temperature. What is the best correction?",
+        "opts": [
+            "They are identical in every respect.",
+            "Normalizing uses still-air cooling, whereas annealing generally uses furnace cooling.",
+            "Annealing uses water quenching.",
+            "Normalizing does not involve soaking."
+        ],
+        "ans": 1,
+        "cat": "Normalizing"
+    },
+    {
+        "q": "The main objective of case hardening is to obtain:",
+        "opts": [
+            "Soft surface and hard core",
+            "Hard surface and tough core",
+            "Hard surface and brittle core",
+            "Soft surface and soft core"
+        ],
+        "ans": 1,
+        "cat": "Case Hardening"
+    },
+    {
+        "q": "Which element is introduced during carburizing?",
+        "opts": [
+            "Nitrogen",
+            "Carbon",
+            "Chromium",
+            "Aluminium"
+        ],
+        "ans": 1,
+        "cat": "Case Hardening"
+    },
+    {
+        "q": "Which element is primarily introduced during nitriding?",
+        "opts": [
+            "Carbon",
+            "Nitrogen",
+            "Silicon",
+            "Sulphur"
+        ],
+        "ans": 1,
+        "cat": "Case Hardening"
+    },
+    {
+        "q": "Which case-hardening process introduces both carbon and nitrogen?",
+        "opts": [
+            "Carburizing",
+            "Nitriding",
+            "Cyaniding",
+            "Annealing"
+        ],
+        "ans": 2,
+        "cat": "Case Hardening"
+    },
+    {
+        "q": "Which process generally produces the highest surface hardness among the three?",
+        "opts": [
+            "Carburizing",
+            "Nitriding",
+            "Cyaniding",
+            "Normalizing"
+        ],
+        "ans": 1,
+        "cat": "Case Hardening"
+    },
+    {
+        "q": "Which case-hardening process generally does not require quenching?",
+        "opts": [
+            "Carburizing",
+            "Nitriding",
+            "Cyaniding",
+            "All of them"
+        ],
+        "ans": 1,
+        "cat": "Case Hardening"
+    },
+    {
+        "q": "A gear requires a hard wear-resistant surface and a tough core. Which process is commonly used?",
+        "opts": [
+            "Carburizing",
+            "Annealing",
+            "Tempering",
+            "Normalizing"
+        ],
+        "ans": 0,
+        "cat": "Case Hardening"
+    },
+    {
+        "q": "A precision component requires high surface hardness with minimum distortion. Which process would generally be preferred?",
+        "opts": [
+            "Carburizing",
+            "Nitriding",
+            "Cyaniding",
+            "Full annealing"
+        ],
+        "ans": 1,
+        "cat": "Case Hardening"
+    },
+    {
+        "q": "Which process uses a molten cyanide salt bath?",
+        "opts": [
+            "Carburizing",
+            "Nitriding",
+            "Cyaniding",
+            "Normalizing"
+        ],
+        "ans": 2,
+        "cat": "Case Hardening"
+    },
+    {
+        "q": "Conventional cyaniding is associated with which major safety concern?",
+        "opts": [
+            "Excessive magnetism",
+            "Cyanide toxicity",
+            "Hydrogen embrittlement only",
+            "Low thermal conductivity"
+        ],
+        "ans": 1,
+        "cat": "Case Hardening"
+    },
+    {
+        "q": "Nitriding is generally carried out at a lower temperature than carburizing. What is one important consequence?",
+        "opts": [
+            "Greater distortion due to water quenching",
+            "Lower risk of distortion",
+            "No surface hardening",
+            "Carbon is always added"
+        ],
+        "ans": 1,
+        "cat": "Case Hardening"
+    },
+    {
+        "q": "Which process is particularly suitable when a relatively deep case is required?",
+        "opts": [
+            "Carburizing",
+            "Nitriding",
+            "Cyaniding",
+            "Stress relieving"
+        ],
+        "ans": 0,
+        "cat": "Case Hardening"
+    },
+    {
+        "q": "The primary purpose of hardening steel is to:",
+        "opts": [
+            "Reduce hardness",
+            "Increase hardness and wear resistance",
+            "Increase ductility only",
+            "Relieve all residual stresses"
+        ],
+        "ans": 1,
+        "cat": "Hardening"
+    },
+    {
+        "q": "During hardening, steel is cooled:",
+        "opts": [
+            "Very slowly in the furnace",
+            "Slowly in air",
+            "Rapidly by quenching",
+            "At room temperature without cooling"
+        ],
+        "ans": 2,
+        "cat": "Hardening"
+    },
+    {
+        "q": "The principal structure produced during hardening of suitable steel is:",
+        "opts": [
+            "Ferrite",
+            "Pearlite",
+            "Martensite",
+            "Graphite"
+        ],
+        "ans": 2,
+        "cat": "Hardening"
+    },
+    {
+        "q": "Hypo eutectoid steel is generally heated for hardening to:",
+        "opts": [
+            "Below Ac1",
+            "Ac1 - 30°C",
+            "Ac3 + 30-50°C",
+            "Room temperature"
+        ],
+        "ans": 2,
+        "cat": "Hardening"
+    },
+    {
+        "q": "Which of the following is a common quenching medium?",
+        "opts": [
+            "Sand only",
+            "Water",
+            "Cement",
+            "Graphite"
+        ],
+        "ans": 1,
+        "cat": "Hardening"
+    },
+    {
+        "q": "Why is hardened steel commonly tempered?",
+        "opts": [
+            "To increase brittleness",
+            "To reduce hardness to zero",
+            "To reduce brittleness and improve toughness",
+            "To increase carbon content"
+        ],
+        "ans": 2,
+        "cat": "Hardening"
+    },
+    {
+        "q": "A gear requires high wear resistance. Which heat treatment would be appropriate?",
+        "opts": [
+            "Hardening",
+            "Annealing",
+            "Stress relieving",
+            "Process annealing"
+        ],
+        "ans": 0,
+        "cat": "Hardening"
+    },
+    {
+        "q": "Which quenching medium generally produces a more severe cooling rate?",
+        "opts": [
+            "Oil",
+            "Water",
+            "Furnace",
+            "Still air"
+        ],
+        "ans": 1,
+        "cat": "Hardening"
+    },
+    {
+        "q": "A hardened steel component develops cracks during quenching. Which is a possible reason?",
+        "opts": [
+            "Excessively severe cooling",
+            "Insufficient carbon",
+            "Furnace cooling",
+            "Low heating rate only"
+        ],
+        "ans": 0,
+        "cat": "Hardening"
+    },
+    {
+        "q": "Which statement is correct?",
+        "opts": [
+            "Hardening generally decreases wear resistance.",
+            "Hardening produces a soft ferritic structure.",
+            "Hardening increases hardness but may also increase brittleness.",
+            "Hardening never causes distortion."
+        ],
+        "ans": 2,
+        "cat": "Hardening"
+    },
+    {
+        "q": "Tempering is normally carried out after:",
+        "opts": [
+            "Annealing",
+            "Normalizing",
+            "Hardening",
+            "Carburizing only"
+        ],
+        "ans": 2,
+        "cat": "Tempering"
+    },
+    {
+        "q": "Tempering is generally performed at a temperature:",
+        "opts": [
+            "Above the melting point",
+            "Above Ac1",
+            "Below Ac1",
+            "At room temperature"
+        ],
+        "ans": 2,
+        "cat": "Tempering"
+    },
+    {
+        "q": "The main purpose of tempering is to:",
+        "opts": [
+            "Increase brittleness",
+            "Reduce brittleness and increase toughness",
+            "Produce maximum hardness",
+            "Increase carbon content"
+        ],
+        "ans": 1,
+        "cat": "Tempering"
+    },
+    {
+        "q": "The usual temperature range for tempering steel is approximately:",
+        "opts": [
+            "0-100°C",
+            "150-650°C",
+            "700-1000°C",
+            "1000-1200°C"
+        ],
+        "ans": 1,
+        "cat": "Tempering"
+    },
+    {
+        "q": "Low-temperature tempering is generally carried out around:",
+        "opts": [
+            "150-250°C",
+            "400-500°C",
+            "700-800°C",
+            "900-1000°C"
+        ],
+        "ans": 0,
+        "cat": "Tempering"
+    },
+    {
+        "q": "High-temperature tempering is generally carried out around:",
+        "opts": [
+            "50-100°C",
+            "150-250°C",
+            "450-650°C",
+            "800-900°C"
+        ],
+        "ans": 2,
+        "cat": "Tempering"
+    },
+    {
+        "q": "Which property generally increases as tempering temperature increases?",
+        "opts": [
+            "Brittleness",
+            "Toughness",
+            "Hardness",
+            "Residual stress"
+        ],
+        "ans": 1,
+        "cat": "Tempering"
+    },
+    {
+        "q": "Which property generally decreases with increasing tempering temperature?",
+        "opts": [
+            "Toughness",
+            "Ductility",
+            "Hardness",
+            "Impact resistance"
+        ],
+        "ans": 2,
+        "cat": "Tempering"
+    },
+    {
+        "q": "A hardened component is too brittle for impact loading. What should be done?",
+        "opts": [
+            "Further hardening",
+            "Tempering",
+            "Carburizing",
+            "Nitriding"
+        ],
+        "ans": 1,
+        "cat": "Tempering"
+    },
+    {
+        "q": "Which type of tempering is suitable when high hardness must be retained while reducing brittleness?",
+        "opts": [
+            "Low-temperature tempering",
+            "Medium-temperature tempering",
+            "High-temperature tempering",
+            "Annealing"
+        ],
+        "ans": 0,
+        "cat": "Tempering"
+    },
+    {
+        "q": "A machine shaft requires a good combination of strength and toughness. Which treatment is generally appropriate after hardening?",
+        "opts": [
+            "High-temperature tempering",
+            "Low-temperature tempering only",
+            "Annealing",
+            "Carburizing"
+        ],
+        "ans": 0,
+        "cat": "Tempering"
+    },
+    {
+        "q": "Why is tempering necessary after hardening?",
+        "opts": [
+            "Hardened steel may be excessively brittle and contain residual stresses.",
+            "Hardened steel is always too soft.",
+            "It increases carbon content.",
+            "It converts steel into cast iron."
+        ],
+        "ans": 0,
+        "cat": "Tempering"
+    }
+    ];
+
+    let currentPool = [];
+    let wrongQuestions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    const selectionScreen = document.getElementById('selection-screen');
+    const quizScreen = document.getElementById('quiz-screen');
+    const resultScreen = document.getElementById('result-screen');
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const nextBtn = document.getElementById('next-btn');
+    const progress = document.getElementById('progress');
+    const scoreTracker = document.getElementById('score-tracker');
+    const feedbackMessage = document.getElementById('feedback-message');
+    const retryBtn = document.getElementById('retry-btn');
+
+    function shuffleArray(array) {
+        let arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function startQuiz(topic) {
+        if (topic === 'all') {
+            currentPool = shuffleArray(masterQuestionBank);
+        } else {
+            const filtered = masterQuestionBank.filter(q => q.cat === topic);
+            currentPool = shuffleArray(filtered);
+        }
+        
+        wrongQuestions = [];
+        currentQuestionIndex = 0;
+        score = 0;
+        
+        selectionScreen.classList.add('hidden');
+        resultScreen.classList.add('hidden');
+        quizScreen.classList.remove('hidden');
+        
+        loadQuestion();
+    }
+
+    function goToSelection() {
+        quizScreen.classList.add('hidden');
+        resultScreen.classList.add('hidden');
+        selectionScreen.classList.remove('hidden');
+    }
+
+    function loadQuestion() {
+        nextBtn.classList.add('hidden');
+        feedbackMessage.classList.add('hidden');
+        optionsContainer.innerHTML = '';
+        
+        const qData = currentPool[currentQuestionIndex];
+        
+        progress.textContent = `Question ${currentQuestionIndex + 1} of ${currentPool.length}`;
+        scoreTracker.textContent = `Score: ${score}`;
+        questionText.innerHTML = `${currentQuestionIndex + 1}. ${qData.q}`;
+
+        qData.opts.forEach((opt, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerHTML = `${String.fromCharCode(65 + index)}. ${opt}`;
+            btn.onclick = () => checkAnswer(index, btn);
+            optionsContainer.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedIndex, selectedBtn) {
+        const qData = currentPool[currentQuestionIndex];
+        const correctIndex = qData.ans;
+        const allBtns = optionsContainer.querySelectorAll('.btn');
+
+        allBtns.forEach(btn => btn.disabled = true);
+        feedbackMessage.classList.remove('hidden');
+
+        if (selectedIndex === correctIndex) {
+            selectedBtn.classList.add('correct');
+            feedbackMessage.textContent = "✅ Correct!";
+            feedbackMessage.style.color = "var(--correct-text)";
+            score++;
+            scoreTracker.textContent = `Score: ${score}`;
+        } else {
+            selectedBtn.classList.add('wrong');
+            allBtns[correctIndex].classList.add('correct');
+            feedbackMessage.textContent = "❌ Incorrect.";
+            feedbackMessage.style.color = "var(--wrong-text)";
+            
+            if (!wrongQuestions.includes(qData)) {
+                wrongQuestions.push(qData);
+            }
+        }
+        nextBtn.classList.remove('hidden');
+    }
+
+    nextBtn.onclick = () => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < currentPool.length) {
+            loadQuestion();
+        } else {
+            endQuiz();
+        }
+    };
+
+    function endQuiz() {
+        quizScreen.classList.add('hidden');
+        resultScreen.classList.remove('hidden');
+        
+        document.getElementById('final-score').innerHTML = 
+            `You scored <span style="color: var(--accent-blue);">${score}</span> out of ${currentPool.length}!`;
+
+        if (wrongQuestions.length > 0) {
+            retryBtn.classList.remove('hidden');
+            retryBtn.textContent = `Review ${wrongQuestions.length} Incorrect Question(s)`;
+        } else {
+            retryBtn.classList.add('hidden');
+            document.getElementById('final-score').innerHTML += "<br><br>🎉 Perfect score! Excellent work.";
+        }
+    }
+
+    retryBtn.onclick = () => {
+        currentPool = shuffleArray(wrongQuestions);
+        wrongQuestions = [];
+        currentQuestionIndex = 0;
+        score = 0;
+        resultScreen.classList.add('hidden');
+        quizScreen.classList.remove('hidden');
+        loadQuestion();
+    };
+</script>
+</body>
+</html>

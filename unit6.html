@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMT Unit 6 Quiz - Refractories & Fuels</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f7;
+            --window-bg: #ffffff;
+            --text-main: #1d1d1f;
+            --text-muted: #86868b;
+            --border-color: #d2d2d7;
+            --accent-blue: #0071e3;
+            --accent-blue-hover: #0077ed;
+            --correct-bg: #e3fcef;
+            --correct-border: #34c759;
+            --correct-text: #0c5c27;
+            --wrong-bg: #fce8e8;
+            --wrong-border: #ff3b30;
+            --wrong-text: #8a0a14;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 680px;
+            background: var(--window-bg);
+            padding: 32px 40px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            width: 100%;
+            text-align: left;
+            padding: 14px 18px;
+            font-size: 15px;
+            background: var(--window-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+            color: var(--text-main);
+        }
+
+        .btn:hover:not(:disabled) {
+            background: var(--bg-color);
+            border-color: #a1a1a6;
+        }
+
+        .btn:disabled {
+            cursor: default;
+        }
+
+        .correct {
+            background: var(--correct-bg) !important;
+            border-color: var(--correct-border) !important;
+            color: var(--correct-text) !important;
+            font-weight: 500;
+        }
+
+        .wrong {
+            background: var(--wrong-bg) !important;
+            border-color: var(--wrong-border) !important;
+            color: var(--wrong-text) !important;
+        }
+
+        .action-btn {
+            text-align: center;
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            font-weight: 600;
+            margin-top: 24px;
+            box-shadow: 0 2px 5px rgba(0, 113, 227, 0.3);
+        }
+
+        .action-btn:hover {
+            background: var(--accent-blue-hover);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .feedback {
+            margin-top: 18px;
+            font-weight: 600;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        #selection-screen, #result-screen {
+            text-align: center;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .topic-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 18px;
+            font-size: 15px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-main);
+        }
+
+        .topic-btn:hover {
+            background: var(--bg-color);
+            border-color: var(--accent-blue);
+        }
+
+        .badge {
+            background: #e8f0fe;
+            color: #1a73e8;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .score-display {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 24px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Selection Screen -->
+    <div id="selection-screen">
+        <h2>Unit 6 Quiz - Topic Selection</h2>
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Choose whether to attempt the full question bank or practice a specific section from Unit 6.</p>
+        
+        <button class="action-btn btn" onclick="startQuiz('all')" style="margin-top: 0; font-size: 16px; padding: 16px;">🚀 Attempt Full Quiz (85 Unique Questions)</button>
+        
+        <div class="topic-grid">
+            <button class="topic-btn" onclick="startQuiz('Refractories')">
+                <span>1. Refractories (Sections 1 & 2)</span>
+                <span class="badge">25 Qs</span>
+            </button>
+            <button class="topic-btn" onclick="startQuiz('Gaseous Fuels')">
+                <span>2. Gaseous Fuels (Section 3)</span>
+                <span class="badge">30 Qs</span>
+            </button>
+            <button class="topic-btn" onclick="startQuiz('Solid & Liquid Fuels')">
+                <span>3. Solid & Liquid Fuels / Coke (Section 4)</span>
+                <span class="badge">30 Qs</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quiz-screen" class="hidden">
+        <div class="status-bar">
+            <span id="progress">Question 1 / 85</span>
+            <span id="score-tracker">Score: 0</span>
+        </div>
+        
+        <h2 id="question-text">Question loading...</h2>
+        
+        <div class="options" id="options-container"></div>
+        
+        <div id="feedback-message" class="feedback hidden"></div>
+        
+        <button id="next-btn" class="btn action-btn hidden">Next Question</button>
+        <button onclick="goToSelection()" class="btn" style="margin-top: 12px; background: transparent; border: none; color: var(--text-muted); cursor: pointer; text-align: center; width: 100%;">← Back to Topic Selection</button>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="hidden">
+        <h2>Quiz Complete</h2>
+        <div id="final-score" class="score-display"></div>
+        
+        <button id="retry-btn" class="btn action-btn hidden">Resolve Incorrect Questions</button>
+        <button onclick="goToSelection()" class="btn action-btn" style="background: var(--text-main); margin-top: 12px;">Choose Another Topic</button>
+    </div>
+</div>
+
+<script>
+    const masterQuestionBank = [
+    {
+        "q": "Which of the following is an acidic refractory?",
+        "opts": [
+            "Magnesite",
+            "Silica",
+            "Dolomite",
+            "Magnesia"
+        ],
+        "ans": 1,
+        "cat": "Refractories"
+    },
+    {
+        "q": "Which refractory is classified as a basic refractory?",
+        "opts": [
+            "Silica",
+            "Fireclay",
+            "Magnesite",
+            "Zircon"
+        ],
+        "ans": 2,
+        "cat": "Refractories"
+    },
+    {
+        "q": "Which of the following is a neutral refractory?",
+        "opts": [
+            "Silica",
+            "Magnesite",
+            "Alumina",
+            "Lime"
+        ],
+        "ans": 2,
+        "cat": "Refractories"
+    },
+    {
+        "q": "Refractories are mainly used for:",
+        "opts": [
+            "Electrical insulation only",
+            "Withstanding high temperatures",
+            "Lubrication",
+            "Cooling machines"
+        ],
+        "ans": 1,
+        "cat": "Refractories"
+    },
+    {
+        "q": "Which property indicates the ability of a refractory to withstand high temperature without melting or deforming?",
+        "opts": [
+            "Porosity",
+            "Refractoriness",
+            "Hardness",
+            "Ductility"
+        ],
+        "ans": 1,
+        "cat": "Refractories"
+    },
+    {
+        "q": "Which refractory is commonly used for furnace linings because of its resistance to basic slags?",
+        "opts": [
+            "Magnesite",
+            "Silica",
+            "Fireclay",
+            "Quartz"
+        ],
+        "ans": 0,
+        "cat": "Refractories"
+    },
+    {
+        "q": "Silica refractory is generally suitable for furnaces operating with:",
+        "opts": [
+            "Acidic slags",
+            "Basic slags",
+            "Water",
+            "Oil"
+        ],
+        "ans": 0,
+        "cat": "Refractories"
+    },
+    {
+        "q": "Which property represents the amount of void space present in a refractory?",
+        "opts": [
+            "Density",
+            "Porosity",
+            "Toughness",
+            "Elasticity"
+        ],
+        "ans": 1,
+        "cat": "Refractories"
+    },
+    {
+        "q": "A refractory with low porosity generally has:",
+        "opts": [
+            "Poor strength",
+            "High resistance to slag penetration",
+            "Very high water absorption",
+            "Low density"
+        ],
+        "ans": 1,
+        "cat": "Refractories"
+    },
+    {
+        "q": "Which property is important for a refractory exposed to sudden temperature changes?",
+        "opts": [
+            "Thermal shock resistance",
+            "Ductility",
+            "Plasticity",
+            "Machinability"
+        ],
+        "ans": 0,
+        "cat": "Refractories"
+    },
+    {
+        "q": "Which refractory is commonly used in the lining of blast furnaces?",
+        "opts": [
+            "Magnesite",
+            "Plastic",
+            "Wood",
+            "Rubber"
+        ],
+        "ans": 0,
+        "cat": "Refractories"
+    },
+    {
+        "q": "Fireclay refractories mainly contain:",
+        "opts": [
+            "Alumina and silica",
+            "Copper and zinc",
+            "Iron and carbon",
+            "Calcium and sodium only"
+        ],
+        "ans": 0,
+        "cat": "Refractories"
+    },
+    {
+        "q": "Which property indicates the resistance of refractory material to chemical attack by molten slag?",
+        "opts": [
+            "Chemical stability",
+            "Ductility",
+            "Conductivity",
+            "Plasticity"
+        ],
+        "ans": 0,
+        "cat": "Refractories"
+    },
+    {
+        "q": "Basic refractories are mainly used where the furnace atmosphere or slag is:",
+        "opts": [
+            "Acidic",
+            "Basic",
+            "Neutral only",
+            "Reducing only"
+        ],
+        "ans": 1,
+        "cat": "Refractories"
+    },
+    {
+        "q": "Which of the following is an important mechanical property of refractories?",
+        "opts": [
+            "Cold crushing strength",
+            "Electrical resistance only",
+            "Ductility",
+            "Malleability"
+        ],
+        "ans": 0,
+        "cat": "Refractories"
+    },
+    {
+        "q": "A refractory used in a steelmaking furnace should have high:",
+        "opts": [
+            "Refractoriness",
+            "Solubility",
+            "Volatility",
+            "Flammability"
+        ],
+        "ans": 0,
+        "cat": "Refractories"
+    },
+    {
+        "q": "Which refractory is commonly associated with high alumina content?",
+        "opts": [
+            "High-alumina refractory",
+            "Silica refractory",
+            "Magnesite refractory",
+            "Carbon refractory"
+        ],
+        "ans": 0,
+        "cat": "Refractories"
+    },
+    {
+        "q": "The ability of a refractory to retain its shape under load at high temperature is called:",
+        "opts": [
+            "Creep resistance",
+            "Porosity",
+            "Absorption",
+            "Plasticity"
+        ],
+        "ans": 0,
+        "cat": "Refractories"
+    },
+    {
+        "q": "Which of the following is a desirable property of furnace refractory?",
+        "opts": [
+            "Low refractoriness",
+            "High thermal shock resistance",
+            "High chemical reactivity",
+            "High slag absorption"
+        ],
+        "ans": 1,
+        "cat": "Refractories"
+    },
+    {
+        "q": "Refractories are commonly used for lining:",
+        "opts": [
+            "Furnaces and kilns",
+            "Water tanks",
+            "Wooden structures",
+            "Automobile tyres"
+        ],
+        "ans": 0,
+        "cat": "Refractories"
+    },
+    {
+        "q": "A furnace uses a highly basic slag. Which refractory should be selected?",
+        "opts": [
+            "Silica",
+            "Magnesite",
+            "Fireclay",
+            "Zircon"
+        ],
+        "ans": 1,
+        "cat": "Refractories"
+    },
+    {
+        "q": "A refractory lining is frequently subjected to rapid heating and cooling. Which property should be prioritized?",
+        "opts": [
+            "Thermal shock resistance",
+            "Electrical conductivity",
+            "Ductility",
+            "Solubility"
+        ],
+        "ans": 0,
+        "cat": "Refractories"
+    },
+    {
+        "q": "If molten slag is penetrating deeply into a furnace lining, which property should be improved?",
+        "opts": [
+            "Porosity",
+            "Resistance to slag penetration",
+            "Ductility",
+            "Malleability"
+        ],
+        "ans": 1,
+        "cat": "Refractories"
+    },
+    {
+        "q": "A material is required to withstand high temperature without softening. Which property should be checked first?",
+        "opts": [
+            "Refractoriness",
+            "Elasticity",
+            "Ductility",
+            "Toughness"
+        ],
+        "ans": 0,
+        "cat": "Refractories"
+    },
+    {
+        "q": "For a furnace operating with acidic slag, which refractory is most appropriate?",
+        "opts": [
+            "Magnesite",
+            "Dolomite",
+            "Silica",
+            "Magnesia"
+        ],
+        "ans": 2,
+        "cat": "Refractories"
+    },
+    {
+        "q": "The major constituent of natural gas is:",
+        "opts": [
+            "Carbon monoxide",
+            "Methane",
+            "Hydrogen",
+            "Nitrogen"
+        ],
+        "ans": 1,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Which property makes natural gas suitable for domestic cooking?",
+        "opts": [
+            "High ash content",
+            "Clean burning with low smoke",
+            "High moisture content",
+            "Non-combustibility"
+        ],
+        "ans": 1,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Natural gas is mainly used in industries as:",
+        "opts": [
+            "A cooling agent",
+            "A gaseous fuel",
+            "A lubricant",
+            "A refractory material"
+        ],
+        "ans": 1,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Which component may be present in natural gas along with methane?",
+        "opts": [
+            "Ethane",
+            "Sodium chloride",
+            "Iron oxide",
+            "Calcium carbonate"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "A gas-fired furnace requires a clean fuel with high calorific value. Which fuel is suitable?",
+        "opts": [
+            "Natural gas",
+            "Producer gas",
+            "Blast furnace gas",
+            "Air"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "The major combustible component of blast furnace gas is:",
+        "opts": [
+            "Carbon monoxide",
+            "Methane",
+            "Propane",
+            "Hydrogen sulphide"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Blast furnace gas is mainly obtained as a by-product from:",
+        "opts": [
+            "Cement kiln",
+            "Blast furnace",
+            "Coke oven",
+            "Oil refinery"
+        ],
+        "ans": 1,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Blast furnace gas has relatively low calorific value mainly because it contains a large amount of:",
+        "opts": [
+            "Nitrogen",
+            "Methane",
+            "Propane",
+            "Hydrogen"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Blast furnace gas can be effectively utilized for:",
+        "opts": [
+            "Heating air in hot-blast stoves",
+            "Lubricating machines",
+            "Producing plastics directly",
+            "Cooling furnaces"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Coke oven gas is obtained during the manufacture of:",
+        "opts": [
+            "Coke",
+            "Cement",
+            "Glass",
+            "Aluminium"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Compared with blast furnace gas, coke oven gas generally has:",
+        "opts": [
+            "Higher calorific value",
+            "No combustible gases",
+            "Higher ash content",
+            "No hydrogen"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Which gas is an important combustible constituent of coke oven gas?",
+        "opts": [
+            "Hydrogen",
+            "Nitrogen",
+            "Carbon dioxide",
+            "Oxygen"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Coke oven gas can be used as a fuel for:",
+        "opts": [
+            "Industrial heating",
+            "Water treatment only",
+            "Refrigeration only",
+            "Lubrication"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "LPG mainly consists of:",
+        "opts": [
+            "Methane and ethane",
+            "Propane and butane",
+            "Hydrogen and nitrogen",
+            "Carbon monoxide and carbon dioxide"
+        ],
+        "ans": 1,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "LPG is stored commercially in:",
+        "opts": [
+            "Liquid form under pressure",
+            "Solid form",
+            "Vacuum only",
+            "Powder form"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "LPG is widely used for:",
+        "opts": [
+            "Domestic cooking",
+            "Blast furnace charging",
+            "Refractory manufacturing only",
+            "Water purification"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "LPG is preferred as a domestic fuel because it:",
+        "opts": [
+            "Produces high ash",
+            "Burns relatively cleanly",
+            "Contains large quantities of water",
+            "Cannot be transported"
+        ],
+        "ans": 1,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "An LPG cylinder is used because LPG can be:",
+        "opts": [
+            "Easily liquefied under pressure",
+            "Solidified at room temperature",
+            "Stored only at atmospheric pressure",
+            "Converted into coal"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Water gas mainly consists of:",
+        "opts": [
+            "Carbon monoxide and hydrogen",
+            "Methane and nitrogen",
+            "Propane and butane",
+            "Carbon dioxide and oxygen"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Water gas is produced by passing steam over:",
+        "opts": [
+            "Red-hot coke",
+            "Limestone",
+            "Iron ore",
+            "Crude oil"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "The main reaction in water gas production is:",
+        "opts": [
+            "C + H2O -> CO + H2",
+            "C + O2 -> CO2",
+            "CH4 + O2 -> CO2 + H2O",
+            "CaCO3 -> CaO + CO2"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Water gas is also known as:",
+        "opts": [
+            "Syngas",
+            "Producer gas",
+            "Blast furnace gas",
+            "Natural gas"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Producer gas is mainly produced by passing:",
+        "opts": [
+            "Air over red-hot coke or coal",
+            "Steam over limestone",
+            "Oxygen over water",
+            "Hydrogen over coke"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "The main combustible constituents of producer gas are:",
+        "opts": [
+            "CO and H2",
+            "CO2 and N2",
+            "O2 and N2",
+            "CH4 and CO2"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Producer gas has a relatively low calorific value mainly due to its high content of:",
+        "opts": [
+            "Nitrogen",
+            "Methane",
+            "Propane",
+            "Hydrogen"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Producer gas is commonly used for:",
+        "opts": [
+            "Industrial furnace heating",
+            "Domestic refrigeration",
+            "Lubrication",
+            "Water purification"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "A steel plant wants to reuse a gaseous by-product from its blast furnace for heating. Which gas should be selected?",
+        "opts": [
+            "Natural gas",
+            "Blast furnace gas",
+            "LPG",
+            "Water gas"
+        ],
+        "ans": 1,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "A household requires a portable gaseous fuel with high calorific value. Which fuel is most appropriate?",
+        "opts": [
+            "Blast furnace gas",
+            "Producer gas",
+            "LPG",
+            "Water gas"
+        ],
+        "ans": 2,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "An engineer needs a gas containing mainly CO and H2 for industrial applications. Which gas should be considered?",
+        "opts": [
+            "Water gas",
+            "Natural gas",
+            "Blast furnace gas",
+            "LPG"
+        ],
+        "ans": 0,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "A fuel gas contains a large proportion of nitrogen and therefore has low calorific value. It is most likely:",
+        "opts": [
+            "LPG",
+            "Natural gas",
+            "Producer gas",
+            "Coke oven gas"
+        ],
+        "ans": 2,
+        "cat": "Gaseous Fuels"
+    },
+    {
+        "q": "Metallurgical coke is mainly produced by:",
+        "opts": [
+            "Burning coal in air",
+            "Carbonization of coal in absence of air",
+            "Heating limestone",
+            "Distillation of petroleum"
+        ],
+        "ans": 1,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "An important property of metallurgical coke is:",
+        "opts": [
+            "High moisture content",
+            "High fixed carbon content",
+            "High ash content",
+            "Low strength"
+        ],
+        "ans": 1,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Metallurgical coke should have high strength because it must:",
+        "opts": [
+            "Dissolve in molten iron",
+            "Support the burden in a blast furnace",
+            "Absorb water",
+            "Reduce furnace temperature"
+        ],
+        "ans": 1,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Which property of coke is important for maintaining permeability in a blast furnace?",
+        "opts": [
+            "Porosity",
+            "Moisture",
+            "Volatility",
+            "Solubility"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "The major use of metallurgical coke is in:",
+        "opts": [
+            "Blast furnaces",
+            "Refrigerators",
+            "Boilers only",
+            "Water treatment plants"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Which of the following is a by-product obtained during coke manufacture?",
+        "opts": [
+            "Coke oven gas",
+            "Limestone",
+            "Pig iron",
+            "Cement"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Which valuable chemical is recovered from coke oven by-products?",
+        "opts": [
+            "Ammonia",
+            "Sodium chloride",
+            "Calcium oxide",
+            "Aluminium"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Coal tar obtained during coke production is mainly used as a source of:",
+        "opts": [
+            "Organic chemicals",
+            "Refractory bricks only",
+            "Oxygen",
+            "Nitrogen"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Benzene, toluene and xylene can be obtained from:",
+        "opts": [
+            "Coal tar/coke oven by-products",
+            "Limestone",
+            "Blast furnace slag",
+            "Water gas only"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Pulverized coal means coal converted into:",
+        "opts": [
+            "Large lumps",
+            "Fine powder",
+            "Liquid form",
+            "Briquettes only"
+        ],
+        "ans": 1,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Pulverizing coal increases its:",
+        "opts": [
+            "Surface area",
+            "Moisture content",
+            "Ash content",
+            "Density only"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Pulverized coal is advantageous because it:",
+        "opts": [
+            "Burns more efficiently",
+            "Cannot be transported",
+            "Has no carbon",
+            "Produces no heat"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Pulverized coal is commonly used in:",
+        "opts": [
+            "Industrial furnaces and boilers",
+            "Hydraulic systems",
+            "Refrigeration systems",
+            "Lubrication systems"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Briquetting is the process of converting fine coal or coke into:",
+        "opts": [
+            "Liquid fuel",
+            "Compact solid blocks",
+            "Gaseous fuel",
+            "Metal"
+        ],
+        "ans": 1,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "The main purpose of briquetting fine coal is to:",
+        "opts": [
+            "Improve handling and utilization",
+            "Increase moisture",
+            "Reduce carbon content",
+            "Convert it into gas"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Briquetted fuel is particularly useful for utilizing:",
+        "opts": [
+            "Coal fines",
+            "Crude oil",
+            "Natural gas",
+            "Water"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "An important property of a liquid fuel indicating its resistance to flow is:",
+        "opts": [
+            "Viscosity",
+            "Porosity",
+            "Refractoriness",
+            "Hardness"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Flash point of a liquid fuel is the temperature at which it:",
+        "opts": [
+            "Freezes",
+            "Gives vapour that can ignite momentarily",
+            "Boils completely",
+            "Becomes solid"
+        ],
+        "ans": 1,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "A liquid fuel with a high calorific value is generally preferred because it:",
+        "opts": [
+            "Produces more heat per unit mass",
+            "Produces more ash",
+            "Cannot be transported",
+            "Requires more storage space"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Which property is important for safe storage of liquid fuels?",
+        "opts": [
+            "Flash point",
+            "Porosity",
+            "Crushing strength",
+            "Grain size"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "The temperature at which a liquid fuel continuously burns after ignition is related to its:",
+        "opts": [
+            "Fire point",
+            "Melting point",
+            "Dew point",
+            "Freezing point"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Fuel oil is widely used in industrial furnaces because it:",
+        "opts": [
+            "Can be easily atomized for combustion",
+            "Contains only water",
+            "Cannot be pumped",
+            "Has no calorific value"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Which liquid fuel is obtained by refining crude petroleum?",
+        "opts": [
+            "Furnace oil",
+            "Producer gas",
+            "Water gas",
+            "Coke oven gas"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Diesel is commonly used as a fuel in:",
+        "opts": [
+            "Compression-ignition engines",
+            "Blast furnaces only",
+            "Coke ovens only",
+            "Electric motors"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "Petrol is mainly used in:",
+        "opts": [
+            "Spark-ignition engines",
+            "Blast furnaces",
+            "Steam boilers only",
+            "Coke ovens"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "A blast furnace requires a strong carbonaceous material that supports the furnace burden and provides heat. Which fuel should be selected?",
+        "opts": [
+            "Metallurgical coke",
+            "Petrol",
+            "Kerosene",
+            "LPG"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "An industry wants to use fine coal that is difficult to handle. Which process should be adopted?",
+        "opts": [
+            "Briquetting",
+            "Distillation",
+            "Refining",
+            "Gasification only"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "A boiler operator wants faster and more uniform combustion of coal. Which form of coal is suitable?",
+        "opts": [
+            "Pulverized coal",
+            "Large coal lumps",
+            "Wet coal",
+            "Raw coal only"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "A fuel storage tank requires a fuel with a relatively high flash point for improved handling safety. Which property should the engineer check?",
+        "opts": [
+            "Flash point",
+            "Viscosity only",
+            "Ash content only",
+            "Density only"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    },
+    {
+        "q": "A furnace uses heavy fuel oil, but pumping is difficult at low temperature. Which property should be investigated?",
+        "opts": [
+            "Viscosity",
+            "Refractoriness",
+            "Porosity",
+            "Hardness"
+        ],
+        "ans": 0,
+        "cat": "Solid & Liquid Fuels"
+    }
+    ];
+
+    let currentPool = [];
+    let wrongQuestions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    const selectionScreen = document.getElementById('selection-screen');
+    const quizScreen = document.getElementById('quiz-screen');
+    const resultScreen = document.getElementById('result-screen');
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const nextBtn = document.getElementById('next-btn');
+    const progress = document.getElementById('progress');
+    const scoreTracker = document.getElementById('score-tracker');
+    const feedbackMessage = document.getElementById('feedback-message');
+    const retryBtn = document.getElementById('retry-btn');
+
+    function shuffleArray(array) {
+        let arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function startQuiz(topic) {
+        if (topic === 'all') {
+            currentPool = shuffleArray(masterQuestionBank);
+        } else {
+            const filtered = masterQuestionBank.filter(q => q.cat === topic);
+            currentPool = shuffleArray(filtered);
+        }
+        
+        wrongQuestions = [];
+        currentQuestionIndex = 0;
+        score = 0;
+        
+        selectionScreen.classList.add('hidden');
+        resultScreen.classList.add('hidden');
+        quizScreen.classList.remove('hidden');
+        
+        loadQuestion();
+    }
+
+    function goToSelection() {
+        quizScreen.classList.add('hidden');
+        resultScreen.classList.add('hidden');
+        selectionScreen.classList.remove('hidden');
+    }
+
+    function loadQuestion() {
+        nextBtn.classList.add('hidden');
+        feedbackMessage.classList.add('hidden');
+        optionsContainer.innerHTML = '';
+        
+        const qData = currentPool[currentQuestionIndex];
+        
+        progress.textContent = `Question ${currentQuestionIndex + 1} of ${currentPool.length}`;
+        scoreTracker.textContent = `Score: ${score}`;
+        questionText.innerHTML = `${currentQuestionIndex + 1}. ${qData.q}`;
+
+        qData.opts.forEach((opt, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerHTML = `${String.fromCharCode(65 + index)}. ${opt}`;
+            btn.onclick = () => checkAnswer(index, btn);
+            optionsContainer.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedIndex, selectedBtn) {
+        const qData = currentPool[currentQuestionIndex];
+        const correctIndex = qData.ans;
+        const allBtns = optionsContainer.querySelectorAll('.btn');
+
+        allBtns.forEach(btn => btn.disabled = true);
+        feedbackMessage.classList.remove('hidden');
+
+        if (selectedIndex === correctIndex) {
+            selectedBtn.classList.add('correct');
+            feedbackMessage.textContent = "✅ Correct!";
+            feedbackMessage.style.color = "var(--correct-text)";
+            score++;
+            scoreTracker.textContent = `Score: ${score}`;
+        } else {
+            selectedBtn.classList.add('wrong');
+            allBtns[correctIndex].classList.add('correct');
+            feedbackMessage.textContent = "❌ Incorrect.";
+            feedbackMessage.style.color = "var(--wrong-text)";
+            
+            if (!wrongQuestions.includes(qData)) {
+                wrongQuestions.push(qData);
+            }
+        }
+        nextBtn.classList.remove('hidden');
+    }
+
+    nextBtn.onclick = () => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < currentPool.length) {
+            loadQuestion();
+        } else {
+            endQuiz();
+        }
+    };
+
+    function endQuiz() {
+        quizScreen.classList.add('hidden');
+        resultScreen.classList.remove('hidden');
+        
+        document.getElementById('final-score').innerHTML = 
+            `You scored <span style="color: var(--accent-blue);">${score}</span> out of ${currentPool.length}!`;
+
+        if (wrongQuestions.length > 0) {
+            retryBtn.classList.remove('hidden');
+            retryBtn.textContent = `Review ${wrongQuestions.length} Incorrect Question(s)`;
+        } else {
+            retryBtn.classList.add('hidden');
+            document.getElementById('final-score').innerHTML += "<br><br>🎉 Perfect score! Excellent work.";
+        }
+    }
+
+    retryBtn.onclick = () => {
+        currentPool = shuffleArray(wrongQuestions);
+        wrongQuestions = [];
+        currentQuestionIndex = 0;
+        score = 0;
+        resultScreen.classList.add('hidden');
+        quizScreen.classList.remove('hidden');
+        loadQuestion();
+    };
+</script>
+</body>
+</html>
