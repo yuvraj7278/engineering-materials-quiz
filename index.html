@@ -86,6 +86,17 @@
             box-shadow: 0 6px 16px rgba(0,0,0,0.04);
         }
 
+        /* Featured Blueprint Test Card */
+        .quiz-card.featured-test {
+            border: 1.5px solid var(--accent-blue);
+            background: linear-gradient(135deg, #f4f9ff 0%, #ffffff 100%);
+            box-shadow: 0 4px 14px rgba(0, 113, 227, 0.08);
+        }
+
+        .quiz-card.featured-test:hover {
+            box-shadow: 0 8px 20px rgba(0, 113, 227, 0.14);
+        }
+
         /* Styling for Unit 5 before file is added */
         .quiz-card.coming-soon {
             opacity: 0.65;
@@ -185,6 +196,15 @@
     </header>
 
     <div class="quiz-grid">
+        <!-- Featured Top Card: 70-Mark Blueprint Online Test -->
+        <a href="emt-test.html" class="quiz-card featured-test">
+            <div class="quiz-info">
+                <h2 style="color: var(--accent-blue);">70-Mark Blueprint Online Test (407 Pool)</h2>
+                <p>Official Syllabus Weightage &bull; R/U/A Cognitive Levels &bull; Full 407 Practice Mode</p>
+            </div>
+            <span class="badge" style="background: var(--accent-blue); color: #ffffff;">70 Marks</span>
+        </a>
+
         <!-- Unit-wise Quizzes (1 to 6) -->
         <a href="unit1.html" class="quiz-card">
             <div class="quiz-info">
