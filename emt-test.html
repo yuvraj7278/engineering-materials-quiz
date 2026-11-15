@@ -1,2325 +1,1028 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engineering Materials & Metallurgy (EMT) Online Test Portal</title>
-    <style>
-        :root {
-            --bg-color: #f5f5f7;
-            --window-bg: #ffffff;
-            --text-main: #1d1d1f;
-            --text-muted: #86868b;
-            --border-color: #d2d2d7;
-            --accent-blue: #0071e3;
-            --accent-blue-hover: #0077ed;
-            --correct-bg: #e3fcef;
-            --correct-border: #34c759;
-            --correct-text: #0c5c27;
-            --wrong-bg: #fce8e8;
-            --wrong-border: #ff3b30;
-            --wrong-text: #8a0a14;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>70-Mark Blueprint Test - EMT Portal</title>
+  <style>
+    :root {
+      --bg-color: #f5f5f7;
+      --card-bg: #ffffff;
+      --text-main: #1d1d1f;
+      --text-muted: #86868b;
+      --accent-blue: #0071e3;
+      --border-color: #d2d2d7;
+      --green: #34c759;
+      --green-bg: rgba(52, 199, 89, 0.12);
+      --red: #ff3b30;
+      --red-bg: rgba(255, 59, 48, 0.12);
+      --amber: #ff9500;
+      --amber-bg: rgba(255, 149, 0, 0.12);
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.5;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 760px;
-            background: var(--window-bg);
-            padding: 32px 40px;
-            border-radius: 18px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-        h2, h3 {
-            margin-top: 0;
-            font-weight: 600;
-        }
+    header {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand h1 {
+      font-size: 17px;
+      font-weight: 600;
+    }
+    .badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .badge.ok { border-color: rgba(52,199,89,0.4); color: var(--green); background: var(--green-bg); }
+    .badge.warn { border-color: rgba(255,149,0,0.4); color: var(--amber); background: var(--amber-bg); }
 
-        .status-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-bottom: 24px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border-color);
-        }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .timer {
-            background: #f0f0f2;
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-variant-numeric: tabular-nums;
-            font-weight: 600;
-            color: var(--text-main);
-        }
+    button {
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-color);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    button:hover:not(:disabled) { border-color: var(--accent-blue); background: #eaeaea; }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+    button.primary {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+      color: #fff;
+    }
+    button.primary:hover:not(:disabled) { background: #0077ed; }
+    button.danger {
+      background: var(--red-bg);
+      border-color: rgba(255,59,48,0.4);
+      color: var(--red);
+    }
+    button.success {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+      font-weight: 600;
+    }
 
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 24px;
-        }
+    main {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 30px 20px;
+      flex: 1;
+    }
+    .hidden { display: none !important; }
 
-        .btn {
-            width: 100%;
-            text-align: left;
-            padding: 14px 18px;
-            font-size: 15px;
-            background: var(--window-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
-            color: var(--text-main);
-            box-sizing: border-box;
-        }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    @media (max-width: 850px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
 
-        .btn:hover:not(:disabled) {
-            background: var(--bg-color);
-            border-color: #a1a1a6;
-        }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 600;
+    }
 
-        .btn:disabled {
-            cursor: default;
-        }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td {
+      padding: 10px 8px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+    th {
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+    td.num, th.num { text-align: right; }
+    tr.total-row td {
+      font-weight: 600;
+      border-top: 2px solid var(--border-color);
+      border-bottom: none;
+      background: var(--bg-color);
+    }
 
-        .correct {
-            background: var(--correct-bg) !important;
-            border-color: var(--correct-border) !important;
-            color: var(--correct-text) !important;
-            font-weight: 500;
-        }
+    .progress-wrap { margin: 16px 0; }
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .progress-bar {
+      height: 8px;
+      background: var(--bg-color);
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent-blue);
+      transition: width 0.3s ease;
+    }
 
-        .wrong {
-            background: var(--wrong-bg) !important;
-            border-color: var(--wrong-border) !important;
-            color: var(--wrong-text) !important;
-        }
+    .mode-card {
+      border: 1px solid var(--border-color);
+      background: var(--bg-color);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    .mode-card h3 { font-size: 15px; margin-bottom: 4px; font-weight: 600; }
+    .mode-card p { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
 
-        .action-btn {
-            text-align: center;
-            background: var(--accent-blue);
-            color: white;
-            border: none;
-            font-weight: 600;
-            margin-top: 24px;
-            box-shadow: 0 2px 5px rgba(0, 113, 227, 0.3);
-        }
+    .exam-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 20px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .exam-layout { grid-template-columns: 1fr; }
+    }
 
-        .action-btn:hover {
-            background: var(--accent-blue-hover);
-        }
+    .q-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .tag {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .tag.level-R { color: #0071e3; border-color: rgba(0,113,227,0.3); background: rgba(0,113,227,0.06); }
+    .tag.level-U { color: #34c759; border-color: rgba(52,199,89,0.3); background: rgba(52,199,89,0.06); }
+    .tag.level-A { color: #af52de; border-color: rgba(175,82,222,0.3); background: rgba(175,82,222,0.06); }
 
-        .hidden {
-            display: none !important;
-        }
+    .q-text {
+      font-size: 17px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
 
-        .feedback {
-            margin-top: 18px;
-            font-weight: 600;
-            font-size: 15px;
-            text-align: center;
-        }
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      text-align: left;
+      padding: 14px 16px;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      font-size: 14px;
+      line-height: 1.4;
+      width: 100%;
+      cursor: pointer;
+    }
+    .option-btn:hover { border-color: var(--accent-blue); background: #eaeaea; }
+    .option-btn.selected {
+      border-color: var(--accent-blue);
+      background: rgba(0, 113, 227, 0.08);
+    }
+    .opt-key {
+      font-size: 12px;
+      font-weight: 600;
+      min-width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+    }
+    .option-btn.selected .opt-key {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+      color: #fff;
+    }
 
-        #start-screen, #result-screen {
-            text-align: center;
-        }
+    .q-nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-color);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
-        .blueprint-box {
-            background: #fafafc;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 16px;
-            margin: 20px 0;
-            text-align: left;
-            font-size: 14px;
-        }
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      max-height: 380px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    .pal-btn {
+      padding: 6px 0;
+      font-size: 11px;
+      text-align: center;
+      border-radius: 6px;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .pal-btn.current { outline: 2px solid var(--accent-blue); outline-offset: -1px; }
+    .pal-btn.answered { background: rgba(0, 113, 227, 0.15); border-color: var(--accent-blue); color: var(--accent-blue); font-weight: 600; }
+    .pal-btn.flagged { background: var(--amber-bg); border-color: var(--amber); color: var(--amber); }
 
-        .blueprint-box ul {
-            margin: 8px 0 0 20px;
-            padding: 0;
-        }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-color);
+    }
+    .legend span { display: inline-flex; align-items: center; gap: 5px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
 
-        .score-display {
-            font-size: 22px;
-            font-weight: 600;
-            margin: 16px 0;
-        }
+    .score-banner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 700px) { .score-banner { grid-template-columns: repeat(2, 1fr); } }
+    .stat-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .stat-label { font-size: 12px; color: var(--text-muted); }
+    .stat-val { font-size: 24px; font-weight: 700; margin-top: 4px; }
 
-        .unit-badge {
-            display: inline-block;
-            background: #e5e5ea;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 3px 8px;
-            border-radius: 6px;
-            color: #3a3a3c;
-            margin-bottom: 8px;
-        }
-    </style>
+    .review-item {
+      border: 1px solid var(--border-color);
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .review-item.wrong { border-left: 4px solid var(--red); }
+    .review-item.correct { border-left: 4px solid var(--green); }
+    .review-item.skipped { border-left: 4px solid var(--amber); }
+
+    .rev-opts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    @media (max-width: 600px) { .rev-opts { grid-template-columns: 1fr; } }
+    .rev-opt {
+      font-size: 13px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+    }
+    .rev-opt.is-correct { background: var(--green-bg); border-color: rgba(52,199,89,0.4); color: #1b5e20; font-weight: 500; }
+    .rev-opt.is-wrong { background: var(--red-bg); border-color: rgba(255,59,48,0.4); color: #b71c1c; font-weight: 500; }
+
+    .filter-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+    .filter-tabs button.active { background: var(--accent-blue); border-color: var(--accent-blue); color: #fff; }
+  </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- Start Screen -->
-    <div id="start-screen">
-        <h2>Engineering Materials & Metallurgy (EMT) Test</h2>
-        <p style="color: var(--text-muted); font-size: 15px;">Online Examination Portal based on official syllabus blueprint and full 407-question master pool.</p>
-        
-        <div class="blueprint-box">
-            <strong>📋 Test Blueprint Distribution (Total 70 Marks):</strong>
-            <ul>
-                <li><strong>Unit 1:</strong> Basics of Engineering Materials (10 Marks)</li>
-                <li><strong>Unit 2:</strong> Iron–Iron Carbide Diagram (10 Marks)</li>
-                <li><strong>Unit 3:</strong> Ferrous & Non-Ferrous Alloys (16 Marks)</li>
-                <li><strong>Unit 4:</strong> Heat Treatment Processes (10 Marks)</li>
-                <li><strong>Unit 5:</strong> Basics of Powder Metallurgy (14 Marks)</li>
-                <li><strong>Unit 6:</strong> Refractories & Fuels (10 Marks)</li>
-            </ul>
+<header>
+  <div class="brand">
+    <h1>EMT 70-Mark Blueprint Test</h1>
+    <span id="poolStatusBadge" class="badge">Loading masterPool.js...</span>
+  </div>
+  <div class="header-actions">
+    <span id="timerDisplay" class="badge hidden" style="font-size:14px; padding:6px 12px;">90:00</span>
+    <a href="index.html" id="btnHome" class="hidden" style="text-decoration:none;"><button>Exit to Hub</button></a>
+  </div>
+</header>
+
+<main>
+  <!-- SETUP VIEW -->
+  <section id="viewSetup">
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Examination Blueprint (70 Marks)</span>
+          <span class="badge">R23 Scheme</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Unit</th>
+              <th>Unit Title</th>
+              <th class="num">Pool</th>
+              <th class="num">R</th>
+              <th class="num">U</th>
+              <th class="num">A</th>
+              <th class="num">Marks</th>
+            </tr>
+          </thead>
+          <tbody id="blueprintTableBody"></tbody>
+          <tfoot>
+            <tr class="total-row">
+              <td colspan="2">Total</td>
+              <td class="num" id="bpTotalPool">—</td>
+              <td class="num">14</td>
+              <td class="num">20</td>
+              <td class="num">36</td>
+              <td class="num">70</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Test Launchpad</span>
+          <button onclick="resetSeenHistory()" style="padding:4px 8px; font-size:11px;">Reset Seen</button>
         </div>
 
-        <button class="btn action-btn" onclick="startBlueprintTest()">🚀 Start 70-Mark Blueprint Test</button>
-        <button class="btn" style="margin-top: 10px;" onclick="startFullBankTest()">Practice All 407 Questions</button>
-    </div>
-
-    <!-- Quiz Screen -->
-    <div id="quiz-screen" class="hidden">
-        <div class="status-bar">
-            <div>
-                <span class="unit-badge" id="unit-badge">Unit 1</span>
-                <span id="progress" style="margin-left: 6px; font-weight: 600;">Question 1 / 70</span>
-            </div>
-            <div class="timer" id="timer-display">⏱️ 45:00</div>
+        <div class="progress-wrap">
+          <div class="progress-meta">
+            <span>Pool Coverage Progress</span>
+            <span id="coverageText">0 / 0</span>
+          </div>
+          <div class="progress-bar">
+            <div id="coverageBar" class="progress-fill" style="width: 0%;"></div>
+          </div>
         </div>
-        
-        <h3 id="question-text">Question loading...</h3>
-        
-        <div class="options" id="options-container">
-            <!-- Options injected dynamically -->
+
+        <div class="mode-card">
+          <h3>1. Official 70-Mark Blueprint Test</h3>
+          <p>Strictly maps R, U, and A cognitive levels across Units 1–6.</p>
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:10px;">
+            <button id="btnStartBlueprint" class="primary" onclick="startBlueprintTest()">Start 70-Mark Test</button>
+            <label style="font-size:12px; color:var(--text-muted); display:flex; align-items:center; gap:5px; cursor:pointer;">
+              <input type="checkbox" id="chkShuffleOpts" checked /> Shuffle Options
+            </label>
+          </div>
         </div>
-        
-        <div id="feedback-message" class="feedback hidden"></div>
-        
-        <button id="next-btn" class="btn action-btn hidden">Next Question</button>
+
+        <div class="mode-card">
+          <h3>2. Full Master Pool Marathon</h3>
+          <p>Practice all 407 questions from the master pool in randomized order.</p>
+          <button onclick="startFullPoolTest()" style="margin-top:10px;">Start Full 407 Test</button>
+        </div>
+
+        <div id="lastWrongCard" class="mode-card hidden" style="border-color: rgba(255,59,48,0.4);">
+          <h3 style="color:var(--red);">3. Saved Wrong-Answer Bank (<span id="savedWrongCount">0</span>)</h3>
+          <p>Re-attempt questions you got wrong in previous sessions.</p>
+          <button class="danger" onclick="startSavedWrongTest()" style="margin-top:10px;">Practice Wrong Questions</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXAM VIEW -->
+  <section id="viewExam" class="hidden">
+    <div class="exam-layout">
+      <div class="card">
+        <div class="q-meta-bar">
+          <span id="qCounter" class="tag" style="color:var(--text-main); font-weight:600;">Q 1 / 70</span>
+          <span id="qUnitTag" class="tag">Unit 1</span>
+          <span id="qCatTag" class="tag">Topic</span>
+          <span id="qLevelTag" class="tag level-R">R Level</span>
+          <span id="qPoolIdTag" class="tag" style="margin-left:auto;">Pool #1</span>
+        </div>
+
+        <div id="qText" class="q-text">Question text goes here</div>
+        <div id="optionsContainer" class="options-list"></div>
+
+        <div class="q-nav-footer">
+          <div style="display:flex; gap:8px;">
+            <button id="btnPrev" onclick="navigateQuestion(-1)">← Previous</button>
+            <button id="btnFlag" onclick="toggleFlag()">Flag</button>
+            <button onclick="clearResponse()">Clear</button>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button id="btnNext" class="primary" onclick="navigateQuestion(1)">Save & Next →</button>
+            <button class="success" onclick="submitTestPrompt()">Submit Test</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header" style="margin-bottom:10px; padding-bottom:8px;">
+          <span class="card-title">Question Palette</span>
+          <span id="answeredCountTag" class="badge">0 / 70</span>
+        </div>
+        <div id="paletteGrid" class="palette-grid"></div>
+        <div class="legend">
+          <span><i class="dot" style="background:var(--accent-blue);"></i> Answered</span>
+          <span><i class="dot" style="background:var(--amber);"></i> Flagged</span>
+          <span><i class="dot" style="background:var(--border-color);"></i> Unvisited</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS VIEW -->
+  <section id="viewResults" class="hidden">
+    <div class="card" style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <div>
+        <h2 style="font-size:20px; font-weight:600;">Test Assessment Report</h2>
+        <p style="font-size:13px; color:var(--text-muted);">Detailed unit-wise and cognitive level performance breakdown</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button id="btnRetryWrongNow" class="danger" onclick="retryCurrentWrongQuestions()">
+          Solve Wrong Questions (<span id="wrongBtnCount">0</span>)
+        </button>
+        <a href="index.html" style="text-decoration:none;"><button class="primary">Return to Hub</button></a>
+      </div>
     </div>
 
-    <!-- Result Screen -->
-    <div id="result-screen" class="hidden">
-        <h2>Test Submitted Successfully!</h2>
-        <div id="final-score" class="score-display"></div>
-        <div id="unit-breakdown" style="text-align: left; margin: 20px 0; font-size: 14px;"></div>
-        
-        <button id="retry-btn" class="btn action-btn hidden">Review & Resolve Incorrect Questions</button>
-        <button id="restart-btn" class="btn action-btn" style="background: var(--text-main); margin-top: 12px;">Back to Main Menu</button>
+    <div class="score-banner">
+      <div class="stat-box">
+        <div class="stat-label">Total Score</div>
+        <div id="statScore" class="stat-val" style="color:var(--accent-blue);">0 / 70</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Accuracy</div>
+        <div id="statAccuracy" class="stat-val">0%</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Correct</div>
+        <div id="statCorrect" class="stat-val" style="color:var(--green);">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Wrong / Skipped</div>
+        <div id="statWrong" class="stat-val" style="color:var(--red);">0</div>
+      </div>
     </div>
-</div>
 
-<script[cite: 10]>
-    // Full 407 Question Master Pool
-    const masterQuestionBank = [
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Ferrous Metals do not possess the following property",
-        "opts": ["stiffness", "strength", "elasticity", "high electrical conductivity"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Ceramics usually consist of",
-        "opts": ["oxides", "nitrides", "carbides & borides", "all of the above"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "out of the following which is not a example of ceramics.",
-        "opts": ["sand", "brick", "lubricants", "concrete"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "out of the following which is not a example of organic materials.",
-        "opts": ["rubber", "plastics", "cement", "paper"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "which materials have good thermal conductivity?",
-        "opts": ["insulaters", "semiconductors", "conductors", "none of the above"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Density of Aluminium is",
-        "opts": ["2.7 gm/cc", "1.7 gm/cc", "3.7 gm/cc", "4.7 gm/cc"],
-        "ans": 0
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Unit of Density",
-        "opts": ["kg/m³", "kg/m²", "kg/m⁴", "kg.m"],
-        "ans": 0
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "colour of Al is",
-        "opts": ["White", "grey", "reddish", "none of the above"],
-        "ans": 0
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Melting point of copper is",
-        "opts": ["1539 deg. Celcius", "1031 deg. Celcius", "1231 deg. Celcius", "659 deg. Celcius"],
-        "ans": 1
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "..material possesses high impact strength than brittle materials.",
-        "opts": ["Malleable", "Tough", "Stiff", "Ductile"],
-        "ans": 1
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Copper is extremely tough but is not.",
-        "opts": ["Steel", "Iron", "Cast Iron", "Aluminium"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "is the most malleable metal.",
-        "opts": ["Silver", "Gold", "Steel", "C.I."],
-        "ans": 1
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "is lack of ductility.",
-        "opts": ["Malleability", "Hardness", "Toughness", "Brittleness"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Melting point of iron is",
-        "opts": ["1131 deg. Celcius", "1539 deg. Celcius", "1659 deg. Celcius", "1712 deg. Celcius"],
-        "ans": 1
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "is a brittle material.",
-        "opts": ["Steel", "aluminium", "Cast iron", "Copper"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Which of the following is not example of organic material?",
-        "opts": ["Fiber Glass", "Lubricants", "Wood", "Rubber"],
-        "ans": 0
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "is major ingredient for steel.",
-        "opts": ["Copper", "Carbon", "Cromium", "Iron"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Material consists of",
-        "opts": ["atoms", "molecules", "matter", "none of these"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Fiber glass acquires strength from...",
-        "opts": ["glass", "fiber", "polymer", "meterial"],
-        "ans": 0
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Fiber glass acquires flexibility from",
-        "opts": ["glass", "fiber", "polymer", "meterial"],
-        "ans": 1
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Melting point is defined as the Temperature",
-        "opts": ["maximum", "moderate", "minimum", "high"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "helps in differentiating heavy and light metals",
-        "opts": ["weight", "volume", "density", "mass"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "strength refers to the force needed to fracture the material.",
-        "opts": ["yield strength", "impact strength", "ultimate strength", "tensile strength"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "The ability of material to resist plastic deformation is called",
-        "opts": ["yield strength", "impact strength", "formability", "malleability"],
-        "ans": 0
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "is considered tensile property.",
-        "opts": ["physical property", "ductility", "formability", "malleability"],
-        "ans": 1
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "is a compressive property.",
-        "opts": ["physical property", "ductility", "formability", "malleability"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "The ability of material to regain its original state on removal of load is called....",
-        "opts": ["plasticity", "ductility", "malleability", "elasticity"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Which of the following determine the behavior of engineering materials under the applied forces and loads?",
-        "opts": ["physical property", "chemical property", "strength", "mechanical property"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Is also defined as the slope on the linear portion of a stress strain curve within the elastic limit.",
-        "opts": ["brittleness", "hardness", "toughness", "stiffness"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "impact strength depends upon",
-        "opts": ["density", "colour", "melting point", "structure"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "is shown as the maximum point on the stress strain curve.",
-        "opts": ["yield strength", "tensile strength", "impact strength", "ultimate strength"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Also defined as the ability of material to absorb energy during plastic deformation up to fracture.",
-        "opts": ["stiffness", "toughness", "brittleness", "hardness"],
-        "ans": 1
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "hardness is resistance to",
-        "opts": ["deformation", "plasticity", "elasticity", "penetration"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "fatigue failure occurs when a material is subjected to Loads",
-        "opts": ["fluctuating", "compressive", "tensile", "shear"],
-        "ans": 0
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Is the capacity of material to undergo deformation under tension without rupture.",
-        "opts": ["malleability", "ductility", "stiffness", "tensile strength"],
-        "ans": 1
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "which of the following is not the characteristic of ceramics?",
-        "opts": ["hardness", "brittleness", "abrasiveness", "ductility"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "is made use in stamping images on coins and ornamental work.",
-        "opts": ["elasticity", "plasticity", "strength", "malleability"],
-        "ans": 1
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "of a material is very helpful in indentification of metal.",
-        "opts": ["structure", "density", "melting point", "colour"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "physical properties are those properties which decribes a material under conditions in which Forces are not concerned.",
-        "opts": ["tensile", "compressive", "internal", "external"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "A small impression for a given load and indentor that the material is",
-        "opts": ["soft", "tough", "stiff", "hard"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "which of the following is not the example of semiconductor?",
-        "opts": ["Si", "Ge", "sn", "zn"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "contain the compounds of nitrogen",
-        "opts": ["acrylics", "polyethylene", "nylon", "pvc"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "materials consist of more than one material type.",
-        "opts": ["Natural organic material", "synthetic organic material", "manufactured organic material", "composite material"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "is a good example of an aggregate composite.",
-        "opts": ["cement", "plaster", "concrete", "sand"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "is that out of which anything is made.",
-        "opts": ["matter", "substance", "material", "atom"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "are dimensionally stable at room temperature.",
-        "opts": ["non- metals", "metalloids", "organic material", "metal"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Materials are poor conductor of heat, electricity, temperature.",
-        "opts": ["Ceramic", "Composite", "organic", "inorganic"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "In polyethylene (C₂H₄)n n ranges from.",
-        "opts": ["10 to 100", "100 to 10000", "100 to 1000", "10 to 1000"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "fractures normally occur along the grain boundaries",
-        "opts": ["stiff", "ductile", "tough", "brittle"],
-        "ans": 1
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Is highly plastic material.",
-        "opts": ["gold", "steel", "cast iron", "none of the above"],
-        "ans": 3
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "In a unit cell of face centred cubic space lattice, there are",
-        "opts": ["six atoms", "nine atoms", "fourteen atoms", "seventeen atoms"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "The type of space lattice found in alpha iron is",
-        "opts": ["face centred cubic space lattice", "body centred cubic space lattice", "close packed hexagonal space lattice", "none of the above"],
-        "ans": 1
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "A solid solution in which solute atoms replace some solvent atoms so that they lie at normal atom sites of the crystal structure is called",
-        "opts": ["Interstitial solid solution", "substitutional solid solution", "intermetallic compounds", "mechanical mixtures"],
-        "ans": 1
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Strength of material is the ability of the material to resist------",
-        "opts": ["Deformation due to stress", "Fracture due to high load.", "External forces applied with yielding or breakdown", "None of the above"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Ability of material to resist deformation due to stress is called as",
-        "opts": ["Toughness", "stiffness", "plasticity", "hardness"],
-        "ans": 1
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Ability of material to resist fracture due to high impact load is called as",
-        "opts": ["Toughness", "stiffness", "plasticity", "hardness"],
-        "ans": 0
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Property of the material due to which they can be drawn in to the wire is called",
-        "opts": ["Ductility", "malleability", "toughness", "plasticity"],
-        "ans": 0
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Ability of the material to undergo permanent deformation under tension is called as:",
-        "opts": ["toughness", "stiffness", "plasticity", "hardness"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Property of the material due to which it can be rolled or hammered in to thin sheets is called as",
-        "opts": ["brittleness", "ductility", "malleability", "fatigue"],
-        "ans": 2
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "Property of material due to which it breaks with little permanent distortion is called as----",
-        "opts": ["brittleness", "ductility", "malleability", "fatigue"],
-        "ans": 0
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "The ability of a material to absorb energy in the plastic range is called---",
-        "opts": ["resilience", "toughness", "hardness", "brittleness"],
-        "ans": 1
-      },
-      {
-        "unit": 1,
-        "cat": "Unit 1",
-        "q": "is defined as the destruction of the material by chemical or electrochemical reaction with its environment.",
-        "opts": ["hardness", "melting point", "corrosion", "machining"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "What is the crystalline structure of alpha iron?",
-        "opts": ["Face Centered Cubic (F.C.C.)", "Body Centered Cubic (B.C.C.)", "Hexagonal Close Packed (H.C.P.)", "Amorphous"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Between which temperatures does gamma iron exist?",
-        "opts": ["Room temperature to 910°C", "910°C to 1404°C", "1404°C to 1539°C", "1539°C to 1800°C"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Which form of iron is ferromagnetic at room temperature?",
-        "opts": ["Alpha iron", "Gamma iron", "Delta iron", "None of the above"],
-        "ans": 0
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "What is the structure of gamma iron?",
-        "opts": ["Body Centered Cubic (B.C.C.)", "Face Centered Cubic (F.C.C.)", "Hexagonal Close Packed (H.C.P.)", "Simple Cubic"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Which allotrope of iron has the same structure as alpha iron but with a longer cube edge?",
-        "opts": ["Gamma iron", "Delta iron", "Beta iron", "None of the above"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "What is the temperature range for the existence of delta iron?",
-        "opts": ["Room temperature to 910°C", "910°C to 1404°C", "1404°C to 1539°C", "1539°C to 1700°C"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "What is the melting point of pure iron?",
-        "opts": ["910°C", "1404°C", "1539°C", "1600°C"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "What type of property is allotropy?",
-        "opts": ["Chemical", "Mechanical", "Crystallographic", "Magnetic"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "At what temperature does the transformation from alpha to gamma iron occur?",
-        "opts": ["910°C", "1404°C", "1539°C", "720°C"],
-        "ans": 0
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Which form of iron is stable just below its melting point?",
-        "opts": ["Alpha iron", "Gamma iron", "Delta iron", "None of the above"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "What is the structure of iron at room temperature up to 912°C?",
-        "opts": ["Face Centered Cubic (FCC)", "Hexagonal Close Packed (HCP)", "Body Centered Cubic (BCC)", "Simple Cubic"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "What is the phase name of iron between room temperature and 912°C?",
-        "opts": ["Austenite", "Martensite", "δ-ferrite", "α-ferrite"],
-        "ans": 3
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Between which temperature ranges does γ-Austenite exist in pure iron?",
-        "opts": ["912°C to 1395°C", "912°C to 1539°C", "1395°C to 1539°C", "Room temperature to 912°C"],
-        "ans": 0
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "What is the crystal structure of γ-iron (austenite)?",
-        "opts": ["Body Centered Cubic (BCC)", "Face Centered Cubic (FCC)", "Hexagonal Close Packed (HCP)", "Orthorhombic"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "What phase of iron exists between 1395°C to 1539°C?",
-        "opts": ["α-ferrite", "γ-Austenite", "δ-ferrite", "Liquid iron"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Which crystal structure reappears in δ-ferrite after 1395°C?",
-        "opts": ["FCC", "HCP", "BCC", "None"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "What happens to iron after it reaches 1539°C?",
-        "opts": ["It becomes α-ferrite", "It forms δ-ferrite", "It changes to liquid", "It transforms to martensite"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "In which temperature range does iron exist in the FCC structure?",
-        "opts": ["912°C to 1395°C", "Room temperature to 912°C", "1395°C to 1539°C", "Above 1539°C"],
-        "ans": 0
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Which of the following is true about α-ferrite?",
-        "opts": ["It is stable above 1395°C", "It has FCC structure", "It is ferromagnetic at room temperature", "It is the liquid phase of iron"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "What is a solid solution?",
-        "opts": ["A mixture of two solids without any bonding", "A solution of metals only in gaseous form", "A solid in which two metals remain mutually dissolved after crystallization", "A compound of non-metals only"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "In a solid solution, the metal present in larger quantity is called:",
-        "opts": ["Solute", "Solvent", "Precipitate", "Alloy"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "The metal present in smaller quantity in a solid solution is known as:",
-        "opts": ["Solvent", "Matrix", "Solute", "Compound"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "In which type of solid solution does the solute atom replace the solvent atom in the crystal lattice?",
-        "opts": ["Ordered solid solution", "Interstitial solid solution", "Substitutional solid solution", "Amorphous solid"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Substitutional solid solutions can be:",
-        "opts": ["Only ordered", "Only disordered", "Both ordered and disordered", "Neither ordered nor disordered"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "In interstitial solid solutions, solute atoms occupy:",
-        "opts": ["Surface of the crystal", "Voids or holes between solvent atoms", "Edges of the crystal lattice", "Outer orbitals of solvent atoms"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Which of the following is a characteristic of interstitial solid solutions?",
-        "opts": ["Solute atoms are larger than solvent atoms", "Solute atoms displace solvent atoms", "Solute atoms occupy interstices without replacing solvent atoms", "Solute atoms create a separate phase"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "What is the main difference between Substitutional and interstitial solid solutions?",
-        "opts": ["Chemical bonding", "Type of metal used", "Position of solute atoms in the lattice", "Temperature of formation"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Which of the following conditions favors formation of substitutional solid solutions?",
-        "opts": ["Large size difference between solute and solvent", "Similar atomic radii of solute and solvent", "Solute is a non-metal", "Solvent has a very high melting point"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Which type of solid solution would carbon in iron (as in steel) form?",
-        "opts": ["Substitutional", "Interstitial", "Ordered substitutional", "Compound"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "The Iron-Carbon equilibrium diagram is a type of:",
-        "opts": ["Unary phase diagram", "Binary phase diagram", "Ternary phase diagram", "Quaternary phase diagram"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "What is the maximum carbon content considered in the Iron-Carbon equilibrium diagram (Fe-C)?",
-        "opts": ["2.0%", "4.3%", "6.67%", "8.0%"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "At 0.8% carbon and 723°C, the structure formed is called:",
-        "opts": ["Cementite", "Ferrite", "Pearlite", "Austenite"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "The eutectoid composition in the iron-carbon diagram is:",
-        "opts": ["0.8% C", "4.3% C", "2.0% C", "6.67% C"],
-        "ans": 0
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "The eutectoid temperature in the iron-carbon diagram is:",
-        "opts": ["1495°C", "1147°C", "723°C", "1130°C"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "The eutectic reaction in Fe-C system is:",
-        "opts": ["Austenite → Ferrite + Cementite", "Liquid → Austenite + Cementite", "Liquid → δ-ferrite + Austenite", "Cementite → Austenite + Liquid"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "The eutectic composition in the Fe-C diagram occurs at:",
-        "opts": ["0.8% C", "2.0% C", "4.3% C", "6.67% C"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Which of the following phases is soft and ductile?",
-        "opts": ["Cementite", "Pearlite", "Ferrite", "Martensite"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "The phase Fe3C is known as:",
-        "opts": ["Austenite", "Cementite", "Pearlite", "Bainite"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "The transformation of austenite into pearlite upon cooling is known as:",
-        "opts": ["Eutectic reaction", "Eutectoid reaction", "Peritectic reaction", "Allotropic transformation"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Which structure is a mixture of ferrite and cementite?",
-        "opts": ["Austenite", "Martensite", "Pearlite", "Cementite"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "At what temperature does the eutectic reaction occur in Fe-C diagram?",
-        "opts": ["1147°C", "723°C", "1495°C", "910°C"],
-        "ans": 0
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "In the Fe-C diagram, hypo eutectoid steels contain:",
-        "opts": ["Less than 0.8% carbon", "More than 0.8% carbon", "Exactly 0.8% carbon", "More than 6.67% carbon"],
-        "ans": 0
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "What is the phase present at 6.67% carbon in the Fe-C diagram?",
-        "opts": ["Pearlite", "Cementite (Fe3C)", "Austenite", "Ferrite"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Which of the following structures is hardest and most brittle?",
-        "opts": ["Ferrite", "Cementite", "Austenite", "Pearlite"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "What are critical temperatures in the Fe-Fe3C diagram?",
-        "opts": ["Temperatures at which metals melt completely", "Temperatures where phase changes occur during heating or cooling", "Temperatures of maximum hardness", "Temperatures at which alloys evaporate"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "The upper critical temperature A3 is the temperature below which:",
-        "opts": ["Austenite starts to form in hypereutectoid alloys", "Ferrite starts to form from austenite in hypo eutectoid alloys", "Cementite starts to form from austenite in hypereutectoid alloys", "Pearlite forms from austenite"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "The upper critical temperature ACM is the temperature below which:",
-        "opts": ["Ferrite starts to form from austenite in hypo eutectoid alloys", "Cementite starts to form from austenite in hypereutectoid alloys", "Pearlite starts to form from austenite", "Austenite completely disappears"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "The lower critical temperature A1 corresponds to:",
-        "opts": ["The melting point of iron", "The temperature of austenite-to-pearlite eutectoid transformation", "The temperature at which ferrite forms", "The temperature at which cementite dissolves"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Below the temperature A1:",
-        "opts": ["Austenite exists in the structure", "Austenite does not exist", "Only liquid phase is present", "Cementite is completely absent"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Which of the following points represents the temperature below which ferrite starts to form in hypo eutectoid alloys?",
-        "opts": ["A1", "A3", "ACM", "Eutectic point"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "In hypereutectoid steels, cementite starts to form from austenite below the critical temperature:",
-        "opts": ["A1", "A3", "ACM", "Eutectoid temperature"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "The eutectic reaction occurs during:",
-        "opts": ["Heating of pure iron", "Cooling of hypoeutectoid steel", "Cooling of liquid alloy with 4.3% Carbon", "Cooling of hypereutectoid steel"],
-        "ans": 2
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Steel Contains Carbon percentage between:",
-        "opts": ["0 to 1.1%", "0 to 2.1%", "0 to 4.1%", "0 to 3.1%"],
-        "ans": 1
-      },
-      {
-        "unit": 2,
-        "cat": "Unit 2",
-        "q": "Eutectoid reaction occurs at:",
-        "opts": ["0.8% Carbon", "0.2% Carbon", "0.5% Carbon", "None of the above"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Ferritic stainless steel contain",
-        "opts": ["12 to 18% Chromium", "13 to 27% Cromium", "Above 18% Chromium", "None of the above"],
-        "ans": 1
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Austenitic stainless steel contain",
-        "opts": ["12 to 18% Cromium", "13 to 27% Cromium", "Above 18% Cromium", "None of the above"],
-        "ans": 2
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Martensitic stainless steel contain",
-        "opts": ["12 to 18% Cromium", "13 to 27% Cromium", "Above 18% Cromium", "None of the above"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Ferromanganese contain 74 to 82%",
-        "opts": ["si", "al", "mg", "mn"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Ferrosilicon contain 05 to 17%",
-        "opts": ["si", "al", "mg", "mn"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "pig iron is classified into",
-        "opts": ["Basic pig iron", "Foundry pig iron", "Ferroalloys", "All of these"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Steel is produced from ________ process/furnace.",
-        "opts": ["Bessemer converter", "Open hearth furnce", "Electric furnace", "All of these"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The solubility of carbon in Austenite is",
-        "opts": ["1.5% carbon", "2.5% carbon", "2% carbon", "None of the above"],
-        "ans": 2
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Alpha ferrite at room temp. Can dissolve",
-        "opts": ["0.008% carbon", "0.25% carbon", "0.2% carbon", "None of the above"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Cementite becomes non magnetic/paramagnetic after",
-        "opts": ["200 deg. Celcius", "250 deg. Celcius", "210 deg. Celcius", "220 deg. Celcius"],
-        "ans": 2
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Cupola furnace is used to manufacture",
-        "opts": ["Cast iron", "Pig iron", "Wrought iron", "Steel"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "On the basis of appearance of fractures cast irons are classified as",
-        "opts": ["White cast iron", "malleable cast iron", "grey cast iron & nodular cast iron", "all of the above"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The cast iron containing graphite in the form of flakes are called",
-        "opts": ["White cast iron", "Malleable cast iron", "Grey cast irons", "Nodular cast iron"],
-        "ans": 2
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Due to which property copper is widely used for electrical conductors",
-        "opts": ["Non magnetic & Good corrosion resistance", "High electrical & thermal conductivity", "good ductility & malleability", "all of the above"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "the mechanical properties of brasses depend on the amount of",
-        "opts": ["zinc", "tin", "mg", "none of the above"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Brasses are classified either on the basis of structure or colour as",
-        "opts": ["alpha brasses", "alpha beta brasses", "red brasses & yellow brasses", "all of the above"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "addition of 1% tin to muntz metal increases corrosion resistance to marine environment & the brass is called as",
-        "opts": ["alpha brass", "gliding metal", "leaded brass", "naval brass"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "commercially important bronzes are",
-        "opts": ["alumimium bronze", "tin bronze", "silicon bronze", "all of the above"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Aluminium bronzes are characterised by",
-        "opts": ["Good strength", "Good ductility & toughness", "Good bearing properties & corrosion resistance", "all of the above"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Aluminim shows excellent corrosion & oxidation resistance due to the formation of",
-        "opts": ["alumium oxide", "ferrous oxide", "aluminium trioxide", "none of the above"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Aluminim is soft & ductile due to",
-        "opts": ["FCC Structure", "BFCC Structure", "Tetrahedral Structure", "none of the above"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "silicon bronzes are characterised by",
-        "opts": ["high corrosion resistance", "high tensile strength", "very high toughness & machinability", "all of the above"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Some of the important tin bronzes",
-        "opts": ["Gun metal", "Phosphor bronze", "Wrought Phosphor bronze & cast Phosphor bronze", "all of the above"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Brass is an alloy of",
-        "opts": ["copper and zinc", "copper and tin", "copper, tin and zinc", "none of these"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "An alloy of copper, tin and zinc is known as",
-        "opts": ["Brass", "Bronze", "gun metal", "muntz metal"],
-        "ans": 1
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Muntz metal (Yellow brass) contains",
-        "opts": ["70% copper and 30% zinc", "60% copper and 40% zinc", "59% copper, 40% zinc and 1% tin", "60.45% copper, 35.2% zinc and 5.35% nickel"],
-        "ans": 1
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Babbit metal is a",
-        "opts": ["lead-base alloy", "copper-base alloy", "tin-base alloy", "cadmium-base alloy"],
-        "ans": 2
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The metal suitable for bearing subjected to light loads, is",
-        "opts": ["silicon bronze", "white metal", "monel metal", "phosphor bronze"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The metal suitable for bearings subjected to heavy loads, is",
-        "opts": ["silicon bronze", "white metal", "monel metal", "phosphor bronze"],
-        "ans": 1
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Phosphor bronze has",
-        "opts": ["high resitance to corrosion", "good wearing qualities and high elasticity", "valuable cold working property", "all of the above"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Silicon when added to copper improves",
-        "opts": ["machinability", "hardness", "hardness & strength", "strength & ductility"],
-        "ans": 2
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The casting ability of aluminium increases when ________ is added to aluminium.",
-        "opts": ["silicon", "lead & bismuth", "magnesium", "copper"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Chromium when added to steel ________ the tensile strength.",
-        "opts": ["does not effect", "Decreases", "Increases", "dont know"],
-        "ans": 2
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Duralumin has better strength than Y-alloy at high temperature.",
-        "opts": ["True", "false", "dont know", "can't say"],
-        "ans": 1
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Copper has high electrical & thermal conductivity.",
-        "opts": ["true", "false", "don't know", "can't say"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The alloy, mainly used for corrosion resistance in stainless steels is",
-        "opts": ["silicon", "manganese", "carbon", "cromium"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Duralumin contains",
-        "opts": ["3.5 to 4.5% copper, 0.4 to 0.7% magnesium, 0.4 to 0.7% manganese and rest aluminium", "3.5 to 4.5% copper, 1.2 to 1.7% managanese, 1.8 to 2.3% nickel, 0.6% si/mg/fe, rest Al", "4 to 4.5% magnesium, 3 to 4% copper and rest aluminium", "5 to 6% tin, 2 to 3% copper and rest aluminium"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Types of bronzes is",
-        "opts": ["Gun metal", "Al bronze", "Phosphor bronze", "All of the above"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The aluminium with 3.5 to 4.5% cu and 0.4 to 0.7% MN & MG is called",
-        "opts": ["duralumin", "Y-alloy", "magnalium", "hindalium"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Y-alloy contains",
-        "opts": ["3.5 to 4.5% copper, 0.4 to 0.7% magnesium, 0.4 to 0.7% manganese and rest aluminium", "3.5 to 4.5% copper, 1.2 to 1.7% manganese, 1.8 to 2.3% nickel, 0.6% si/mg/fe, rest Al", "4 to 4.5% magnesium, 3 to 4% copper and rest aluminium", "5 to 6% tin, 2 to 3% copper and rest aluminium"],
-        "ans": 1
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The main alloying elements high speed steel in order of increasing proportion are",
-        "opts": ["vanadium, chromium, tungsten", "tungsten, titanium, vanadium", "chromium, tungsten, titanium, vanadium", "chromium, titanium"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Which of the following metal is used in making electrical resistance wire for electric furnaces and heating elements?",
-        "opts": ["Babbit metal", "Monel metal", "Nichrome", "Phosphor bronze"],
-        "ans": 2
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "German silver contains",
-        "opts": ["1% silver", "2% silver", "5% silver", "no silver"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Type of bearing are/ is",
-        "opts": ["Rolling contact bearing", "sliding contact bearing", "plain bearing", "All of the above"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Out of the given options which is not a not ferrous metal",
-        "opts": ["Cu", "Al", "Ni", "Iron"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Cu is used for",
-        "opts": ["Electrical parts", "Heat exchangers", "House hold utensils", "All of the above"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "In high speed steels, manganese is used to tougher the metal and to increase its",
-        "opts": ["yield point", "critical temperature", "melting point", "Hardness"],
-        "ans": 1
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The machinability of aluminium increases when ________ is added to aluminium.",
-        "opts": ["Copper", "Magnesium", "Silicon", "lead and bismuth"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Corrosion resistance of steel is increased by adding nickel and chromium.",
-        "opts": ["Agree", "Disagree", "don't know", "can't predict"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Ball bearings are, usually, made from",
-        "opts": ["low carbon steel", "high carbon steel", "medium carbon steel", "chrome steel"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Aluminium has low density and addition of silicon improves its fluidity and therefore, its castability.",
-        "opts": ["Correct", "Incorrect", "don't know", "can't predict"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Out of the below option which is type of brass",
-        "opts": ["Si bronze", "Gun metal", "Muntz metal", "Al bronze"],
-        "ans": 1
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Which of the following statement is incorrect about duralumin?",
-        "opts": ["It is prone to age hardening", "It can be forged", "It has good machining properties", "It is lighter than pure aluminium"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The austenitic stainless steel contains",
-        "opts": ["18% chromium and 8% nickel", "8% chromium and 18% nickel", "14% chromium and 0.35% carbon", "14% nickel and 0.35% carbon"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The nuts and bolts are made from silicon steel.",
-        "opts": ["Correct", "Incorrect", "don't know", "can't predict"],
-        "ans": 1
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Silicon in cast iron",
-        "opts": ["makes the iron soft and easily machinable", "increases hardness and brittleness", "aids fusibility and fluidity", "makes the iron white and hard"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The steel widely used for making precision measuring instruments is",
-        "opts": ["nickel steel", "nickel-chrome steel", "high speed steel", "chrome-vanadium steel"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The high speed steel has ________ percentage of tungsten.",
-        "opts": ["maximum", "minimum", "don't know", "can't predict"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The essential constituent of a hardened steel is",
-        "opts": ["pearlite", "austenite", "martensite", "troostite"],
-        "ans": 2
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The addition of manganese to aluminium improves corrosion resistance.",
-        "opts": ["Correct", "Incorrect", "don't know", "can't say"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The temperature point at which the change ends on heating the steel is called",
-        "opts": ["lower critical point", "upper critical point", "point of recalescence", "point of decalescence"],
-        "ans": 1
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Admirality gun metal contains",
-        "opts": ["60% copper, 35% zinc and 5% manganese", "76% copper, 20% silicon and 4% zinc", "82% copper, 12% zinc and 6% manganese", "88% copper, 10% tin and 2% zinc"],
-        "ans": 3
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The percentage of phosphorus is phosphor bronze is",
-        "opts": ["0.1", "1", "11.1", "98"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "In high speed steels, vanadium adds to the property of red hardness and tungsten and chromium add to high wear resistance.",
-        "opts": ["True", "False", "don't know", "can't say"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Which of the following material has maximum malleability?",
-        "opts": ["Lead", "Soft steel", "Wrought iron", "Copper"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Hardness of steel is increased by adding sulphur, lead and phosphorus.",
-        "opts": ["Yes", "No", "don't know", "can't say"],
-        "ans": 1
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "The silicon steel is widely used for",
-        "opts": ["connecting rods", "cutting tools", "generators and transformers in the form of laminated cores", "motor car crankshafts"],
-        "ans": 2
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Babbit metal contains",
-        "opts": ["50% tin and 50% antimony", "66% tin, 30% copper and 4% antimony", "88% tin, 4% copper and 8% antimony", "92% tin, 6% copper and 2% antimony"],
-        "ans": 2
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Aluminium bronze has high resistance to corrosion.",
-        "opts": ["True", "False", "don't know", "can't say"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Manganese bronze contains more copper than silicon bronze.",
-        "opts": ["Yes", "No", "don't know", "can't say"],
-        "ans": 1
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Manganese bronze has",
-        "opts": ["good wearing qualities and high elasticity", "high yield point, high fatigue limit", "high resistance to corrosion", "valuable cold working property"],
-        "ans": 2
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Silicon bronze contains",
-        "opts": ["60% copper, 35% zinc and 5% manganese", "88% copper, 10% tin and 2% zinc", "96% copper, 3% silicon and 1% manganese", "76% copper, 20% silicon and 4% zinc"],
-        "ans": 2
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "In corrosion resistant properties, bronzes are ________ to brasses.",
-        "opts": ["superior", "inferier", "don't know", "can't say"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Bronze is the alloy of----.",
-        "opts": ["copper and tin", "copper and zinc", "copper and iron", "tin and zinc"],
-        "ans": 0
-      },
-      {
-        "unit": 3,
-        "cat": "Unit 3",
-        "q": "Gun metal-----",
-        "opts": ["is tin bronze", "used for making gun barrels", "contains copper, tin and zinc.", "all of the above"],
-        "ans": 3
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "A steel component is very hard but is breaking under impact. Which treatment is most appropriate?",
-        "opts": ["Annealing", "Normalizing", "Tempering", "Carburizing"],
-        "ans": 2
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "A forged steel component needs to be softened and made easier to machine. Which treatment should be selected?",
-        "opts": ["Hardening", "Annealing", "Nitriding", "Induction hardening"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "A machine component requires improved grain structure and higher strength than the annealed condition. Which process is suitable?",
-        "opts": ["Normalizing", "Tempering", "Nitriding", "Carburizing"],
-        "ans": 0
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Which heat-treatment process involves rapid cooling after heating to produce a hard structure?",
-        "opts": ["Annealing", "Normalizing", "Hardening", "Tempering"],
-        "ans": 2
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "The principal microstructure produced by hardening suitable carbon steel is:",
-        "opts": ["Ferrite", "Pearlite", "Martensite", "Cementite"],
-        "ans": 2
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Which process generally uses furnace cooling?",
-        "opts": ["Hardening", "Annealing", "Normalizing", "Flame hardening"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Which process normally cools the steel in still air?",
-        "opts": ["Annealing", "Normalizing", "Hardening", "Carburizing"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "The main purpose of tempering hardened steel is to:",
-        "opts": ["Increase brittleness", "Reduce toughness", "Reduce brittleness and residual stresses", "Increase carbon content"],
-        "ans": 2
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "A shaft requires a hard surface but a relatively tough interior. Which category of treatment should be considered?",
-        "opts": ["Surface hardening", "Full annealing", "Stress relieving only", "Normalizing only"],
-        "ans": 0
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "A component has excessive residual stresses after manufacturing. Which treatment can be used primarily to reduce them?",
-        "opts": ["Stress relieving", "Carburizing", "Nitriding", "Hardening"],
-        "ans": 0
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Which treatment is most suitable when maximum softness and machinability are required?",
-        "opts": ["Hardening", "Annealing", "Nitriding", "Induction hardening"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Which process is particularly suitable for selective hardening of the surface of a component?",
-        "opts": ["Flame hardening", "Full annealing", "Normalizing", "Tempering"],
-        "ans": 0
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "In induction hardening, the steel surface is heated primarily by:",
-        "opts": ["Chemical reaction", "Electromagnetic induction", "Direct flame only", "Furnace radiation only"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Which heat treatment generally gives the softest structure among annealing and normalizing?",
-        "opts": ["Normalizing", "Annealing", "Hardening", "Tempering"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Which sequence correctly represents the basic heat-treatment cycle?",
-        "opts": ["Cooling -> heating -> soaking", "Soaking -> cooling -> heating", "Heating -> soaking -> cooling", "Heating -> cooling -> soaking"],
-        "ans": 2
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "A hardened shaft is found to be too brittle for shock loading. What is the most logical corrective treatment?",
-        "opts": ["Further hardening", "Tempering", "Carburizing", "Normalizing without changing hardness"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "A low-carbon steel sheet is repeatedly cold worked and starts losing its ductility. Which process is most suitable?",
-        "opts": ["Process annealing", "Hardening", "Nitriding", "Flame hardening"],
-        "ans": 0
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "A welded steel frame contains considerable residual stresses. Which heat treatment would be most appropriate?",
-        "opts": ["Hardening", "Stress-relief annealing", "Carburizing", "Spheroidizing"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "A high-carbon steel component needs improved machinability before machining. Which annealing treatment is particularly suitable?",
-        "opts": ["Process annealing", "Spheroidizing annealing", "Stress-relief annealing", "Normalizing"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Hypoeutectoid steel for full annealing is generally heated to:",
-        "opts": ["Below Ac1", "Ac1 + 5°C", "Ac3 + 30-50°C", "Room temperature"],
-        "ans": 2
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Which annealing process is commonly associated with high-carbon/tool steels?",
-        "opts": ["Spheroidizing", "Process annealing", "Stress relieving only", "Flame hardening"],
-        "ans": 0
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "A forged steel component has a coarse grain structure and requires grain refinement. Which heat treatment is most appropriate?",
-        "opts": ["Annealing", "Normalizing", "Tempering", "Nitriding"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Compared with annealing, normalizing generally produces:",
-        "opts": ["Lower strength and lower hardness", "Higher strength and hardness", "No change in microstructure", "Maximum martensite"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "A steel casting has a coarse and non-uniform microstructure. Which treatment can be used to improve it?",
-        "opts": ["Normalizing", "Nitriding", "Tempering", "Carburizing"],
-        "ans": 0
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "The major difference between annealing and normalizing is:",
-        "opts": ["Heating temperature only", "Chemical composition", "Cooling rate", "Carbon content"],
-        "ans": 2
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "The main objective of case hardening is to obtain:",
-        "opts": ["Soft surface and hard core", "Hard surface and tough core", "Hard surface and brittle core", "Soft surface and soft core"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Which element is introduced during carburizing?",
-        "opts": ["Nitrogen", "Carbon", "Chromium", "Aluminium"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Which element is primarily introduced during nitriding?",
-        "opts": ["Carbon", "Nitrogen", "Silicon", "Sulphur"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Which case-hardening process introduces both carbon and nitrogen?",
-        "opts": ["Carburizing", "Nitriding", "Cyaniding", "Annealing"],
-        "ans": 2
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Which process generally produces the highest surface hardness among the three?",
-        "opts": ["Carburizing", "Nitriding", "Cyaniding", "Normalizing"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Which case-hardening process generally does not require quenching?",
-        "opts": ["Carburizing", "Nitriding", "Cyaniding", "All of them"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "The primary purpose of hardening steel is to:",
-        "opts": ["Reduce hardness", "Increase hardness and wear resistance", "Increase ductility only", "Relieve all residual stresses"],
-        "ans": 1
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "During hardening, steel is cooled:",
-        "opts": ["Very slowly in the furnace", "Slowly in air", "Rapidly by quenching", "At room temperature without cooling"],
-        "ans": 2
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Tempering is normally carried out after:",
-        "opts": ["Annealing", "Normalizing", "Hardening", "Carburizing only"],
-        "ans": 2
-      },
-      {
-        "unit": 4,
-        "cat": "Unit 4",
-        "q": "Tempering is generally performed at a temperature:",
-        "opts": ["Above the melting point", "Above Ac1", "Below Ac1", "At room temperature"],
-        "ans": 2
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "A component requires a complex shape with minimum material wastage. Which manufacturing process is most suitable?",
-        "opts": ["Forging", "Powder metallurgy", "Rolling", "Sand casting"],
-        "ans": 1
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "Which sequence correctly represents the basic powder metallurgy process?",
-        "opts": ["Mixing → Compacting → Sintering → Finishing", "Melting → Casting → Rolling → Finishing", "Forging → Heating → Welding → Machining", "Rolling → Casting → Compacting → Melting"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "During powder metallurgy, compacted metal powder is heated below its melting point to develop strength. This operation is called:",
-        "opts": ["Annealing", "Sintering", "Tempering", "Normalizing"],
-        "ans": 1
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "The term green compact in powder metallurgy refers to:",
-        "opts": ["A freshly painted component", "A compacted powder component before sintering", "A molten metal component", "A heat-treated finished component"],
-        "ans": 1
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "A lubricant is added during blending of metal powders mainly to:",
-        "opts": ["Reduce friction during compaction", "Increase melting point", "Remove the die", "Melt the powder"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "Molten metal is forced through small openings and broken into fine droplets using a high-velocity fluid. Which powder-making method is being used?",
-        "opts": ["Atomization", "Electrolysis", "Reduction", "Machining"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "A PM manufacturer requires powder with a spherical particle shape for good flowability. Which method is generally preferred?",
-        "opts": ["Atomization", "Crushing", "Mechanical filing", "Grinding"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "A manufacturer wants to produce copper powder with high purity by depositing copper from an electrolyte. Which method should be selected?",
-        "opts": ["Electrolytic method", "Atomization", "Mechanical crushing", "Gas reduction"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "A metal oxide is converted into metal powder by heating it in a suitable reducing atmosphere. Which method is being used?",
-        "opts": ["Chemical reduction", "Atomization", "Mechanical milling", "Compaction"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "An engineer wants to produce very fine powder from a brittle material using a ball mill. Which powder-making method is involved?",
-        "opts": ["Mechanical milling", "Atomization", "Electrolysis", "Chemical reduction"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "Which property of metal powder is particularly important for obtaining uniform filling of a die?",
-        "opts": ["Flowability", "Melting point only", "Electrical conductivity only", "Hardness only"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "Which characteristic of powder is most important when producing a component with high green density?",
-        "opts": ["Compressibility", "Colour", "Odour", "Surface shine"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "If iron and graphite powders are not mixed uniformly before compaction, the final component may have:",
-        "opts": ["Non-uniform composition", "Higher dimensional accuracy", "Zero porosity", "Uniform properties everywhere"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "The main purpose of applying pressure during compaction is to:",
-        "opts": ["Give the powder the required shape and increase density", "Melt the powder completely", "Remove all alloying elements", "Convert powder into liquid"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "Why is a controlled atmosphere often used during sintering?",
-        "opts": ["To prevent undesirable oxidation and reactions", "To increase powder size", "To remove the die", "To increase machining allowance"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "An iron-based sintered component has interconnected pores. Copper is introduced into these pores to improve its properties. This process is called:",
-        "opts": ["Blending", "Infiltration", "Compacting", "Powder making"],
-        "ans": 1
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "The main purpose of metal infiltration in a sintered component is to:",
-        "opts": ["Reduce porosity and improve strength", "Increase powder size", "Produce a green compact", "Remove alloying elements"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "Oil is introduced into the pores of a sintered bearing. The primary purpose is to:",
-        "opts": ["Provide self-lubrication", "Increase powder size", "Produce a green compact", "Melt the bearing"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "A porous PM component is filled with resin to seal its pores. Which process is being used?",
-        "opts": ["Impregnation", "Compaction", "Sintering", "Powder making"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "Why is powder metallurgy suitable for manufacturing self-lubricating bearings?",
-        "opts": ["It produces completely solid components", "It can produce controlled porosity", "It requires extensive machining", "It increases melting temperature"],
-        "ans": 1
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "A company wants to manufacture tungsten carbide cutting-tool tips. Which manufacturing process is most suitable?",
-        "opts": ["Powder metallurgy", "Sand casting", "Rolling", "Sheet-metal forming"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "Which of the following is a major advantage of powder metallurgy?",
-        "opts": ["High material wastage", "Ability to produce controlled porosity", "Necessity of melting every powder", "Very large machining allowance"],
-        "ans": 1
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "A major limitation of powder metallurgy is that:",
-        "opts": ["Tooling and dies can be expensive", "It always produces large quantities of scrap", "It cannot produce small components", "It requires all materials to be melted"],
-        "ans": 0
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "The commonly used binder metal in cemented tungsten carbide tools is:",
-        "opts": ["Copper", "Aluminium", "Cobalt", "Zinc"],
-        "ans": 2
-      },
-      {
-        "unit": 5,
-        "cat": "Unit 5",
-        "q": "Which material is particularly difficult to manufacture by conventional melting but can be processed effectively using powder metallurgy?",
-        "opts": ["Tungsten", "Aluminium", "Copper", "Zinc"],
-        "ans": 0
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Which of the following is an acidic refractory?",
-        "opts": ["Magnesite", "Silica", "Dolomite", "Magnesia"],
-        "ans": 1
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Which refractory is classified as a basic refractory?",
-        "opts": ["Silica", "Fireclay", "Magnesite", "Zircon"],
-        "ans": 2
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Which of the following is a neutral refractory?",
-        "opts": ["Silica", "Magnesite", "Alumina", "Lime"],
-        "ans": 2
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Refractories are mainly used for:",
-        "opts": ["Electrical insulation only", "Withstanding high temperatures", "Lubrication", "Cooling machines"],
-        "ans": 1
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Which property indicates the ability of a refractory to withstand high temperature without melting or deforming?",
-        "opts": ["Porosity", "Refractoriness", "Hardness", "Ductility"],
-        "ans": 1
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Which refractory is commonly used for furnace linings because of its resistance to basic slags?",
-        "opts": ["Magnesite", "Silica", "Fireclay", "Quartz"],
-        "ans": 0
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Silica refractory is generally suitable for furnaces operating with:",
-        "opts": ["Acidic slags", "Basic slags", "Water", "Oil"],
-        "ans": 0
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Which property represents the amount of void space present in a refractory?",
-        "opts": ["Density", "Porosity", "Toughness", "Elasticity"],
-        "ans": 1
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "A refractory with low porosity generally has:",
-        "opts": ["Poor strength", "High resistance to slag penetration", "Very high water absorption", "Low density"],
-        "ans": 1
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Which property is important for a refractory exposed to sudden temperature changes?",
-        "opts": ["Thermal shock resistance", "Ductility", "Plasticity", "Machinability"],
-        "ans": 0
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Fireclay refractories mainly contain:",
-        "opts": ["Alumina and silica", "Copper and zinc", "Iron and carbon", "Calcium and sodium only"],
-        "ans": 0
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "The major constituent of natural gas is:",
-        "opts": ["Carbon monoxide", "Methane", "Hydrogen", "Nitrogen"],
-        "ans": 1
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Which property makes natural gas suitable for domestic cooking?",
-        "opts": ["High ash content", "Clean burning with low smoke", "High moisture content", "Non-combustibility"],
-        "ans": 1
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "The major combustible component of blast furnace gas is:",
-        "opts": ["Carbon monoxide", "Methane", "Propane", "Hydrogen sulphide"],
-        "ans": 0
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Coke oven gas is obtained during the manufacture of:",
-        "opts": ["Coke", "Cement", "Glass", "Aluminium"],
-        "ans": 0
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "LPG mainly consists of:",
-        "opts": ["Methane and ethane", "Propane and butane", "Hydrogen and nitrogen", "Carbon monoxide and carbon dioxide"],
-        "ans": 1
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Water gas mainly consists of:",
-        "opts": ["Carbon monoxide and hydrogen", "Methane and nitrogen", "Propane and butane", "Carbon dioxide and oxygen"],
-        "ans": 0
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Water gas is produced by passing steam over:",
-        "opts": ["Red-hot coke", "Limestone", "Iron ore", "Crude oil"],
-        "ans": 0
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Producer gas is mainly produced by passing:",
-        "opts": ["Air over red-hot coke or coal", "Steam over limestone", "Oxygen over water", "Hydrogen over coke"],
-        "ans": 0
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Metallurgical coke is mainly produced by:",
-        "opts": ["Burning coal in air", "Carbonization of coal in absence of air", "Heating limestone", "Distillation of petroleum"],
-        "ans": 1
-      },
-      {
-        "unit": 6,
-        "cat": "Unit 6",
-        "q": "Flash point of a liquid fuel is the temperature at which it:",
-        "opts": ["Freezes", "Gives vapour that can ignite momentarily", "Boils completely", "Becomes solid"],
-        "ans": 1
-      }
+    <div class="card" style="margin-bottom:20px;">
+      <div class="card-header">
+        <span class="card-title">Unit-Wise & R-U-A Performance</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Unit</th>
+            <th>Title</th>
+            <th class="num">R Score</th>
+            <th class="num">U Score</th>
+            <th class="num">A Score</th>
+            <th class="num">Total</th>
+          </tr>
+        </thead>
+        <tbody id="resultBreakdownBody"></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Answer Sheet Review</span>
+        <div class="filter-tabs">
+          <button class="active" onclick="filterReview('all', this)">All</button>
+          <button onclick="filterReview('wrong', this)">Wrong & Skipped</button>
+          <button onclick="filterReview('correct', this)">Correct</button>
+        </div>
+      </div>
+      <div id="reviewContainer"></div>
+    </div>
+  </section>
+</main>
+
+<script src="masterPool.js"></script>
+<script>
+  const BLUEPRINT = [
+    { unit: 1, title: "Basics of Engineering Materials", hours: 6,  R: 4, U: 2, A: 4, total: 10 },
+    { unit: 2, title: "Iron–iron carbide equilibrium diagram", hours: 10, R: 4, U: 2, A: 4, total: 10 },
+    { unit: 3, title: "Ferrous and Non Ferrous Materials", hours: 6,  R: 0, U: 4, A: 12, total: 16 },
+    { unit: 4, title: "Heat Treatment Processes", hours: 7,  R: 0, U: 4, A: 6, total: 10 },
+    { unit: 5, title: "Basics of Metallurgy", hours: 10, R: 4, U: 4, A: 6, total: 14 },
+    { unit: 6, title: "Powder Metallurgy & Refractories", hours: 6,  R: 2, U: 4, A: 4, total: 10 }
+  ];
+
+  const STORAGE_SEEN_KEY = "emt_r23_seen_ids_v1";
+  const STORAGE_WRONG_KEY = "emt_r23_wrong_ids_v1";
+
+  let normalizedPool = [];
+  let activeQuestions = [];
+  let currentIndex = 0;
+  let userAnswers = {};
+  let flaggedSet = new Set();
+  let timerInterval = null;
+  let secondsRemaining = 90 * 60;
+  let lastWrongPoolItems = [];
+  let isRetrySession = false;
+
+  function inferCognitiveLevel(item) {
+    if (item.level && ["R", "U", "A"].includes(item.level.toUpperCase())) {
+      return item.level.toUpperCase();
+    }
+    const q = (item.q || "").toLowerCase();
+    const applyPatterns = [
+      "which treatment", "should be selected", "most suitable", "most appropriate",
+      "is used for", "widely used for", "suitable for", "requires a", "require a",
+      "needs ", "need ", "wants to", "designer", "engineer", "manufacturer",
+      "company", "operator", "student", "component", "gear", "shaft", "furnace",
+      "bearing", "corrective", "why is", "purpose of", "main purpose", "objective of",
+      "advantage", "limitation", "consequence", "result in", "occurs when", "if "
     ];
+    if (applyPatterns.some(p => q.includes(p))) return "A";
 
-    let currentPool = [];
-    let wrongQuestions = [];
-    let currentQuestionIndex = 0;
-    let score = 0;
-    let timerInterval = null;
-    let timeLeft = 0;
-    let unitScores = {};
+    const understandPatterns = [
+      "difference between", "compared with", "compare", "because", "due to",
+      "characterized by", "characterised by", "increases", "decreases", "improves",
+      "effect", "true about", "incorrect about", "statement", "not a", "not the",
+      "which of the following is not", "corresponds to", "refers to", "known as",
+      "also defined as", "defined as"
+    ];
+    if (understandPatterns.some(p => q.includes(p))) return "U";
 
-    const startScreen = document.getElementById('start-screen');
-    const quizScreen = document.getElementById('quiz-screen');
-    const resultScreen = document.getElementById('result-screen');
-    const questionText = document.getElementById('question-text');
-    const optionsContainer = document.getElementById('options-container');
-    const nextBtn = document.getElementById('next-btn');
-    const progress = document.getElementById('progress');
-    const unitBadge = document.getElementById('unit-badge');
-    const feedbackMessage = document.getElementById('feedback-message');
-    const timerDisplay = document.getElementById('timer-display');
-    const retryBtn = document.getElementById('retry-btn');
-    const restartBtn = document.getElementById('restart-btn');
+    return "R";
+  }
 
-    function shuffleArray(array) {
-        let arr = [...array];
-        for (let i = arr.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [arr[i], arr[j]] = [arr[j], arr[i]];
-        }
-        return arr;
+  function initPool(rawArray) {
+    if (!Array.isArray(rawArray) || rawArray.length === 0) return false;
+    normalizedPool = rawArray.map((item, idx) => ({
+      id: idx,
+      poolNumber: idx + 1,
+      unit: Number(item.unit) || 1,
+      cat: item.cat || `Unit ${item.unit}`,
+      q: item.q,
+      opts: Array.isArray(item.opts) ? item.opts : [],
+      ans: Number(item.ans),
+      level: inferCognitiveLevel(item)
+    }));
+
+    const badge = document.getElementById("poolStatusBadge");
+    badge.textContent = `Pool Ready (${normalizedPool.length} Qs)`;
+    badge.className = "badge ok";
+
+    renderBlueprintDashboard();
+    return true;
+  }
+
+  function getSeenIds() {
+    try { return new Set(JSON.parse(localStorage.getItem(STORAGE_SEEN_KEY) || "[]")); }
+    catch { return new Set(); }
+  }
+  function saveSeenIds(set) { localStorage.setItem(STORAGE_SEEN_KEY, JSON.stringify([...set])); }
+
+  function getSavedWrongIds() {
+    try { return new Set(JSON.parse(localStorage.getItem(STORAGE_WRONG_KEY) || "[]")); }
+    catch { return new Set(); }
+  }
+  function saveWrongIds(set) { localStorage.setItem(STORAGE_WRONG_KEY, JSON.stringify([...set])); }
+
+  function resetSeenHistory() {
+    if (confirm("Reset seen question history?")) {
+      localStorage.removeItem(STORAGE_SEEN_KEY);
+      renderBlueprintDashboard();
     }
+  }
 
-    // Generate exact Blueprint test (70 questions based on unit weightage marks)
-    function startBlueprintTest() {
-        // Blueprint distribution counts out of 70 marks:
-        // Unit 1: 10 Qs, Unit 2: 10 Qs, Unit 3: 16 Qs, Unit 4: 10 Qs, Unit 5: 14 Qs, Unit 6: 10 Qs
-        const blueprintCounts = { 1: 10, 2: 10, 3: 16, 4: 10, 5: 14, 6: 10 };
-        let selectedQuestions = [];
+  function renderBlueprintDashboard() {
+    const tbody = document.getElementById("blueprintTableBody");
+    tbody.innerHTML = "";
 
-        for (let unit in blueprintCounts) {
-            let unitQuestions = masterQuestionBank.filter(q => q.unit == unit);
-            let shuffled = shuffleArray(unitQuestions);
-            let takeCount = Math.min(blueprintCounts[unit], shuffled.length);
-            selectedQuestions.push(...shuffled.slice(0, takeCount));
-        }
+    BLUEPRINT.forEach(row => {
+      const countInUnit = normalizedPool.filter(q => q.unit === row.unit).length;
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td style="font-weight:600;">${row.unit}</td>
+        <td>${row.title}</td>
+        <td class="num" style="color:var(--text-muted);">${countInUnit}</td>
+        <td class="num">${row.R || "—"}</td>
+        <td class="num">${row.U || "—"}</td>
+        <td class="num">${row.A || "—"}</td>
+        <td class="num" style="font-weight:600;">${row.total}</td>
+      `;
+      tbody.appendChild(tr);
+    });
 
-        currentPool = shuffleArray(selectedQuestions);
-        initTest(70, 45 * 60); // 70 Questions, 45 Minutes
+    document.getElementById("bpTotalPool").textContent = normalizedPool.length;
+
+    const seen = getSeenIds();
+    const validSeen = [...seen].filter(id => id >= 0 && id < normalizedPool.length).length;
+    const remaining = Math.max(0, normalizedPool.length - validSeen);
+
+    document.getElementById("coverageText").textContent = `${remaining} unseen / ${normalizedPool.length} total`;
+    const pct = normalizedPool.length ? ((validSeen / normalizedPool.length) * 100) : 0;
+    document.getElementById("coverageBar").style.width = `${pct}%`;
+
+    const wrongIds = [...getSavedWrongIds()].filter(id => id >= 0 && id < normalizedPool.length);
+    const wrongCard = document.getElementById("lastWrongCard");
+    if (wrongIds.length > 0) {
+      wrongCard.classList.remove("hidden");
+      document.getElementById("savedWrongCount").textContent = wrongIds.length;
+    } else {
+      wrongCard.classList.add("hidden");
     }
+  }
 
-    // Practice mode with all 407 questions
-    function startFullBankTest() {
-        currentPool = shuffleArray(masterQuestionBank);
-        initTest(currentPool.length, 120 * 60); // 407 Questions, 120 Minutes
+  function shuffleArray(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
     }
+    return a;
+  }
 
-    function initTest(totalQuestions, durationSeconds) {
-        wrongQuestions = [];
-        currentQuestionIndex = 0;
-        score = 0;
-        unitScores = {1: {correct: 0, total: 0}, 2: {correct: 0, total: 0}, 3: {correct: 0, total: 0}, 4: {correct: 0, total: 0}, 5: {correct: 0, total: 0}, 6: {correct: 0, total: 0}};
-        
-        startScreen.classList.add('hidden');
-        resultScreen.classList.add('hidden');
-        quizScreen.classList.remove('hidden');
+  function pickQuestions(candidates, count, usedIds, seenIds) {
+    const available = candidates.filter(q => !usedIds.has(q.id));
+    const unseen = shuffleArray(available.filter(q => !seenIds.has(q.id)));
+    const seen = shuffleArray(available.filter(q => seenIds.has(q.id)));
+    const combined = [...unseen, ...seen];
+    const picked = combined.slice(0, count);
+    picked.forEach(q => usedIds.add(q.id));
+    return picked;
+  }
 
-        timeLeft = durationSeconds;
-        startTimer();
-        loadQuestion();
-    }
+  function prepareExamQuestions(rawSelected) {
+    const shouldShuffleOpts = document.getElementById("chkShuffleOpts").checked;
+    return rawSelected.map(item => {
+      const indexedOpts = item.opts.map((text, idx) => ({ text, origIdx: idx }));
+      const finalOpts = shouldShuffleOpts ? shuffleArray(indexedOpts) : indexedOpts;
+      return { ...item, displayOpts: finalOpts };
+    });
+  }
 
-    function startTimer() {
+  function startBlueprintTest() {
+    if (!normalizedPool.length) return;
+    const seenIds = getSeenIds();
+    const usedIds = new Set();
+    let selected = [];
+
+    BLUEPRINT.forEach(bp => {
+      const unitPool = normalizedPool.filter(q => q.unit === bp.unit);
+      let pickedR = pickQuestions(unitPool.filter(q => q.level === "R"), bp.R, usedIds, seenIds);
+      if (pickedR.length < bp.R) pickedR = pickedR.concat(pickQuestions(unitPool, bp.R - pickedR.length, usedIds, seenIds));
+
+      let pickedU = pickQuestions(unitPool.filter(q => q.level === "U"), bp.U, usedIds, seenIds);
+      if (pickedU.length < bp.U) pickedU = pickedU.concat(pickQuestions(unitPool, bp.U - pickedU.length, usedIds, seenIds));
+
+      let pickedA = pickQuestions(unitPool.filter(q => q.level === "A"), bp.A, usedIds, seenIds);
+      if (pickedA.length < bp.A) pickedA = pickedA.concat(pickQuestions(unitPool, bp.A - pickedA.length, usedIds, seenIds));
+
+      selected.push(...pickedR, ...pickedU, ...pickedA);
+    });
+
+    selected.forEach(q => seenIds.add(q.id));
+    saveSeenIds(seenIds);
+    launchSession(selected, 90 * 60);
+  }
+
+  function startFullPoolTest() {
+    if (!normalizedPool.length) return;
+    const allShuffled = shuffleArray(normalizedPool);
+    const seenIds = getSeenIds();
+    allShuffled.forEach(q => seenIds.add(q.id));
+    saveSeenIds(seenIds);
+    launchSession(allShuffled, Math.ceil(allShuffled.length * 1.2) * 60);
+  }
+
+  function startSavedWrongTest() {
+    const wrongIds = getSavedWrongIds();
+    const items = normalizedPool.filter(q => wrongIds.has(q.id));
+    if (!items.length) return;
+    launchSession(shuffleArray(items), Math.max(15, Math.ceil(items.length * 1.3)) * 60);
+  }
+
+  function retryCurrentWrongQuestions() {
+    if (!lastWrongPoolItems.length) return;
+    launchSession(shuffleArray(lastWrongPoolItems), Math.max(10, Math.ceil(lastWrongPoolItems.length * 1.3)) * 60);
+  }
+
+  function launchSession(rawList, durationSec) {
+    activeQuestions = prepareExamQuestions(rawList);
+    currentIndex = 0;
+    userAnswers = {};
+    flaggedSet = new Set();
+    secondsRemaining = durationSec;
+
+    document.getElementById("viewSetup").classList.add("hidden");
+    document.getElementById("viewResults").classList.add("hidden");
+    document.getElementById("viewExam").classList.remove("hidden");
+    document.getElementById("btnHome").classList.remove("hidden");
+    document.getElementById("timerDisplay").classList.remove("hidden");
+
+    buildPalette();
+    renderQuestion();
+    startTimer();
+  }
+
+  function startTimer() {
+    clearInterval(timerInterval);
+    updateTimerUI();
+    timerInterval = setInterval(() => {
+      secondsRemaining--;
+      updateTimerUI();
+      if (secondsRemaining <= 0) {
         clearInterval(timerInterval);
-        timerInterval = setInterval(() => {
-            if (timeLeft <= 0) {
-                clearInterval(timerInterval);
-                endQuiz();
-            } else {
-                let mins = Math.floor(timeLeft / 60);
-                let secs = timeLeft % 60;
-                timerDisplay.textContent = `⏱️ ${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-                timeLeft--;
-            }
-        }, 1000);
+        gradeAndShowResults();
+      }
+    }, 1000);
+  }
+
+  function updateTimerUI() {
+    const mins = Math.floor(Math.max(0, secondsRemaining) / 60);
+    const secs = Math.max(0, secondsRemaining) % 60;
+    const el = document.getElementById("timerDisplay");
+    el.textContent = `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+    el.className = secondsRemaining < 300 ? "badge warn" : "badge";
+  }
+
+  function buildPalette() {
+    const grid = document.getElementById("paletteGrid");
+    grid.innerHTML = "";
+    activeQuestions.forEach((_, idx) => {
+      const btn = document.createElement("button");
+      btn.className = "pal-btn";
+      btn.textContent = idx + 1;
+      btn.id = `pal-${idx}`;
+      btn.onclick = () => { currentIndex = idx; renderQuestion(); };
+      grid.appendChild(btn);
+    });
+  }
+
+  function updatePaletteState() {
+    let answered = 0;
+    activeQuestions.forEach((_, idx) => {
+      const btn = document.getElementById(`pal-${idx}`);
+      if (!btn) return;
+      btn.className = "pal-btn";
+      if (idx === currentIndex) btn.classList.add("current");
+      if (userAnswers[idx] !== undefined) { btn.classList.add("answered"); answered++; }
+      if (flaggedSet.has(idx)) btn.classList.add("flagged");
+    });
+    document.getElementById("answeredCountTag").textContent = `${answered} / ${activeQuestions.length}`;
+  }
+
+  function renderQuestion() {
+    const qObj = activeQuestions[currentIndex];
+    document.getElementById("qCounter").textContent = `Q ${currentIndex + 1} / ${activeQuestions.length}`;
+    document.getElementById("qUnitTag").textContent = `Unit ${qObj.unit}`;
+    document.getElementById("qCatTag").textContent = qObj.cat;
+
+    const lvlTag = document.getElementById("qLevelTag");
+    lvlTag.textContent = `${qObj.level} Level`;
+    lvlTag.className = `tag level-${qObj.level}`;
+
+    document.getElementById("qPoolIdTag").textContent = `Pool #${qObj.poolNumber}`;
+    document.getElementById("qText").textContent = qObj.q;
+
+    const container = document.getElementById("optionsContainer");
+    container.innerHTML = "";
+
+    const letters = ["A", "B", "C", "D"];
+    qObj.displayOpts.forEach((optObj, displayIdx) => {
+      const btn = document.createElement("button");
+      btn.className = "option-btn";
+      if (userAnswers[currentIndex] === optObj.origIdx) btn.classList.add("selected");
+      btn.innerHTML = `
+        <span class="opt-key">${letters[displayIdx] || displayIdx + 1}</span>
+        <span>${optObj.text}</span>
+      `;
+      btn.onclick = () => { userAnswers[currentIndex] = optObj.origIdx; renderQuestion(); };
+      container.appendChild(btn);
+    });
+
+    document.getElementById("btnPrev").disabled = currentIndex === 0;
+    document.getElementById("btnNext").textContent = currentIndex === activeQuestions.length - 1 ? "Save" : "Save & Next →";
+    document.getElementById("btnFlag").textContent = flaggedSet.has(currentIndex) ? "Unflag" : "Flag";
+
+    updatePaletteState();
+  }
+
+  function navigateQuestion(delta) {
+    const next = currentIndex + delta;
+    if (next >= 0 && next < activeQuestions.length) { currentIndex = next; renderQuestion(); }
+  }
+
+  function toggleFlag() {
+    if (flaggedSet.has(currentIndex)) flaggedSet.delete(currentIndex);
+    else flaggedSet.add(currentIndex);
+    updatePaletteState();
+    renderQuestion();
+  }
+
+  function clearResponse() {
+    delete userAnswers[currentIndex];
+    renderQuestion();
+  }
+
+  function submitTestPrompt() {
+    const unanswered = activeQuestions.length - Object.keys(userAnswers).length;
+    const msg = unanswered > 0 ? `You have ${unanswered} unanswered question(s). Submit test now?` : `Submit test now?`;
+    if (confirm(msg)) gradeAndShowResults();
+  }
+
+  function gradeAndShowResults() {
+    clearInterval(timerInterval);
+    document.getElementById("viewExam").classList.add("hidden");
+    document.getElementById("timerDisplay").classList.add("hidden");
+    document.getElementById("viewResults").classList.remove("hidden");
+
+    let correctCount = 0;
+    let wrongOrSkipped = 0;
+    lastWrongPoolItems = [];
+    const savedWrongIds = getSavedWrongIds();
+
+    const unitStats = {};
+    BLUEPRINT.forEach(b => {
+      unitStats[b.unit] = { title: b.title, R: { got: 0, max: 0 }, U: { got: 0, max: 0 }, A: { got: 0, max: 0 }, got: 0, max: 0 };
+    });
+
+    const reviewContainer = document.getElementById("reviewContainer");
+    reviewContainer.innerHTML = "";
+
+    activeQuestions.forEach((qObj, idx) => {
+      const selectedOrig = userAnswers[idx];
+      const isSkipped = selectedOrig === undefined;
+      const isCorrect = !isSkipped && selectedOrig === qObj.ans;
+
+      if (!unitStats[qObj.unit]) {
+        unitStats[qObj.unit] = { title: `Unit ${qObj.unit}`, R: { got: 0, max: 0 }, U: { got: 0, max: 0 }, A: { got: 0, max: 0 }, got: 0, max: 0 };
+      }
+      unitStats[qObj.unit].max++;
+      unitStats[qObj.unit][qObj.level].max++;
+
+      if (isCorrect) {
+        correctCount++;
+        unitStats[qObj.unit].got++;
+        unitStats[qObj.unit][qObj.level].got++;
+        savedWrongIds.delete(qObj.id);
+      } else {
+        wrongOrSkipped++;
+        lastWrongPoolItems.push(normalizedPool[qObj.id]);
+        savedWrongIds.add(qObj.id);
+      }
+
+      const statusClass = isCorrect ? "correct" : (isSkipped ? "skipped" : "wrong");
+      const statusLabel = isCorrect ? "Correct (+1)" : (isSkipped ? "Skipped (0)" : "Wrong (0)");
+      const statusColor = isCorrect ? "var(--green)" : (isSkipped ? "var(--amber)" : "var(--red)");
+
+      const card = document.createElement("div");
+      card.className = `review-item ${statusClass}`;
+      card.dataset.status = isCorrect ? "correct" : "wrong";
+
+      const optsHtml = qObj.opts.map((optText, oIdx) => {
+        let cls = "rev-opt";
+        let tag = "";
+        if (oIdx === qObj.ans) { cls += " is-correct"; tag = " ✓ Correct"; }
+        else if (oIdx === selectedOrig && !isCorrect) { cls += " is-wrong"; tag = " ✕ Your Answer"; }
+        return `<div class="${cls}">${optText}<strong>${tag}</strong></div>`;
+      }).join("");
+
+      card.innerHTML = `
+        <div style="display:flex; justify-content:space-between; gap:8px; margin-bottom:8px; flex-wrap:wrap;">
+          <div>
+            <span class="tag">Q${idx + 1}</span>
+            <span class="tag">Unit ${qObj.unit} · ${qObj.cat}</span>
+            <span class="tag level-${qObj.level}">${qObj.level}</span>
+            <span class="tag">Pool #${qObj.poolNumber}</span>
+          </div>
+          <span style="font-size:12px; font-weight:600; color:${statusColor};">${statusLabel}</span>
+        </div>
+        <div style="font-weight:500; font-size:15px; margin-bottom:8px;">${qObj.q}</div>
+        <div class="rev-opts">${optsHtml}</div>
+      `;
+      reviewContainer.appendChild(card);
+    });
+
+    saveWrongIds(savedWrongIds);
+
+    const total = activeQuestions.length;
+    const accuracy = total ? Math.round((correctCount / total) * 100) : 0;
+
+    document.getElementById("statScore").textContent = `${correctCount} / ${total}`;
+    document.getElementById("statAccuracy").textContent = `${accuracy}%`;
+    document.getElementById("statCorrect").textContent = correctCount;
+    document.getElementById("statWrong").textContent = wrongOrSkipped;
+
+    const retryBtn = document.getElementById("btnRetryWrongNow");
+    document.getElementById("wrongBtnCount").textContent = lastWrongPoolItems.length;
+    retryBtn.disabled = lastWrongPoolItems.length === 0;
+
+    const bdBody = document.getElementById("resultBreakdownBody");
+    bdBody.innerHTML = "";
+    Object.keys(unitStats).sort((a,b) => Number(a)-Number(b)).forEach(uKey => {
+      const st = unitStats[uKey];
+      if (st.max === 0) return;
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td style="font-weight:600;">${uKey}</td>
+        <td>${st.title}</td>
+        <td class="num">${st.R.max ? `${st.R.got}/${st.R.max}` : "—"}</td>
+        <td class="num">${st.U.max ? `${st.U.got}/${st.U.max}` : "—"}</td>
+        <td class="num">${st.A.max ? `${st.A.got}/${st.A.max}` : "—"}</td>
+        <td class="num" style="font-weight:600;">${st.got} / ${st.max}</td>
+      `;
+      bdBody.appendChild(tr);
+    });
+  }
+
+  function filterReview(type, btnEl) {
+    document.querySelectorAll(".filter-tabs button").forEach(b => b.classList.remove("active"));
+    btnEl.classList.add("active");
+    document.querySelectorAll("#reviewContainer .review-item").forEach(item => {
+      if (type === "all") item.classList.remove("hidden");
+      else if (type === "wrong") item.classList.toggle("hidden", item.dataset.status !== "wrong");
+      else if (type === "correct") item.classList.toggle("hidden", item.dataset.status !== "correct");
+    });
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    if (typeof masterQuestionBank !== "undefined" && Array.isArray(masterQuestionBank)) {
+      initPool(masterQuestionBank);
+    } else {
+      const badge = document.getElementById("poolStatusBadge");
+      badge.textContent = "masterPool.js missing";
+      badge.className = "badge warn";
+      alert("Error: masterPool.js was not loaded. Make sure masterPool.js is in the same folder as emt-test.html on GitHub.");
     }
-
-    function loadQuestion() {
-        nextBtn.classList.add('hidden');
-        feedbackMessage.classList.add('hidden');
-        optionsContainer.innerHTML = '';
-        
-        const qData = currentPool[currentQuestionIndex];
-        
-        progress.textContent = `Question ${currentQuestionIndex + 1} / ${currentPool.length}`;
-        unitBadge.textContent = `Unit ${qData.unit}`;
-        questionText.innerHTML = `${currentQuestionIndex + 1}. ${qData.q}`;
-
-        // Track unit totals
-        if (!unitScores[qData.unit]) unitScores[qData.unit] = {correct: 0, total: 0};
-        unitScores[qData.unit].total++;
-
-        qData.opts.forEach((opt, index) => {
-            const btn = document.createElement('button');
-            btn.className = 'btn';
-            btn.innerHTML = `${String.fromCharCode(65 + index)}. ${opt}`;
-            btn.onclick = () => checkAnswer(index, btn);
-            optionsContainer.appendChild(btn);
-        });
-    }
-
-    function checkAnswer(selectedIndex, selectedBtn) {
-        const qData = currentPool[currentQuestionIndex];
-        const correctIndex = qData.ans;
-        const allBtns = optionsContainer.querySelectorAll('.btn');
-
-        allBtns.forEach(btn => btn.disabled = true);
-        feedbackMessage.classList.remove('hidden');
-
-        if (selectedIndex === correctIndex) {
-            selectedBtn.classList.add('correct');
-            feedbackMessage.textContent = "✅ Correct!";
-            feedbackMessage.style.color = "var(--correct-text)";
-            score++;
-            unitScores[qData.unit].correct++;
-        } else {
-            selectedBtn.classList.add('wrong');
-            allBtns[correctIndex].classList.add('correct');
-            feedbackMessage.textContent = "❌ Incorrect.";
-            feedbackMessage.style.color = "var(--wrong-text)";
-            
-            if (!wrongQuestions.includes(qData)) {
-                wrongQuestions.push(qData);
-            }
-        }
-        nextBtn.classList.remove('hidden');
-    }
-
-    nextBtn.onclick = () => {
-        currentQuestionIndex++;
-        if (currentQuestionIndex < currentPool.length) {
-            loadQuestion();
-        } else {
-            endQuiz();
-        }
-    };
-
-    function endQuiz() {
-        clearInterval(timerInterval);
-        quizScreen.classList.add('hidden');
-        resultScreen.classList.remove('hidden');
-        
-        const percentage = ((score / currentPool.length) * 100).toFixed(1);
-        document.getElementById('final-score').innerHTML = 
-            `You scored <span style="color: var(--accent-blue);">${score}</span> out of ${currentPool.length} (${percentage}%)`;
-
-        let breakdownHTML = "<strong>📊 Unit-wise Performance Breakdown:</strong><ul style='margin: 8px 0 0 20px; padding:0;'>";
-        for (let u in unitScores) {
-            if (unitScores[u].total > 0) {
-                let uPercent = ((unitScores[u].correct / unitScores[u].total) * 100).toFixed(0);
-                breakdownHTML += `<li><strong>Unit ${u}:</strong> ${unitScores[u].correct} / ${unitScores[u].total} correct (${uPercent}%)</li>`;
-            }
-        }
-        breakdownHTML += "</ul>";
-        document.getElementById('unit-breakdown').innerHTML = breakdownHTML;
-
-        if (wrongQuestions.length > 0) {
-            retryBtn.classList.remove('hidden');
-            retryBtn.textContent = `Review ${wrongQuestions.length} Incorrect Question(s)`;
-        } else {
-            retryBtn.classList.add('hidden');
-        }
-    }
-
-    retryBtn.onclick = () => {
-        currentPool = shuffleArray(wrongQuestions);
-        initTest(currentPool.length, 15 * 60);
-    };
-
-    restartBtn.onclick = () => {
-        startScreen.classList.remove('hidden');
-        resultScreen.classList.add('hidden');
-    };
+  });
 </script>
 </body>
 </html>
