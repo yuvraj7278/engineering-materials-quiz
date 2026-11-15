@@ -728,12 +728,13 @@
     });
   }
 
-  function startBlueprintTest() {
+function startBlueprintTest() {
     if (!normalizedPool.length) return;
     const seenIds = getSeenIds();
     const usedIds = new Set();
     let selected = [];
 
+    // Step 1: Collect exact blueprint quota per unit
     BLUEPRINT.forEach(bp => {
       const unitPool = normalizedPool.filter(q => q.unit === bp.unit);
       let pickedR = pickQuestions(unitPool.filter(q => q.level === "R"), bp.R, usedIds, seenIds);
@@ -747,6 +748,9 @@
 
       selected.push(...pickedR, ...pickedU, ...pickedA);
     });
+
+    // Step 2: Shuffle the final 70 questions completely so units are mixed up randomly
+    selected = shuffleArray(selected);
 
     selected.forEach(q => seenIds.add(q.id));
     saveSeenIds(seenIds);
