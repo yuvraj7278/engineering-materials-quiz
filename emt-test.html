@@ -375,7 +375,7 @@
 <header>
   <div class="brand">
     <h1>EMT 70-Mark Blueprint Test</h1>
-    <span id="poolStatusBadge" class="badge">Loading Units 1–6 Quizzes...</span>
+    <span id="poolStatusBadge" class="badge">Loading masterPool.js...</span>
   </div>
   <div class="header-actions">
     <span id="timerDisplay" class="badge hidden" style="font-size:14px; padding:6px 12px;">90:00</span>
@@ -434,7 +434,7 @@
           </div>
         </div>
 
-        <!-- Custom Unit Selector Card -->
+                <!-- Custom Unit Selector Card -->
         <div class="mode-card" style="border: 1.5px solid var(--accent-blue); background: #fbfdff;">
           <h3>Custom Unit Selector Test</h3>
           <p>Select only the units you've prepared for targeted practice:</p>
@@ -449,7 +449,7 @@
           <button class="primary" onclick="startCustomUnitTest()" style="width: 100%; margin-top: 4px;">Start Selected Units Test</button>
         </div>
 
-        <div class="mode-card">
+<div class="mode-card">
           <h3>1. Official 70-Mark Blueprint Test</h3>
           <p>Strictly maps R, U, and A cognitive levels across Units 1–6.</p>
           <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:10px;">
@@ -462,8 +462,8 @@
 
         <div class="mode-card">
           <h3>2. Full Master Pool Marathon</h3>
-          <p>Practice all questions from the combined unit pool in randomized order.</p>
-          <button onclick="startFullPoolTest()" style="margin-top:10px;">Start Full Pool Test</button>
+          <p>Practice all 407 questions from the master pool in randomized order.</p>
+          <button onclick="startFullPoolTest()" style="margin-top:10px;">Start Full 407 Test</button>
         </div>
 
         <div id="lastWrongCard" class="mode-card hidden" style="border-color: rgba(255,59,48,0.4);">
@@ -585,6 +585,7 @@
   </section>
 </main>
 
+<script src="masterPool.js"></script>
 <script>
   const BLUEPRINT = [
     { unit: 1, title: "Basics of Engineering Materials", hours: 6,  R: 4, U: 2, A: 4, total: 10 },
@@ -595,8 +596,8 @@
     { unit: 6, title: "Powder Metallurgy & Refractories", hours: 6,  R: 2, U: 4, A: 4, total: 10 }
   ];
 
-  const STORAGE_SEEN_KEY = "emt_r23_seen_ids_v2";
-  const STORAGE_WRONG_KEY = "emt_r23_wrong_ids_v2";
+  const STORAGE_SEEN_KEY = "emt_r23_seen_ids_v1";
+  const STORAGE_WRONG_KEY = "emt_r23_wrong_ids_v1";
 
   let normalizedPool = [];
   let activeQuestions = [];
@@ -606,6 +607,7 @@
   let timerInterval = null;
   let secondsRemaining = 90 * 60;
   let lastWrongPoolItems = [];
+  let isRetrySession = false;
 
   function inferCognitiveLevel(item) {
     if (item.level && ["R", "U", "A"].includes(item.level.toUpperCase())) {
@@ -653,63 +655,6 @@
 
     renderBlueprintDashboard();
     return true;
-  }
-
-  // Asynchronously load questions from unit1.html through unit6.html
-  async function loadUnitQuizzes() {
-    const unitFiles = [
-      { file: "unit1.html", unit: 1 },
-      { file: "unit2.html", unit: 2 },
-      { file: "unit3.html", unit: 3 },
-      { file: "unit4.html", unit: 4 },
-      { file: "unit5.html", unit: 5 },
-      { file: "unit6.html", unit: 6 }
-    ];
-
-    let combinedBank = [];
-
-    for (const u of unitFiles) {
-      try {
-        const response = await fetch(u.file);
-        const htmlText = await response.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(htmlText, "text/html");
-        const scripts = doc.querySelectorAll("script");
-        let bank = [];
-
-        for (const script of scripts) {
-          const code = script.textContent;
-          if (code && code.includes("masterQuestionBank")) {
-            try {
-              const getBank = new Function(code + "; return masterQuestionBank;");
-              bank = getBank();
-              break;
-            } catch (err) {
-              console.error(`Error parsing script in ${u.file}:`, err);
-            }
-          }
-        }
-
-        if (Array.isArray(bank) && bank.length > 0) {
-          bank.forEach(item => {
-            if (!item.unit) item.unit = u.unit;
-            if (!item.cat) item.cat = `Unit ${u.unit}`;
-          });
-          combinedBank.push(...bank);
-        }
-      } catch (err) {
-        console.error(`Failed to fetch ${u.file}:`, err);
-      }
-    }
-
-    if (combinedBank.length > 0) {
-      initPool(combinedBank);
-    } else {
-      const badge = document.getElementById("poolStatusBadge");
-      badge.textContent = "Failed to load unit quizzes";
-      badge.className = "badge warn";
-      alert("Error: Could not load questions from unit1-6.html files. Ensure they are in the same folder.");
-    }
   }
 
   function getSeenIds() {
@@ -798,12 +743,13 @@
     });
   }
 
-  function startBlueprintTest() {
+function startBlueprintTest() {
     if (!normalizedPool.length) return;
     const seenIds = getSeenIds();
     const usedIds = new Set();
     let selected = [];
 
+    // Step 1: Collect exact blueprint quota per unit
     BLUEPRINT.forEach(bp => {
       const unitPool = normalizedPool.filter(q => q.unit === bp.unit);
       let pickedR = pickQuestions(unitPool.filter(q => q.level === "R"), bp.R, usedIds, seenIds);
@@ -818,13 +764,15 @@
       selected.push(...pickedR, ...pickedU, ...pickedA);
     });
 
+    // Step 2: Shuffle the final 70 questions completely so units are mixed up randomly
     selected = shuffleArray(selected);
+
     selected.forEach(q => seenIds.add(q.id));
     saveSeenIds(seenIds);
     launchSession(selected, 90 * 60);
   }
 
-  function startCustomUnitTest() {
+    function startCustomUnitTest() {
     if (!normalizedPool.length) return;
     const selectedUnits = [...document.querySelectorAll(".unit-chk:checked")].map(chk => Number(chk.value));
     if (selectedUnits.length === 0) {
@@ -835,10 +783,12 @@
     const seenIds = getSeenIds();
     const usedIds = new Set();
     let selected = [];
+
     const activeBlueprint = BLUEPRINT.filter(bp => selectedUnits.includes(bp.unit));
 
     activeBlueprint.forEach(bp => {
       const unitPool = normalizedPool.filter(q => q.unit === bp.unit);
+      
       let pickedR = pickQuestions(unitPool.filter(q => q.level === "R"), bp.R, usedIds, seenIds);
       if (pickedR.length < bp.R) pickedR = pickedR.concat(pickQuestions(unitPool, bp.R - pickedR.length, usedIds, seenIds));
 
@@ -852,6 +802,7 @@
     });
 
     selected = shuffleArray(selected);
+
     if (selected.length === 0) {
       alert("No questions found for the selected units.");
       return;
@@ -859,6 +810,7 @@
 
     selected.forEach(q => seenIds.add(q.id));
     saveSeenIds(seenIds);
+
     const customDuration = Math.max(15, Math.ceil(selected.length * 1.3)) * 60;
     launchSession(selected, customDuration);
   }
@@ -1124,7 +1076,14 @@
   }
 
   window.addEventListener("DOMContentLoaded", () => {
-    loadUnitQuizzes();
+    if (typeof masterQuestionBank !== "undefined" && Array.isArray(masterQuestionBank)) {
+      initPool(masterQuestionBank);
+    } else {
+      const badge = document.getElementById("poolStatusBadge");
+      badge.textContent = "masterPool.js missing";
+      badge.className = "badge warn";
+      alert("Error: masterPool.js was not loaded. Make sure masterPool.js is in the same folder as emt-test.html on GitHub.");
+    }
   });
 </script>
 </body>
