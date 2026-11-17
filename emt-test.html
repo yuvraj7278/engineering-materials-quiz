@@ -434,7 +434,22 @@
           </div>
         </div>
 
-        <div class="mode-card">
+                <!-- Custom Unit Selector Card -->
+        <div class="mode-card" style="border: 1.5px solid var(--accent-blue); background: #fbfdff;">
+          <h3>Custom Unit Selector Test</h3>
+          <p>Select only the units you've prepared for targeted practice:</p>
+          <div id="unitCheckboxes" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 12px 0; font-size: 13px;">
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;"><input type="checkbox" class="unit-chk" value="1" checked> Unit 1</label>
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;"><input type="checkbox" class="unit-chk" value="2" checked> Unit 2</label>
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;"><input type="checkbox" class="unit-chk" value="3" checked> Unit 3</label>
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;"><input type="checkbox" class="unit-chk" value="4" checked> Unit 4</label>
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;"><input type="checkbox" class="unit-chk" value="5" checked> Unit 5</label>
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;"><input type="checkbox" class="unit-chk" value="6" checked> Unit 6</label>
+          </div>
+          <button class="primary" onclick="startCustomUnitTest()" style="width: 100%; margin-top: 4px;">Start Selected Units Test</button>
+        </div>
+
+<div class="mode-card">
           <h3>1. Official 70-Mark Blueprint Test</h3>
           <p>Strictly maps R, U, and A cognitive levels across Units 1–6.</p>
           <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:10px;">
@@ -755,6 +770,49 @@ function startBlueprintTest() {
     selected.forEach(q => seenIds.add(q.id));
     saveSeenIds(seenIds);
     launchSession(selected, 90 * 60);
+  }
+
+    function startCustomUnitTest() {
+    if (!normalizedPool.length) return;
+    const selectedUnits = [...document.querySelectorAll(".unit-chk:checked")].map(chk => Number(chk.value));
+    if (selectedUnits.length === 0) {
+      alert("Please select at least one unit to test!");
+      return;
+    }
+
+    const seenIds = getSeenIds();
+    const usedIds = new Set();
+    let selected = [];
+
+    const activeBlueprint = BLUEPRINT.filter(bp => selectedUnits.includes(bp.unit));
+
+    activeBlueprint.forEach(bp => {
+      const unitPool = normalizedPool.filter(q => q.unit === bp.unit);
+      
+      let pickedR = pickQuestions(unitPool.filter(q => q.level === "R"), bp.R, usedIds, seenIds);
+      if (pickedR.length < bp.R) pickedR = pickedR.concat(pickQuestions(unitPool, bp.R - pickedR.length, usedIds, seenIds));
+
+      let pickedU = pickQuestions(unitPool.filter(q => q.level === "U"), bp.U, usedIds, seenIds);
+      if (pickedU.length < bp.U) pickedU = pickedU.concat(pickQuestions(unitPool, bp.U - pickedU.length, usedIds, seenIds));
+
+      let pickedA = pickQuestions(unitPool.filter(q => q.level === "A"), bp.A, usedIds, seenIds);
+      if (pickedA.length < bp.A) pickedA = pickedA.concat(pickQuestions(unitPool, bp.A - pickedA.length, usedIds, seenIds));
+
+      selected.push(...pickedR, ...pickedU, ...pickedA);
+    });
+
+    selected = shuffleArray(selected);
+
+    if (selected.length === 0) {
+      alert("No questions found for the selected units.");
+      return;
+    }
+
+    selected.forEach(q => seenIds.add(q.id));
+    saveSeenIds(seenIds);
+
+    const customDuration = Math.max(15, Math.ceil(selected.length * 1.3)) * 60;
+    launchSession(selected, customDuration);
   }
 
   function startFullPoolTest() {
