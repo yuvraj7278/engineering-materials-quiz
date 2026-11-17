@@ -3,94 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engineering Materials Quiz</title>
+    <title>Unit 1 Assignment MCQ Quiz (50 Questions)</title>
     <style>
-        /* Clean, modern interface */
+        /* macOS-inspired clean UI */
+        :root {
+            --bg-color: #f5f5f7;
+            --window-bg: #ffffff;
+            --text-main: #1d1d1f;
+            --text-muted: #86868b;
+            --border-color: #d2d2d7;
+            --accent-blue: #0071e3;
+            --accent-blue-hover: #0077ed;
+            --correct-bg: #e3fcef;
+            --correct-border: #34c759;
+            --correct-text: #0c5c27;
+            --wrong-bg: #fce8e8;
+            --wrong-border: #ff3b30;
+            --wrong-text: #8a0a14;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f5f5f7;
-            color: #1d1d1f;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             line-height: 1.5;
             margin: 0;
             padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
+        
         .container {
-            max-width: 650px;
-            margin: 40px auto;
-            background: #ffffff;
-            padding: 30px 40px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 680px;
+            background: var(--window-bg);
+            padding: 32px 40px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
+
         h2 {
             margin-top: 0;
-            font-size: 24px;
+            font-size: 22px;
+            font-weight: 600;
         }
+
         .status-bar {
             display: flex;
             justify-content: space-between;
             font-size: 14px;
-            color: #86868b;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #d2d2d7;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
         }
+
         .options {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 24px;
         }
+
         .btn {
             width: 100%;
             text-align: left;
             padding: 14px 18px;
-            font-size: 16px;
-            background: #ffffff;
-            border: 1px solid #d2d2d7;
-            border-radius: 10px;
+            font-size: 15px;
+            background: var(--window-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+            color: var(--text-main);
         }
+
         .btn:hover:not(:disabled) {
-            background: #f5f5f7;
-            border-color: #86868b;
+            background: var(--bg-color);
+            border-color: #a1a1a6;
         }
+
         .btn:disabled {
             cursor: default;
         }
+
         .correct {
-            background: #e3fcef !important;
-            border-color: #34c759 !important;
-            color: #0c5c27 !important;
+            background: var(--correct-bg) !important;
+            border-color: var(--correct-border) !important;
+            color: var(--correct-text) !important;
             font-weight: 500;
         }
+
         .wrong {
-            background: #fce8e8 !important;
-            border-color: #ff3b30 !important;
-            color: #8a0a14 !important;
+            background: var(--wrong-bg) !important;
+            border-color: var(--wrong-border) !important;
+            color: var(--wrong-text) !important;
         }
+
         .action-btn {
             text-align: center;
-            background: #0071e3;
+            background: var(--accent-blue);
             color: white;
             border: none;
             font-weight: 600;
             margin-top: 24px;
+            box-shadow: 0 2px 5px rgba(0, 113, 227, 0.3);
         }
+
         .action-btn:hover {
-            background: #0077ed;
+            background: var(--accent-blue-hover);
         }
+
         .hidden {
-            display: none;
+            display: none !important;
         }
+
         .feedback {
-            margin-top: 15px;
+            margin-top: 18px;
             font-weight: 600;
             font-size: 15px;
+            text-align: center;
         }
+
         #result-screen {
             text-align: center;
+        }
+
+        .score-display {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 24px 0;
         }
     </style>
 </head>
@@ -101,7 +147,7 @@
     <!-- Quiz Screen -->
     <div id="quiz-screen">
         <div class="status-bar">
-            <span id="progress">Question 1 / 63</span>
+            <span id="progress">Question 1 / 50</span>
             <span id="score-tracker">Score: 0</span>
         </div>
         
@@ -118,81 +164,518 @@
 
     <!-- Result Screen -->
     <div id="result-screen" class="hidden">
-        <h2>Quiz Complete!</h2>
-        <p id="final-score" style="font-size: 18px; margin: 20px 0;"></p>
+        <h2>Quiz Complete</h2>
+        <div id="final-score" class="score-display"></div>
         
         <button id="retry-btn" class="btn action-btn hidden">Resolve Incorrect Questions</button>
-        <button id="restart-btn" class="btn action-btn" style="background: #1d1d1f; margin-top: 12px;">Restart Full Question Bank</button>
+        <button id="restart-btn" class="btn action-btn" style="background: var(--text-main); margin-top: 12px;">Restart Full Question Bank</button>
     </div>
 </div>
 
 <script>
-    // Full Question Bank (63 Questions)
+    // Full Question Bank (50 Questions) extracted directly from assignment 01_ circulation.pdf
     const masterQuestionBank = [
-        { q: "Ferrous Metals do not possess the following property", opts: ["stiffness", "strength", "elasticity", "high electrical conductivity"], ans: 3 },
-        { q: "Ceramics usually consist of", opts: ["oxides", "nitrides", "carbides & borides", "all of the above"], ans: 3 },
-        { q: "out of the following which is not a example of ceramics.", opts: ["sand", "brick", "lubricants", "concrete"], ans: 2 },
-        { q: "out of the following which is not a example of organic materials.", opts: ["rubber", "plastics", "cement", "paper"], ans: 2 },
-        { q: "which materials have good thermal conductivity?", opts: ["insulaters", "semiconductors", "conductors", "none of the above"], ans: 2 },
-        { q: "Density of Aluminium is", opts: ["2.7 gm/cc", "1.7 gm/cc", "3.7 gm/cc", "4.7 gm/cc"], ans: 0 },
-        { q: "Unit of Density", opts: ["kg/m³", "kg/m²", "kg/m⁴", "kg.m"], ans: 0 },
-        { q: "colour of Al is", opts: ["White", "grey", "reddish", "none of the above"], ans: 0 },
-        { q: "Melting point of copper is", opts: ["1539 deg. Celcius", "1031 deg. Celcius", "1231 deg. Celcius", "659 deg. Celcius"], ans: 1 },
-        { q: "..material possesses high impact strength than brittle materials.", opts: ["Malleable", "Tough", "Stiff", "Ductile"], ans: 1 },
-        { q: "Copper is extremely tough but is not.", opts: ["Steel", "Iron", "Cast Iron", "Aluminium"], ans: 2 },
-        { q: "is the most malleable metal.", opts: ["Silver", "Gold", "Steel", "C.I."], ans: 1 },
-        { q: "is lack of ductility.", opts: ["Malleability", "Hardness", "Toughness", "Brittleness"], ans: 3 },
-        { q: "Melting point of iron is", opts: ["1131 deg. Celcius", "1539 deg. Celcius", "1659 deg. Celcius", "1712 deg. Celcius"], ans: 1 },
-        { q: "is a brittle material.", opts: ["Steel", "aluminium", "Cast iron", "Copper"], ans: 2 },
-        { q: "Which of the following is not example of organic material?", opts: ["Fiber Glass", "Lubricants", "Wood", "Rubber"], ans: 0 },
-        { q: "Which of the following is not example of organic material?", opts: ["Fiber Glass", "Lubricants", "Wood", "Rubber"], ans: 0 },
-        { q: "is major ingredient for steel.", opts: ["Copper", "Carbon", "Cromium", "Iron"], ans: 3 },
-        { q: "Material consists of", opts: ["atoms", "molecules", "matter", "none of these"], ans: 2 },
-        { q: "Fiber glass acquires strength from...", opts: ["glass", "fiber", "polymer", "meterial"], ans: 0 },
-        { q: "Fiber glass acquires flexibility from", opts: ["glass", "fiber", "polymer", "meterial"], ans: 1 },
-        { q: "Melting point is defined as the Temperature", opts: ["maximum", "moderate", "minimum", "high"], ans: 2 },
-        { q: "helps in differentiating heavy and light metals", opts: ["weight", "volume", "density", "mass"], ans: 2 },
-        { q: "strength refers to the force needed to fracture the material.", opts: ["yield strength", "impact strength", "ultimate strength", "tensile strength"], ans: 2 },
-        { q: "The ability of material to resist plastic deformation is called", opts: ["yield strength", "impact strength", "formability", "malleability"], ans: 0 },
-        { q: "is considered tensile property.", opts: ["physical property", "ductility", "formability", "malleability"], ans: 1 },
-        { q: "is a compressive property.", opts: ["physical property", "ductility", "formability", "malleability"], ans: 3 },
-        { q: "The ability of material to regain its original state on removal of load is called....", opts: ["plasticity", "ductility", "malleability", "elasticity"], ans: 3 },
-        { q: "Which of the following determine the behavior of engineering materials under the applied forces and loads?", opts: ["physical property", "chemical property", "strength", "mechanical property"], ans: 3 },
-        { q: "Is also defined as the slope on the linear portion of a stress strain curve within the elastic limit.", opts: ["brittleness", "hardness", "toughness", "stiffness"], ans: 3 },
-        { q: "impact strength depends upon", opts: ["density", "colour", "melting point", "structure"], ans: 3 },
-        { q: "is shown as the maximum point on the stress strain curve.", opts: ["yield strength", "tensile strength", "impact strength", "ultimate strength"], ans: 3 },
-        { q: "Also defined as the ability of material to absorb energy during plastic deformation up to fracture.", opts: ["stiffness", "toughness", "brittleness", "hardness"], ans: 1 },
-        { q: "hardness is resistance to", opts: ["deformation", "plasticity", "elasticity", "penetration"], ans: 3 },
-        { q: "fatigue failure occurs when a material is subjected to Loads", opts: ["fluctuating", "compressive", "tensile", "shear"], ans: 0 },
-        { q: "Is the capacity of material to undergo deformation under tension without rupture.", opts: ["malleability", "ductility", "stiffness", "tensile strength"], ans: 1 },
-        { q: "which of the following is not the characteristic of ceramics?", opts: ["hardness", "brittleness", "abrasiveness", "ductility"], ans: 3 },
-        { q: "is made use in stamping images on coins and ornamental work.", opts: ["elasticity", "plasticity", "strength", "malleability"], ans: 1 },
-        { q: "of a material is very helpful in indentification of metal.", opts: ["structure", "density", "melting point", "colour"], ans: 3 },
-        { q: "physical properties are those properties which decribes a material under conditions in which Forces are not concerned.", opts: ["tensile", "compressive", "internal", "external"], ans: 3 },
-        { q: "A small impression for a given load and indentor that the material is", opts: ["soft", "tough", "stiff", "hard"], ans: 3 },
-        { q: "which of the following is not the example of semiconductor?", opts: ["Si", "Ge", "sn", "zn"], ans: 3 },
-        { q: "contain the compounds of nitrogen", opts: ["acrylics", "polyethylene", "nylon", "pvc"], ans: 2 },
-        { q: "materials consist of more than one material type.", opts: ["Natural organic material", "synthetic organic material", "manufactured organic material", "composite material"], ans: 3 },
-        { q: "is a good example of an aggregate composite.", opts: ["cement", "plaster", "concrete", "sand"], ans: 2 },
-        { q: "is that out of which anything is made.", opts: ["matter", "substance", "material", "atom"], ans: 2 },
-        { q: "are dimensionally stable at room temperature.", opts: ["non- metals", "metalloids", "organic material", "metal"], ans: 3 },
-        { q: "Materials are poor conductor of heat, electricity, temperature.", opts: ["Ceramic", "Composite", "organic", "inorganic"], ans: 2 },
-        { q: "In polyethylene (C₂H₄)n n ranges from.", opts: ["10 to 100", "100 to 10000", "100 to 1000", "10 to 1000"], ans: 2 },
-        { q: "fractures normally occur along the grain boundaries", opts: ["stiff", "ductile", "tough", "brittle"], ans: 1 },
-        { q: "Is highly plastic material.", opts: ["gold", "steel", "cast iron", "none of the above"], ans: 3 },
-        { q: "In a unit cell of face centred cubic space lattice, there are", opts: ["six atoms", "nine atoms", "fourteen atoms", "seventeen atoms"], ans: 2 },
-        { q: "The type of space lattice found in alpha (&alpha;) iron is", opts: ["face centred cubic space lattice", "body centred cubic space lattice", "close packed hexagonal space lattice", "none of the above"], ans: 1 },
-        { q: "A solid solution in which solute atoms replace some solvent atoms so that they lie at normal atom sites of the crystal structure is called", opts: ["Interstitial solid solution", "substitutional solid solution", "intermetallic compounds", "mechanical mixtures"], ans: 1 },
-        { q: "Strength of material is the ability of the material to resist------", opts: ["Deformation due to stress", "Fracture due to high load.", "External forces applied with yielding or breakdown", "None of the above"], ans: 2 },
-        { q: "Ability of material to resist deformation due to stress is called as", opts: ["Toughness", "stiffness", "plasticity", "hardness"], ans: 1 },
-        { q: "Ability of material to resist fracture due to high impact load is called as", opts: ["Toughness", "stiffness", "plasticity", "hardness"], ans: 0 },
-        { q: "Property of the material due to which they can be drawn in to the wire is called", opts: ["Ductility", "malleability", "toughness", "plasticity"], ans: 0 },
-        { q: "Ability of the material to undergo permanent deformation under tension is called as:", opts: ["toughness", "stiffness", "plasticity", "hardness"], ans: 2 },
-        { q: "Property of the material due to which it can be rolled or hammered in to thin sheets is called as", opts: ["brittleness", "ductility", "malleability", "fatigue"], ans: 2 },
-        { q: "Property of material due to which it breaks with little permanent distortion is called as----", opts: ["brittleness", "ductility", "malleability", "fatigue"], ans: 0 },
-        { q: "The ability of a material to absorb energy in the plastic range is called---", opts: ["resilience", "toughness", "hardness", "brittleness"], ans: 1 },
-        { q: "is defined as the destruction of the material by chemical or electrochemical reaction with its environment.", opts: ["hardness", "melting point", "corrosion", "machining"], ans: 2 }
-    ];
+        {
+                "q": "Which of the following is NOT a basic category of engineering materials?",
+                "opts": [
+                        "Metals and alloys",
+                        "Non-metals",
+                        "Gases",
+                        "Composites"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Engineering materials are primarily used for------------------------.",
+                "opts": [
+                        "Decoration purposes",
+                        "Energy production only",
+                        "Organized engineering applications",
+                        "Waste management"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "----------------- is major element in all ferrous metals?",
+                "opts": [
+                        "Aluminum",
+                        "Copper",
+                        "Iron",
+                        "Magnesium"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Which of the following is a ferrous metal?",
+                "opts": [
+                        "Copper",
+                        "Titanium",
+                        "Cast Iron",
+                        "Aluminum"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Which one is NOT a non-ferrous metal?",
+                "opts": [
+                        "Nickel",
+                        "Magnesium",
+                        "Wrought Iron",
+                        "Copper"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Thermoplastics and thermosets are types of---------------.",
+                "opts": [
+                        "Ceramics",
+                        "Metals",
+                        "Plastics",
+                        "Composites"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Which of the following can be reshaped upon heating?",
+                "opts": [
+                        "Thermosets",
+                        "Thermoplastics",
+                        "Ceramics",
+                        "All of the above"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "From the following materials-------------- is a ceramic material.",
+                "opts": [
+                        "Steel",
+                        "SiC (Silicon Carbide)",
+                        "Polyethylene",
+                        "Brass"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "Which one is NOT a characteristic of ceramic materials?",
+                "opts": [
+                        "High hardness",
+                        "High electrical conductivity",
+                        "Brittle nature",
+                        "High melting point"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "Composite materials are made by:",
+                "opts": [
+                        "Melting a single metal",
+                        "Combining two or more distinct materials",
+                        "Grinding non-metals",
+                        "Using only ceramics"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "Nano materials are known for their:",
+                "opts": [
+                        "Large particle size",
+                        "High thermal conductivity",
+                        "Unique properties at the nanoscale",
+                        "Use in agriculture only"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Metals have ______________ structure.",
+                "opts": [
+                        "Amorphic",
+                        "Mesomorphic",
+                        "Crystalline",
+                        "Random"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Which of the following best describes the structure of non-metals?",
+                "opts": [
+                        "Crystalline only",
+                        "Amorphic & mesomorphic",
+                        "Polycrystalline",
+                        "Metallic"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "Most metals at room temperature are in ---------------- state.",
+                "opts": [
+                        "Liquid",
+                        "Gas",
+                        "Solid",
+                        "Plasma"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "The physical state of non-metals at room temperature is:",
+                "opts": [
+                        "Always solid",
+                        "Always gas",
+                        "Only liquid",
+                        "Varies from gas to solid"
+                ],
+                "ans": 3
+        },
+        {
+                "q": "Which of the following is true about density of metals?",
+                "opts": [
+                        "Very low",
+                        "Low",
+                        "Medium",
+                        "High"
+                ],
+                "ans": 3
+        },
+        {
+                "q": "Non-metals are generally characterized by----------------.",
+                "opts": [
+                        "High density",
+                        "Low density",
+                        "Magnetic properties",
+                        "High ductility"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "Which material type generally has high strength?",
+                "opts": [
+                        "Non-metals",
+                        "Gases",
+                        "Liquids",
+                        "Metals"
+                ],
+                "ans": 3
+        },
+        {
+                "q": "Metals are ----------------------------.",
+                "opts": [
+                        "Brittle and soft",
+                        "Malleable and ductile",
+                        "Non-malleable and brittle",
+                        "Amorphic in structure"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "Non-metals are ------------------------------.",
+                "opts": [
+                        "Malleable and ductile",
+                        "Ductile and lustrous",
+                        "Non-malleable and non-ductile",
+                        "Metallic in appearance"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Which of the following statements is true about brittleness of metals?",
+                "opts": [
+                        "All metals are brittle",
+                        "Metals are generally non-brittle",
+                        "Metals are more brittle than non-metals",
+                        "Metals are amorphous and brittle"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "Which property is typically shown by metals due to their surface shine?",
+                "opts": [
+                        "Transparency",
+                        "Luminescence",
+                        "Metallic lustre",
+                        "Absorptivity"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "------------------------ Non-metals may exhibit metallic luster?",
+                "opts": [
+                        "Chlorine and Bromine",
+                        "Nitrogen and Oxygen",
+                        "Graphite and Iodine",
+                        "Sulfur and Phosphorus"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Which of the following best defines physical properties of materials?",
+                "opts": [
+                        "Response to external mechanical force",
+                        "Response to chemical reactions",
+                        "Response to imposed stimuli without external forces",
+                        "Reaction with air and water"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "From the following, ------------ is NOT considered a physical property?",
+                "opts": [
+                        "Density",
+                        "Structure",
+                        "Ductility",
+                        "Melting point"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Which physical property refers to the size and shape of a material?",
+                "opts": [
+                        "Density",
+                        "Structure",
+                        "Dimensions",
+                        "Appearance"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "\"Appearance\" of a material includes -------------.",
+                "opts": [
+                        "Melting point and boiling point",
+                        "Luster, color, and surface finish",
+                        "Structure and hardness",
+                        "Porosity and density"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "Luster of a material is its ability to-------------------.",
+                "opts": [
+                        "Resist corrosion",
+                        "Conduct heat",
+                        "Reflect light when polished",
+                        "Absorb water"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "The color of a material depends on:",
+                "opts": [
+                        "Its temperature",
+                        "The wavelength of light it absorbs",
+                        "Its porosity",
+                        "The environment"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "Density is defined as------------------------.",
+                "opts": [
+                        "Volume per unit mass",
+                        "Mass per unit volume",
+                        "Force per unit area",
+                        "Weight per unit area"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "From the following factors ------------- does NOT affect density.",
+                "opts": [
+                        "Purity of material",
+                        "Pour volume",
+                        "Treatment of material",
+                        "Color of material"
+                ],
+                "ans": 3
+        },
+        {
+                "q": "Melting point of a material refers to the temperature at which---------------------.",
+                "opts": [
+                        "It vaporizes",
+                        "It absorbs maximum heat",
+                        "It changes from solid to liquid",
+                        "It changes from gas to solid"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Porosity is defined as-----------------------------.",
+                "opts": [
+                        "Ability of a metal to conduct electricity",
+                        "The ratio of total pore volume to bulk volume",
+                        "The strength of a porous structure",
+                        "None of the above"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "Which property is important for sintered self-lubricating bearings?",
+                "opts": [
+                        "Hardness",
+                        "Toughness",
+                        "Porosity",
+                        "Color"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Structure of a material refers to------------------------------.",
+                "opts": [
+                        "Its outer shape only",
+                        "Its mechanical properties",
+                        "Its geometric and internal arrangement of components",
+                        "Its ability to resist heat"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Mechanical properties of a material are associated with its ability to----------------.",
+                "opts": [
+                        "Conduct electricity",
+                        "Withstand chemical reactions",
+                        "Resist mechanical forces and deformation",
+                        "Reflect light"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "The maximum stress a material can withstand under tension is known as ------------.",
+                "opts": [
+                        "Compressive strength",
+                        "Yield strength",
+                        "Tensile strength",
+                        "Hardness"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "The property which describes a material's resistance to indentation and scratching is --------.",
+                "opts": [
+                        "Ductility",
+                        "Hardness",
+                        "Creep",
+                        "Malleability"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "The ability of a material to absorb energy before fracture is called------------.",
+                "opts": [
+                        "Elasticity",
+                        "Toughness",
+                        "Hardness",
+                        "Ductility"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "A brittle material tends to-------------------------------.",
+                "opts": [
+                        "Absorb more energy before fracture",
+                        "Fracture with large deformation",
+                        "Fracture without significant deformation",
+                        "Resist indentation"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Creep is defined as---------------------------------.",
+                "opts": [
+                        "Sudden fracture due to high load",
+                        "Deformation over time under constant stress and temperature",
+                        "Instantaneous failure",
+                        "Expansion due to temperature"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "Fatigue in a material is caused by--------------------------.",
+                "opts": [
+                        "Constant high temperature",
+                        "High-pressure fluids",
+                        "Fluctuating or repeated stress",
+                        "Overheating during casting"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "The property of being flattened into thin sheets without cracking is called---------------.",
+                "opts": [
+                        "Ductility",
+                        "Elasticity",
+                        "Malleability",
+                        "Toughness"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Ductility is the ability of a material to--------------------------.",
+                "opts": [
+                        "Be compressed into thin sheets",
+                        "Be drawn into wires",
+                        "Absorb vibrations",
+                        "Return to its original shape"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "Which of the following properties is associated with returning to original shape after load removal?",
+                "opts": [
+                        "Plasticity",
+                        "Toughness",
+                        "Elasticity",
+                        "Ductility"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Plasticity refers to-----------------------.",
+                "opts": [
+                        "Ability to regain original shape after deformation",
+                        "Resistance to wear and tear",
+                        "Ability to undergo permanent deformation without rupture",
+                        "Tendency to bounce under load"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Which mechanical property is measured by elongation and reduction in area during a tensile test?",
+                "opts": [
+                        "Hardness",
+                        "Ductility",
+                        "Toughness",
+                        "Fatigue"
+                ],
+                "ans": 1
+        },
+        {
+                "q": "Which property is most important for materials used in springs or shock absorbers?",
+                "opts": [
+                        "Malleability",
+                        "Toughness",
+                        "Resilience",
+                        "Brittleness"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "What is the maximum energy stored per unit volume that a material can absorb without permanent deformation?",
+                "opts": [
+                        "Creep",
+                        "Proof resilience",
+                        "Modulus of resilience",
+                        "Toughness"
+                ],
+                "ans": 2
+        },
+        {
+                "q": "Which term describes permanent structural change due to repeated stress cycles?",
+                "opts": [
+                        "Fatigue",
+                        "Rupture",
+                        "Resilience",
+                        "Impact resistance"
+                ],
+                "ans": 0
+        }
+];
 
     let currentPool = [];
     let wrongQuestions = [];
@@ -210,7 +693,7 @@
     const retryBtn = document.getElementById('retry-btn');
     const restartBtn = document.getElementById('restart-btn');
 
-    // Utility to shuffle an array (Fisher-Yates)
+    // Fisher-Yates Shuffle
     function shuffleArray(array) {
         let arr = [...array];
         for (let i = arr.length - 1; i > 0; i--) {
@@ -239,14 +722,14 @@
         
         const qData = currentPool[currentQuestionIndex];
         
-        progress.textContent = `Question ${currentQuestionIndex + 1} / ${currentPool.length}`;
+        progress.textContent = `Question ${currentQuestionIndex + 1} of ${currentPool.length}`;
         scoreTracker.textContent = `Score: ${score}`;
         questionText.innerHTML = `${currentQuestionIndex + 1}. ${qData.q}`;
 
         qData.opts.forEach((opt, index) => {
             const btn = document.createElement('button');
             btn.className = 'btn';
-            btn.innerHTML = `${String.fromCharCode(65 + index)}. ${opt}`; // A, B, C, D
+            btn.innerHTML = `${String.fromCharCode(65 + index)}. ${opt}`;
             btn.onclick = () => checkAnswer(index, btn);
             optionsContainer.appendChild(btn);
         });
@@ -257,29 +740,25 @@
         const correctIndex = qData.ans;
         const allBtns = optionsContainer.querySelectorAll('.btn');
 
-        // Disable all buttons to prevent multiple clicks
         allBtns.forEach(btn => btn.disabled = true);
-
         feedbackMessage.classList.remove('hidden');
 
         if (selectedIndex === correctIndex) {
             selectedBtn.classList.add('correct');
             feedbackMessage.textContent = "✅ Correct!";
-            feedbackMessage.style.color = "#0c5c27";
+            feedbackMessage.style.color = "var(--correct-text)";
             score++;
             scoreTracker.textContent = `Score: ${score}`;
         } else {
             selectedBtn.classList.add('wrong');
             allBtns[correctIndex].classList.add('correct');
             feedbackMessage.textContent = "❌ Incorrect.";
-            feedbackMessage.style.color = "#8a0a14";
+            feedbackMessage.style.color = "var(--wrong-text)";
             
-            // Add to wrong stack if not already there
             if (!wrongQuestions.includes(qData)) {
                 wrongQuestions.push(qData);
             }
         }
-
         nextBtn.classList.remove('hidden');
     }
 
@@ -296,15 +775,15 @@
         quizScreen.classList.add('hidden');
         resultScreen.classList.remove('hidden');
         
-        document.getElementById('final-score').textContent = 
-            `You scored ${score} out of ${currentPool.length}!`;
+        document.getElementById('final-score').innerHTML = 
+            `You scored <span style="color: var(--accent-blue);">${score}</span> out of ${currentPool.length}!`;
 
         if (wrongQuestions.length > 0) {
             retryBtn.classList.remove('hidden');
-            retryBtn.textContent = `Resolve ${wrongQuestions.length} Incorrect Question(s)`;
+            retryBtn.textContent = `Review ${wrongQuestions.length} Incorrect Question(s)`;
         } else {
             retryBtn.classList.add('hidden');
-            document.getElementById('final-score').innerHTML += "<br>🎉 Perfect score! Awesome job.";
+            document.getElementById('final-score').innerHTML += "<br><br>🎉 Perfect score! Excellent work.";
         }
     }
 
@@ -316,9 +795,8 @@
         startQuiz(masterQuestionBank);
     };
 
-    // Init the app
+    // Initialize application
     startQuiz(masterQuestionBank);
-
 </script>
 </body>
 </html>
