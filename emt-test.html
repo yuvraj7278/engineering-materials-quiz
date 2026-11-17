@@ -1076,8 +1076,8 @@ function startBlueprintTest() {
   }
 
   window.addEventListener("DOMContentLoaded", () => {
-    if (typeof masterQuestionBank !== "undefined" && Array.isArray(masterQuestionBank)) {
-      initPool(masterQuestionBank);
+    if (typeof masterPool !== "undefined" && Array.isArray(masterPool)) {
+      initPool(masterPool);
     } else {
       const badge = document.getElementById("poolStatusBadge");
       badge.textContent = "masterPool.js missing";
