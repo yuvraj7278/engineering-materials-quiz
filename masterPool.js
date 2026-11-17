@@ -1,763 +1,608 @@
-const masterQuestionBank = [
+// Auto-generated masterPool.js — Exact questions preserved from unit1.html to unit6.html
+// Total Questions: 440 (U1: 50, U2: 54, U3: 127, U4: 94, U5: 30, U6: 85)
+
+const masterPool = [
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Ferrous Metals do not possess the following property",
+    "q": "Which of the following is NOT a basic category of engineering materials?",
     "opts": [
-      "stiffness",
-      "strength",
-      "elasticity",
-      "high electrical conductivity"
+      "Metals and alloys",
+      "Non-metals",
+      "Gases",
+      "Composites"
     ],
-    "ans": 3
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Ceramics usually consist of",
+    "q": "Engineering materials are primarily used for------------------------.",
     "opts": [
-      "oxides",
-      "nitrides",
-      "carbides & borides",
-      "all of the above"
+      "Decoration purposes",
+      "Energy production only",
+      "Organized engineering applications",
+      "Waste management"
     ],
-    "ans": 3
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "out of the following which is not a example of ceramics.",
+    "q": "----------------- is major element in all ferrous metals?",
     "opts": [
-      "sand",
-      "brick",
-      "lubricants",
-      "concrete"
-    ],
-    "ans": 2
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "out of the following which is not a example of organic materials.",
-    "opts": [
-      "rubber",
-      "plastics",
-      "cement",
-      "paper"
-    ],
-    "ans": 2
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "which materials have good thermal conductivity?",
-    "opts": [
-      "insulaters",
-      "semiconductors",
-      "conductors",
-      "none of the above"
-    ],
-    "ans": 2
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Density of Aluminium is",
-    "opts": [
-      "2.7 gm/cc",
-      "1.7 gm/cc",
-      "3.7 gm/cc",
-      "4.7 gm/cc"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Unit of Density",
-    "opts": [
-      "kg/m³",
-      "kg/m²",
-      "kg/m⁴",
-      "kg.m"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "colour of Al is",
-    "opts": [
-      "White",
-      "grey",
-      "reddish",
-      "none of the above"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Melting point of copper is",
-    "opts": [
-      "1539 deg. Celcius",
-      "1031 deg. Celcius",
-      "1231 deg. Celcius",
-      "659 deg. Celcius"
-    ],
-    "ans": 1
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "..material possesses high impact strength than brittle materials.",
-    "opts": [
-      "Malleable",
-      "Tough",
-      "Stiff",
-      "Ductile"
-    ],
-    "ans": 1
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Copper is extremely tough but is not.",
-    "opts": [
-      "Steel",
+      "Aluminum",
+      "Copper",
       "Iron",
-      "Cast Iron",
-      "Aluminium"
+      "Magnesium"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "is the most malleable metal.",
-    "opts": [
-      "Silver",
-      "Gold",
-      "Steel",
-      "C.I."
-    ],
-    "ans": 1
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "is lack of ductility.",
-    "opts": [
-      "Malleability",
-      "Hardness",
-      "Toughness",
-      "Brittleness"
-    ],
-    "ans": 3
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Melting point of iron is",
-    "opts": [
-      "1131 deg. Celcius",
-      "1539 deg. Celcius",
-      "1659 deg. Celcius",
-      "1712 deg. Celcius"
-    ],
-    "ans": 1
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "is a brittle material.",
-    "opts": [
-      "Steel",
-      "aluminium",
-      "Cast iron",
-      "Copper"
-    ],
-    "ans": 2
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Which of the following is not example of organic material?",
-    "opts": [
-      "Fiber Glass",
-      "Lubricants",
-      "Wood",
-      "Rubber"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Which of the following is not example of organic material?",
-    "opts": [
-      "Fiber Glass",
-      "Lubricants",
-      "Wood",
-      "Rubber"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "is major ingredient for steel.",
+    "q": "Which of the following is a ferrous metal?",
     "opts": [
       "Copper",
-      "Carbon",
-      "Cromium",
-      "Iron"
+      "Titanium",
+      "Cast Iron",
+      "Aluminum"
     ],
-    "ans": 3
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Material consists of",
+    "q": "Which one is NOT a non-ferrous metal?",
     "opts": [
-      "atoms",
-      "molecules",
-      "matter",
-      "none of these"
+      "Nickel",
+      "Magnesium",
+      "Wrought Iron",
+      "Copper"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Fiber glass acquires strength from...",
+    "q": "Thermoplastics and thermosets are types of---------------.",
     "opts": [
-      "glass",
-      "fiber",
-      "polymer",
-      "meterial"
+      "Ceramics",
+      "Metals",
+      "Plastics",
+      "Composites"
     ],
-    "ans": 0
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Fiber glass acquires flexibility from",
+    "q": "Which of the following can be reshaped upon heating?",
     "opts": [
-      "glass",
-      "fiber",
-      "polymer",
-      "meterial"
+      "Thermosets",
+      "Thermoplastics",
+      "Ceramics",
+      "All of the above"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Melting point is defined as the Temperature",
+    "q": "From the following materials-------------- is a ceramic material.",
     "opts": [
-      "maximum",
-      "moderate",
-      "minimum",
-      "high"
+      "Steel",
+      "SiC (Silicon Carbide)",
+      "Polyethylene",
+      "Brass"
     ],
-    "ans": 2
+    "ans": 1,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "helps in differentiating heavy and light metals",
+    "q": "Which one is NOT a characteristic of ceramic materials?",
     "opts": [
-      "weight",
-      "volume",
-      "density",
-      "mass"
+      "High hardness",
+      "High electrical conductivity",
+      "Brittle nature",
+      "High melting point"
     ],
-    "ans": 2
+    "ans": 1,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "strength refers to the force needed to fracture the material.",
+    "q": "Composite materials are made by:",
     "opts": [
-      "yield strength",
-      "impact strength",
-      "ultimate strength",
-      "tensile strength"
+      "Melting a single metal",
+      "Combining two or more distinct materials",
+      "Grinding non-metals",
+      "Using only ceramics"
     ],
-    "ans": 2
+    "ans": 1,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "The ability of material to resist plastic deformation is called",
+    "q": "Nano materials are known for their:",
     "opts": [
-      "yield strength",
-      "impact strength",
-      "formability",
-      "malleability"
+      "Large particle size",
+      "High thermal conductivity",
+      "Unique properties at the nanoscale",
+      "Use in agriculture only"
     ],
-    "ans": 0
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "is considered tensile property.",
+    "q": "Metals have ______________ structure.",
     "opts": [
-      "physical property",
-      "ductility",
-      "formability",
-      "malleability"
+      "Amorphic",
+      "Mesomorphic",
+      "Crystalline",
+      "Random"
     ],
-    "ans": 1
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "is a compressive property.",
+    "q": "Which of the following best describes the structure of non-metals?",
     "opts": [
-      "physical property",
-      "ductility",
-      "formability",
-      "malleability"
+      "Crystalline only",
+      "Amorphic & mesomorphic",
+      "Polycrystalline",
+      "Metallic"
     ],
-    "ans": 3
+    "ans": 1,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "The ability of material to regain its original state on removal of load is called....",
+    "q": "Most metals at room temperature are in ---------------- state.",
     "opts": [
-      "plasticity",
-      "ductility",
-      "malleability",
-      "elasticity"
+      "Liquid",
+      "Gas",
+      "Solid",
+      "Plasma"
     ],
-    "ans": 3
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Which of the following determine the behavior of engineering materials under the applied forces and loads?",
+    "q": "The physical state of non-metals at room temperature is:",
     "opts": [
-      "physical property",
-      "chemical property",
-      "strength",
-      "mechanical property"
+      "Always solid",
+      "Always gas",
+      "Only liquid",
+      "Varies from gas to solid"
     ],
-    "ans": 3
+    "ans": 3,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Is also defined as the slope on the linear portion of a stress strain curve within the elastic limit.",
+    "q": "Which of the following is true about density of metals?",
     "opts": [
-      "brittleness",
-      "hardness",
-      "toughness",
-      "stiffness"
+      "Very low",
+      "Low",
+      "Medium",
+      "High"
     ],
-    "ans": 3
+    "ans": 3,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "impact strength depends upon",
+    "q": "Non-metals are generally characterized by----------------.",
     "opts": [
-      "density",
-      "colour",
-      "melting point",
-      "structure"
+      "High density",
+      "Low density",
+      "Magnetic properties",
+      "High ductility"
     ],
-    "ans": 3
+    "ans": 1,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "is shown as the maximum point on the stress strain curve.",
+    "q": "Which material type generally has high strength?",
     "opts": [
-      "yield strength",
-      "tensile strength",
-      "impact strength",
-      "ultimate strength"
+      "Non-metals",
+      "Gases",
+      "Liquids",
+      "Metals"
     ],
-    "ans": 3
+    "ans": 3,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Also defined as the ability of material to absorb energy during plastic deformation up to fracture.",
+    "q": "Metals are ----------------------------.",
     "opts": [
-      "stiffness",
-      "toughness",
-      "brittleness",
-      "hardness"
+      "Brittle and soft",
+      "Malleable and ductile",
+      "Non-malleable and brittle",
+      "Amorphic in structure"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "hardness is resistance to",
+    "q": "Non-metals are ------------------------------.",
     "opts": [
-      "deformation",
-      "plasticity",
-      "elasticity",
-      "penetration"
+      "Malleable and ductile",
+      "Ductile and lustrous",
+      "Non-malleable and non-ductile",
+      "Metallic in appearance"
     ],
-    "ans": 3
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "fatigue failure occurs when a material is subjected to Loads",
+    "q": "Which of the following statements is true about brittleness of metals?",
     "opts": [
-      "fluctuating",
-      "compressive",
-      "tensile",
-      "shear"
+      "All metals are brittle",
+      "Metals are generally non-brittle",
+      "Metals are more brittle than non-metals",
+      "Metals are amorphous and brittle"
     ],
-    "ans": 0
+    "ans": 1,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Is the capacity of material to undergo deformation under tension without rupture.",
+    "q": "Which property is typically shown by metals due to their surface shine?",
     "opts": [
-      "malleability",
-      "ductility",
-      "stiffness",
-      "tensile strength"
+      "Transparency",
+      "Luminescence",
+      "Metallic lustre",
+      "Absorptivity"
     ],
-    "ans": 1
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "which of the following is not the characteristic of ceramics?",
+    "q": "------------------------ Non-metals may exhibit metallic luster?",
     "opts": [
-      "hardness",
-      "brittleness",
-      "abrasiveness",
-      "ductility"
+      "Chlorine and Bromine",
+      "Nitrogen and Oxygen",
+      "Graphite and Iodine",
+      "Sulfur and Phosphorus"
     ],
-    "ans": 3
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "is made use in stamping images on coins and ornamental work.",
+    "q": "Which of the following best defines physical properties of materials?",
     "opts": [
-      "elasticity",
-      "plasticity",
-      "strength",
-      "malleability"
+      "Response to external mechanical force",
+      "Response to chemical reactions",
+      "Response to imposed stimuli without external forces",
+      "Reaction with air and water"
     ],
-    "ans": 1
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "of a material is very helpful in indentification of metal.",
+    "q": "From the following, ------------ is NOT considered a physical property?",
     "opts": [
-      "structure",
-      "density",
-      "melting point",
-      "colour"
+      "Density",
+      "Structure",
+      "Ductility",
+      "Melting point"
     ],
-    "ans": 3
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "physical properties are those properties which decribes a material under conditions in which Forces are not concerned.",
+    "q": "Which physical property refers to the size and shape of a material?",
     "opts": [
-      "tensile",
-      "compressive",
-      "internal",
-      "external"
+      "Density",
+      "Structure",
+      "Dimensions",
+      "Appearance"
     ],
-    "ans": 3
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "A small impression for a given load and indentor that the material is",
+    "q": "\"Appearance\" of a material includes -------------.",
     "opts": [
-      "soft",
-      "tough",
-      "stiff",
-      "hard"
+      "Melting point and boiling point",
+      "Luster, color, and surface finish",
+      "Structure and hardness",
+      "Porosity and density"
     ],
-    "ans": 3
+    "ans": 1,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "which of the following is not the example of semiconductor?",
+    "q": "Luster of a material is its ability to-------------------.",
     "opts": [
-      "Si",
-      "Ge",
-      "sn",
-      "zn"
+      "Resist corrosion",
+      "Conduct heat",
+      "Reflect light when polished",
+      "Absorb water"
     ],
-    "ans": 3
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "contain the compounds of nitrogen",
+    "q": "The color of a material depends on:",
     "opts": [
-      "acrylics",
-      "polyethylene",
-      "nylon",
-      "pvc"
+      "Its temperature",
+      "The wavelength of light it absorbs",
+      "Its porosity",
+      "The environment"
     ],
-    "ans": 2
+    "ans": 1,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "materials consist of more than one material type.",
+    "q": "Density is defined as------------------------.",
     "opts": [
-      "Natural organic material",
-      "synthetic organic material",
-      "manufactured organic material",
-      "composite material"
+      "Volume per unit mass",
+      "Mass per unit volume",
+      "Force per unit area",
+      "Weight per unit area"
     ],
-    "ans": 3
+    "ans": 1,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "is a good example of an aggregate composite.",
+    "q": "From the following factors ------------- does NOT affect density.",
     "opts": [
-      "cement",
-      "plaster",
-      "concrete",
-      "sand"
+      "Purity of material",
+      "Pour volume",
+      "Treatment of material",
+      "Color of material"
     ],
-    "ans": 2
+    "ans": 3,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "is that out of which anything is made.",
+    "q": "Melting point of a material refers to the temperature at which---------------------.",
     "opts": [
-      "matter",
-      "substance",
-      "material",
-      "atom"
+      "It vaporizes",
+      "It absorbs maximum heat",
+      "It changes from solid to liquid",
+      "It changes from gas to solid"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "are dimensionally stable at room temperature.",
+    "q": "Porosity is defined as-----------------------------.",
     "opts": [
-      "non- metals",
-      "metalloids",
-      "organic material",
-      "metal"
-    ],
-    "ans": 3
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Materials are poor conductor of heat, electricity, temperature.",
-    "opts": [
-      "Ceramic",
-      "Composite",
-      "organic",
-      "inorganic"
-    ],
-    "ans": 2
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "In polyethylene (C₂H₄)n n ranges from.",
-    "opts": [
-      "10 to 100",
-      "100 to 10000",
-      "100 to 1000",
-      "10 to 1000"
-    ],
-    "ans": 2
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "fractures normally occur along the grain boundaries",
-    "opts": [
-      "stiff",
-      "ductile",
-      "tough",
-      "brittle"
-    ],
-    "ans": 1
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Is highly plastic material.",
-    "opts": [
-      "gold",
-      "steel",
-      "cast iron",
-      "none of the above"
-    ],
-    "ans": 3
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "In a unit cell of face centred cubic space lattice, there are",
-    "opts": [
-      "six atoms",
-      "nine atoms",
-      "fourteen atoms",
-      "seventeen atoms"
-    ],
-    "ans": 2
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "The type of space lattice found in alpha (&alpha;) iron is",
-    "opts": [
-      "face centred cubic space lattice",
-      "body centred cubic space lattice",
-      "close packed hexagonal space lattice",
-      "none of the above"
-    ],
-    "ans": 1
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "A solid solution in which solute atoms replace some solvent atoms so that they lie at normal atom sites of the crystal structure is called",
-    "opts": [
-      "Interstitial solid solution",
-      "substitutional solid solution",
-      "intermetallic compounds",
-      "mechanical mixtures"
-    ],
-    "ans": 1
-  },
-  {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Strength of material is the ability of the material to resist------",
-    "opts": [
-      "Deformation due to stress",
-      "Fracture due to high load.",
-      "External forces applied with yielding or breakdown",
+      "Ability of a metal to conduct electricity",
+      "The ratio of total pore volume to bulk volume",
+      "The strength of a porous structure",
       "None of the above"
     ],
-    "ans": 2
+    "ans": 1,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Ability of material to resist deformation due to stress is called as",
+    "q": "Which property is important for sintered self-lubricating bearings?",
     "opts": [
+      "Hardness",
       "Toughness",
-      "stiffness",
-      "plasticity",
-      "hardness"
+      "Porosity",
+      "Color"
     ],
-    "ans": 1
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
-    "unit": 1,
-    "cat": "Unit 1",
-    "q": "Ability of material to resist fracture due to high impact load is called as",
+    "q": "Structure of a material refers to------------------------------.",
     "opts": [
-      "Toughness",
-      "stiffness",
-      "plasticity",
-      "hardness"
+      "Its outer shape only",
+      "Its mechanical properties",
+      "Its geometric and internal arrangement of components",
+      "Its ability to resist heat"
     ],
-    "ans": 0
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
   },
   {
+    "q": "Mechanical properties of a material are associated with its ability to----------------.",
+    "opts": [
+      "Conduct electricity",
+      "Withstand chemical reactions",
+      "Resist mechanical forces and deformation",
+      "Reflect light"
+    ],
+    "ans": 2,
     "unit": 1,
-    "cat": "Unit 1",
-    "q": "Property of the material due to which they can be drawn in to the wire is called",
+    "cat": "Unit 1"
+  },
+  {
+    "q": "The maximum stress a material can withstand under tension is known as ------------.",
+    "opts": [
+      "Compressive strength",
+      "Yield strength",
+      "Tensile strength",
+      "Hardness"
+    ],
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
+  },
+  {
+    "q": "The property which describes a material's resistance to indentation and scratching is --------.",
     "opts": [
       "Ductility",
-      "malleability",
-      "toughness",
-      "plasticity"
+      "Hardness",
+      "Creep",
+      "Malleability"
     ],
-    "ans": 0
-  },
-  {
+    "ans": 1,
     "unit": 1,
-    "cat": "Unit 1",
-    "q": "Ability of the material to undergo permanent deformation under tension is called as:",
-    "opts": [
-      "toughness",
-      "stiffness",
-      "plasticity",
-      "hardness"
-    ],
-    "ans": 2
+    "cat": "Unit 1"
   },
   {
+    "q": "The ability of a material to absorb energy before fracture is called------------.",
+    "opts": [
+      "Elasticity",
+      "Toughness",
+      "Hardness",
+      "Ductility"
+    ],
+    "ans": 1,
     "unit": 1,
-    "cat": "Unit 1",
-    "q": "Property of the material due to which it can be rolled or hammered in to thin sheets is called as",
-    "opts": [
-      "brittleness",
-      "ductility",
-      "malleability",
-      "fatigue"
-    ],
-    "ans": 2
+    "cat": "Unit 1"
   },
   {
+    "q": "A brittle material tends to-------------------------------.",
+    "opts": [
+      "Absorb more energy before fracture",
+      "Fracture with large deformation",
+      "Fracture without significant deformation",
+      "Resist indentation"
+    ],
+    "ans": 2,
     "unit": 1,
-    "cat": "Unit 1",
-    "q": "Property of material due to which it breaks with little permanent distortion is called as----",
-    "opts": [
-      "brittleness",
-      "ductility",
-      "malleability",
-      "fatigue"
-    ],
-    "ans": 0
+    "cat": "Unit 1"
   },
   {
+    "q": "Creep is defined as---------------------------------.",
+    "opts": [
+      "Sudden fracture due to high load",
+      "Deformation over time under constant stress and temperature",
+      "Instantaneous failure",
+      "Expansion due to temperature"
+    ],
+    "ans": 1,
     "unit": 1,
-    "cat": "Unit 1",
-    "q": "The ability of a material to absorb energy in the plastic range is called---",
-    "opts": [
-      "resilience",
-      "toughness",
-      "hardness",
-      "brittleness"
-    ],
-    "ans": 1
+    "cat": "Unit 1"
   },
   {
+    "q": "Fatigue in a material is caused by--------------------------.",
+    "opts": [
+      "Constant high temperature",
+      "High-pressure fluids",
+      "Fluctuating or repeated stress",
+      "Overheating during casting"
+    ],
+    "ans": 2,
     "unit": 1,
-    "cat": "Unit 1",
-    "q": "is defined as the destruction of the material by chemical or electrochemical reaction with its environment.",
-    "opts": [
-      "hardness",
-      "melting point",
-      "corrosion",
-      "machining"
-    ],
-    "ans": 2
+    "cat": "Unit 1"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
+    "q": "The property of being flattened into thin sheets without cracking is called---------------.",
+    "opts": [
+      "Ductility",
+      "Elasticity",
+      "Malleability",
+      "Toughness"
+    ],
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
+  },
+  {
+    "q": "Ductility is the ability of a material to--------------------------.",
+    "opts": [
+      "Be compressed into thin sheets",
+      "Be drawn into wires",
+      "Absorb vibrations",
+      "Return to its original shape"
+    ],
+    "ans": 1,
+    "unit": 1,
+    "cat": "Unit 1"
+  },
+  {
+    "q": "Which of the following properties is associated with returning to original shape after load removal?",
+    "opts": [
+      "Plasticity",
+      "Toughness",
+      "Elasticity",
+      "Ductility"
+    ],
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
+  },
+  {
+    "q": "Plasticity refers to-----------------------.",
+    "opts": [
+      "Ability to regain original shape after deformation",
+      "Resistance to wear and tear",
+      "Ability to undergo permanent deformation without rupture",
+      "Tendency to bounce under load"
+    ],
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
+  },
+  {
+    "q": "Which mechanical property is measured by elongation and reduction in area during a tensile test?",
+    "opts": [
+      "Hardness",
+      "Ductility",
+      "Toughness",
+      "Fatigue"
+    ],
+    "ans": 1,
+    "unit": 1,
+    "cat": "Unit 1"
+  },
+  {
+    "q": "Which property is most important for materials used in springs or shock absorbers?",
+    "opts": [
+      "Malleability",
+      "Toughness",
+      "Resilience",
+      "Brittleness"
+    ],
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
+  },
+  {
+    "q": "What is the maximum energy stored per unit volume that a material can absorb without permanent deformation?",
+    "opts": [
+      "Creep",
+      "Proof resilience",
+      "Modulus of resilience",
+      "Toughness"
+    ],
+    "ans": 2,
+    "unit": 1,
+    "cat": "Unit 1"
+  },
+  {
+    "q": "Which term describes permanent structural change due to repeated stress cycles?",
+    "opts": [
+      "Fatigue",
+      "Rupture",
+      "Resilience",
+      "Impact resistance"
+    ],
+    "ans": 0,
+    "unit": 1,
+    "cat": "Unit 1"
+  },
+  {
     "q": "What is the crystalline structure of alpha iron?",
     "opts": [
       "Face Centered Cubic (F.C.C.)",
@@ -765,11 +610,11 @@ const masterQuestionBank = [
       "Hexagonal Close Packed (H.C.P.)",
       "Amorphous"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Between which temperatures does gamma iron exist?",
     "opts": [
       "Room temperature to 910°C",
@@ -777,11 +622,11 @@ const masterQuestionBank = [
       "1404°C to 1539°C",
       "1539°C to 1800°C"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Which form of iron is ferromagnetic at room temperature?",
     "opts": [
       "Alpha iron",
@@ -789,11 +634,11 @@ const masterQuestionBank = [
       "Delta iron",
       "None of the above"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "What is the structure of gamma iron?",
     "opts": [
       "Body Centered Cubic (B.C.C.)",
@@ -801,11 +646,11 @@ const masterQuestionBank = [
       "Hexagonal Close Packed (H.C.P.)",
       "Simple Cubic"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Which allotrope of iron has the same structure as alpha iron but with a longer cube edge?",
     "opts": [
       "Gamma iron",
@@ -813,11 +658,11 @@ const masterQuestionBank = [
       "Beta iron",
       "None of the above"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "What is the temperature range for the existence of delta iron?",
     "opts": [
       "Room temperature to 910°C",
@@ -825,11 +670,11 @@ const masterQuestionBank = [
       "1404°C to 1539°C",
       "1539°C to 1700°C"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "What is the melting point of pure iron?",
     "opts": [
       "910°C",
@@ -837,11 +682,11 @@ const masterQuestionBank = [
       "1539°C",
       "1600°C"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "What type of property is allotropy?",
     "opts": [
       "Chemical",
@@ -849,11 +694,11 @@ const masterQuestionBank = [
       "Crystallographic",
       "Magnetic"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "At what temperature does the transformation from alpha to gamma iron occur?",
     "opts": [
       "910°C",
@@ -861,11 +706,11 @@ const masterQuestionBank = [
       "1539°C",
       "720°C"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Which form of iron is stable just below its melting point?",
     "opts": [
       "Alpha iron",
@@ -873,11 +718,11 @@ const masterQuestionBank = [
       "Delta iron",
       "None of the above"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "What is the structure of iron at room temperature up to 912°C?",
     "opts": [
       "Face Centered Cubic (FCC)",
@@ -885,11 +730,11 @@ const masterQuestionBank = [
       "Body Centered Cubic (BCC)",
       "Simple Cubic"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "What is the phase name of iron between room temperature and 912°C?",
     "opts": [
       "Austenite",
@@ -897,11 +742,11 @@ const masterQuestionBank = [
       "δ-ferrite",
       "α-ferrite"
     ],
-    "ans": 3
+    "ans": 3,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Between which temperature ranges does γ-Austenite exist in pure iron?",
     "opts": [
       "912°C to 1395°C",
@@ -909,11 +754,11 @@ const masterQuestionBank = [
       "1395°C to 1539°C",
       "Room temperature to 912°C"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "What is the crystal structure of γ-iron (austenite)?",
     "opts": [
       "Body Centered Cubic (BCC)",
@@ -921,11 +766,11 @@ const masterQuestionBank = [
       "Hexagonal Close Packed (HCP)",
       "Orthorhombic"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "What phase of iron exists between 1395°C to 1539°C?",
     "opts": [
       "α-ferrite",
@@ -933,11 +778,11 @@ const masterQuestionBank = [
       "δ-ferrite",
       "Liquid iron"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Which crystal structure reappears in δ-ferrite after 1395°C?",
     "opts": [
       "FCC",
@@ -945,11 +790,11 @@ const masterQuestionBank = [
       "BCC",
       "None"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "What happens to iron after it reaches 1539°C?",
     "opts": [
       "It becomes α-ferrite",
@@ -957,11 +802,11 @@ const masterQuestionBank = [
       "It changes to liquid",
       "It transforms to martensite"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "In which temperature range does iron exist in the FCC structure?",
     "opts": [
       "912°C to 1395°C",
@@ -969,11 +814,11 @@ const masterQuestionBank = [
       "1395°C to 1539°C",
       "Above 1539°C"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Which of the following is true about α-ferrite?",
     "opts": [
       "It is stable above 1395°C",
@@ -981,11 +826,11 @@ const masterQuestionBank = [
       "It is ferromagnetic at room temperature",
       "It is the liquid phase of iron"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "What is a solid solution?",
     "opts": [
       "A mixture of two solids without any bonding",
@@ -993,11 +838,11 @@ const masterQuestionBank = [
       "A solid in which two metals remain mutually dissolved after crystallization",
       "A compound of non-metals only"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "In a solid solution, the metal present in larger quantity is called:",
     "opts": [
       "Solute",
@@ -1005,11 +850,11 @@ const masterQuestionBank = [
       "Precipitate",
       "Alloy"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "The metal present in smaller quantity in a solid solution is known as:",
     "opts": [
       "Solvent",
@@ -1017,11 +862,11 @@ const masterQuestionBank = [
       "Solute",
       "Compound"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "In which type of solid solution does the solute atom replace the solvent atom in the crystal lattice?",
     "opts": [
       "Ordered solid solution",
@@ -1029,11 +874,11 @@ const masterQuestionBank = [
       "Substitutional solid solution",
       "Amorphous solid"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Substitutional solid solutions can be:",
     "opts": [
       "Only ordered",
@@ -1041,11 +886,11 @@ const masterQuestionBank = [
       "Both ordered and disordered",
       "Neither ordered nor disordered"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "In interstitial solid solutions, solute atoms occupy:",
     "opts": [
       "Surface of the crystal",
@@ -1053,11 +898,11 @@ const masterQuestionBank = [
       "Edges of the crystal lattice",
       "Outer orbitals of solvent atoms"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Which of the following is a characteristic of interstitial solid solutions?",
     "opts": [
       "Solute atoms are larger than solvent atoms",
@@ -1065,11 +910,11 @@ const masterQuestionBank = [
       "Solute atoms occupy interstices without replacing solvent atoms",
       "Solute atoms create a separate phase"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "What is the main difference between Substitutional and interstitial solid solutions?",
     "opts": [
       "Chemical bonding",
@@ -1077,11 +922,11 @@ const masterQuestionBank = [
       "Position of solute atoms in the lattice",
       "Temperature of formation"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Which of the following conditions favors formation of substitutional solid solutions?",
     "opts": [
       "Large size difference between solute and solvent",
@@ -1089,11 +934,11 @@ const masterQuestionBank = [
       "Solute is a non-metal",
       "Solvent has a very high melting point"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Which type of solid solution would carbon in iron (as in steel) form?",
     "opts": [
       "Substitutional",
@@ -1101,11 +946,11 @@ const masterQuestionBank = [
       "Ordered substitutional",
       "Compound"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "The Iron-Carbon equilibrium diagram is a type of:",
     "opts": [
       "Unary phase diagram",
@@ -1113,11 +958,11 @@ const masterQuestionBank = [
       "Ternary phase diagram",
       "Quaternary phase diagram"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "What is the maximum carbon content considered in the Iron-Carbon equilibrium diagram (Fe-C)?",
     "opts": [
       "2.0%",
@@ -1125,11 +970,11 @@ const masterQuestionBank = [
       "6.67%",
       "8.0%"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "At 0.8% carbon and 723°C, the structure formed is called:",
     "opts": [
       "Cementite",
@@ -1137,11 +982,11 @@ const masterQuestionBank = [
       "Pearlite",
       "Austenite"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "The eutectoid composition in the iron-carbon diagram is:",
     "opts": [
       "0.8% C",
@@ -1149,11 +994,11 @@ const masterQuestionBank = [
       "2.0% C",
       "6.67% C"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "The eutectoid temperature in the iron-carbon diagram is:",
     "opts": [
       "1495°C",
@@ -1161,11 +1006,11 @@ const masterQuestionBank = [
       "723°C",
       "1130°C"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "The eutectic reaction in Fe-C system is:",
     "opts": [
       "Austenite → Ferrite + Cementite",
@@ -1173,11 +1018,11 @@ const masterQuestionBank = [
       "Liquid → δ-ferrite + Austenite",
       "Cementite → Austenite + Liquid"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "The eutectic composition in the Fe-C diagram occurs at:",
     "opts": [
       "0.8% C",
@@ -1185,11 +1030,11 @@ const masterQuestionBank = [
       "4.3% C",
       "6.67% C"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Which of the following phases is soft and ductile?",
     "opts": [
       "Cementite",
@@ -1197,11 +1042,11 @@ const masterQuestionBank = [
       "Ferrite",
       "Martensite"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "The phase Fe3C is known as:",
     "opts": [
       "Austenite",
@@ -1209,11 +1054,11 @@ const masterQuestionBank = [
       "Pearlite",
       "Bainite"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "The transformation of austenite into pearlite upon cooling is known as:",
     "opts": [
       "Eutectic reaction",
@@ -1221,11 +1066,11 @@ const masterQuestionBank = [
       "Peritectic reaction",
       "Allotropic transformation"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Which structure is a mixture of ferrite and cementite?",
     "opts": [
       "Austenite",
@@ -1233,11 +1078,11 @@ const masterQuestionBank = [
       "Pearlite",
       "Cementite"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "At what temperature does the eutectic reaction occur in Fe-C diagram?",
     "opts": [
       "1147°C",
@@ -1245,11 +1090,11 @@ const masterQuestionBank = [
       "1495°C",
       "910°C"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "In the Fe-C diagram, hypo eutectoid steels contain:",
     "opts": [
       "Less than 0.8% carbon",
@@ -1257,11 +1102,11 @@ const masterQuestionBank = [
       "Exactly 0.8% carbon",
       "More than 6.67% carbon"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "What is the phase present at 6.67% carbon in the Fe-C diagram?",
     "opts": [
       "Pearlite",
@@ -1269,11 +1114,11 @@ const masterQuestionBank = [
       "Austenite",
       "Ferrite"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Which of the following structures is hardest and most brittle?",
     "opts": [
       "Ferrite",
@@ -1281,11 +1126,11 @@ const masterQuestionBank = [
       "Austenite",
       "Pearlite"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "What are critical temperatures in the Fe-Fe3C diagram?",
     "opts": [
       "Temperatures at which metals melt completely",
@@ -1293,11 +1138,11 @@ const masterQuestionBank = [
       "Temperatures of maximum hardness",
       "Temperatures at which alloys evaporate"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "The upper critical temperature A3 is the temperature below which:",
     "opts": [
       "Austenite starts to form in hypereutectoid alloys",
@@ -1305,11 +1150,11 @@ const masterQuestionBank = [
       "Cementite starts to form from austenite in hypereutectoid alloys",
       "Pearlite forms from austenite"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "The upper critical temperature ACM is the temperature below which:",
     "opts": [
       "Ferrite starts to form from austenite in hypo eutectoid alloys",
@@ -1317,11 +1162,11 @@ const masterQuestionBank = [
       "Pearlite starts to form from austenite",
       "Austenite completely disappears"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "The lower critical temperature A1 corresponds to:",
     "opts": [
       "The melting point of iron",
@@ -1329,11 +1174,11 @@ const masterQuestionBank = [
       "The temperature at which ferrite forms",
       "The temperature at which cementite dissolves"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Below the temperature A1:",
     "opts": [
       "Austenite exists in the structure",
@@ -1341,11 +1186,11 @@ const masterQuestionBank = [
       "Only liquid phase is present",
       "Cementite is completely absent"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Which of the following points represents the temperature below which ferrite starts to form in hypo eutectoid alloys?",
     "opts": [
       "A1",
@@ -1353,11 +1198,11 @@ const masterQuestionBank = [
       "ACM",
       "Eutectic point"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "In hypereutectoid steels, cementite starts to form from austenite below the critical temperature:",
     "opts": [
       "A1",
@@ -1365,11 +1210,11 @@ const masterQuestionBank = [
       "ACM",
       "Eutectoid temperature"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "The eutectic reaction occurs during:",
     "opts": [
       "Heating of pure iron",
@@ -1377,11 +1222,11 @@ const masterQuestionBank = [
       "Cooling of liquid alloy with 4.3% Carbon",
       "Cooling of hypereutectoid steel"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Steel Contains Carbon percentage between:",
     "opts": [
       "0 to 1.1%",
@@ -1389,11 +1234,11 @@ const masterQuestionBank = [
       "0 to 4.1%",
       "0 to 3.1%"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 2,
-    "cat": "Unit 2",
     "q": "Eutectoid reaction occurs at:",
     "opts": [
       "0.8% Carbon",
@@ -1401,983 +1246,1535 @@ const masterQuestionBank = [
       "0.5% Carbon",
       "None of the above"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 2,
+    "cat": "Unit 2"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Ferritic stainless steel contain",
+    "q": "What is the typical range of carbon content in steel?",
     "opts": [
-      "12 to 18% Chromium",
-      "13 to 27% Cromium",
-      "Above 18% Chromium",
-      "None of the above"
+      "0.5% to 5%",
+      "0.02% to 2.14%",
+      "2.5% to 4%",
+      "4% to 5%"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Austenitic stainless steel contain",
+    "q": "Which element is the major constituent of steel?",
     "opts": [
-      "12 to 18% Cromium",
-      "13 to 27% Cromium",
-      "Above 18% Cromium",
-      "None of the above"
+      "Carbon",
+      "Iron",
+      "Manganese",
+      "Silicon"
     ],
-    "ans": 2
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Martensitic stainless steel contain",
+    "q": "Why is carbon added to steel?",
     "opts": [
-      "12 to 18% Cromium",
-      "13 to 27% Cromium",
-      "Above 18% Cromium",
-      "None of the above"
+      "To reduce its weight",
+      "To improve durability, strength, and fracture resistance",
+      "To increase malleability",
+      "To make it more ductile"
     ],
-    "ans": 0
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Ferromanganese contain 74 to 82%",
+    "q": "What is the approximate manganese content in steel?",
     "opts": [
-      "si",
-      "al",
-      "mg",
-      "mn"
+      "0.1%",
+      "1%",
+      "5%",
+      "10%"
     ],
-    "ans": 3
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Ferrosilicon contain 05 to 17%",
+    "q": "Which type of iron contains about 4% carbon?",
     "opts": [
-      "si",
-      "al",
-      "mg",
-      "mn"
+      "Wrought iron",
+      "Pig iron",
+      "Cast iron",
+      "Pure iron"
     ],
-    "ans": 0
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "pig iron is classified into",
+    "q": "What is pig iron?",
     "opts": [
-      "Basic pig iron",
-      "Foundry pig iron",
-      "Ferroalloys",
-      "All of these"
+      "Pure iron",
+      "Iron with glassy inclusions",
+      "Raw iron produced directly from smelting iron ore",
+      "Iron alloyed with manganese"
     ],
-    "ans": 3
+    "ans": 2,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Steel is produced from ________ process/furnace.",
+    "q": "What is the main reason pig iron is not used directly as a material?",
     "opts": [
-      "Bessemer converter",
-      "Open hearth furnce",
-      "Electric furnace",
-      "All of these"
+      "It has low carbon content",
+      "It is very brittle due to high carbon content",
+      "It is too soft",
+      "It contains no carbon"
     ],
-    "ans": 3
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The solubility of carbon in Austenite is",
-    "opts": [
-      "1.5% carbon",
-      "2.5% carbon",
-      "2% carbon",
-      "None of the above"
-    ],
-    "ans": 2
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Alpha ferrite at room temp. Can dissolve",
-    "opts": [
-      "0.008% carbon",
-      "0.25% carbon",
-      "0.2% carbon",
-      "None of the above"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Cementite becomes non magnetic/paramagnetic after",
-    "opts": [
-      "200 deg. Celcius",
-      "250 deg. Celcius",
-      "210 deg. Celcius",
-      "220 deg. Celcius"
-    ],
-    "ans": 2
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Cupola furnace is used to manufacture",
+    "q": "Which type of iron contains glassy inclusions?",
     "opts": [
       "Cast iron",
+      "Wrought iron",
       "Pig iron",
-      "Wrought iron",
-      "Steel"
+      "Pure iron"
     ],
-    "ans": 0
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "On the basis of appearance of fractures cast irons are classified as",
+    "q": "What is the typical carbon content range in low carbon steel?",
     "opts": [
-      "White cast iron",
-      "malleable cast iron",
-      "grey cast iron & nodular cast iron",
-      "all of the above"
+      "0.02% - 0.1%",
+      "0.15% - 0.30%",
+      "0.4% - 0.6%",
+      "0.6% - 1.4%"
     ],
-    "ans": 3
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The cast iron containing graphite in the form of flakes are called",
+    "q": "Which of the following is NOT a property of low carbon steel?",
     "opts": [
-      "White cast iron",
-      "Malleable cast iron",
-      "Grey cast irons",
-      "Nodular cast iron"
+      "Tough and ductile",
+      "Poor resistance to corrosion",
+      "Difficult to weld",
+      "Easily forged"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Due to which property copper is widely used for electrical conductors",
+    "q": "Low carbon steel is commonly used for:",
     "opts": [
-      "Non magnetic & Good corrosion resistance",
-      "High electrical & thermal conductivity",
-      "good ductility & malleability",
-      "all of the above"
+      "Cutting tools",
+      "Building frames and machinery parts",
+      "Springs and wires requiring high strength",
+      "Wear-resistant parts"
     ],
-    "ans": 3
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "the mechanical properties of brasses depend on the amount of",
+    "q": "Why is low carbon steel preferred for welding applications?",
     "opts": [
-      "zinc",
-      "tin",
-      "mg",
-      "none of the above"
+      "Because it has high carbon content",
+      "Because it is tough and ductile",
+      "Because it is easily joined and welded",
+      "Because it is very hard"
     ],
-    "ans": 0
+    "ans": 2,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Brasses are classified either on the basis of structure or colour as",
+    "q": "Which of the following products is typically made from low carbon steel?",
     "opts": [
-      "alpha brasses",
-      "alpha beta brasses",
-      "red brasses & yellow brasses",
-      "all of the above"
+      "Cookware",
+      "High-strength cutting tools",
+      "Springs",
+      "Bearings"
     ],
-    "ans": 3
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "addition of 1% tin to muntz metal increases corrosion resistance to marine environment & the brass is called as",
+    "q": "What is the carbon content range in medium carbon steel?",
     "opts": [
-      "alpha brass",
-      "gliding metal",
-      "leaded brass",
-      "naval brass"
+      "0.02% to 0.15%",
+      "0.25% to 0.60%",
+      "0.60% to 1.4%",
+      "1.25% to 2.14%"
     ],
-    "ans": 3
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "commercially important bronzes are",
+    "q": "Which element besides carbon is present in medium carbon steel in the range of 0.31% to 1.60%?",
     "opts": [
-      "alumimium bronze",
-      "tin bronze",
-      "silicon bronze",
-      "all of the above"
-    ],
-    "ans": 3
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Aluminium bronzes are characterised by",
-    "opts": [
-      "Good strength",
-      "Good ductility & toughness",
-      "Good bearing properties & corrosion resistance",
-      "all of the above"
-    ],
-    "ans": 3
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Aluminim shows excellent corrosion & oxidation resistance due to the formation of",
-    "opts": [
-      "alumium oxide",
-      "ferrous oxide",
-      "aluminium trioxide",
-      "none of the above"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Aluminim is soft & ductile due to",
-    "opts": [
-      "FCC Structure",
-      "BFCC Structure",
-      "Tetrahedral Structure",
-      "none of the above"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "silicon bronzes are characterised by",
-    "opts": [
-      "high corrosion resistance",
-      "high tensile strength",
-      "very high toughness & machinability",
-      "all of the above"
-    ],
-    "ans": 3
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Some of the important tin bronzes",
-    "opts": [
-      "Gun metal",
-      "Phosphor bronze",
-      "Wrought Phosphor bronze & cast Phosphor bronze",
-      "all of the above"
-    ],
-    "ans": 3
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Brass is an alloy of",
-    "opts": [
-      "copper and zinc",
-      "copper and tin",
-      "copper, tin and zinc",
-      "none of these"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "An alloy of copper, tin and zinc is known as",
-    "opts": [
-      "Brass",
-      "Bronze",
-      "gun metal",
-      "muntz metal"
-    ],
-    "ans": 1
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Muntz metal (Yellow brass) contains",
-    "opts": [
-      "70% copper and 30% zinc",
-      "60% copper and 40% zinc",
-      "59% copper, 40% zinc and 1% tin",
-      "60.45% copper, 35.2% zinc and 5.35% nickel"
-    ],
-    "ans": 1
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Babbit metal is a",
-    "opts": [
-      "lead-base alloy",
-      "copper-base alloy",
-      "tin-base alloy",
-      "cadmium-base alloy"
-    ],
-    "ans": 2
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The metal suitable for bearing subjected to light loads, is",
-    "opts": [
-      "silicon bronze",
-      "white metal",
-      "monel metal",
-      "phosphor bronze"
-    ],
-    "ans": 3
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The metal suitable for bearings subjected to heavy loads, is",
-    "opts": [
-      "silicon bronze",
-      "white metal",
-      "monel metal",
-      "phosphor bronze"
-    ],
-    "ans": 1
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Phosphor bronze has",
-    "opts": [
-      "high resitance to corrosion",
-      "good wearing qualities and high elasticity",
-      "valuable cold working property",
-      "all of the above"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Silicon when added to copper improves",
-    "opts": [
-      "machinability",
-      "hardness",
-      "hardness & strength",
-      "strength & ductility"
-    ],
-    "ans": 2
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The casting ability of aluminium increases when ________ is added to aluminium.",
-    "opts": [
-      "silicon",
-      "lead & bismuth",
-      "magnesium",
-      "copper"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Chromium when added to steel ________ the tensile strength.",
-    "opts": [
-      "does not effect",
-      "Decreases",
-      "Increases",
-      "dont know"
-    ],
-    "ans": 2
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "An alloy of copper, tin and zinc is known as",
-    "opts": [
-      "Brass",
-      "Bronze",
-      "gun metal",
-      "muntz metal"
-    ],
-    "ans": 2
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Duralumin has better strength than Y-alloy at high temperature.",
-    "opts": [
-      "True",
-      "false",
-      "dont know",
-      "can't say"
-    ],
-    "ans": 1
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Copper has high electrical & thermal conductivity.",
-    "opts": [
-      "true",
-      "false",
-      "don't know",
-      "can't say"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The alloy, mainly used for corrosion resistance in stainless steels is",
-    "opts": [
-      "silicon",
-      "manganese",
-      "carbon",
-      "cromium"
-    ],
-    "ans": 3
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Duralumin contains",
-    "opts": [
-      "3.5 to 4.5% copper, 0.4 to 0.7% magnesium, 0.4 to 0.7% manganese and rest aluminium",
-      "3.5 to 4.5% copper, 1.2 to 1.7% managanese, 1.8 to 2.3% nickel, 0.6% si/mg/fe, rest Al",
-      "4 to 4.5% magnesium, 3 to 4% copper and rest aluminium",
-      "5 to 6% tin, 2 to 3% copper and rest aluminium"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Types of bronzes is",
-    "opts": [
-      "Gun metal",
-      "Al bronze",
-      "Phosphor bronze",
-      "All of the above"
-    ],
-    "ans": 3
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The aluminium with 3.5 to 4.5% cu and 0.4 to 0.7% MN & MG is called",
-    "opts": [
-      "duralumin",
-      "Y-alloy",
-      "magnalium",
-      "hindalium"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Y-alloy contains",
-    "opts": [
-      "3.5 to 4.5% copper, 0.4 to 0.7% magnesium, 0.4 to 0.7% manganese and rest aluminium",
-      "3.5 to 4.5% copper, 1.2 to 1.7% manganese, 1.8 to 2.3% nickel, 0.6% si/mg/fe, rest Al",
-      "4 to 4.5% magnesium, 3 to 4% copper and rest aluminium",
-      "5 to 6% tin, 2 to 3% copper and rest aluminium"
-    ],
-    "ans": 1
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The main alloying elements high speed steel in order of increasing proportion are",
-    "opts": [
-      "vanadium, chromium, tungsten",
-      "tungsten, titanium, vanadium",
-      "chromium, tungsten, titanium, vanadium",
-      "chromium, titanium"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Which of the following metal is used in making electrical resistance wire for electric furnaces and heating elements?",
-    "opts": [
-      "Babbit metal",
-      "Monel metal",
-      "Nichrome",
-      "Phosphor bronze"
-    ],
-    "ans": 2
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "German silver contains",
-    "opts": [
-      "1% silver",
-      "2% silver",
-      "5% silver",
-      "no silver"
-    ],
-    "ans": 3
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Type of bearing are/ is",
-    "opts": [
-      "Rolling contact bearing",
-      "sliding contact bearing",
-      "plain bearing",
-      "All of the above"
-    ],
-    "ans": 3
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Out of the given options which is not a not ferrous metal",
-    "opts": [
-      "Cu",
-      "Al",
-      "Ni",
-      "Iron"
-    ],
-    "ans": 3
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Cu is used for",
-    "opts": [
-      "Electrical parts",
-      "Heat exchangers",
-      "House hold utensils",
-      "All of the above"
-    ],
-    "ans": 3
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "In high speed steels, manganese is used to tougher the metal and to increase its",
-    "opts": [
-      "yield point",
-      "critical temperature",
-      "melting point",
-      "Hardness"
-    ],
-    "ans": 1
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The machinability of aluminium increases when ________ is added to aluminium.",
-    "opts": [
-      "Copper",
-      "Magnesium",
       "Silicon",
-      "lead and bismuth"
+      "Sulfur",
+      "Manganese",
+      "Phosphorus"
     ],
-    "ans": 3
+    "ans": 2,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Corrosion resistance of steel is increased by adding nickel and chromium.",
+    "q": "Medium carbon steel is known for which of the following properties?",
     "opts": [
-      "Agree",
-      "Disagree",
-      "don't know",
-      "can't predict"
+      "High hardenability",
+      "Cannot be heat treated",
+      "Good formability and weldability",
+      "Poor mechanical strength"
     ],
-    "ans": 0
+    "ans": 2,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Ball bearings are, usually, made from",
+    "q": "Which of the following is NOT a common application of medium carbon steel?",
     "opts": [
-      "low carbon steel",
-      "high carbon steel",
-      "medium carbon steel",
-      "chrome steel"
+      "Railway wheels",
+      "Cutting tools",
+      "Gears",
+      "Crane hooks"
     ],
-    "ans": 3
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Aluminium has low density and addition of silicon improves its fluidity and therefore, its castability.",
+    "q": "Medium carbon steel can be heat treated by:",
     "opts": [
-      "Correct",
-      "Incorrect",
-      "don't know",
-      "can't predict"
+      "Only annealing",
+      "Quenching and tempering",
+      "Cold rolling",
+      "None of the above"
     ],
-    "ans": 0
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Babbit metal is a",
+    "q": "Medium carbon steel is commonly used in which of the following applications?",
     "opts": [
-      "lead-base alloy",
-      "copper-base alloy",
-      "tin-base alloy",
-      "cadmium-base alloy"
+      "Cooking utensils",
+      "Railway wheels and railway tracks",
+      "Glass manufacturing",
+      "Electrical wiring"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The metal suitable for bearings subjected to heavy loads, is",
+    "q": "Which of the following parts are typically made from medium carbon steel?",
     "opts": [
-      "silicon bronze",
-      "white metal",
-      "monel metal",
-      "phosphor bronze"
+      "Gears and crank shafts",
+      "Plastic containers",
+      "Paper clips",
+      "Rubber seals"
     ],
-    "ans": 1
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Out of the below option which is type of brass",
+    "q": "Stronger screws, nuts, bolts, and rivets are usually made from:",
     "opts": [
-      "Si bronze",
-      "Gun metal",
-      "Muntz metal",
-      "Al bronze"
+      "Low carbon steel",
+      "Medium carbon steel",
+      "Cast iron",
+      "Pure iron"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
   },
   {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Which of the following statement is incorrect about duralumin?",
+    "q": "Shafts and connecting rods in machinery are most commonly made from:",
     "opts": [
-      "It is prone to age hardening",
-      "It can be forged",
-      "It has good machining properties",
-      "It is lighter than pure aluminium"
-    ],
-    "ans": 3
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The austenitic stainless steel contains",
-    "opts": [
-      "18% chromium and 8% nickel",
-      "8% chromium and 18% nickel",
-      "14% chromium and 0.35% carbon",
-      "14% nickel and 0.35% carbon"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The nuts and bolts are made from silicon steel.",
-    "opts": [
-      "Correct",
-      "Incorrect",
-      "don't know",
-      "can't predict"
-    ],
-    "ans": 1
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Silicon in cast iron",
-    "opts": [
-      "makes the iron soft and easily machinable",
-      "increases hardness and brittleness",
-      "aids fusibility and fluidity",
-      "makes the iron white and hard"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The steel widely used for making precision measuring instruments is",
-    "opts": [
-      "nickel steel",
-      "nickel-chrome steel",
-      "high speed steel",
-      "chrome-vanadium steel"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The high speed steel has ________ percentage of tungsten.",
-    "opts": [
-      "maximum",
-      "minimum",
-      "don't know",
-      "can't predict"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The essential constituent of a hardened steel is",
-    "opts": [
-      "pearlite",
-      "austenite",
-      "martensite",
-      "troostite"
-    ],
-    "ans": 2
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The addition of manganese to aluminium improves corrosion resistance.",
-    "opts": [
-      "Correct",
-      "Incorrect",
-      "don't know",
-      "can't say"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The temperature point at which the change ends on heating the steel is called",
-    "opts": [
-      "lower critical point",
-      "upper critical point",
-      "point of recalescence",
-      "point of decalescence"
-    ],
-    "ans": 1
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Admirality gun metal contains",
-    "opts": [
-      "60% copper, 35% zinc and 5% manganese",
-      "76% copper, 20% silicon and 4% zinc",
-      "82% copper, 12% zinc and 6% manganese",
-      "88% copper, 10% tin and 2% zinc"
-    ],
-    "ans": 3
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "The percentage of phosphorus is phosphor bronze is",
-    "opts": [
-      "0.1",
-      "1",
-      "11.1",
-      "98"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "In high speed steels, vanadium adds to the property of red hardness and tungsten and chromium add to high wear resistance.",
-    "opts": [
-      "True",
-      "False",
-      "don't know",
-      "can't say"
-    ],
-    "ans": 0
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Phosphor bronze has",
-    "opts": [
-      "high resistance to corrosion",
-      "good wearing qualities and high elasticity",
-      "valuable cold working property",
-      "all of these"
-    ],
-    "ans": 1
-  },
-  {
-    "unit": 3,
-    "cat": "Unit 3",
-    "q": "Which of the following material has maximum malleability?",
-    "opts": [
-      "Lead",
-      "Soft steel",
+      "Medium carbon steel",
+      "Aluminum",
       "Wrought iron",
+      "Bronze"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which material is used for making axles and crane hooks?",
+    "opts": [
+      "Medium carbon steel",
+      "Glass",
+      "Plastic",
+      "Wood"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which of the following is a common use of low carbon steel?",
+    "opts": [
+      "Building frames in construction projects",
+      "Cutting tools",
+      "High-strength springs",
+      "Bearings"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Low carbon steel is typically used to make:",
+    "opts": [
+      "Cookware and pipelines",
+      "Electrical circuits",
+      "Heavy-duty machine gears",
+      "Aerospace components"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Screws, nuts, bolts, rivets, thin canes, chains, and wires are usually made from:",
+    "opts": [
+      "Medium carbon steel",
+      "High carbon steel",
+      "Low carbon steel",
+      "Cast iron"
+    ],
+    "ans": 2,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which property of low carbon steel makes it suitable for use in building frames and machinery parts?",
+    "opts": [
+      "High brittleness",
+      "Toughness and ductility",
+      "Very high hardness",
+      "Corrosion resistance"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Pipelines and cookware are commonly made from:",
+    "opts": [
+      "High carbon steel",
+      "Low carbon steel",
+      "Cast iron",
+      "Pure iron"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which of the following is a property of low carbon steel?",
+    "opts": [
+      "Brittle and hard",
+      "Tough, ductile, and malleable",
+      "Poor weldability",
+      "High corrosion resistance"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Low carbon steel is easily joined because it is:",
+    "opts": [
+      "Hard and brittle",
+      "Easily forged and welded",
+      "Highly resistant to corrosion",
+      "Non-malleable"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "One disadvantage of low carbon steel is:",
+    "opts": [
+      "Poor resistance to corrosion",
+      "Difficulty in welding",
+      "Very high hardness",
+      "Brittle nature"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which property makes low carbon steel suitable for forging?",
+    "opts": [
+      "Low ductility",
+      "Easily forged and welded",
+      "High brittleness",
+      "Poor malleability"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "High carbon steel is commonly used for:",
+    "opts": [
+      "Building frames and pipelines",
+      "Hand tools and cutting tools",
+      "Electrical wiring",
+      "Structural beams"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which of the following items is typically made from high carbon steel?",
+    "opts": [
+      "Springs and spring wires",
+      "Thin chains and wires",
+      "Nuts and bolts for light machinery",
+      "Cooking utensils"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which steel type is used to make milling cutters, chisels, and shear blades?",
+    "opts": [
+      "Low carbon steel",
+      "Medium carbon steel",
+      "High carbon steel",
+      "Cast iron"
+    ],
+    "ans": 2,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Hack saw blades and knives are most likely made from:",
+    "opts": [
+      "Wrought iron",
+      "High carbon steel",
+      "Pure iron",
+      "Low carbon steel"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "What property of high carbon steel makes it suitable for cutting tools and dies?",
+    "opts": [
+      "High toughness and ductility",
+      "High hardness and wear resistance",
+      "Poor machinability",
+      "High corrosion resistance"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which of the following is a property of the steel used in surgical instruments?",
+    "opts": [
+      "Poor corrosion resistance",
+      "Magnetic in nature",
+      "Cannot be welded",
+      "Brittle"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Steel used in cutlery and hydraulic pumps typically has:",
+    "opts": [
+      "Poor machinability",
+      "Good corrosion resistance",
+      "Very low ductility",
+      "High brittleness"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which application is NOT typically made from corrosion-resistant steel?",
+    "opts": [
+      "Springs",
+      "Surgical instruments",
+      "Cutlery",
+      "Cast iron pipes"
+    ],
+    "ans": 3,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "A steel that is magnetic, easy to machine, weld, and corrosion-resistant is most likely:",
+    "opts": [
+      "Austenitic stainless steel",
+      "Wrought iron",
+      "Cast iron",
+      "Low carbon steel"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "What is the tungsten content in 18-4-1 high-speed steel?",
+    "opts": [
+      "4%",
+      "18%",
+      "1%",
+      "10%"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which property is NOT typical of 18-4-1 high-speed steel?",
+    "opts": [
+      "High wear resistance",
+      "Low toughness",
+      "High working hardness",
+      "Higher toughness"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which of the following tools is commonly made from 18-4-1 high-speed steel?",
+    "opts": [
+      "Cooking utensils",
+      "Single point cutting tools",
+      "Structural beams",
+      "Springs"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "The 1% in 18-4-1 high-speed steel refers to:",
+    "opts": [
+      "Chromium",
+      "Tungsten",
+      "Vanadium",
+      "Carbon"
+    ],
+    "ans": 2,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which of the following tools is commonly made from 18-4-1 high-speed steel?",
+    "opts": [
+      "Single point cutting tools",
+      "Cooking pots",
+      "Structural steel beams",
+      "Chains and wires"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "End mills are typically made from:",
+    "opts": [
+      "Low carbon steel",
+      "18-4-1 high-speed steel",
+      "Cast iron",
+      "Pure iron"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which high-speed steel application is used to enlarge or finish holes in metal?",
+    "opts": [
+      "Reamers",
+      "Broach inserts",
+      "Taps",
+      "Drills"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Taps made from 18-4-1 high-speed steel are used for:",
+    "opts": [
+      "Cutting threads inside holes",
+      "Cutting wood",
+      "Welding metal sheets",
+      "Forging steel"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Broach inserts serve the purpose of:",
+    "opts": [
+      "Thread cutting",
+      "Precision machining of holes and surfaces",
+      "Structural support",
+      "Electrical conduction"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "What is the typical carbon content range in HSLA steels?",
+    "opts": [
+      "0.5% - 1%",
+      "0.05% - 0.25%",
+      "0.25% - 0.6%",
+      "1% - 2%"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which element is present in HSLA steel in the range of 1.5% to 2%?",
+    "opts": [
+      "Chromium",
+      "Manganese",
+      "Vanadium",
+      "Zirconium"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "HSLA steels typically contain small amounts (up to 0.1%) of which of the following elements?",
+    "opts": [
+      "Nickel and copper",
+      "Chromium, vanadium, molybdenum, zirconium",
+      "Carbon only",
+      "Sulfur and phosphorus"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "One advantage of HSLA steels over plain carbon steels is:",
+    "opts": [
+      "Lower strength",
+      "Poor weldability",
+      "Higher strength and better toughness",
+      "Higher corrosion rate"
+    ],
+    "ans": 2,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which of the following is NOT a typical property of HSLA steels?",
+    "opts": [
+      "High strength",
+      "High toughness",
+      "Poor wear resistance",
+      "Atmospheric corrosion resistance"
+    ],
+    "ans": 2,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "HSLA steels are known for their:",
+    "opts": [
+      "Low strength and high brittleness",
+      "High strength and toughness",
+      "Poor corrosion resistance",
+      "High carbon content"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "One of the main advantages of HSLA steels is their:",
+    "opts": [
+      "Poor atmospheric corrosion resistance",
+      "Excellent wear resistance",
+      "High density",
+      "Poor weldability"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which alloying element is known for increasing wear resistance by forming powerful carbides?",
+    "opts": [
+      "Cobalt",
+      "Vanadium",
+      "Chromium",
       "Copper"
     ],
-    "ans": 0
-  },
-  {
+    "ans": 1,
     "unit": 3,
-    "cat": "Unit 3",
-    "q": "Hardness of steel is increased by adding sulphur, lead and phosphorus.",
-    "opts": [
-      "Yes",
-      "No",
-      "don't know",
-      "can't say"
-    ],
-    "ans": 1
+    "cat": "Unit 3"
   },
   {
+    "q": "Which element improves the red hardness and fatigue strength of steel?",
+    "opts": [
+      "Tungsten",
+      "Aluminum",
+      "Cobalt",
+      "Boron"
+    ],
+    "ans": 2,
     "unit": 3,
-    "cat": "Unit 3",
-    "q": "The silicon steel is widely used for",
-    "opts": [
-      "connecting rods",
-      "cutting tools",
-      "generators and transformers in the form of laminated cores",
-      "motor car crankshafts"
-    ],
-    "ans": 2
+    "cat": "Unit 3"
   },
   {
+    "q": "The addition of which element helps promote nitriding and acts as a deoxidizer?",
+    "opts": [
+      "Aluminum",
+      "Manganese",
+      "Nickel",
+      "Silicon"
+    ],
+    "ans": 0,
     "unit": 3,
-    "cat": "Unit 3",
-    "q": "Babbit metal contains",
-    "opts": [
-      "50% tin and 50% antimony",
-      "66% tin, 30% copper and 4% antimony",
-      "88% tin, 4% copper and 8% antimony",
-      "92% tin, 6% copper and 2% antimony"
-    ],
-    "ans": 2
+    "cat": "Unit 3"
   },
   {
+    "q": "Which alloying element increases the hardenability of steel?",
+    "opts": [
+      "Boron",
+      "Copper",
+      "Manganese",
+      "Nickel"
+    ],
+    "ans": 0,
     "unit": 3,
-    "cat": "Unit 3",
-    "q": "Aluminium bronze has high resistance to corrosion.",
-    "opts": [
-      "True",
-      "False",
-      "don't know",
-      "can't say"
-    ],
-    "ans": 0
+    "cat": "Unit 3"
   },
   {
+    "q": "Which element increases corrosion resistance and abrasion resistance in steel?",
+    "opts": [
+      "Chromium",
+      "Tungsten",
+      "Vanadium",
+      "Aluminum"
+    ],
+    "ans": 0,
     "unit": 3,
-    "cat": "Unit 3",
-    "q": "Manganese bronze contains more copper than silicon bronze.",
-    "opts": [
-      "Yes",
-      "No",
-      "don't know",
-      "can't say"
-    ],
-    "ans": 1
+    "cat": "Unit 3"
   },
   {
+    "q": "What effect does manganese have on steel?",
+    "opts": [
+      "Increases weldability and ductility",
+      "Lowers weldability and ductility, counteracts sulfur brittleness",
+      "Acts as a deoxidizer",
+      "Improves heat resistance"
+    ],
+    "ans": 1,
     "unit": 3,
-    "cat": "Unit 3",
-    "q": "Muntz metal (Yellow brass) contains",
-    "opts": [
-      "70% copper and 30% zinc",
-      "60% copper and 40% zinc",
-      "59% copper, 40% zinc and 1% tin",
-      "60.45% copper, 35.2% zinc and 5.35% nickel"
-    ],
-    "ans": 1
+    "cat": "Unit 3"
   },
   {
+    "q": "Which of the following is a property of cast iron?",
+    "opts": [
+      "Highly ductile",
+      "Very brittle",
+      "Easily rolled and drawn at room temperature",
+      "Low compressive strength"
+    ],
+    "ans": 1,
     "unit": 3,
-    "cat": "Unit 3",
-    "q": "The casting ability of aluminium increases when ________ is added to aluminium.",
-    "opts": [
-      "copper",
-      "magnesium",
-      "silicon",
-      "lead and bismuth"
-    ],
-    "ans": 2
+    "cat": "Unit 3"
   },
   {
+    "q": "Cast iron has:",
+    "opts": [
+      "Higher melting point than steel",
+      "Lower melting point than steel",
+      "Same melting point as steel",
+      "No melting point"
+    ],
+    "ans": 1,
     "unit": 3,
-    "cat": "Unit 3",
-    "q": "Manganese bronze has",
-    "opts": [
-      "good wearing qualities and high elasticity",
-      "high yield point, high fatigue limit",
-      "high resistance to corrosion",
-      "valuable cold working property"
-    ],
-    "ans": 2
+    "cat": "Unit 3"
   },
   {
+    "q": "Which of the following statements about cast iron is TRUE?",
+    "opts": [
+      "It has excellent machinability",
+      "It is highly malleable",
+      "It has poor wear resistance",
+      "It is very ductile"
+    ],
+    "ans": 0,
     "unit": 3,
-    "cat": "Unit 3",
-    "q": "Silicon bronze contains",
-    "opts": [
-      "60% copper, 35% zinc and 5% manganese",
-      "88% copper, 10% tin and 2% zinc",
-      "96% copper, 3% silicon and 1% manganese",
-      "76% copper, 20% silicon and 4% zinc"
-    ],
-    "ans": 2
+    "cat": "Unit 3"
   },
   {
+    "q": "Cast iron cannot be:",
+    "opts": [
+      "Cast easily",
+      "Machined easily",
+      "Rolled or drawn easily at room temperature",
+      "Used for parts requiring high compressive strength"
+    ],
+    "ans": 2,
     "unit": 3,
-    "cat": "Unit 3",
-    "q": "In corrosion resistant properties, bronzes are ________ to brasses.",
-    "opts": [
-      "superior",
-      "inferier",
-      "don't know",
-      "can't say"
-    ],
-    "ans": 0
+    "cat": "Unit 3"
   },
   {
+    "q": "Nodular cast iron gets its nodular graphite structure by adding:",
+    "opts": [
+      "Chromium or nickel",
+      "Manganese or cerium",
+      "Vanadium or molybdenum",
+      "Copper or aluminum"
+    ],
+    "ans": 1,
     "unit": 3,
-    "cat": "Unit 3",
-    "q": "Bronze is the alloy of----.",
-    "opts": [
-      "copper and tin",
-      "copper and zinc",
-      "copper and iron",
-      "tin and zinc"
-    ],
-    "ans": 0
+    "cat": "Unit 3"
   },
   {
+    "q": "Which of the following is NOT a characteristic of nodular cast iron?",
+    "opts": [
+      "Highly ductile",
+      "Poor machinability",
+      "High corrosion resistance",
+      "Good creep properties at high temperature"
+    ],
+    "ans": 1,
     "unit": 3,
-    "cat": "Unit 3",
-    "q": "Gun metal-----",
-    "opts": [
-      "is tin bronze",
-      "used for making gun barrels",
-      "contains copper, tin and zinc.",
-      "all of the above"
-    ],
-    "ans": 3
+    "cat": "Unit 3"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
+    "q": "What is the typical carbon content range in nodular cast iron?",
+    "opts": [
+      "0.05% - 0.3%",
+      "3.0% - 4.0%",
+      "5.0% - 6.0%",
+      "1.0% - 2.0%"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Nodular cast iron is commonly used in:",
+    "opts": [
+      "Electrical wiring",
+      "Flywheels and automotive engine crankshafts",
+      "Plastic molding",
+      "Glass production"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "What is the maximum allowable sulfur content in nodular cast iron?",
+    "opts": [
+      "0.5%",
+      "0.1%",
+      "0.03%",
+      "1%"
+    ],
+    "ans": 2,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Malleable cast irons are known for their:",
+    "opts": [
+      "Poor machinability and low ductility",
+      "Good ductility and machinability",
+      "High brittleness",
+      "Very high hardness"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Compared to pearlitic malleable cast irons, ferritic malleable cast irons are:",
+    "opts": [
+      "More ductile and stronger",
+      "More ductile but less strong and hard",
+      "Less ductile and weaker",
+      "Harder and less machinable"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which type of malleable cast iron has higher strength and hardness?",
+    "opts": [
+      "Ferritic",
+      "Pearlitic",
+      "Neither, both are equal",
+      "Neither, malleable cast irons are always soft"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which of the following is true about white cast iron?",
+    "opts": [
+      "It is ductile and malleable",
+      "It is very hard and brittle",
+      "It has good machinability",
+      "It has high ductility"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "White cast iron is commonly used in:",
+    "opts": [
+      "Electrical wiring",
+      "Brake shoes and crushers",
+      "Cooking utensils",
+      "Structural beams"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "White cast iron is:",
+    "opts": [
+      "Highly machinable",
+      "Not machinable",
+      "Easily forged",
+      "Highly ductile"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "White cast iron serves as the raw material for:",
+    "opts": [
+      "Gray cast iron",
+      "Malleable cast iron",
+      "Stainless steel",
+      "Wrought iron"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Copper coils are commonly used in which of the following electromagnetic devices?",
+    "opts": [
+      "Electric bells",
+      "Solar panels",
+      "Gas turbines",
+      "LED lights"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "In cars, copper coils are found in:",
+    "opts": [
+      "Starter motors and windscreen wipers",
+      "Tires",
+      "Exhaust systems",
+      "Fuel tanks"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which domestic appliance typically uses copper coils in its motor?",
+    "opts": [
+      "Washing machine",
+      "Microwave oven",
+      "Toaster",
+      "Refrigerator door"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Copper coils in computers are used in:",
+    "opts": [
+      "Disc drives and fans",
+      "Keyboards",
+      "Monitors",
+      "USB ports"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Why is copper widely used in saucepan bottoms?",
+    "opts": [
+      "High electrical conductivity",
+      "High thermal conductivity",
+      "Low melting point",
+      "High magnetic properties"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Copper pipes are commonly used in:",
+    "opts": [
+      "Electrical wiring",
+      "Heat exchangers in hot water tanks",
+      "Structural beams",
+      "Insulation materials"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which of the following applications involves copper pipes?",
+    "opts": [
+      "Under floor heating systems",
+      "Plastic piping",
+      "Glass manufacturing",
+      "Ceramic coating"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Copper pipes are NOT typically used in:",
+    "opts": [
+      "All-weather football pitches",
+      "Car radiators",
+      "Water drainage systems",
+      "Heat exchangers"
+    ],
+    "ans": 2,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "What color is brass typically?",
+    "opts": [
+      "Silver",
+      "Golden",
+      "Black",
+      "Red"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which property is true for brass?",
+    "opts": [
+      "Poor corrosion resistance",
+      "Good corrosion resistance",
+      "Magnetic",
+      "Non-ductile"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Brass is known for having:",
+    "opts": [
+      "Low ductile strength",
+      "High ductile strength",
+      "Being very soft and malleable",
+      "High electrical resistance"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which of the following best describes brass?",
+    "opts": [
+      "Soft and flexible",
+      "Hard and brittle",
+      "Very ductile and malleable",
+      "Magnetic and corrosive"
+    ],
+    "ans": 2,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Brass is often used for decorative purposes because it has:",
+    "opts": [
+      "A dull silver color",
+      "A bright golden appearance",
+      "A rough texture",
+      "A magnetic property"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which of the following is NOT a typical use of brass?",
+    "opts": [
+      "Locks and gears",
+      "Bearings and ammunition casings",
+      "Electrical wiring insulation",
+      "Musical instruments like bells"
+    ],
+    "ans": 2,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Brass is commonly used in:",
+    "opts": [
+      "Plumbing and electrical applications",
+      "Structural steel beams",
+      "Plastic molding",
+      "Glass manufacturing"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Brass is preferred in applications requiring:",
+    "opts": [
+      "High friction",
+      "Low friction",
+      "High electrical resistance",
+      "High ductility"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "What is the typical composition of cartridge brass?",
+    "opts": [
+      "70% copper, 30% zinc",
+      "30% copper, 70% zinc",
+      "50% copper, 50% zinc",
+      "100% copper"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Cartridge brass is known for its:",
+    "opts": [
+      "Low ductility and poor corrosion resistance",
+      "High ductility and good corrosion resistance",
+      "Poor cold working properties",
+      "Brittle nature"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which property makes cartridge brass suitable for cold working?",
+    "opts": [
+      "Good corrosion resistance",
+      "High malleability",
+      "High hardness",
+      "Low melting point"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Cartridge brass also has good:",
+    "opts": [
+      "Electrical insulation",
+      "Hot formability",
+      "Magnetic properties",
+      "Brittleness"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Cartridge brass is commonly used in:",
+    "opts": [
+      "Plumbing accessories",
+      "Electrical wiring insulation",
+      "Glass manufacturing",
+      "Structural steel beams"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which of the following is NOT an application of cartridge brass?",
+    "opts": [
+      "Cartridge cases",
+      "Radiator cores and tanks",
+      "Fasteners",
+      "Concrete reinforcement"
+    ],
+    "ans": 3,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Cartridge brass is used for:",
+    "opts": [
+      "Radiator fins and springs",
+      "Plastic containers",
+      "Ceramic tiles",
+      "Wood furniture"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "One common use of cartridge brass is:",
+    "opts": [
+      "Making glass bottles",
+      "Manufacturing plumbing accessories",
+      "Producing rubber tires",
+      "Fabricating steel cables"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "What is the composition of Admiralty Brass?",
+    "opts": [
+      "Cu 71%, Zn 28%, Sn 1%",
+      "Cu 70%, Zn 30%",
+      "Cu 50%, Zn 50%",
+      "Cu 100%"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which element improves corrosion resistance in Admiralty Brass?",
+    "opts": [
+      "Zinc",
+      "Tin",
+      "Copper",
+      "Nickel"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Admiralty brass is:",
+    "opts": [
+      "Heavy and brittle",
+      "Light and easy to bend",
+      "Magnetic and hard",
+      "Brittle and corrosion-prone"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Admiralty brass is known for:",
+    "opts": [
+      "Low ductility and malleability",
+      "High ductility and malleability",
+      "Poor corrosion resistance",
+      "High electrical resistance"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Admiralty brass is commonly used in:",
+    "opts": [
+      "Electrical wiring",
+      "Condenser tubes",
+      "Plastic manufacturing",
+      "Textile industry"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which of the following marine-related applications uses Admiralty brass?",
+    "opts": [
+      "Shipbuilding",
+      "Fishing nets",
+      "Cargo containers",
+      "Oil drilling rigs"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Admiralty brass is often used in:",
+    "opts": [
+      "Heat exchangers",
+      "Ceramic production",
+      "Glass bottles",
+      "Wooden furniture"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "The addition of tin in Admiralty brass makes it suitable for:",
+    "opts": [
+      "Structural steel beams",
+      "Marine applications due to better corrosion resistance",
+      "Electrical insulation",
+      "Plastic molding"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "What is the typical composition of Gun Metal?",
+    "opts": [
+      "Cu 88%, Zn 2%, Sn 10%",
+      "Cu 70%, Zn 30%",
+      "Cu 60%, Sn 40%",
+      "Cu 50%, Zn 50%"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Gun Metal is known for its:",
+    "opts": [
+      "Poor corrosion resistance",
+      "Good corrosion resistance from steam and salt water",
+      "Low density",
+      "Difficulty in casting"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which property makes Gun Metal suitable for marine applications?",
+    "opts": [
+      "High electrical conductivity",
+      "Corrosion resistance from salt water",
+      "Brittleness",
+      "Low melting point"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Compared to other copper alloys, Gun Metal has:",
+    "opts": [
+      "Lower tensile strength",
+      "Higher specific gravity and tensile strength",
+      "No tin content",
+      "Poor machinability"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Gun metal is commonly used to make:",
+    "opts": [
+      "Electrical wires",
+      "Steam and hydraulic casting valves",
+      "Plastic containers",
+      "Structural beams"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which of the following components is NOT typically made from gun metal?",
+    "opts": [
+      "Bearings",
+      "Gears",
+      "Nuts",
+      "Glass bottles"
+    ],
+    "ans": 3,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Gun metal is preferred for gears and bushes because of its:",
+    "opts": [
+      "High corrosion resistance and good machinability",
+      "Magnetic properties",
+      "Low melting point",
+      "Brittleness"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Gun metal’s good corrosion resistance makes it suitable for:",
+    "opts": [
+      "Marine and hydraulic applications",
+      "Textile manufacturing",
+      "Ceramic coatings",
+      "Paper production"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Hindalium alloys are generally:",
+    "opts": [
+      "Weak and brittle",
+      "Strong and hard",
+      "Highly magnetic",
+      "Expensive compared to stainless steel"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Compared to stainless steel, Hindalium alloys are:",
+    "opts": [
+      "More expensive",
+      "Lower cost",
+      "Less durable",
+      "More heat-absorbent"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Hindalium alloys are known for their:",
+    "opts": [
+      "Poor scratch resistance",
+      "Good scratch resistance",
+      "High heat absorption",
+      "Rough surface finish"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which property makes Hindalium alloys easy to maintain?",
+    "opts": [
+      "High magnetic properties",
+      "Easy cleaning and fine finish",
+      "Brittle nature",
+      "High corrosion rate"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Hindalium is primarily an alloy of:",
+    "opts": [
+      "Copper and zinc",
+      "Aluminium, magnesium, manganese, chromium, and silicon",
+      "Iron and carbon",
+      "Nickel and cobalt"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Which of the following elements is NOT part of Hindalium alloy?",
+    "opts": [
+      "Magnesium",
+      "Chromium",
+      "Zinc",
+      "Silicon"
+    ],
+    "ans": 2,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "Hindalium is a trade name for an alloy of:",
+    "opts": [
+      "Steel",
+      "Aluminium",
+      "Copper",
+      "Titanium"
+    ],
+    "ans": 1,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
+    "q": "The addition of which element in Hindalium helps improve corrosion resistance?",
+    "opts": [
+      "Silicon",
+      "Zinc",
+      "Carbon",
+      "Lead"
+    ],
+    "ans": 0,
+    "unit": 3,
+    "cat": "Unit 3"
+  },
+  {
     "q": "A steel component is very hard but is breaking under impact. Which treatment is most appropriate?",
     "opts": [
       "Annealing",
@@ -2385,11 +2782,11 @@ const masterQuestionBank = [
       "Tempering",
       "Carburizing"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "A forged steel component needs to be softened and made easier to machine. Which treatment should be selected?",
     "opts": [
       "Hardening",
@@ -2397,11 +2794,11 @@ const masterQuestionBank = [
       "Nitriding",
       "Induction hardening"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "A machine component requires improved grain structure and higher strength than the annealed condition. Which process is suitable?",
     "opts": [
       "Normalizing",
@@ -2409,11 +2806,11 @@ const masterQuestionBank = [
       "Nitriding",
       "Carburizing"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "A gear requires a hard wear-resistant surface and a tough core. Which treatment is most suitable?",
     "opts": [
       "Annealing",
@@ -2421,11 +2818,11 @@ const masterQuestionBank = [
       "Tempering only",
       "Normalizing"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "Which heat-treatment process involves rapid cooling after heating to produce a hard structure?",
     "opts": [
       "Annealing",
@@ -2433,11 +2830,11 @@ const masterQuestionBank = [
       "Hardening",
       "Tempering"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "The principal microstructure produced by hardening suitable carbon steel is:",
     "opts": [
       "Ferrite",
@@ -2445,11 +2842,11 @@ const masterQuestionBank = [
       "Martensite",
       "Cementite"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "Which process generally uses furnace cooling?",
     "opts": [
       "Hardening",
@@ -2457,11 +2854,11 @@ const masterQuestionBank = [
       "Normalizing",
       "Flame hardening"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "Which process normally cools the steel in still air?",
     "opts": [
       "Annealing",
@@ -2469,11 +2866,11 @@ const masterQuestionBank = [
       "Hardening",
       "Carburizing"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "The main purpose of tempering hardened steel is to:",
     "opts": [
       "Increase brittleness",
@@ -2481,11 +2878,11 @@ const masterQuestionBank = [
       "Reduce brittleness and residual stresses",
       "Increase carbon content"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "A shaft requires a hard surface but a relatively tough interior. Which category of treatment should be considered?",
     "opts": [
       "Surface hardening",
@@ -2493,11 +2890,11 @@ const masterQuestionBank = [
       "Stress relieving only",
       "Normalizing only"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "Which process introduces carbon into the surface of low-carbon steel?",
     "opts": [
       "Nitriding",
@@ -2505,11 +2902,11 @@ const masterQuestionBank = [
       "Tempering",
       "Normalizing"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "Which process introduces nitrogen into the surface of steel?",
     "opts": [
       "Carburizing",
@@ -2517,11 +2914,11 @@ const masterQuestionBank = [
       "Nitriding",
       "Hardening"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "A component has excessive residual stresses after manufacturing. Which treatment can be used primarily to reduce them?",
     "opts": [
       "Stress relieving",
@@ -2529,11 +2926,11 @@ const masterQuestionBank = [
       "Nitriding",
       "Hardening"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "Why is tempering generally performed after hardening?",
     "opts": [
       "To increase brittleness",
@@ -2541,11 +2938,11 @@ const masterQuestionBank = [
       "To reduce brittleness and obtain a useful hardness-toughness combination",
       "To increase melting temperature"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "Which treatment is most suitable when maximum softness and machinability are required?",
     "opts": [
       "Hardening",
@@ -2553,11 +2950,11 @@ const masterQuestionBank = [
       "Nitriding",
       "Induction hardening"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "Which process is particularly suitable for selective hardening of the surface of a component?",
     "opts": [
       "Flame hardening",
@@ -2565,11 +2962,11 @@ const masterQuestionBank = [
       "Normalizing",
       "Tempering"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "In induction hardening, the steel surface is heated primarily by:",
     "opts": [
       "Chemical reaction",
@@ -2577,11 +2974,11 @@ const masterQuestionBank = [
       "Direct flame only",
       "Furnace radiation only"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "Which heat treatment generally gives the softest structure among annealing and normalizing?",
     "opts": [
       "Normalizing",
@@ -2589,11 +2986,11 @@ const masterQuestionBank = [
       "Hardening",
       "Tempering"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "A student needs to manufacture a steel component that must withstand severe wear at its surface while maintaining a tough core. Which combination is most appropriate?",
     "opts": [
       "Carburizing + hardening",
@@ -2601,11 +2998,11 @@ const masterQuestionBank = [
       "Normalizing only",
       "Tempering only"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "Which sequence correctly represents the basic heat-treatment cycle?",
     "opts": [
       "Cooling -> heating -> soaking",
@@ -2613,11 +3010,11 @@ const masterQuestionBank = [
       "Heating -> soaking -> cooling",
       "Heating -> cooling -> soaking"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "Two identical steel gears are manufactured. Gear A needs maximum machinability before machining, while Gear B needs high surface wear resistance after machining. Which treatments are most appropriate?",
     "opts": [
       "A-Annealing, B-Carburizing",
@@ -2625,11 +3022,11 @@ const masterQuestionBank = [
       "A-Nitriding, B-Annealing",
       "A-Tempering, B-Normalizing"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "A hardened shaft is found to be too brittle for shock loading. What is the most logical corrective treatment?",
     "opts": [
       "Further hardening",
@@ -2637,11 +3034,11 @@ const masterQuestionBank = [
       "Carburizing",
       "Normalizing without changing hardness"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "A manufacturer wants to increase hardness only near the surface without hardening the entire cross-section. Which option is most appropriate?",
     "opts": [
       "Surface hardening",
@@ -2649,11 +3046,11 @@ const masterQuestionBank = [
       "Full normalizing",
       "Stress relieving"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "Which statement correctly compares annealing and normalizing?",
     "opts": [
       "Both always use furnace cooling",
@@ -2661,11 +3058,11 @@ const masterQuestionBank = [
       "Normalizing always produces martensite",
       "Annealing produces greater hardness than hardening"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "General Heat Treatment",
     "q": "A designer wants a component with a combination of high hardness and reasonable toughness rather than maximum hardness. Which treatment sequence is generally appropriate?",
     "opts": [
       "Annealing only",
@@ -2673,11 +3070,11 @@ const masterQuestionBank = [
       "Normalizing followed by annealing",
       "Carburizing followed by annealing"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "General Heat Treatment"
   },
   {
-    "unit": 4,
-    "cat": "Annealing",
     "q": "A steel component has become very hard after cold working and cannot be easily formed. Which heat treatment should be selected?",
     "opts": [
       "Hardening",
@@ -2685,11 +3082,11 @@ const masterQuestionBank = [
       "Normalizing",
       "Tempering"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Annealing"
   },
   {
-    "unit": 4,
-    "cat": "Annealing",
     "q": "A low-carbon steel sheet is repeatedly cold worked and starts losing its ductility. Which process is most suitable?",
     "opts": [
       "Process annealing",
@@ -2697,11 +3094,11 @@ const masterQuestionBank = [
       "Nitriding",
       "Flame hardening"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Annealing"
   },
   {
-    "unit": 4,
-    "cat": "Annealing",
     "q": "A welded steel frame contains considerable residual stresses. Which heat treatment would be most appropriate?",
     "opts": [
       "Hardening",
@@ -2709,11 +3106,11 @@ const masterQuestionBank = [
       "Carburizing",
       "Spheroidizing"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Annealing"
   },
   {
-    "unit": 4,
-    "cat": "Annealing",
     "q": "A high-carbon steel component needs improved machinability before machining. Which annealing treatment is particularly suitable?",
     "opts": [
       "Process annealing",
@@ -2721,11 +3118,11 @@ const masterQuestionBank = [
       "Stress-relief annealing",
       "Normalizing"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Annealing"
   },
   {
-    "unit": 4,
-    "cat": "Annealing",
     "q": "Why is furnace cooling used in full annealing?",
     "opts": [
       "To produce rapid transformation",
@@ -2733,11 +3130,11 @@ const masterQuestionBank = [
       "To increase hardness",
       "To form maximum martensite"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Annealing"
   },
   {
-    "unit": 4,
-    "cat": "Annealing",
     "q": "Hypoeutectoid steel for full annealing is generally heated to:",
     "opts": [
       "Below Ac1",
@@ -2745,11 +3142,11 @@ const masterQuestionBank = [
       "Ac3 + 30-50°C",
       "Room temperature"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Annealing"
   },
   {
-    "unit": 4,
-    "cat": "Annealing",
     "q": "What is the main purpose of stress-relief annealing?",
     "opts": [
       "Increase surface hardness",
@@ -2757,11 +3154,11 @@ const masterQuestionBank = [
       "Remove residual stresses",
       "Increase carbon content"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Annealing"
   },
   {
-    "unit": 4,
-    "cat": "Annealing",
     "q": "Which annealing process is commonly associated with high-carbon/tool steels?",
     "opts": [
       "Spheroidizing",
@@ -2769,11 +3166,11 @@ const masterQuestionBank = [
       "Stress relieving only",
       "Flame hardening"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Annealing"
   },
   {
-    "unit": 4,
-    "cat": "Annealing",
     "q": "A manufacturer wants to make a steel component easier to machine without significantly changing its chemical composition. Which treatment is appropriate?",
     "opts": [
       "Annealing",
@@ -2781,11 +3178,11 @@ const masterQuestionBank = [
       "Nitriding",
       "Hardening"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Annealing"
   },
   {
-    "unit": 4,
-    "cat": "Annealing",
     "q": "During annealing, the steel is first heated and held at the required temperature. This holding period is called:",
     "opts": [
       "Quenching",
@@ -2793,11 +3190,11 @@ const masterQuestionBank = [
       "Soaking",
       "Normalizing"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Annealing"
   },
   {
-    "unit": 4,
-    "cat": "Annealing",
     "q": "Which property generally increases after proper annealing?",
     "opts": [
       "Brittleness",
@@ -2805,11 +3202,11 @@ const masterQuestionBank = [
       "Residual stress",
       "Hardness"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Annealing"
   },
   {
-    "unit": 4,
-    "cat": "Annealing",
     "q": "Which property generally decreases during full annealing?",
     "opts": [
       "Ductility",
@@ -2817,11 +3214,11 @@ const masterQuestionBank = [
       "Hardness",
       "Machinability"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Annealing"
   },
   {
-    "unit": 4,
-    "cat": "Annealing",
     "q": "A cold-rolled low-carbon steel sheet must undergo further forming. Which treatment should be used to restore its formability?",
     "opts": [
       "Process annealing",
@@ -2829,11 +3226,11 @@ const masterQuestionBank = [
       "Nitriding",
       "Carburizing"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Annealing"
   },
   {
-    "unit": 4,
-    "cat": "Annealing",
     "q": "A steel part must be softened as much as practically possible before machining. Which process is generally preferred?",
     "opts": [
       "Full annealing",
@@ -2841,11 +3238,11 @@ const masterQuestionBank = [
       "Normalizing",
       "Induction hardening"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Annealing"
   },
   {
-    "unit": 4,
-    "cat": "Annealing",
     "q": "Which statement about annealing is correct?",
     "opts": [
       "It always involves rapid quenching.",
@@ -2853,11 +3250,11 @@ const masterQuestionBank = [
       "It involves controlled heating and slow cooling to obtain desired properties.",
       "It is used only for surface hardening."
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Annealing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "A forged steel component has a coarse grain structure and requires grain refinement. Which heat treatment is most appropriate?",
     "opts": [
       "Annealing",
@@ -2865,11 +3262,11 @@ const masterQuestionBank = [
       "Tempering",
       "Nitriding"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "In normalizing, the steel is cooled by:",
     "opts": [
       "Furnace cooling",
@@ -2877,11 +3274,11 @@ const masterQuestionBank = [
       "Oil quenching",
       "Still air cooling"
     ],
-    "ans": 3
+    "ans": 3,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "Compared with annealing, normalizing generally produces:",
     "opts": [
       "Lower strength and lower hardness",
@@ -2889,11 +3286,11 @@ const masterQuestionBank = [
       "No change in microstructure",
       "Maximum martensite"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "A steel casting has a coarse and non-uniform microstructure. Which treatment can be used to improve it?",
     "opts": [
       "Normalizing",
@@ -2901,11 +3298,11 @@ const masterQuestionBank = [
       "Tempering",
       "Carburizing"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "Hypo eutectoid steel is normalized by heating approximately:",
     "opts": [
       "Below Ac1",
@@ -2913,11 +3310,11 @@ const masterQuestionBank = [
       "Ac3 + 30-50°C",
       "Below room temperature"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "The major difference between annealing and normalizing is:",
     "opts": [
       "Heating temperature only",
@@ -2925,11 +3322,11 @@ const masterQuestionBank = [
       "Cooling rate",
       "Carbon content"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "Why does normalizing generally produce finer grains than full annealing?",
     "opts": [
       "It uses water quenching",
@@ -2937,11 +3334,11 @@ const masterQuestionBank = [
       "It does not involve heating",
       "It increases carbon content"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "A forged shaft needs improved strength and a refined grain structure. Which treatment would you select?",
     "opts": [
       "Normalizing",
@@ -2949,11 +3346,11 @@ const masterQuestionBank = [
       "Carburizing",
       "Spheroidizing"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "Which of the following is NOT a normalizing application?",
     "opts": [
       "Grain refinement",
@@ -2961,11 +3358,11 @@ const masterQuestionBank = [
       "Improving mechanical properties",
       "Producing maximum surface hardness"
     ],
-    "ans": 3
+    "ans": 3,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "During normalizing, the holding period at the required temperature is called:",
     "opts": [
       "Quenching",
@@ -2973,11 +3370,11 @@ const masterQuestionBank = [
       "Tempering",
       "Case hardening"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "A manufacturer wants a treatment that is generally faster than full annealing while providing increased strength. Which process is suitable?",
     "opts": [
       "Normalizing",
@@ -2985,11 +3382,11 @@ const masterQuestionBank = [
       "Spheroidizing",
       "Stress relieving"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "Which microstructural characteristic is normally desired after normalizing?",
     "opts": [
       "Very coarse grains",
@@ -2997,11 +3394,11 @@ const masterQuestionBank = [
       "Only martensite",
       "Only cementite"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "A steel component has undergone forging and contains an undesirable coarse-grained structure. What should be done?",
     "opts": [
       "Normalize it",
@@ -3009,11 +3406,11 @@ const masterQuestionBank = [
       "Temper it without hardening",
       "Carburize it"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "A normalized steel component is generally ______ than the same steel in the fully annealed condition.",
     "opts": [
       "Softer",
@@ -3021,11 +3418,11 @@ const masterQuestionBank = [
       "More brittle in all cases",
       "Unchanged"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "Which cooling method gives the fastest cooling among the following?",
     "opts": [
       "Furnace cooling",
@@ -3033,11 +3430,11 @@ const masterQuestionBank = [
       "Water quenching",
       "Controlled furnace cooling"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "A steel shaft is forged and subsequently shows coarse grains. The designer wants to improve its structure without producing the very high hardness associated with quenching. Which treatment should be selected?",
     "opts": [
       "Hardening",
@@ -3045,11 +3442,11 @@ const masterQuestionBank = [
       "Nitriding",
       "Carburizing"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "Two identical steel components are treated. Component A is furnace cooled, while Component B is cooled in still air after heating above the critical temperature. Which statement is generally correct?",
     "opts": [
       "A is normalized and B is annealed",
@@ -3057,11 +3454,11 @@ const masterQuestionBank = [
       "Both are hardened",
       "Both are tempered"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "A manufacturer wants to reduce the coarse-grained structure of a steel casting and obtain more uniform mechanical properties. Which process is most appropriate?",
     "opts": [
       "Normalizing",
@@ -3069,11 +3466,11 @@ const masterQuestionBank = [
       "Nitriding",
       "Tempering"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "Why is normalizing commonly used before subsequent hardening?",
     "opts": [
       "To add carbon to the steel",
@@ -3081,11 +3478,11 @@ const masterQuestionBank = [
       "To make the steel completely soft",
       "To eliminate all alloying elements"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Normalizing",
     "q": "A student claims that normalizing and annealing are identical because both involve heating above the critical temperature. What is the best correction?",
     "opts": [
       "They are identical in every respect.",
@@ -3093,11 +3490,11 @@ const masterQuestionBank = [
       "Annealing uses water quenching.",
       "Normalizing does not involve soaking."
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Normalizing"
   },
   {
-    "unit": 4,
-    "cat": "Case Hardening",
     "q": "The main objective of case hardening is to obtain:",
     "opts": [
       "Soft surface and hard core",
@@ -3105,11 +3502,11 @@ const masterQuestionBank = [
       "Hard surface and brittle core",
       "Soft surface and soft core"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Case Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Case Hardening",
     "q": "Which element is introduced during carburizing?",
     "opts": [
       "Nitrogen",
@@ -3117,11 +3514,11 @@ const masterQuestionBank = [
       "Chromium",
       "Aluminium"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Case Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Case Hardening",
     "q": "Which element is primarily introduced during nitriding?",
     "opts": [
       "Carbon",
@@ -3129,11 +3526,11 @@ const masterQuestionBank = [
       "Silicon",
       "Sulphur"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Case Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Case Hardening",
     "q": "Which case-hardening process introduces both carbon and nitrogen?",
     "opts": [
       "Carburizing",
@@ -3141,11 +3538,11 @@ const masterQuestionBank = [
       "Cyaniding",
       "Annealing"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Case Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Case Hardening",
     "q": "Which process generally produces the highest surface hardness among the three?",
     "opts": [
       "Carburizing",
@@ -3153,11 +3550,11 @@ const masterQuestionBank = [
       "Cyaniding",
       "Normalizing"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Case Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Case Hardening",
     "q": "Which case-hardening process generally does not require quenching?",
     "opts": [
       "Carburizing",
@@ -3165,11 +3562,11 @@ const masterQuestionBank = [
       "Cyaniding",
       "All of them"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Case Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Case Hardening",
     "q": "A gear requires a hard wear-resistant surface and a tough core. Which process is commonly used?",
     "opts": [
       "Carburizing",
@@ -3177,11 +3574,11 @@ const masterQuestionBank = [
       "Tempering",
       "Normalizing"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Case Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Case Hardening",
     "q": "A precision component requires high surface hardness with minimum distortion. Which process would generally be preferred?",
     "opts": [
       "Carburizing",
@@ -3189,11 +3586,11 @@ const masterQuestionBank = [
       "Cyaniding",
       "Full annealing"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Case Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Case Hardening",
     "q": "Which process uses a molten cyanide salt bath?",
     "opts": [
       "Carburizing",
@@ -3201,11 +3598,11 @@ const masterQuestionBank = [
       "Cyaniding",
       "Normalizing"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Case Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Case Hardening",
     "q": "Conventional cyaniding is associated with which major safety concern?",
     "opts": [
       "Excessive magnetism",
@@ -3213,11 +3610,11 @@ const masterQuestionBank = [
       "Hydrogen embrittlement only",
       "Low thermal conductivity"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Case Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Case Hardening",
     "q": "Nitriding is generally carried out at a lower temperature than carburizing. What is one important consequence?",
     "opts": [
       "Greater distortion due to water quenching",
@@ -3225,11 +3622,11 @@ const masterQuestionBank = [
       "No surface hardening",
       "Carbon is always added"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Case Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Case Hardening",
     "q": "Which process is particularly suitable when a relatively deep case is required?",
     "opts": [
       "Carburizing",
@@ -3237,11 +3634,11 @@ const masterQuestionBank = [
       "Cyaniding",
       "Stress relieving"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Case Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Hardening",
     "q": "The primary purpose of hardening steel is to:",
     "opts": [
       "Reduce hardness",
@@ -3249,11 +3646,11 @@ const masterQuestionBank = [
       "Increase ductility only",
       "Relieve all residual stresses"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Hardening",
     "q": "During hardening, steel is cooled:",
     "opts": [
       "Very slowly in the furnace",
@@ -3261,11 +3658,11 @@ const masterQuestionBank = [
       "Rapidly by quenching",
       "At room temperature without cooling"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Hardening",
     "q": "The principal structure produced during hardening of suitable steel is:",
     "opts": [
       "Ferrite",
@@ -3273,11 +3670,11 @@ const masterQuestionBank = [
       "Martensite",
       "Graphite"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Hardening",
     "q": "Hypo eutectoid steel is generally heated for hardening to:",
     "opts": [
       "Below Ac1",
@@ -3285,11 +3682,11 @@ const masterQuestionBank = [
       "Ac3 + 30-50°C",
       "Room temperature"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Hardening",
     "q": "Which of the following is a common quenching medium?",
     "opts": [
       "Sand only",
@@ -3297,11 +3694,11 @@ const masterQuestionBank = [
       "Cement",
       "Graphite"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Hardening",
     "q": "Why is hardened steel commonly tempered?",
     "opts": [
       "To increase brittleness",
@@ -3309,11 +3706,11 @@ const masterQuestionBank = [
       "To reduce brittleness and improve toughness",
       "To increase carbon content"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Hardening",
     "q": "A gear requires high wear resistance. Which heat treatment would be appropriate?",
     "opts": [
       "Hardening",
@@ -3321,11 +3718,11 @@ const masterQuestionBank = [
       "Stress relieving",
       "Process annealing"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Hardening",
     "q": "Which quenching medium generally produces a more severe cooling rate?",
     "opts": [
       "Oil",
@@ -3333,11 +3730,11 @@ const masterQuestionBank = [
       "Furnace",
       "Still air"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Hardening",
     "q": "A hardened steel component develops cracks during quenching. Which is a possible reason?",
     "opts": [
       "Excessively severe cooling",
@@ -3345,11 +3742,11 @@ const masterQuestionBank = [
       "Furnace cooling",
       "Low heating rate only"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Hardening",
     "q": "Which statement is correct?",
     "opts": [
       "Hardening generally decreases wear resistance.",
@@ -3357,11 +3754,11 @@ const masterQuestionBank = [
       "Hardening increases hardness but may also increase brittleness.",
       "Hardening never causes distortion."
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Hardening"
   },
   {
-    "unit": 4,
-    "cat": "Tempering",
     "q": "Tempering is normally carried out after:",
     "opts": [
       "Annealing",
@@ -3369,11 +3766,11 @@ const masterQuestionBank = [
       "Hardening",
       "Carburizing only"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Tempering"
   },
   {
-    "unit": 4,
-    "cat": "Tempering",
     "q": "Tempering is generally performed at a temperature:",
     "opts": [
       "Above the melting point",
@@ -3381,11 +3778,11 @@ const masterQuestionBank = [
       "Below Ac1",
       "At room temperature"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Tempering"
   },
   {
-    "unit": 4,
-    "cat": "Tempering",
     "q": "The main purpose of tempering is to:",
     "opts": [
       "Increase brittleness",
@@ -3393,11 +3790,11 @@ const masterQuestionBank = [
       "Produce maximum hardness",
       "Increase carbon content"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Tempering"
   },
   {
-    "unit": 4,
-    "cat": "Tempering",
     "q": "The usual temperature range for tempering steel is approximately:",
     "opts": [
       "0-100°C",
@@ -3405,11 +3802,11 @@ const masterQuestionBank = [
       "700-1000°C",
       "1000-1200°C"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Tempering"
   },
   {
-    "unit": 4,
-    "cat": "Tempering",
     "q": "Low-temperature tempering is generally carried out around:",
     "opts": [
       "150-250°C",
@@ -3417,11 +3814,11 @@ const masterQuestionBank = [
       "700-800°C",
       "900-1000°C"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Tempering"
   },
   {
-    "unit": 4,
-    "cat": "Tempering",
     "q": "High-temperature tempering is generally carried out around:",
     "opts": [
       "50-100°C",
@@ -3429,11 +3826,11 @@ const masterQuestionBank = [
       "450-650°C",
       "800-900°C"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Tempering"
   },
   {
-    "unit": 4,
-    "cat": "Tempering",
     "q": "Which property generally increases as tempering temperature increases?",
     "opts": [
       "Brittleness",
@@ -3441,11 +3838,11 @@ const masterQuestionBank = [
       "Hardness",
       "Residual stress"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Tempering"
   },
   {
-    "unit": 4,
-    "cat": "Tempering",
     "q": "Which property generally decreases with increasing tempering temperature?",
     "opts": [
       "Toughness",
@@ -3453,11 +3850,11 @@ const masterQuestionBank = [
       "Hardness",
       "Impact resistance"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 4,
+    "cat": "Tempering"
   },
   {
-    "unit": 4,
-    "cat": "Tempering",
     "q": "A hardened component is too brittle for impact loading. What should be done?",
     "opts": [
       "Further hardening",
@@ -3465,11 +3862,11 @@ const masterQuestionBank = [
       "Carburizing",
       "Nitriding"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 4,
+    "cat": "Tempering"
   },
   {
-    "unit": 4,
-    "cat": "Tempering",
     "q": "Which type of tempering is suitable when high hardness must be retained while reducing brittleness?",
     "opts": [
       "Low-temperature tempering",
@@ -3477,11 +3874,11 @@ const masterQuestionBank = [
       "High-temperature tempering",
       "Annealing"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Tempering"
   },
   {
-    "unit": 4,
-    "cat": "Tempering",
     "q": "A machine shaft requires a good combination of strength and toughness. Which treatment is generally appropriate after hardening?",
     "opts": [
       "High-temperature tempering",
@@ -3489,11 +3886,11 @@ const masterQuestionBank = [
       "Annealing",
       "Carburizing"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Tempering"
   },
   {
-    "unit": 4,
-    "cat": "Tempering",
     "q": "Why is tempering necessary after hardening?",
     "opts": [
       "Hardened steel may be excessively brittle and contain residual stresses.",
@@ -3501,11 +3898,11 @@ const masterQuestionBank = [
       "It increases carbon content.",
       "It converts steel into cast iron."
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 4,
+    "cat": "Tempering"
   },
   {
-    "unit": 5,
-    "cat": "Basics & Process Sequence",
     "q": "A component requires a complex shape with minimum material wastage. Which manufacturing process is most suitable?",
     "opts": [
       "Forging",
@@ -3513,11 +3910,11 @@ const masterQuestionBank = [
       "Rolling",
       "Sand casting"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 5,
+    "cat": "Basics & Process Sequence"
   },
   {
-    "unit": 5,
-    "cat": "Basics & Process Sequence",
     "q": "Which sequence correctly represents the basic powder metallurgy process?",
     "opts": [
       "Mixing → Compacting → Sintering → Finishing",
@@ -3525,11 +3922,11 @@ const masterQuestionBank = [
       "Forging → Heating → Welding → Machining",
       "Rolling → Casting → Compacting → Melting"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Basics & Process Sequence"
   },
   {
-    "unit": 5,
-    "cat": "Basics & Process Sequence",
     "q": "During powder metallurgy, compacted metal powder is heated below its melting point to develop strength. This operation is called:",
     "opts": [
       "Annealing",
@@ -3537,11 +3934,11 @@ const masterQuestionBank = [
       "Tempering",
       "Normalizing"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 5,
+    "cat": "Basics & Process Sequence"
   },
   {
-    "unit": 5,
-    "cat": "Basics & Process Sequence",
     "q": "The term green compact in powder metallurgy refers to:",
     "opts": [
       "A freshly painted component",
@@ -3549,11 +3946,11 @@ const masterQuestionBank = [
       "A molten metal component",
       "A heat-treated finished component"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 5,
+    "cat": "Basics & Process Sequence"
   },
   {
-    "unit": 5,
-    "cat": "Basics & Process Sequence",
     "q": "A lubricant is added during blending of metal powders mainly to:",
     "opts": [
       "Reduce friction during compaction",
@@ -3561,11 +3958,11 @@ const masterQuestionBank = [
       "Remove the die",
       "Melt the powder"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Basics & Process Sequence"
   },
   {
-    "unit": 5,
-    "cat": "Powder Production Methods",
     "q": "Molten metal is forced through small openings and broken into fine droplets using a high-velocity fluid. Which powder-making method is being used?",
     "opts": [
       "Atomization",
@@ -3573,11 +3970,11 @@ const masterQuestionBank = [
       "Reduction",
       "Machining"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Powder Production Methods"
   },
   {
-    "unit": 5,
-    "cat": "Powder Production Methods",
     "q": "A PM manufacturer requires powder with a spherical particle shape for good flowability. Which method is generally preferred?",
     "opts": [
       "Atomization",
@@ -3585,11 +3982,11 @@ const masterQuestionBank = [
       "Mechanical filing",
       "Grinding"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Powder Production Methods"
   },
   {
-    "unit": 5,
-    "cat": "Powder Production Methods",
     "q": "A manufacturer wants to produce copper powder with high purity by depositing copper from an electrolyte. Which method should be selected?",
     "opts": [
       "Electrolytic method",
@@ -3597,11 +3994,11 @@ const masterQuestionBank = [
       "Mechanical crushing",
       "Gas reduction"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Powder Production Methods"
   },
   {
-    "unit": 5,
-    "cat": "Powder Production Methods",
     "q": "A metal oxide is converted into metal powder by heating it in a suitable reducing atmosphere. Which method is being used?",
     "opts": [
       "Chemical reduction",
@@ -3609,11 +4006,11 @@ const masterQuestionBank = [
       "Mechanical milling",
       "Compaction"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Powder Production Methods"
   },
   {
-    "unit": 5,
-    "cat": "Powder Production Methods",
     "q": "An engineer wants to produce very fine powder from a brittle material using a ball mill. Which powder-making method is involved?",
     "opts": [
       "Mechanical milling",
@@ -3621,11 +4018,11 @@ const masterQuestionBank = [
       "Electrolysis",
       "Chemical reduction"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Powder Production Methods"
   },
   {
-    "unit": 5,
-    "cat": "Blending & Compacting",
     "q": "Which property of metal powder is particularly important for obtaining uniform filling of a die?",
     "opts": [
       "Flowability",
@@ -3633,11 +4030,11 @@ const masterQuestionBank = [
       "Electrical conductivity only",
       "Hardness only"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Blending & Compacting"
   },
   {
-    "unit": 5,
-    "cat": "Blending & Compacting",
     "q": "Which characteristic of powder is most important when producing a component with high green density?",
     "opts": [
       "Compressibility",
@@ -3645,11 +4042,11 @@ const masterQuestionBank = [
       "Odour",
       "Surface shine"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Blending & Compacting"
   },
   {
-    "unit": 5,
-    "cat": "Blending & Compacting",
     "q": "If iron and graphite powders are not mixed uniformly before compaction, the final component may have:",
     "opts": [
       "Non-uniform composition",
@@ -3657,11 +4054,11 @@ const masterQuestionBank = [
       "Zero porosity",
       "Uniform properties everywhere"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Blending & Compacting"
   },
   {
-    "unit": 5,
-    "cat": "Blending & Compacting",
     "q": "The main purpose of applying pressure during compaction is to:",
     "opts": [
       "Give the powder the required shape and increase density",
@@ -3669,11 +4066,11 @@ const masterQuestionBank = [
       "Remove all alloying elements",
       "Convert powder into liquid"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Blending & Compacting"
   },
   {
-    "unit": 5,
-    "cat": "Blending & Compacting",
     "q": "Why is a controlled atmosphere often used during sintering?",
     "opts": [
       "To prevent undesirable oxidation and reactions",
@@ -3681,11 +4078,11 @@ const masterQuestionBank = [
       "To remove the die",
       "To increase machining allowance"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Blending & Compacting"
   },
   {
-    "unit": 5,
-    "cat": "Secondary Operations",
     "q": "An iron-based sintered component has interconnected pores. Copper is introduced into these pores to improve its properties. This process is called:",
     "opts": [
       "Blending",
@@ -3693,11 +4090,11 @@ const masterQuestionBank = [
       "Compacting",
       "Powder making"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 5,
+    "cat": "Secondary Operations"
   },
   {
-    "unit": 5,
-    "cat": "Secondary Operations",
     "q": "The main purpose of metal infiltration in a sintered component is to:",
     "opts": [
       "Reduce porosity and improve strength",
@@ -3705,11 +4102,11 @@ const masterQuestionBank = [
       "Produce a green compact",
       "Remove alloying elements"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Secondary Operations"
   },
   {
-    "unit": 5,
-    "cat": "Secondary Operations",
     "q": "Oil is introduced into the pores of a sintered bearing. The primary purpose is to:",
     "opts": [
       "Provide self-lubrication",
@@ -3717,11 +4114,11 @@ const masterQuestionBank = [
       "Produce a green compact",
       "Melt the bearing"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Secondary Operations"
   },
   {
-    "unit": 5,
-    "cat": "Secondary Operations",
     "q": "A porous PM component is filled with resin to seal its pores. Which process is being used?",
     "opts": [
       "Impregnation",
@@ -3729,11 +4126,11 @@ const masterQuestionBank = [
       "Sintering",
       "Powder making"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Secondary Operations"
   },
   {
-    "unit": 5,
-    "cat": "Secondary Operations",
     "q": "A sintered component needs improved density by filling its interconnected pores with a lower-melting-point metal. Which process is selected?",
     "opts": [
       "Infiltration",
@@ -3741,11 +4138,11 @@ const masterQuestionBank = [
       "Blending",
       "Compacting"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Secondary Operations"
   },
   {
-    "unit": 5,
-    "cat": "Applications & Advantages",
     "q": "Why is powder metallurgy suitable for manufacturing self-lubricating bearings?",
     "opts": [
       "It produces completely solid components",
@@ -3753,11 +4150,11 @@ const masterQuestionBank = [
       "It requires extensive machining",
       "It increases melting temperature"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 5,
+    "cat": "Applications & Advantages"
   },
   {
-    "unit": 5,
-    "cat": "Applications & Advantages",
     "q": "A company wants to manufacture tungsten carbide cutting-tool tips. Which manufacturing process is most suitable?",
     "opts": [
       "Powder metallurgy",
@@ -3765,11 +4162,11 @@ const masterQuestionBank = [
       "Rolling",
       "Sheet-metal forming"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Applications & Advantages"
   },
   {
-    "unit": 5,
-    "cat": "Applications & Advantages",
     "q": "Which of the following is a major advantage of powder metallurgy?",
     "opts": [
       "High material wastage",
@@ -3777,11 +4174,11 @@ const masterQuestionBank = [
       "Necessity of melting every powder",
       "Very large machining allowance"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 5,
+    "cat": "Applications & Advantages"
   },
   {
-    "unit": 5,
-    "cat": "Applications & Advantages",
     "q": "A major limitation of powder metallurgy is that:",
     "opts": [
       "Tooling and dies can be expensive",
@@ -3789,11 +4186,11 @@ const masterQuestionBank = [
       "It cannot produce small components",
       "It requires all materials to be melted"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Applications & Advantages"
   },
   {
-    "unit": 5,
-    "cat": "Applications & Advantages",
     "q": "The commonly used binder metal in cemented tungsten carbide tools is:",
     "opts": [
       "Copper",
@@ -3801,11 +4198,11 @@ const masterQuestionBank = [
       "Cobalt",
       "Zinc"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 5,
+    "cat": "Applications & Advantages"
   },
   {
-    "unit": 5,
-    "cat": "Applications & Advantages",
     "q": "Which material is particularly difficult to manufacture by conventional melting but can be processed effectively using powder metallurgy?",
     "opts": [
       "Tungsten",
@@ -3813,11 +4210,11 @@ const masterQuestionBank = [
       "Copper",
       "Zinc"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Applications & Advantages"
   },
   {
-    "unit": 5,
-    "cat": "Applications & Advantages",
     "q": "Powder metallurgy is economical for:",
     "opts": [
       "Low-volume production",
@@ -3825,11 +4222,11 @@ const masterQuestionBank = [
       "One-off products",
       "Repair work"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 5,
+    "cat": "Applications & Advantages"
   },
   {
-    "unit": 5,
-    "cat": "Applications & Advantages",
     "q": "The high initial cost of dies in powder metallurgy is best justified by:",
     "opts": [
       "Mass production",
@@ -3837,11 +4234,11 @@ const masterQuestionBank = [
       "Prototype production only",
       "Manual production"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 5,
+    "cat": "Applications & Advantages"
   },
   {
-    "unit": 5,
-    "cat": "Applications & Advantages",
     "q": "Residual porosity in powder-metallurgy parts can result in:",
     "opts": [
       "Increased mechanical strength in all cases",
@@ -3849,11 +4246,11 @@ const masterQuestionBank = [
       "Complete elimination of defects",
       "Higher melting temperature"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 5,
+    "cat": "Applications & Advantages"
   },
   {
-    "unit": 5,
-    "cat": "Applications & Advantages",
     "q": "The size of a powder-metallurgy component is mainly limited by:",
     "opts": [
       "Cutting speed",
@@ -3861,11 +4258,11 @@ const masterQuestionBank = [
       "Welding current",
       "Coolant flow"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 5,
+    "cat": "Applications & Advantages"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Which of the following is an acidic refractory?",
     "opts": [
       "Magnesite",
@@ -3873,11 +4270,11 @@ const masterQuestionBank = [
       "Dolomite",
       "Magnesia"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Which refractory is classified as a basic refractory?",
     "opts": [
       "Silica",
@@ -3885,11 +4282,11 @@ const masterQuestionBank = [
       "Magnesite",
       "Zircon"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Which of the following is a neutral refractory?",
     "opts": [
       "Silica",
@@ -3897,11 +4294,11 @@ const masterQuestionBank = [
       "Alumina",
       "Lime"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Refractories are mainly used for:",
     "opts": [
       "Electrical insulation only",
@@ -3909,11 +4306,11 @@ const masterQuestionBank = [
       "Lubrication",
       "Cooling machines"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Which property indicates the ability of a refractory to withstand high temperature without melting or deforming?",
     "opts": [
       "Porosity",
@@ -3921,11 +4318,11 @@ const masterQuestionBank = [
       "Hardness",
       "Ductility"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Which refractory is commonly used for furnace linings because of its resistance to basic slags?",
     "opts": [
       "Magnesite",
@@ -3933,11 +4330,11 @@ const masterQuestionBank = [
       "Fireclay",
       "Quartz"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Silica refractory is generally suitable for furnaces operating with:",
     "opts": [
       "Acidic slags",
@@ -3945,11 +4342,11 @@ const masterQuestionBank = [
       "Water",
       "Oil"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Which property represents the amount of void space present in a refractory?",
     "opts": [
       "Density",
@@ -3957,11 +4354,11 @@ const masterQuestionBank = [
       "Toughness",
       "Elasticity"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "A refractory with low porosity generally has:",
     "opts": [
       "Poor strength",
@@ -3969,11 +4366,11 @@ const masterQuestionBank = [
       "Very high water absorption",
       "Low density"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Which property is important for a refractory exposed to sudden temperature changes?",
     "opts": [
       "Thermal shock resistance",
@@ -3981,11 +4378,11 @@ const masterQuestionBank = [
       "Plasticity",
       "Machinability"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Which refractory is commonly used in the lining of blast furnaces?",
     "opts": [
       "Magnesite",
@@ -3993,11 +4390,11 @@ const masterQuestionBank = [
       "Wood",
       "Rubber"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Fireclay refractories mainly contain:",
     "opts": [
       "Alumina and silica",
@@ -4005,11 +4402,11 @@ const masterQuestionBank = [
       "Iron and carbon",
       "Calcium and sodium only"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Which property indicates the resistance of refractory material to chemical attack by molten slag?",
     "opts": [
       "Chemical stability",
@@ -4017,11 +4414,11 @@ const masterQuestionBank = [
       "Conductivity",
       "Plasticity"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Basic refractories are mainly used where the furnace atmosphere or slag is:",
     "opts": [
       "Acidic",
@@ -4029,11 +4426,11 @@ const masterQuestionBank = [
       "Neutral only",
       "Reducing only"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Which of the following is an important mechanical property of refractories?",
     "opts": [
       "Cold crushing strength",
@@ -4041,11 +4438,11 @@ const masterQuestionBank = [
       "Ductility",
       "Malleability"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "A refractory used in a steelmaking furnace should have high:",
     "opts": [
       "Refractoriness",
@@ -4053,11 +4450,11 @@ const masterQuestionBank = [
       "Volatility",
       "Flammability"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Which refractory is commonly associated with high alumina content?",
     "opts": [
       "High-alumina refractory",
@@ -4065,11 +4462,11 @@ const masterQuestionBank = [
       "Magnesite refractory",
       "Carbon refractory"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "The ability of a refractory to retain its shape under load at high temperature is called:",
     "opts": [
       "Creep resistance",
@@ -4077,11 +4474,11 @@ const masterQuestionBank = [
       "Absorption",
       "Plasticity"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Which of the following is a desirable property of furnace refractory?",
     "opts": [
       "Low refractoriness",
@@ -4089,11 +4486,11 @@ const masterQuestionBank = [
       "High chemical reactivity",
       "High slag absorption"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "Refractories are commonly used for lining:",
     "opts": [
       "Furnaces and kilns",
@@ -4101,11 +4498,11 @@ const masterQuestionBank = [
       "Wooden structures",
       "Automobile tyres"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "A furnace uses a highly basic slag. Which refractory should be selected?",
     "opts": [
       "Silica",
@@ -4113,11 +4510,11 @@ const masterQuestionBank = [
       "Fireclay",
       "Zircon"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "A refractory lining is frequently subjected to rapid heating and cooling. Which property should be prioritized?",
     "opts": [
       "Thermal shock resistance",
@@ -4125,11 +4522,11 @@ const masterQuestionBank = [
       "Ductility",
       "Solubility"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "If molten slag is penetrating deeply into a furnace lining, which property should be improved?",
     "opts": [
       "Porosity",
@@ -4137,11 +4534,11 @@ const masterQuestionBank = [
       "Ductility",
       "Malleability"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "A material is required to withstand high temperature without softening. Which property should be checked first?",
     "opts": [
       "Refractoriness",
@@ -4149,11 +4546,11 @@ const masterQuestionBank = [
       "Ductility",
       "Toughness"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Refractories",
     "q": "For a furnace operating with acidic slag, which refractory is most appropriate?",
     "opts": [
       "Magnesite",
@@ -4161,11 +4558,11 @@ const masterQuestionBank = [
       "Silica",
       "Magnesia"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 6,
+    "cat": "Refractories"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "The major constituent of natural gas is:",
     "opts": [
       "Carbon monoxide",
@@ -4173,11 +4570,11 @@ const masterQuestionBank = [
       "Hydrogen",
       "Nitrogen"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "Which property makes natural gas suitable for domestic cooking?",
     "opts": [
       "High ash content",
@@ -4185,11 +4582,11 @@ const masterQuestionBank = [
       "High moisture content",
       "Non-combustibility"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "Natural gas is mainly used in industries as:",
     "opts": [
       "A cooling agent",
@@ -4197,11 +4594,11 @@ const masterQuestionBank = [
       "A lubricant",
       "A refractory material"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "Which component may be present in natural gas along with methane?",
     "opts": [
       "Ethane",
@@ -4209,11 +4606,11 @@ const masterQuestionBank = [
       "Iron oxide",
       "Calcium carbonate"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "A gas-fired furnace requires a clean fuel with high calorific value. Which fuel is suitable?",
     "opts": [
       "Natural gas",
@@ -4221,11 +4618,11 @@ const masterQuestionBank = [
       "Blast furnace gas",
       "Air"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "The major combustible component of blast furnace gas is:",
     "opts": [
       "Carbon monoxide",
@@ -4233,11 +4630,11 @@ const masterQuestionBank = [
       "Propane",
       "Hydrogen sulphide"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "Blast furnace gas is mainly obtained as a by-product from:",
     "opts": [
       "Cement kiln",
@@ -4245,11 +4642,11 @@ const masterQuestionBank = [
       "Coke oven",
       "Oil refinery"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "Blast furnace gas has relatively low calorific value mainly because it contains a large amount of:",
     "opts": [
       "Nitrogen",
@@ -4257,11 +4654,11 @@ const masterQuestionBank = [
       "Propane",
       "Hydrogen"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "Blast furnace gas can be effectively utilized for:",
     "opts": [
       "Heating air in hot-blast stoves",
@@ -4269,11 +4666,11 @@ const masterQuestionBank = [
       "Producing plastics directly",
       "Cooling furnaces"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "Coke oven gas is obtained during the manufacture of:",
     "opts": [
       "Coke",
@@ -4281,11 +4678,11 @@ const masterQuestionBank = [
       "Glass",
       "Aluminium"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "Compared with blast furnace gas, coke oven gas generally has:",
     "opts": [
       "Higher calorific value",
@@ -4293,11 +4690,11 @@ const masterQuestionBank = [
       "Higher ash content",
       "No hydrogen"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "Which gas is an important combustible constituent of coke oven gas?",
     "opts": [
       "Hydrogen",
@@ -4305,11 +4702,11 @@ const masterQuestionBank = [
       "Carbon dioxide",
       "Oxygen"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "Coke oven gas can be used as a fuel for:",
     "opts": [
       "Industrial heating",
@@ -4317,11 +4714,11 @@ const masterQuestionBank = [
       "Refrigeration only",
       "Lubrication"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "LPG mainly consists of:",
     "opts": [
       "Methane and ethane",
@@ -4329,11 +4726,11 @@ const masterQuestionBank = [
       "Hydrogen and nitrogen",
       "Carbon monoxide and carbon dioxide"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "LPG is stored commercially in:",
     "opts": [
       "Liquid form under pressure",
@@ -4341,11 +4738,11 @@ const masterQuestionBank = [
       "Vacuum only",
       "Powder form"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "LPG is widely used for:",
     "opts": [
       "Domestic cooking",
@@ -4353,11 +4750,11 @@ const masterQuestionBank = [
       "Refractory manufacturing only",
       "Water purification"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "LPG is preferred as a domestic fuel because it:",
     "opts": [
       "Produces high ash",
@@ -4365,11 +4762,11 @@ const masterQuestionBank = [
       "Contains large quantities of water",
       "Cannot be transported"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "An LPG cylinder is used because LPG can be:",
     "opts": [
       "Easily liquefied under pressure",
@@ -4377,11 +4774,11 @@ const masterQuestionBank = [
       "Stored only at atmospheric pressure",
       "Converted into coal"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "Water gas mainly consists of:",
     "opts": [
       "Carbon monoxide and hydrogen",
@@ -4389,11 +4786,11 @@ const masterQuestionBank = [
       "Propane and butane",
       "Carbon dioxide and oxygen"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "Water gas is produced by passing steam over:",
     "opts": [
       "Red-hot coke",
@@ -4401,11 +4798,11 @@ const masterQuestionBank = [
       "Iron ore",
       "Crude oil"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "The main reaction in water gas production is:",
     "opts": [
       "C + H2O -> CO + H2",
@@ -4413,11 +4810,11 @@ const masterQuestionBank = [
       "CH4 + O2 -> CO2 + H2O",
       "CaCO3 -> CaO + CO2"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "Water gas is also known as:",
     "opts": [
       "Syngas",
@@ -4425,11 +4822,11 @@ const masterQuestionBank = [
       "Blast furnace gas",
       "Natural gas"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "Producer gas is mainly produced by passing:",
     "opts": [
       "Air over red-hot coke or coal",
@@ -4437,11 +4834,11 @@ const masterQuestionBank = [
       "Oxygen over water",
       "Hydrogen over coke"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "The main combustible constituents of producer gas are:",
     "opts": [
       "CO and H2",
@@ -4449,11 +4846,11 @@ const masterQuestionBank = [
       "O2 and N2",
       "CH4 and CO2"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "Producer gas has a relatively low calorific value mainly due to its high content of:",
     "opts": [
       "Nitrogen",
@@ -4461,11 +4858,11 @@ const masterQuestionBank = [
       "Propane",
       "Hydrogen"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "Producer gas is commonly used for:",
     "opts": [
       "Industrial furnace heating",
@@ -4473,11 +4870,11 @@ const masterQuestionBank = [
       "Lubrication",
       "Water purification"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "A steel plant wants to reuse a gaseous by-product from its blast furnace for heating. Which gas should be selected?",
     "opts": [
       "Natural gas",
@@ -4485,11 +4882,11 @@ const masterQuestionBank = [
       "LPG",
       "Water gas"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "A household requires a portable gaseous fuel with high calorific value. Which fuel is most appropriate?",
     "opts": [
       "Blast furnace gas",
@@ -4497,11 +4894,11 @@ const masterQuestionBank = [
       "LPG",
       "Water gas"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "An engineer needs a gas containing mainly CO and H2 for industrial applications. Which gas should be considered?",
     "opts": [
       "Water gas",
@@ -4509,11 +4906,11 @@ const masterQuestionBank = [
       "Blast furnace gas",
       "LPG"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Gaseous Fuels",
     "q": "A fuel gas contains a large proportion of nitrogen and therefore has low calorific value. It is most likely:",
     "opts": [
       "LPG",
@@ -4521,11 +4918,11 @@ const masterQuestionBank = [
       "Producer gas",
       "Coke oven gas"
     ],
-    "ans": 2
+    "ans": 2,
+    "unit": 6,
+    "cat": "Gaseous Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Metallurgical coke is mainly produced by:",
     "opts": [
       "Burning coal in air",
@@ -4533,11 +4930,11 @@ const masterQuestionBank = [
       "Heating limestone",
       "Distillation of petroleum"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "An important property of metallurgical coke is:",
     "opts": [
       "High moisture content",
@@ -4545,11 +4942,11 @@ const masterQuestionBank = [
       "High ash content",
       "Low strength"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Metallurgical coke should have high strength because it must:",
     "opts": [
       "Dissolve in molten iron",
@@ -4557,11 +4954,11 @@ const masterQuestionBank = [
       "Absorb water",
       "Reduce furnace temperature"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Which property of coke is important for maintaining permeability in a blast furnace?",
     "opts": [
       "Porosity",
@@ -4569,11 +4966,11 @@ const masterQuestionBank = [
       "Volatility",
       "Solubility"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "The major use of metallurgical coke is in:",
     "opts": [
       "Blast furnaces",
@@ -4581,11 +4978,11 @@ const masterQuestionBank = [
       "Boilers only",
       "Water treatment plants"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Which of the following is a by-product obtained during coke manufacture?",
     "opts": [
       "Coke oven gas",
@@ -4593,11 +4990,11 @@ const masterQuestionBank = [
       "Pig iron",
       "Cement"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Which valuable chemical is recovered from coke oven by-products?",
     "opts": [
       "Ammonia",
@@ -4605,11 +5002,11 @@ const masterQuestionBank = [
       "Calcium oxide",
       "Aluminium"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Coal tar obtained during coke production is mainly used as a source of:",
     "opts": [
       "Organic chemicals",
@@ -4617,11 +5014,11 @@ const masterQuestionBank = [
       "Oxygen",
       "Nitrogen"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Benzene, toluene and xylene can be obtained from:",
     "opts": [
       "Coal tar/coke oven by-products",
@@ -4629,11 +5026,11 @@ const masterQuestionBank = [
       "Blast furnace slag",
       "Water gas only"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Pulverized coal means coal converted into:",
     "opts": [
       "Large lumps",
@@ -4641,11 +5038,11 @@ const masterQuestionBank = [
       "Liquid form",
       "Briquettes only"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Pulverizing coal increases its:",
     "opts": [
       "Surface area",
@@ -4653,11 +5050,11 @@ const masterQuestionBank = [
       "Ash content",
       "Density only"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Pulverized coal is advantageous because it:",
     "opts": [
       "Burns more efficiently",
@@ -4665,11 +5062,11 @@ const masterQuestionBank = [
       "Has no carbon",
       "Produces no heat"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Pulverized coal is commonly used in:",
     "opts": [
       "Industrial furnaces and boilers",
@@ -4677,11 +5074,11 @@ const masterQuestionBank = [
       "Refrigeration systems",
       "Lubrication systems"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Briquetting is the process of converting fine coal or coke into:",
     "opts": [
       "Liquid fuel",
@@ -4689,11 +5086,11 @@ const masterQuestionBank = [
       "Gaseous fuel",
       "Metal"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "The main purpose of briquetting fine coal is to:",
     "opts": [
       "Improve handling and utilization",
@@ -4701,11 +5098,11 @@ const masterQuestionBank = [
       "Reduce carbon content",
       "Convert it into gas"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Briquetted fuel is particularly useful for utilizing:",
     "opts": [
       "Coal fines",
@@ -4713,11 +5110,11 @@ const masterQuestionBank = [
       "Natural gas",
       "Water"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "An important property of a liquid fuel indicating its resistance to flow is:",
     "opts": [
       "Viscosity",
@@ -4725,11 +5122,11 @@ const masterQuestionBank = [
       "Refractoriness",
       "Hardness"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Flash point of a liquid fuel is the temperature at which it:",
     "opts": [
       "Freezes",
@@ -4737,11 +5134,11 @@ const masterQuestionBank = [
       "Boils completely",
       "Becomes solid"
     ],
-    "ans": 1
+    "ans": 1,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "A liquid fuel with a high calorific value is generally preferred because it:",
     "opts": [
       "Produces more heat per unit mass",
@@ -4749,11 +5146,11 @@ const masterQuestionBank = [
       "Cannot be transported",
       "Requires more storage space"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Which property is important for safe storage of liquid fuels?",
     "opts": [
       "Flash point",
@@ -4761,11 +5158,11 @@ const masterQuestionBank = [
       "Crushing strength",
       "Grain size"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "The temperature at which a liquid fuel continuously burns after ignition is related to its:",
     "opts": [
       "Fire point",
@@ -4773,11 +5170,11 @@ const masterQuestionBank = [
       "Dew point",
       "Freezing point"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Fuel oil is widely used in industrial furnaces because it:",
     "opts": [
       "Can be easily atomized for combustion",
@@ -4785,11 +5182,11 @@ const masterQuestionBank = [
       "Cannot be pumped",
       "Has no calorific value"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Which liquid fuel is obtained by refining crude petroleum?",
     "opts": [
       "Furnace oil",
@@ -4797,11 +5194,11 @@ const masterQuestionBank = [
       "Water gas",
       "Coke oven gas"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Diesel is commonly used as a fuel in:",
     "opts": [
       "Compression-ignition engines",
@@ -4809,11 +5206,11 @@ const masterQuestionBank = [
       "Coke ovens only",
       "Electric motors"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "Petrol is mainly used in:",
     "opts": [
       "Spark-ignition engines",
@@ -4821,11 +5218,11 @@ const masterQuestionBank = [
       "Steam boilers only",
       "Coke ovens"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "A blast furnace requires a strong carbonaceous material that supports the furnace burden and provides heat. Which fuel should be selected?",
     "opts": [
       "Metallurgical coke",
@@ -4833,11 +5230,11 @@ const masterQuestionBank = [
       "Kerosene",
       "LPG"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "An industry wants to use fine coal that is difficult to handle. Which process should be adopted?",
     "opts": [
       "Briquetting",
@@ -4845,11 +5242,11 @@ const masterQuestionBank = [
       "Refining",
       "Gasification only"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "A boiler operator wants faster and more uniform combustion of coal. Which form of coal is suitable?",
     "opts": [
       "Pulverized coal",
@@ -4857,11 +5254,11 @@ const masterQuestionBank = [
       "Wet coal",
       "Raw coal only"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "A fuel storage tank requires a fuel with a relatively high flash point for improved handling safety. Which property should the engineer check?",
     "opts": [
       "Flash point",
@@ -4869,11 +5266,11 @@ const masterQuestionBank = [
       "Ash content only",
       "Density only"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   },
   {
-    "unit": 6,
-    "cat": "Solid & Liquid Fuels",
     "q": "A furnace uses heavy fuel oil, but pumping is difficult at low temperature. Which property should be investigated?",
     "opts": [
       "Viscosity",
@@ -4881,6 +5278,8 @@ const masterQuestionBank = [
       "Porosity",
       "Hardness"
     ],
-    "ans": 0
+    "ans": 0,
+    "unit": 6,
+    "cat": "Solid & Liquid Fuels"
   }
 ];
