@@ -87,7 +87,6 @@
             box-shadow: 0 6px 16px rgba(0,0,0,0.04);
         }
 
-        /* Featured Blueprint Test Card */
         .quiz-card.featured-test {
             border: 1.5px solid var(--accent-blue);
             background: linear-gradient(135deg, #f4f9ff 0%, #ffffff 100%);
@@ -98,7 +97,6 @@
             box-shadow: 0 8px 20px rgba(0, 113, 227, 0.14);
         }
 
-        /* Featured Mistakes Quiz Card */
         .quiz-card.mistakes-test {
             border: 1.5px solid var(--accent-red);
             background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
@@ -132,7 +130,6 @@
             white-space: nowrap;
         }
 
-        /* Collapsible Folder Styling */
         .quiz-folder {
             border: 1px solid var(--border-color);
             border-radius: 14px;
@@ -197,12 +194,11 @@
 
 <div class="hub-container">
     <header>
-        <div class="dept-title">Engineering Materials & Metallurgy</div>
+        <div class="dept-title">Engineering Materials &amp; Metallurgy</div>
         <h1>EMT Practice Quiz Portal</h1>
     </header>
 
     <div class="quiz-grid">
-        <!-- Featured Top Card: 70-Mark Blueprint Online Test -->
         <a href="emt-test.html" class="quiz-card featured-test">
             <div class="quiz-info">
                 <h2 style="color: var(--accent-blue);">70-Mark Blueprint Online Test (440 Pool)</h2>
@@ -211,7 +207,6 @@
             <span class="badge" style="background: var(--accent-blue); color: #ffffff;">70 Marks</span>
         </a>
 
-        <!-- Mistakes Practice Quiz Card -->
         <a href="mistakes-quiz.html" class="quiz-card mistakes-test">
             <div class="quiz-info">
                 <h2 style="color: var(--accent-red);">Mistakes Practice Quiz (PDF Report Set)</h2>
@@ -220,7 +215,6 @@
             <span class="badge" style="background: #fdecea; color: var(--accent-red);">46 Mistakes</span>
         </a>
 
-        <!-- Unit-wise Quizzes (1 to 6) -->
         <a href="unit1.html" class="quiz-card">
             <div class="quiz-info">
                 <h2>Unit 1 Quiz</h2>
@@ -269,7 +263,6 @@
             <span class="badge">85 Questions</span>
         </a>
 
-        <!-- Folder at the Bottom containing Mock Test, Question Banks & Combined Quizzes -->
         <details class="quiz-folder">
             <summary>
                 <div class="folder-title-group">
@@ -324,7 +317,7 @@
 
 ---
 
-### 2. Complete `mistakes-quiz.html`
+### 2. Clean `mistakes-quiz.html` (Quiz Page Only)
 
 ```html
 <!DOCTYPE html>
@@ -714,7 +707,6 @@
 </header>
 
 <main>
-  <!-- SETUP / START VIEW -->
   <section id="setupView" class="card">
     <h2 style="font-size: 20px; font-weight: 700;">Practice Your Missed Questions</h2>
     <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">
@@ -749,7 +741,6 @@
     </div>
   </section>
 
-  <!-- ACTIVE QUIZ VIEW -->
   <section id="quizView" class="hidden">
     <div class="card">
       <div class="q-header">
@@ -782,7 +773,6 @@
     </div>
   </section>
 
-  <!-- RESULTS & REVIEW VIEW -->
   <section id="resultsView" class="hidden">
     <div class="card" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;">
       <div>
@@ -828,7 +818,6 @@
   </section>
 </main>
 
-<!-- Load masterPool.js if present in the same folder -->
 <script src="masterPool.js"></script>
 <script>
   const MISTAKE_SPECS = [
