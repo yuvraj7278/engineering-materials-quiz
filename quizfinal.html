@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEM 26 Final Question Bank Quiz</title>
+    <title>Quiz - Exact Options (Questions Shuffled Only)</title>
     <style>
-        /* macOS-inspired clean UI */
         :root {
             --bg-color: #f5f5f7;
             --window-bg: #ffffff;
@@ -34,21 +33,26 @@
             align-items: center;
             min-height: 100vh;
         }
-        
+
         .container {
             width: 100%;
-            max-width: 680px;
+            max-width: 740px;
             background: var(--window-bg);
-            padding: 32px 40px;
+            padding: 32px 36px;
             border-radius: 18px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
-            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
         h2 {
             margin-top: 0;
-            font-size: 22px;
+            font-size: 21px;
             font-weight: 600;
+        }
+
+        .subtext {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 20px;
         }
 
         .status-bar {
@@ -57,7 +61,7 @@
             font-size: 14px;
             font-weight: 500;
             color: var(--text-muted);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             padding-bottom: 12px;
             border-bottom: 1px solid var(--border-color);
         }
@@ -66,19 +70,19 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            margin-top: 24px;
+            margin-top: 20px;
         }
 
         .btn {
             width: 100%;
             text-align: left;
-            padding: 14px 18px;
+            padding: 13px 16px;
             font-size: 15px;
             background: var(--window-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+            transition: all 0.15s ease;
             color: var(--text-main);
         }
 
@@ -95,7 +99,7 @@
             background: var(--correct-bg) !important;
             border-color: var(--correct-border) !important;
             color: var(--correct-text) !important;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .wrong {
@@ -110,26 +114,52 @@
             color: white;
             border: none;
             font-weight: 600;
-            margin-top: 24px;
-            box-shadow: 0 2px 5px rgba(0, 113, 227, 0.3);
+            margin-top: 20px;
+            cursor: pointer;
         }
 
         .action-btn:hover {
             background: var(--accent-blue-hover);
         }
 
-        .hidden {
-            display: none !important;
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .topic-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 14px;
+            font-size: 14px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
+        .topic-btn:hover {
+            background: var(--bg-color);
+            border-color: var(--accent-blue);
+        }
+
+        .badge {
+            background: #e8f0fe;
+            color: #1a73e8;
+            padding: 3px 9px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
         }
 
         .feedback {
-            margin-top: 18px;
+            margin-top: 16px;
             font-weight: 600;
             font-size: 15px;
-            text-align: center;
-        }
-
-        #result-screen {
             text-align: center;
         }
 
@@ -138,758 +168,342 @@
             font-weight: 600;
             margin: 24px 0;
         }
+
+        .hidden {
+            display: none !important;
+        }
+
+        #selection-screen, #result-screen {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <a href="index.html" style="text-decoration: none; color: var(--text-muted); font-size: 14px; display: inline-block; margin-bottom: 16px;">← Back to Portal</a>
-    <div id="quiz-screen">
+    <div id="selection-screen">
+        <h2>Quiz Bank (Exact Options • Random Question Order)</h2>
+        <p class="subtext">Options stay in their exact original order; only the order of questions is randomized.</p>
+
+        <button class="btn action-btn" onclick="startQuiz('ALL')" style="margin-top: 0; font-size: 16px; padding: 15px;">
+            Start Full Quiz (All 140 Questions)
+        </button>
+
+        <div class="topic-grid">
+            <button class="topic-btn" onclick="startQuiz('CO1')"><span>CO1</span><span class="badge">24 Qs</span></button>
+            <button class="topic-btn" onclick="startQuiz('CO2')"><span>CO2</span><span class="badge">24 Qs</span></button>
+            <button class="topic-btn" onclick="startQuiz('CO3')"><span>CO3</span><span class="badge">24 Qs</span></button>
+            <button class="topic-btn" onclick="startQuiz('CO4')"><span>CO4</span><span class="badge">24 Qs</span></button>
+            <button class="topic-btn" onclick="startQuiz('CO5')"><span>CO5</span><span class="badge">22 Qs</span></button>
+            <button class="topic-btn" onclick="startQuiz('CO6')"><span>CO6</span><span class="badge">22 Qs</span></button>
+        </div>
+    </div>
+
+    <div id="quiz-screen" class="hidden">
         <div class="status-bar">
-            <span id="progress">Question 1 / 60</span>
+            <span id="progress">Question 1 / 140</span>
+            <span id="co-tag">CO1</span>
             <span id="score-tracker">Score: 0</span>
         </div>
-        
-        <h2 id="question-text">Question loading...</h2>
-        
+
+        <h2 id="question-text">Loading...</h2>
         <div class="options" id="options-container"></div>
-        
         <div id="feedback-message" class="feedback hidden"></div>
-        
+
         <button id="next-btn" class="btn action-btn hidden">Next Question</button>
+        <button class="btn" onclick="goToSelection()" style="margin-top: 10px; background: transparent; border: none; color: var(--text-muted); text-align: center;">
+            ← Back to Selection
+        </button>
     </div>
 
     <div id="result-screen" class="hidden">
         <h2>Quiz Complete</h2>
         <div id="final-score" class="score-display"></div>
-        
-        <button id="retry-btn" class="btn action-btn hidden">Resolve Incorrect Questions</button>
-        <button id="restart-btn" class="btn action-btn" style="background: var(--text-main); margin-top: 12px;">Restart Full Question Bank</button>
+        <button id="retry-btn" class="btn action-btn hidden">Retry Incorrect Questions</button>
+        <button class="btn action-btn" onclick="goToSelection()" style="background: var(--text-main); margin-top: 10px;">
+            Choose Another Set
+        </button>
     </div>
 </div>
 
 <script>
-    const masterQuestionBank = [
-    {
-        "q": "------------ is defined as the destruction of the material by chemical or electrochemical reaction with its environment.",
-        "opts": [
-            "Machinig",
-            "corrosion",
-            "Melting Point",
-            "Hardness"
-        ],
-        "ans": 1
-    },
-    {
-        "q": "\u2026\u2026\u2026\u2026\u2026.. helps in differentiating heavy and light metals",
-        "opts": [
-            "weight",
-            "volume",
-            "density",
-            "mass"
-        ],
-        "ans": 2
-    },
-    {
-        "q": "\u2026\u2026\u2026\u2026\u2026. Is the capacity of material to undergo deformation under tension without rupture.",
-        "opts": [
-            "malleability",
-            "ductility",
-            "stiffness",
-            "tensile strength"
-        ],
-        "ans": 1
-    },
-    {
-        "q": "A small impression for a given load and indentor that the material is \u2026\u2026\u2026\u2026\u2026",
-        "opts": [
-            "soft",
-            "tough",
-            "stiff",
-            "hard"
-        ],
-        "ans": 3
-    },
-    {
-        "q": "Which of the following determine the behavior of engineering materials under the applied forces and loads?",
-        "opts": [
-            "chemical properties",
-            "physical properties",
-            "mechanical properties",
-            "density"
-        ],
-        "ans": 2
-    },
-    {
-        "q": "\u2026\u2026\u2026\u2026\u2026\u2026\u2026 materials consist of more than one material type.",
-        "opts": [
-            "manufactured organic material",
-            "Natural organic material",
-            "synthetic organic material",
-            "composite material"
-        ],
-        "ans": 3
-    },
-    {
-        "q": "Copper is extremely tough but \u2026\u2026\u2026\u2026.. is not.",
-        "opts": [
-            "Steel",
-            "Iron",
-            "Cast Iron",
-            "Aluminium"
-        ],
-        "ans": 2
-    },
-    {
-        "q": "Which of the following is not an amorphous material?",
-        "opts": [
-            "lead",
-            "rubber",
-            "plastic",
-            "glass"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "colour of Al is \u2026\u2026\u2026\u2026\u2026\u2026.",
-        "opts": [
-            "White",
-            "grey",
-            "reddish",
-            "none of the above"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "\u2026\u2026\u2026\u2026.. is the most malleable metal.",
-        "opts": [
-            "Silver",
-            "Gold",
-            "Steel",
-            "C.I."
-        ],
-        "ans": 1
-    },
-    {
-        "q": "\u2026\u2026\u2026\u2026.. is a brittle material.",
-        "opts": [
-            "Cast iron",
-            "Steel",
-            "aluminium",
-            "Copper"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "\u2026\u2026\u2026\u2026\u2026 are dimensionally stable at room temperature.",
-        "opts": [
-            "non- metals",
-            "metalloids",
-            "organic material",
-            "metal"
-        ],
-        "ans": 3
-    },
-    {
-        "q": "The type of space lattice found in alpha (a) iron is_______________",
-        "opts": [
-            "face centred cubic space lattice",
-            "body centred cubic space lattice",
-            "close packed hexagonal space lattice",
-            "none of the above"
-        ],
-        "ans": 1
-    },
-    {
-        "q": "Property of the material due to which they can be drawn in to the wire is called",
-        "opts": [
-            "Ductility",
-            "malleability",
-            "toughness",
-            "plasticity"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "Which metals have an FCC crystal structure?",
-        "opts": [
-            "Mo, Nb, Rb",
-            "Cu, Ni , Ag",
-            "As, Sb, Bi",
-            "Ti, Zn, Mg"
-        ],
-        "ans": 1
-    },
-    {
-        "q": "Which of the following is a basic classification of Engineering Materials?",
-        "opts": [
-            "cant say",
-            "metals",
-            "non metals",
-            "Both Metals & Non-Metals"
-        ],
-        "ans": 3
-    },
-    {
-        "q": "Melting point of iron is \u2026\u2026\u2026\u2026\u2026",
-        "opts": [
-            "1131 deg. Celcius",
-            "1539 deg. Celcius",
-            "1659 deg. Celcius",
-            "1712 deg. Celcius"
-        ],
-        "ans": 1
-    },
-    {
-        "q": "Springs and rubbers come back to their original position after deformation , name the mechanical property",
-        "opts": [
-            "elasticity",
-            "plasticity",
-            "toughness",
-            "ductility"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "\u2026\u2026\u2026\u2026\u2026 is lack of ductility.",
-        "opts": [
-            "Malleability",
-            "Hardness",
-            "Toughness",
-            "Brittleness"
-        ],
-        "ans": 3
-    },
-    {
-        "q": "The property that resist to scratch is known as -----.",
-        "opts": [
-            "strength",
-            "toughness",
-            "hardness",
-            "melting point"
-        ],
-        "ans": 2
-    },
-    {
-        "q": "The eutectoid temperature in the iron-carbon diagram is:",
-        "opts": [
-            "723\u00b0C",
-            "1495\u00b0C",
-            "1147\u00b0C",
-            "1130\u00b0C"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "The eutectic composition in the Fe-C diagram occurs at:",
-        "opts": [
-            "0.8% C",
-            "4.3% C",
-            "2.0% C",
-            "6.67% C"
-        ],
-        "ans": 1
-    },
-    {
-        "q": "cast iron is __________ in nature.",
-        "opts": [
-            "ductile",
-            "soft",
-            "brittle",
-            "none of the above"
-        ],
-        "ans": 2
-    },
-    {
-        "q": "Which of the following structures is hardest and most brittle?",
-        "opts": [
-            "Ferrite",
-            " Cementite",
-            "Austenite",
-            "Pearlite"
-        ],
-        "ans": 1
-    },
-    {
-        "q": "In the Fe-C diagram, hypoeutectoid steels contain:",
-        "opts": [
-            "Less than 0.8 % carbon",
-            "More than 0.8% carbon",
-            "Exactly 0.8% carbon",
-            "More than 6.67% carbon"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "Various reactions occur in FE-C equilibrium diagram are",
-        "opts": [
-            "peritectic reaction",
-            "Eutectic reaction",
-            "Euctectoid reaction",
-            "All of the above"
-        ],
-        "ans": 3
-    },
-    {
-        "q": "What are critical temperatures in the Fe\u2013Fe\u2083C diagram?",
-        "opts": [
-            "Temperatures where phase changes occur during heating or cooling",
-            "Temperatures at which metals melt completely",
-            "Temperatures of maximum hardness",
-            "Temperatures at which alloys evaporate"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "Eutectoid reaction occurs at __________",
-        "opts": [
-            "0.8% carbon",
-            " 0.2% carbon",
-            "0.5% carbon",
-            "None of the above"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "The lower critical temperature A1 corresponds to:",
-        "opts": [
-            "The melting point of iron",
-            "The temperature of austenite-to-pearlite eutectoid transformation",
-            "The temperature at which ferrite forms",
-            ". The temperature at which cementite dissolves"
-        ],
-        "ans": 1
-    },
-    {
-        "q": "The eutectoid composition in the iron-carbon diagram is:",
-        "opts": [
-            "0.8% C",
-            "4.3% C",
-            "2.0% C",
-            "6.67% C"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "Steel is produced from  ____ process/furnace.",
-        "opts": [
-            "Bessemer converter",
-            "Open hearth furnce",
-            "Electric furnace",
-            "All of these"
-        ],
-        "ans": 3
-    },
-    {
-        "q": "Alpha ferrite at room temp. Can dissolve  ___________",
-        "opts": [
-            "0.008% carbon",
-            "0.25% carbon",
-            "02% carbon",
-            "None of the above"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "The upper critical temperature A3 is the temperature below which:",
-        "opts": [
-            "Pearlite forms from austenite",
-            "Austenite starts to form in hypereutectoid alloys",
-            "Cementite starts to form from austenite in hypereutectoid alloys",
-            "Ferrite starts to form from austenite in hypoeutectoid alloys"
-        ],
-        "ans": 3
-    },
-    {
-        "q": "Grey cast iron is ......... than white cast iron.",
-        "opts": [
-            "Softer",
-            "harder",
-            "all of the above",
-            "can not say"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "peritectic reaction takes place at a temperature of ------",
-        "opts": [
-            "727 degree centigrade",
-            "1147 degree centigrade",
-            "1492 degree centigrade",
-            "at room temperature"
-        ],
-        "ans": 2
-    },
-    {
-        "q": "Steel contain carbon percentage between",
-        "opts": [
-            "0 to  2%",
-            "0 to  1%",
-            " 0 to  4%",
-            "0 to  3%"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "Austenite is---------.",
-        "opts": [
-            "intestitial solid solution of carbon in FCC  gamma  iron",
-            "intestitial solid solution of carbon in BCC alpha iron",
-            "cementite and pearlite",
-            "ferrite and cementite"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "The eutectic reaction in Fe-C system is:",
-        "opts": [
-            " Liquid \u2192 Austenite + Cementite",
-            "Austenite \u2192 Ferrite + Cementite",
-            "Liquid \u2192 \u03b4-ferrite + Austenite",
-            "Cementite \u2192 Austenite + Liquid"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "Cementite is also called as _________",
-        "opts": [
-            "Alpha ferrite",
-            "Delta ferrite",
-            "Iron carbide",
-            "None of the above"
-        ],
-        "ans": 2
-    },
-    {
-        "q": "Which of the following phases is soft and ductile?",
-        "opts": [
-            "Ferrite",
-            "Cementite",
-            "Pearlite",
-            "Martensite"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "Cementite becomes non magnetic/paramagnetic after______",
-        "opts": [
-            "200 deg. Celcius",
-            "250 deg. Celcius",
-            "210 deg. Celcius",
-            "220 deg. Celcius"
-        ],
-        "ans": 2
-    },
-    {
-        "q": "Cast iron----------.",
-        "opts": [
-            "All of the mentioned options",
-            " contains carbon ranging from 2.1% to 4.67%. ",
-            "is Very brittle",
-            "has excellent machinability"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "corrosion and oxidation resistance of steel is increased by addition of ------",
-        "opts": [
-            "Chromium",
-            "Nickel",
-            "manganese",
-            "molybdenum"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "Machinability of cast iron is increased by addition of -----",
-        "opts": [
-            "carbon",
-            "silicon",
-            "phosphorous",
-            "manganese"
-        ],
-        "ans": 1
-    },
-    {
-        "q": "In grey cast iron----",
-        "opts": [
-            "carbon present in graphite flakes form",
-            "carbon present in combined iron carbide form",
-            "carbon present in plates of iron carbide",
-            "no carbon present"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "White Cast Iron contains -------------------.",
-        "opts": [
-            "carbon in form of iron carbide",
-            "carbon in graphite flake form",
-            "carbon in form of spheroids",
-            "Non of  the above"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "naval brass ----",
-        "opts": [
-            "contains copper ,tin and zinc",
-            "has excellent corrosion resistance in marine environment",
-            "found application in manufacturing marine hardware",
-            "all of the above"
-        ],
-        "ans": 3
-    },
-    {
-        "q": "Which of the following cast irons cannot be machined?",
-        "opts": [
-            "White cast iron",
-            "Grey cast iron",
-            "Malleable cast iron",
-            "Spheroidal graphite cast iron"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "Bronze is the alloy of----.",
-        "opts": [
-            "copper and tin",
-            "copper and zinc",
-            "copper and iron",
-            "tin and zinc"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "What is the typical range of carbon content in steel?",
-        "opts": [
-            "0.5% to 5%",
-            "0.02% to 2.14%",
-            "2.5% to 4%",
-            "4% to 5%"
-        ],
-        "ans": 1
-    },
-    {
-        "q": "Chromium is added in to steel to ------------.",
-        "opts": [
-            "All of the mentioned options",
-            "to Increases corrosion resistance",
-            " Increases abrasion resistance and wear resistance",
-            "to increase toughness of steel"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "Cupola furnace is used to manufacture___________",
-        "opts": [
-            "Cast iron",
-            "Pig iron",
-            "Wrought iron",
-            "Steel"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "Muntz metal (Yellow brass) contains___________________",
-        "opts": [
-            "70% copper and 30% zinc",
-            "60% copper and 40% zinc",
-            "59% copper, 40% zinc and 1% tin",
-            "60.45% copper, 35.2% zinc and 5.35% nickel"
-        ],
-        "ans": 1
-    },
-    {
-        "q": "Alloying elements are added in to the steel --------.",
-        "opts": [
-            "All of the mentioned options",
-            "improve toughness",
-            "improve machinability",
-            " improve case hardening properties"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "Copper has high electrical & thermal conductivity.",
-        "opts": [
-            "true",
-            "false",
-            "don't know",
-            "can't say"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "Physical properties of the copper are -------.",
-        "opts": [
-            "All of the mentioned options",
-            "reddish yellow colour",
-            "density -8.93gm/cc",
-            "FCC crystal structure"
-        ],
-        "ans": 0
-    },
-    {
-        "q": "Brass is an alloy of_________________",
-        "opts": [
-            "copper, tin and zinc",
-            "copper and tin",
-            "copper and zinc",
-            "none of these"
-        ],
-        "ans": 2
-    },
-    {
-        "q": "Babbit metal is a______________________",
-        "opts": [
-            "lead-base alloy",
-            "tin-base alloy",
-            "copper-base alloy",
-            "cadmium-base alloy"
-        ],
-        "ans": 1
-    },
-    {
-        "q": "On the basis of appearance of fractures cast irons are classified as ___________",
-        "opts": [
-            "malleable cast iron ",
-            "White cast iron ",
-            "grey cast iron  & nodular cast iron ",
-            "All of the mentioned options"
-        ],
-        "ans": 3
-    },
-    {
-        "q": "Composition of gun metal is ----------.",
-        "opts": [
-            "COPPER-88% ZINC-2%  ,Tin- 10%",
-            "COPPER-98% Tin- 10%",
-            " ZINC-90%  ,Tin- 10%",
-            "COPPER-80% ZINC-2%  ,Tin- 10% ,Cr - 8%"
-        ],
-        "ans": 0
-    }
+const quizData = [
+    {"num":"1","co":"CO1","q":"Which of the following is a non-metallic engineering material?","opts":["Steel","Brass","Rubber","Aluminium"],"ans":2,"ansText":"Rubber"},
+    {"num":"2","co":"CO1","q":"Which material is commonly used for electrical wiring due to its high electrical conductivity?","opts":["Glass","Copper","Rubber","iron"],"ans":1,"ansText":"Copper"},
+    {"num":"3","co":"CO1","q":"Which of the following is a non-ferrous metal?","opts":["Cast iron","Mild steel","Aluminium","Wrought iron"],"ans":2,"ansText":"Aluminium"},
+    {"num":"4","co":"CO1","q":"Which property allows a material to be drawn into thin wires?","opts":["Brittleness","Hardness","Ductility","Toughness"],"ans":2,"ansText":"Ductility"},
+    {"num":"5","co":"CO1","q":"The ability of a material to undergo permanent deformation without rupture is called:","opts":["Elasticity","Plasticity","Stiffness","Hardness"],"ans":1,"ansText":"Plasticity"},
+    {"num":"6","co":"CO1","q":"BCC stands for:","opts":["Body-Centred Cubic","Body-Centred Circle","Base-Centred Crystal","Basic Cubic Cell"],"ans":0,"ansText":"Body-Centred Cubic"},
+    {"num":"7","co":"CO1","q":"An engineer requires a lightweight material for manufacturing an aircraft component. Which material is most suitable?","opts":["Cast iron","Lead","Aluminium","Copper"],"ans":2,"ansText":"Aluminium"},
+    {"num":"8","co":"CO1","q":"A transparent window is manufactured using glass. Glass is generally classified as:","opts":["Ferrous material","Polymer","Ceramic material","Composite material"],"ans":2,"ansText":"Ceramic material"},
+    {"num":"9","co":"CO1","q":"Copper is used in heat exchangers because it has high","opts":["Brittleness","Thermal conductivity","Porosity","Electrical resistance"],"ans":1,"ansText":"Thermal conductivity"},
+    {"num":"10","co":"CO1","q":"An engineer selects a material for a furnace lining that must withstand very high temperatures without melting. Which property is important?","opts":["Ductility","Malleability","Elasticity","Refractoriness"],"ans":3,"ansText":"Refractoriness"},
+    {"num":"11","co":"CO1","q":"Most metals at room temperature are in ----------------state.","opts":["liquid","gaseous","Solid","plasma"],"ans":2,"ansText":"Solid"},
+    {"num":"12","co":"CO1","q":"From the following, ------------ is NOT considered a physical property?","opts":["Density","Ductility","Melting point","Structure"],"ans":3,"ansText":"Structure"},
+    {"num":"13","co":"CO1","q":"Ferrous Metals do not possess the following property ____","opts":["stiffness","strength","high electrical conductivity","elasticity"],"ans":2,"ansText":"high electrical conductivity"},
+    {"num":"14","co":"CO1","q":"Ceramics usually consist of___________","opts":["oxides","nitrides","all of the above","carbides & borides"],"ans":2,"ansText":"all of the above"},
+    {"num":"15","co":"CO1","q":"…………… is a good example of an aggregate composite.","opts":["cement","plaster","concrete","sand"],"ans":2,"ansText":"concrete"},
+    {"num":"16","co":"CO1","q":"……………… is that out of which anything is made.","opts":["matter","material","substance","atom"],"ans":1,"ansText":"material"},
+    {"num":"17","co":"CO1","q":"The type of space lattice found in alpha (a) iron is_______________","opts":["body centred cubic space lattice","none of the above","close packed hexagonal space lattice","face centred cubic space lattice"],"ans":0,"ansText":"body centred cubic space lattice"},
+    {"num":"18","co":"CO1","q":"A solid solution in which solute atoms replace some solvent atoms so that they lie at normal atom sites of the crystal structure is called","opts":["substitutional solid solution","mechanical mixtures","intermetallic compounds","Interstitial solid solution"],"ans":0,"ansText":"substitutional solid solution"},
+    {"num":"19","co":"CO1","q":"Property of material due to which it breaks with little permanent distortion is called as----","opts":["ductility","brittleness","malleability","fatigue"],"ans":1,"ansText":"brittleness"},
+    {"num":"20","co":"CO1","q":"The ability of a material to absorb energy in the plastic range is called---","opts":["toughness","resilience","hardness","brittleness"],"ans":1,"ansText":"resilience"},
+    {"num":"21","co":"CO1","q":"…………….. helps in differentiating heavy and light metals","opts":["density","volume","weight","mass"],"ans":0,"ansText":"density"},
+    {"num":"22","co":"CO1","q":"……………….. strength refers to the force needed to fracture the material.","opts":["ultimate strength","impact strength","yield strength","tensile strength"],"ans":0,"ansText":"ultimate strength"},
+    {"num":"23","co":"CO1","q":"Density of Aluminium is ……………….","opts":["1.7 gm/cc","3.7 gm/cc","2.7 gm/cc","4.7 gm/cc"],"ans":2,"ansText":"2.7 gm/cc"},
+    {"num":"24","co":"CO1","q":"Melting point of copper is ……………….","opts":["1539 deg. Celcius","1231 deg. Celcius","1031 deg. Celcius","729 deg. Celcius"],"ans":1,"ansText":"1231 deg. Celcius"},
+    {"num":"25","co":"CO2","q":"which of the following is not the type of cast iron.","opts":["Grey Cast iron","white iron","wrought iron","nodular cast iron"],"ans":2,"ansText":"wrought iron"},
+    {"num":"26","co":"CO2","q":"The eutectoid mixture of α+Fe3C is known as ______________","opts":["Ferrite","Pearlite","Cementite","Austenite"],"ans":1,"ansText":"Pearlite"},
+    {"num":"27","co":"CO2","q":"The BCC structure of Fe-C solid solution is known as ______________","opts":["Pearlite","Ferrite","Cementite","Austenite"],"ans":1,"ansText":"Ferrite"},
+    {"num":"28","co":"CO2","q":"Which of the following iron carbon mixture, is the product of water cooling?","opts":["Coarse pearliite","Fine pearlite","Martensite","nodular cast iron"],"ans":2,"ansText":"Martensite"},
+    {"num":"29","co":"CO2","q":"The FCC structure of Fe-C solid solution is known as __________","opts":["Pearlite","Ferrite","Austenite","Cementite"],"ans":2,"ansText":"Austenite"},
+    {"num":"30","co":"CO2","q":"gamma form of iron is","opts":["Non magnetic","Occurs below 768oC","Occurs above 1410oC","para Magnetic in nature"],"ans":3,"ansText":"para Magnetic in nature"},
+    {"num":"31","co":"CO2","q":"The percentage of carbon at eutectoid point in Fe-C phase diagram is--------","opts":["0.021","0.043","0.0018","0.0083"],"ans":3,"ansText":"0.0083"},
+    {"num":"32","co":"CO2","q":"Cementite( Fe3C) is a -------------.","opts":["inter metallic compound","very hard, brittle inter metallic compound of iron & carbon","all of given options","has o high compressive strength"],"ans":2,"ansText":"all of given options"},
+    {"num":"33","co":"CO2","q":"Upper critical temperature (point) ---------","opts":["is the temperature, below which Cementite starts to form as a result of ejection from austenite in the hypereutectoid alloys",". Below this temperature austenite does not exist.","is the temperature, below which ferrite starts to form as a result of ejection from austenite in the hypo-eutectoid alloys."],"ans":2,"ansText":"is the temperature, below which ferrite starts to form as a result of ejection from austenite in the hypo-eutectoid alloys."},
+    {"num":"34","co":"CO2","q":"The temperature (in oC) of eutectoid reaction in iron-carbon phase diagram is -------.","opts":["1539 degree centigrade","723 degree centigrade","1120 degree centigrade","910 degree centigrade"],"ans":1,"ansText":"723 degree centigrade"},
+    {"num":"35","co":"CO2","q":"In iron and carbon equilibrium diagram at 727degree centigrade temperature is known as --------.","opts":["Upper critical temperature","Lower critical temperature","Curie temperature","non of given option"],"ans":1,"ansText":"Lower critical temperature"},
+    {"num":"36","co":"CO2","q":"In iron and carbon equilibrium diagram the interstitial solid solution of  carbon in BCC iron is --------.","opts":["cementite","austenite","Ferrite","all of given options"],"ans":2,"ansText":"Ferrite"},
+    {"num":"37","co":"CO2","q":"In engineering materials, a phase is defined as a part of a material having:","opts":["Only solid particles","Different crystal structures throughout","Uniform chemical composition and physical properties","Different chemical composition at every point"],"ans":2,"ansText":"Uniform chemical composition and physical properties"},
+    {"num":"38","co":"CO2","q":"The ability of iron to exist in different crystal structures at different temperatures is called:","opts":["Isomerism","Corrosion","Allotropy","Hardening"],"ans":2,"ansText":"Allotropy"},
+    {"num":"39","co":"CO2","q":"Which crystal structure is present in alpha iron (α-iron)?","opts":["BCC","HCP","FCC","simple cubic"],"ans":0,"ansText":"BCC"},
+    {"num":"40","co":"CO2","q":"Which form of iron exists between approximately 1394°C and 1538°C?","opts":["Delta iron","Gamma iron","Alpha iron","Cementite"],"ans":0,"ansText":"Delta iron"},
+    {"num":"41","co":"CO2","q":"Which statement correctly describes the allotropic forms of pure iron.","opts":["Alpha and delta iron have FCC structures","Gamma and delta iron have BCC structures","Alpha and delta iron have BCC structures","All forms have the same crystal structure"],"ans":2,"ansText":"Alpha and delta iron have BCC structures"},
+    {"num":"42","co":"CO2","q":"The maximum carbon content represented in the Fe–Fe₃C diagram is:","opts":["0.0211","0.043","0.0667","0.0076"],"ans":2,"ansText":"0.0667"},
+    {"num":"43","co":"CO2","q":"The Fe–Fe₃C diagram represents which alloy system?","opts":["Iron–Carbon","Aluminium–Copper","Copper–Zinc","Copper–Tin"],"ans":0,"ansText":"Iron–Carbon"},
+    {"num":"44","co":"CO2","q":"Austenite has ------ crystal structure","opts":["FCC","HCP","BCC","Simple cubic"],"ans":0,"ansText":"FCC"},
+    {"num":"45","co":"CO2","q":"Which type of solid solution is formed when smaller atoms occupy the vacant spaces in a metal crystal lattice?","opts":["Substitutional","Intermediate","Interstitial","Eutectic"],"ans":2,"ansText":"Interstitial"},
+    {"num":"46","co":"CO2","q":"The temperature at which pure iron changes from BCC ferrite to FCC austenite on heating is approximately:","opts":["723°C","1539","912°C","1147°C"],"ans":2,"ansText":"912°C"},
+    {"num":"47","co":"CO2","q":"The peritectic reaction occurs at approximately:","opts":["727°C","910°C","1493°C","1147°C"],"ans":2,"ansText":"1493°C"},
+    {"num":"48","co":"CO2","q":"The carbon content at the eutectic point is:","opts":["0.0016","0.0211","0.043","0.0076"],"ans":2,"ansText":"0.043"},
+    {"num":"49","co":"CO3","q":"the approximate carbon content of low carbon steel is:","opts":["0.60–1.00%","0.30–0.60%","0.05–0.30%","1.00–1.50%"],"ans":2,"ansText":"0.05–0.30%"},
+    {"num":"50","co":"CO3","q":"A student compares three steel samples. Sample X has the highest ductility. Which type is it most likely to be?","opts":["Medium carbon steel","High carbon steel","Low carbon steel","Tool steel"],"ans":2,"ansText":"Low carbon steel"},
+    {"num":"51","co":"CO3","q":"A steel manufacturer wants to improve machinability for mass production of small components. Which element is commonly added to free-cutting steel?","opts":["Chromium","Nickel","Sulphur","Vanadium"],"ans":2,"ansText":"Sulphur"},
+    {"num":"52","co":"CO3","q":"Tungsten is commonly added to high-speed steel to improve:","opts":["Softness","Ductility","Hot hardness","Corrosion only"],"ans":2,"ansText":"Hot hardness"},
+    {"num":"53","co":"CO3","q":"A steel manufacturer wants to increase the hardness and strength of steel. Which element is mainly added?","opts":["Phosphorus","Copper","Carbon","Sulphur"],"ans":2,"ansText":"Carbon"},
+    {"num":"54","co":"CO3","q":"A machine foundation requires a material with good vibration damping and machinability. Which material is most suitable?","opts":["High carbon steel","Low carbon steel","Grey cast iron","plastic"],"ans":2,"ansText":"Grey cast iron"},
+    {"num":"55","co":"CO3","q":"Grey cast iron generally contains carbon in the range of:","opts":["0.05–0.30%","0.30–0.60%","2.5–4.0%","5.0–6.0%"],"ans":2,"ansText":"2.5–4.0%"},
+    {"num":"56","co":"CO3","q":"Which component is commonly manufactured using grey cast iron?","opts":["Cutting tool","Automobile spring","Engine block","High-speed drill"],"ans":2,"ansText":"Engine block"},
+    {"num":"57","co":"CO3","q":"A marine component is exposed to seawater and requires improved resistance to corrosion. Which brass is preferred?","opts":["Muntz metal","Yellow brass","Naval brass","Cartridge brass"],"ans":2,"ansText":"Naval brass"},
+    {"num":"58","co":"CO3","q":"Which alloy is suitable for manufacturing bushes and bearings subjected to friction?","opts":["Yellow brass","Cartridge brass","Phosphor bronze","Muntz metal"],"ans":2,"ansText":"Phosphor bronze"},
+    {"num":"59","co":"CO3","q":"Which of the following is the most important property of aluminium for aircraft construction?","opts":["High density","High brittleness","Low density","Magnetic property"],"ans":2,"ansText":"Low density"},
+    {"num":"60","co":"CO3","q":"Which property makes hindalium suitable for household utensils?","opts":["High brittleness","High magnetic property","Good corrosion resistance","Poor formability"],"ans":2,"ansText":"Good corrosion resistance"},
+    {"num":"61","co":"CO3","q":"Steels containing up to 3% to 4% of one or more alloying elements are known as ________","opts":["HSLA steels","Stainless steels","Low alloy steels","High alloy steels"],"ans":2,"ansText":"Low alloy steels"},
+    {"num":"62","co":"CO3","q":"Which of these is not an application of HSLA steels?","opts":["Oil and gas pipelines","Leaf and coil springs","power transmission towers"],"ans":1,"ansText":"Leaf and coil springs"},
+    {"num":"63","co":"CO3","q":"Aluminium is __________","opts":["non-magnetic","non-magnetic and ductile","ductile","magnetic"],"ans":1,"ansText":"non-magnetic and ductile"},
+    {"num":"64","co":"CO3","q":"Hindalium is used for manufacturing ----------.","opts":["automobile components","anodized utensils","power transmission towers","Oil and gas pipelines"],"ans":1,"ansText":"anodized utensils"},
+    {"num":"65","co":"CO3","q":"Sheets for automobile body panels are manufactureed by -------- material","opts":["Magnalium","Duralumin","Hindalium","bronze"],"ans":1,"ansText":"Duralumin"},
+    {"num":"66","co":"CO3","q":"Y-alloy ----------.","opts":["all of given options.","has Good mechanical and shock absorbing properties","contains aprroximately Cu =4%, Ni=2% ,Mg=1.5%, balance aluminum,","used in manufacturing  of cylinder head and pistons"],"ans":0,"ansText":"all of given options."},
+    {"num":"67","co":"CO3","q":"Aluminum is ---------.","opts":["good reflector of visible light","toxic and odorless","brittle","non recyclable"],"ans":0,"ansText":"good reflector of visible light"},
+    {"num":"68","co":"CO3","q":"Copper has -------.","opts":["all of given options.","good electrical conductivity","good corrosion resistance","good thermal conductivity"],"ans":0,"ansText":"all of given options."},
+    {"num":"69","co":"CO3","q":"Brass is-------.","opts":["all of given options.","golden color alloy","metallic alloy of copper and zinc.","hard and brittle material."],"ans":0,"ansText":"all of given options."},
+    {"num":"70","co":"CO3","q":"CARTRIDGE BRASS has -----------.","opts":["composition as COPPER-71% ZINC-28% TIN-1%","excellent corrosion resistance.","high ductility and malleability.","applications in heat exchangers"],"ans":2,"ansText":"high ductility and malleability."},
+    {"num":"71","co":"CO3","q":"PHOSPHER BRONZE has","opts":["high coefficient of friction","composition of COPPER-88% ZINC-2% TIN-10%","low coefficient of friction","higher specific gravity, tensile strength and density."],"ans":2,"ansText":"low coefficient of friction"},
+    {"num":"72","co":"CO3","q":"NAVAL BRASS has -------.","opts":["composition of COPPER-60% ZINC-39.25% TIN-0.75%","high tensile strength","Used in marine construction where strong corrosion resistance is required","all of given options."],"ans":3,"ansText":"all of given options."},
+    {"num":"73","co":"CO4","q":"During annealing, the metal is generally heated and then cooled:","opts":["Slowly in a furnace","Rapidly in water","In compressed air","Rapidly in oil"],"ans":0,"ansText":"Slowly in a furnace"},
+    {"num":"74","co":"CO4","q":"Annealing is mainly carried out to relieve:","opts":["External pressure","Magnetic force","Surface friction","Internal stresses"],"ans":3,"ansText":"Internal stresses"},
+    {"num":"75","co":"CO4","q":"Normalising is mainly used to improve:","opts":["Electrical conductivity only","Magnetic permeability only","Melting point","Grain structure and mechanical properties"],"ans":3,"ansText":"Grain structure and mechanical properties"},
+    {"num":"76","co":"CO4","q":"During normalising, steel is generally cooled in:","opts":["Furnace","Water","hot oil","Still air"],"ans":3,"ansText":"Still air"},
+    {"num":"77","co":"CO4","q":"A steel shaft manufactured by forging shows non-uniform grain structure. Which process is suitable before machining?","opts":["Carburising","Nitriding","Quenching","Normalising"],"ans":3,"ansText":"Normalising"},
+    {"num":"78","co":"CO4","q":"Hardening improves the resistance of machine components against:","opts":["Electrical conduction","Thermal expansion","Wear and abrasion","Corrosion in every environment"],"ans":2,"ansText":"Wear and abrasion"},
+    {"num":"79","co":"CO4","q":"Which of the following is a commonly used quenching medium?","opts":["Kerosene vapour","Cement","Water","Sand"],"ans":2,"ansText":"Water"},
+    {"num":"80","co":"CO4","q":"Why is low-carbon steel preferred for carburizing?","opts":["It cannot absorb carbon","It becomes completely brittle","It develops a hard case while retaining a relatively tough core","It has a high carbon content initially"],"ans":2,"ansText":"It develops a hard case while retaining a relatively tough core"},
+    {"num":"81","co":"CO4","q":"Which element is diffused into the surface during carburizing?","opts":["Sulphur","Chromium","Carbon","Nitrogen"],"ans":2,"ansText":"Carbon"},
+    {"num":"82","co":"CO4","q":"Nitriding is a type of which heat-treatment process?","opts":["Normalising","Tempering","Surface hardening","Annealing"],"ans":2,"ansText":"Surface hardening"},
+    {"num":"83","co":"CO4","q":"Which gas is commonly used in gas nitriding?","opts":["Hydrogen only","Carbon dioxide","Oxygen","Ammonia"],"ans":3,"ansText":"Ammonia"},
+    {"num":"84","co":"CO4","q":"Which of the following components is commonly nitrided?","opts":["Wooden shaft","Plastic gear","Glass rod","Crankshaft"],"ans":3,"ansText":"Crankshaft"},
+    {"num":"85","co":"CO4","q":"Which one of the following is the solid carburizing material ?","opts":["Petrol","Ammonia","kerosene","Charcoal"],"ans":3,"ansText":"Charcoal"},
+    {"num":"86","co":"CO4","q":"Which one of the following is the purpose of tempering a hardened  steel component ?","opts":["To decrease ductility","de Stabilizes the structure","To increase impact resistance","to increase hardness"],"ans":2,"ansText":"To increase impact resistance"},
+    {"num":"87","co":"CO4","q":"Low temperature tempering is -----.","opts":["done in the range of 1150-1250°c.","done in the range of 150-250°c.","Both options - option (b) and option (c)","to increase toughness without change in hardness"],"ans":2,"ansText":"Both options - option (b) and option (c)"},
+    {"num":"88","co":"CO4","q":"What is the purpose of annealing in the heat treatment of metals and alloys?","opts":["To decrease ductility","Removal of residual stresses.","To induce phase transformation","To increase hardness"],"ans":1,"ansText":"Removal of residual stresses."},
+    {"num":"89","co":"CO4","q":"Which heat treatment process involves heating steel to a upper critical temperature and then cooling it in still air?","opts":["Quenching","Normalizing","Tempering","Annealing"],"ans":1,"ansText":"Normalizing"},
+    {"num":"90","co":"CO4","q":"HARDENING--------.","opts":["heat treatment of steel which decreases its hardness by quenching","heat treatment of steel which increases its toughness by quenching","heat treatment of steel which increases its hardness by quenching","heat treatment of steel which increases its machinability by quenching"],"ans":2,"ansText":"heat treatment of steel which increases its hardness by quenching"},
+    {"num":"91","co":"CO4","q":"Spheroidised annealing is used for ______","opts":["medium carbon steel","low carbon steel","high carbon steels","cast iron"],"ans":2,"ansText":"high carbon steels"},
+    {"num":"92","co":"CO4","q":"During full annealing process--------.","opts":["hardness of steel reduces","ductility increases","all of given options","Improvement in formability and machinability"],"ans":2,"ansText":"all of given options"},
+    {"num":"93","co":"CO4","q":"The different types of quenching media are ------.","opts":["5 to 20% brine solution","5 to 10% caustic soda","Animal oil","all of given options"],"ans":3,"ansText":"all of given options"},
+    {"num":"94","co":"CO4","q":"In  conventional hardening process, the austenite transforms to ----------.","opts":["pearlite","cementite","ledeburite","martensite."],"ans":3,"ansText":"martensite."},
+    {"num":"95","co":"CO4","q":"Spherodizing -------------------.","opts":["Improves machinability","Softens tool steels","all of given options","Facilitate subsequent cold working operations"],"ans":2,"ansText":"all of given options"},
+    {"num":"96","co":"CO4","q":"the process --------does not involve any phase change","opts":["hardening","normalizing","Process annealing","tempering"],"ans":2,"ansText":"Process annealing"},
+    {"num":"97","co":"CO5","q":"the disadvantages of solid fuel is _________","opts":["moderate ignition temperature","storage","clinker formation","transportation"],"ans":2,"ansText":"clinker formation"},
+    {"num":"98","co":"CO5","q":"Metallurgical coke  --------.","opts":["IS USED as a fuel and reducing agent in the production of iron and steel","has an open, porous structure","all of given options.","has a high carbon content, low ash content"],"ans":2,"ansText":"all of given options."},
+    {"num":"99","co":"CO5","q":"Metallurgical coke is -------------.","opts":["a carbonaceous material","produced by heating bituminous coal in the absence of air.","all of given options.","used as a fuel and reducing agent in the production of iron and steel"],"ans":2,"ansText":"all of given options."},
+    {"num":"100","co":"CO5","q":"Liquid fuels leave ash content after burning","opts":["True","False"],"ans":1,"ansText":"False"},
+    {"num":"101","co":"CO5","q":"Which type of combustion is seen in liquid fuel?","opts":["Non-uniform and complete combustion","Uniform and incomplete combustion","Uniform and complete combustion","Non-uniform and incomplete combustion"],"ans":2,"ansText":"Uniform and complete combustion"},
+    {"num":"102","co":"CO5","q":"What happens when liquid fuels evaporate?","opts":["It increases its calorific value","It reduces the impurities present in it","It makes losses and leakages in the container","It increase the ash content present in it"],"ans":2,"ansText":"It makes losses and leakages in the container"},
+    {"num":"103","co":"CO5","q":"Manufactured liquid fuels are --------------.","opts":["petrolium products","LPG","Gasoline, Diesel oil, Kerosene, Heavy oil","CNG"],"ans":2,"ansText":"Gasoline, Diesel oil, Kerosene, Heavy oil"},
+    {"num":"104","co":"CO5","q":"Which fuel is obtained between 250-320oC during the fractional distillation of crude petroleum?","opts":["petrol","charcoal","Diesel","metalurgical coke"],"ans":2,"ansText":"Diesel"},
+    {"num":"105","co":"CO5","q":"Kerosene is---------.","opts":["a low-viscosity, clear liquid fuel","obtained between 180-250oC during fractional distillation of crude petroleum","all of given options.","used as an illuminant, jet engine fuel, tractor fuel"],"ans":2,"ansText":"all of given options."},
+    {"num":"106","co":"CO5","q":"Heavy oil -----------.","opts":["obtained between 180-250oC during fractional distillation of crude petroleum","fraction obtained between 320-400oC during fractional distillation of crude petroleum","a low-viscosity, clear liquid fuel","all of given options."],"ans":1,"ansText":"fraction obtained between 320-400oC during fractional distillation of crude petroleum"},
+    {"num":"107","co":"CO5","q":"Natural Gas is -------","opts":["are obtained from solid and liquid fuels","a byproduct flue gas obtained during the reduction of iron ore by coke","a fossil fuel","burns with a long smoky flame"],"ans":2,"ansText":"a fossil fuel"},
+    {"num":"108","co":"CO5","q":"Producer gas is ---------.","opts":["mixture of combustible gases CO and H2","byproduct flue gas obtained during the reduction of iron ore by coke","mixture of combustible gases carbon monoxide and hydrogen associated with non-combustible gases N2, CO2,"],"ans":2,"ansText":"mixture of combustible gases carbon monoxide and hydrogen associated with non-combustible gases N2, CO2,"},
+    {"num":"109","co":"CO5","q":"Refractory materials are mainly used to withstand:","opts":["Low pressure","Moisture only","High temperature","Low temperature"],"ans":2,"ansText":"High temperature"},
+    {"num":"110","co":"CO5","q":"On the basis of chemical properties, refractories are classified into:","opts":["Ferrous and non-ferrous","Metallic and non-metallic","Acidic, basic and neutral","Hard and soft"],"ans":2,"ansText":"Acidic, basic and neutral"},
+    {"num":"111","co":"CO5","q":"Which property helps refractories withstand sudden temperature changes?","opts":["Electrical conductivity","Ductility","Thermal shock resistance","Plasticity"],"ans":2,"ansText":"Thermal shock resistance"},
+    {"num":"112","co":"CO5","q":"Which property is important for resisting wear caused by moving furnace materials?","opts":["Malleability","Ductility","Abrasion resistance","Electrical conductivity"],"ans":2,"ansText":"Abrasion resistance"},
+    {"num":"113","co":"CO5","q":"What is the main raw material used for manufacturing metallurgical coke?","opts":["Petroleum","Wood","Coking coal","Natural gas"],"ans":2,"ansText":"Coking coal"},
+    {"num":"114","co":"CO5","q":"Metallurgical coke is preferred in iron-making because of its:","opts":["High ash content","High moisture and volatile matter","High fixed carbon and strength","Low calorific value"],"ans":2,"ansText":"High fixed carbon and strength"},
+    {"num":"115","co":"CO5","q":"Which property indicates the amount of heat produced by complete combustion of a fuel?","opts":["Calorific value","Density","Flash point"],"ans":0,"ansText":"Calorific value"},
+    {"num":"116","co":"CO5","q":"Compared with petrol, diesel generally has:","opts":["No flash point","Higher volatility","Lower volatility","No calorific value"],"ans":2,"ansText":"Lower volatility"},
+    {"num":"117","co":"CO5","q":"CNG is commonly used as a fuel in:","opts":["Refrigerators","Steam boilers only","Automobiles"],"ans":2,"ansText":"Automobiles"},
+    {"num":"118","co":"CO5","q":"Which of the following is an industrial application of LPG?","opts":["Water purification only","Lubrication of bearings","Metal cutting and heating","Battery manufacturing only"],"ans":2,"ansText":"Metal cutting and heating"},
+    {"num":"119","co":"CO6","q":"Powder metallurgy is particularly suitable for manufacturing:","opts":["Large bridges","Concrete structures","Complex-shaped components","Glass sheets"],"ans":2,"ansText":"Complex-shaped components"},
+    {"num":"120","co":"CO6","q":"Porous bearings are manufactured by powder metallurgy because they can:","opts":["Completely prevent lubrication","Melt during operation","Absorb and retain lubricating oil","Increase friction"],"ans":2,"ansText":"Absorb and retain lubricating oil"},
+    {"num":"121","co":"CO6","q":"Powder metallurgy is generally less economical for:","opts":["Production of porous bearings","Large-scale production","Very small production quantities","Mass production of small components"],"ans":2,"ansText":"Very small production quantities"},
+    {"num":"122","co":"CO6","q":"Tungsten carbide cutting tool tips are commonly manufactured by:","opts":["Sand casting","Gas welding","none of given option","Sheet metal bending"],"ans":2,"ansText":"none of given option"},
+    {"num":"123","co":"CO6","q":"A porous bearing is manufactured to supply lubricant continuously during operation. Which manufacturing step is essential?","opts":["Copper infiltration only","Surface grinding only","Oil impregnation","Powder atomisation only"],"ans":2,"ansText":"Oil impregnation"},
+    {"num":"124","co":"CO6","q":"The main purpose of sintering is to:","opts":["Separate powder particles","Remove the shape of the compact","Develop bonding between powder particles","Convert metal into liquid"],"ans":2,"ansText":"Develop bonding between powder particles"},
+    {"num":"125","co":"CO6","q":"Which equipment is commonly used for blending metal powders?","opts":["Lathe machine","Drilling machine","Ball mill","Welding transformer"],"ans":2,"ansText":"Ball mill"},
+    {"num":"126","co":"CO6","q":"The main purpose of blending metal powders is to:","opts":["Remove all particles","Melt the powder","Obtain a uniform mixture","Increase the component size"],"ans":2,"ansText":"Obtain a uniform mixture"},
+    {"num":"127","co":"CO6","q":"Electrolytic deposition is used for producing:","opts":["Ceramic bricks","Plastic  powders","Metal powders","Wooden particles"],"ans":2,"ansText":"Metal powders"},
+    {"num":"128","co":"CO6","q":"Which of the following is a method of producing metal powders?","opts":["Welding","Forging","Atomisation","Rolling"],"ans":2,"ansText":"Atomisation"},
+    {"num":"129","co":"CO6","q":"The main constituent of cemented carbide cutting tools is:","opts":["Pure aluminium","Mild steel","Tungsten carbide","Copper"],"ans":2,"ansText":"Tungsten carbide"},
+    {"num":"130","co":"CO6","q":"Which material is commonly used for manufacturing porous bearings?","opts":["Glass","Rubber","Bronze","Wood"],"ans":2,"ansText":"Bronze"},
+    {"num":"131","co":"CO6","q":"Limitations of powder metallurgy  is /are -----------------.","opts":["Reasonably complex shapes can be made","is no wastage of raw material","Size of product that can be manufactured is generally limited","Automation of P/M process is easy"],"ans":2,"ansText":"Size of product that can be manufactured is generally limited"},
+    {"num":"132","co":"CO6","q":"Sintering is performed ------------.","opts":["At room temperature","Above boiling point","At cryogenic temperature","Below melting point"],"ans":3,"ansText":"Below melting point"},
+    {"num":"133","co":"CO6","q":"Porous product can be effectively produced using ----------------.","opts":["casting","forging","turning","powder metallurgy"],"ans":3,"ansText":"powder metallurgy"},
+    {"num":"134","co":"CO6","q":"A part produced by Powder metallurgy is termed as ----------.","opts":["forged parts","welded parts","cast parts","Sintered part"],"ans":3,"ansText":"Sintered part"},
+    {"num":"135","co":"CO6","q":"Which of the following method is used to make powder for brittle metals?","opts":["Chemical reduction","Electrolytic process","Atomization","Mechanical pulverisation"],"ans":3,"ansText":"Mechanical pulverisation"},
+    {"num":"136","co":"CO6","q":"Which method is used to make powder of metals  like brass ,lead ,zinc?","opts":["Mechanical pulverisation","Electrolytic process","Chemical reduction","Atomization"],"ans":3,"ansText":"Atomization"},
+    {"num":"137","co":"CO6","q":"In atomization------.","opts":["passing molten metal through orifice and cooling it by dropping into water","powder of metal is made by ball milling","the hydrogen reduces the oxide to metallic powder","the formation of powder from molten metal using a spray of either a gas or liquid."],"ans":3,"ansText":"the formation of powder from molten metal using a spray of either a gas or liquid."},
+    {"num":"138","co":"CO6","q":"which process involves the use of rapidly spinning disk for powder production.","opts":["Vacuum atomization","Gas atomization","Centrifugal atomization","Rotating disk atomization"],"ans":3,"ansText":"Rotating disk atomization"},
+    {"num":"139","co":"CO6","q":"Which gas is used for purging the atomization chamber?","opts":["Oxygen","hydrogen","steam","Nitrogen"],"ans":3,"ansText":"Nitrogen"},
+    {"num":"140","co":"CO6","q":"Which secondary operations are performed in P/M process","opts":["sizing","coining","machining","all of the above"],"ans":3,"ansText":"all of the above"}
 ];
 
-    let currentPool = [];
-    let wrongQuestions = [];
-    let currentQuestionIndex = 0;
-    let score = 0;
+let currentPool = [];
+let wrongQuestions = [];
+let currentIndex = 0;
+let score = 0;
 
-    const quizScreen = document.getElementById('quiz-screen');
-    const resultScreen = document.getElementById('result-screen');
-    const questionText = document.getElementById('question-text');
-    const optionsContainer = document.getElementById('options-container');
-    const nextBtn = document.getElementById('next-btn');
-    const progress = document.getElementById('progress');
-    const scoreTracker = document.getElementById('score-tracker');
-    const feedbackMessage = document.getElementById('feedback-message');
-    const retryBtn = document.getElementById('retry-btn');
-    const restartBtn = document.getElementById('restart-btn');
+const selectionScreen = document.getElementById('selection-screen');
+const quizScreen = document.getElementById('quiz-screen');
+const resultScreen = document.getElementById('result-screen');
+const progressEl = document.getElementById('progress');
+const coTagEl = document.getElementById('co-tag');
+const scoreTrackerEl = document.getElementById('score-tracker');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const feedbackMessageEl = document.getElementById('feedback-message');
+const nextBtn = document.getElementById('next-btn');
+const retryBtn = document.getElementById('retry-btn');
 
-    function shuffleArray(array) {
-        let arr = [...array];
-        for (let i = arr.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [arr[i], arr[j]] = [arr[j], arr[i]];
+// Shuffles ONLY the order of questions; option order inside each question is preserved.
+function shuffleQuestions(arr) {
+    const copy = arr.slice();
+    for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+}
+
+function startQuiz(filterCO) {
+    const baseList = (filterCO === 'ALL')
+        ? quizData
+        : quizData.filter(item => item.co === filterCO);
+
+    currentPool = shuffleQuestions(baseList);
+    wrongQuestions = [];
+    currentIndex = 0;
+    score = 0;
+
+    selectionScreen.classList.add('hidden');
+    resultScreen.classList.add('hidden');
+    quizScreen.classList.remove('hidden');
+
+    loadQuestion();
+}
+
+function goToSelection() {
+    quizScreen.classList.add('hidden');
+    resultScreen.classList.add('hidden');
+    selectionScreen.classList.remove('hidden');
+}
+
+function loadQuestion() {
+    nextBtn.classList.add('hidden');
+    feedbackMessageEl.classList.add('hidden');
+    feedbackMessageEl.textContent = '';
+    optionsContainerEl.innerHTML = '';
+
+    const item = currentPool[currentIndex];
+    progressEl.textContent = `Question ${currentIndex + 1} / ${currentPool.length}`;
+    coTagEl.textContent = `${item.co} (#${item.num})`;
+    scoreTrackerEl.textContent = `Score: ${score}`;
+    questionTextEl.textContent = `${currentIndex + 1}. ${item.q}`;
+
+    // Render options in their exact original order (no shuffling of options)
+    item.opts.forEach((optText, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'btn';
+        const letter = String.fromCharCode(65 + idx);
+        btn.textContent = `${letter}) ${optText}`;
+        btn.onclick = () => selectOption(idx, btn);
+        optionsContainerEl.appendChild(btn);
+    });
+}
+
+function selectOption(selectedIdx, selectedBtn) {
+    const item = currentPool[currentIndex];
+    const allBtns = optionsContainerEl.querySelectorAll('.btn');
+    allBtns.forEach(b => b.disabled = true);
+
+    feedbackMessageEl.classList.remove('hidden');
+
+    if (selectedIdx === item.ans) {
+        selectedBtn.classList.add('correct');
+        score++;
+        scoreTrackerEl.textContent = `Score: ${score}`;
+        feedbackMessageEl.textContent = '✅ Correct!';
+        feedbackMessageEl.style.color = 'var(--correct-text)';
+    } else {
+        selectedBtn.classList.add('wrong');
+        if (allBtns[item.ans]) {
+            allBtns[item.ans].classList.add('correct');
         }
-        return arr;
+        feedbackMessageEl.textContent = `❌ Incorrect — Answer: ${item.ansText}`;
+        feedbackMessageEl.style.color = 'var(--wrong-text)';
+        if (!wrongQuestions.includes(item)) {
+            wrongQuestions.push(item);
+        }
     }
 
-    function startQuiz(poolToUse) {
-        currentPool = shuffleArray(poolToUse);
-        wrongQuestions = [];
-        currentQuestionIndex = 0;
-        score = 0;
-        
-        quizScreen.classList.remove('hidden');
-        resultScreen.classList.add('hidden');
-        
+    nextBtn.classList.remove('hidden');
+}
+
+nextBtn.onclick = () => {
+    currentIndex++;
+    if (currentIndex < currentPool.length) {
         loadQuestion();
+    } else {
+        showResults();
     }
+};
 
-    function loadQuestion() {
-        nextBtn.classList.add('hidden');
-        feedbackMessage.classList.add('hidden');
-        optionsContainer.innerHTML = '';
-        
-        const qData = currentPool[currentQuestionIndex];
-        
-        progress.textContent = `Question ${currentQuestionIndex + 1} of ${currentPool.length}`;
-        scoreTracker.textContent = `Score: ${score}`;
-        questionText.innerHTML = `${currentQuestionIndex + 1}. ${qData.q}`;
+function showResults() {
+    quizScreen.classList.add('hidden');
+    resultScreen.classList.remove('hidden');
 
-        qData.opts.forEach((opt, index) => {
-            const btn = document.createElement('button');
-            btn.className = 'btn';
-            btn.innerHTML = `${String.fromCharCode(65 + index)}. ${opt}`;
-            btn.onclick = () => checkAnswer(index, btn);
-            optionsContainer.appendChild(btn);
-        });
+    document.getElementById('final-score').innerHTML =
+        `You scored <span style="color: var(--accent-blue);">${score}</span> out of ${currentPool.length}`;
+
+    if (wrongQuestions.length > 0) {
+        retryBtn.classList.remove('hidden');
+        retryBtn.textContent = `Retry ${wrongQuestions.length} Incorrect Question(s)`;
+    } else {
+        retryBtn.classList.add('hidden');
     }
+}
 
-    function checkAnswer(selectedIndex, selectedBtn) {
-        const qData = currentPool[currentQuestionIndex];
-        const correctIndex = qData.ans;
-        const allBtns = optionsContainer.querySelectorAll('.btn');
-
-        allBtns.forEach(btn => btn.disabled = true);
-        feedbackMessage.classList.remove('hidden');
-
-        if (selectedIndex === correctIndex) {
-            selectedBtn.classList.add('correct');
-            feedbackMessage.textContent = "✅ Correct!";
-            feedbackMessage.style.color = "var(--correct-text)";
-            score++;
-            scoreTracker.textContent = `Score: ${score}`;
-        } else {
-            selectedBtn.classList.add('wrong');
-            allBtns[correctIndex].classList.add('correct');
-            feedbackMessage.textContent = "❌ Incorrect.";
-            feedbackMessage.style.color = "var(--wrong-text)";
-            
-            if (!wrongQuestions.includes(qData)) {
-                wrongQuestions.push(qData);
-            }
-        }
-        nextBtn.classList.remove('hidden');
-    }
-
-    nextBtn.onclick = () => {
-        currentQuestionIndex++;
-        if (currentQuestionIndex < currentPool.length) {
-            loadQuestion();
-        } else {
-            endQuiz();
-        }
-    };
-
-    function endQuiz() {
-        quizScreen.classList.add('hidden');
-        resultScreen.classList.remove('hidden');
-        
-        document.getElementById('final-score').innerHTML = 
-            `You scored <span style="color: var(--accent-blue);">${score}</span> out of ${currentPool.length}!`;
-
-        if (wrongQuestions.length > 0) {
-            retryBtn.classList.remove('hidden');
-            retryBtn.textContent = `Review ${wrongQuestions.length} Incorrect Question(s)`;
-        } else {
-            retryBtn.classList.add('hidden');
-            document.getElementById('final-score').innerHTML += "<br><br>🎉 Perfect score! Excellent work.";
-        }
-    }
-
-    retryBtn.onclick = () => {
-        startQuiz(wrongQuestions);
-    };
-
-    restartBtn.onclick = () => {
-        startQuiz(masterQuestionBank);
-    };
-
-    startQuiz(masterQuestionBank);
+retryBtn.onclick = () => {
+    currentPool = shuffleQuestions(wrongQuestions);
+    wrongQuestions = [];
+    currentIndex = 0;
+    score = 0;
+    resultScreen.classList.add('hidden');
+    quizScreen.classList.remove('hidden');
+    loadQuestion();
+};
 </script>
 </body>
 </html>
