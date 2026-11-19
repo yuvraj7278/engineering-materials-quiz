@@ -11,6 +11,7 @@
             --text-main: #1d1d1f;
             --text-muted: #86868b;
             --accent-blue: #0071e3;
+            --accent-red: #d93025;
             --border-color: #d2d2d7;
         }
 
@@ -97,11 +98,16 @@
             box-shadow: 0 8px 20px rgba(0, 113, 227, 0.14);
         }
 
-        /* Styling for Unit 5 before file is added */
-        .quiz-card.coming-soon {
-            opacity: 0.65;
-            background: #fafafa;
-            border-style: dashed;
+        /* Featured Mistakes Quiz Card */
+        .quiz-card.mistakes-test {
+            border: 1.5px solid var(--accent-red);
+            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+            box-shadow: 0 4px 14px rgba(217, 48, 37, 0.08);
+        }
+
+        .quiz-card.mistakes-test:hover {
+            border-color: var(--accent-red);
+            box-shadow: 0 8px 20px rgba(217, 48, 37, 0.14);
         }
 
         .quiz-info h2 {
@@ -205,11 +211,20 @@
             <span class="badge" style="background: var(--accent-blue); color: #ffffff;">70 Marks</span>
         </a>
 
+        <!-- Mistakes Practice Quiz Card -->
+        <a href="mistakes-quiz.html" class="quiz-card mistakes-test">
+            <div class="quiz-info">
+                <h2 style="color: var(--accent-red);">Mistakes Practice Quiz (PDF Report Set)</h2>
+                <p>Random Questions &amp; Real Pool Options &bull; Answer Review &amp; Wrong-Answer Drill</p>
+            </div>
+            <span class="badge" style="background: #fdecea; color: var(--accent-red);">46 Mistakes</span>
+        </a>
+
         <!-- Unit-wise Quizzes (1 to 6) -->
         <a href="unit1.html" class="quiz-card">
             <div class="quiz-info">
                 <h2>Unit 1 Quiz</h2>
-                <p>Engineering Materials & Fundamentals</p>
+                <p>Engineering Materials &amp; Fundamentals</p>
             </div>
             <span class="badge">50 Questions</span>
         </a>
@@ -217,7 +232,7 @@
         <a href="unit2.html" class="quiz-card">
             <div class="quiz-info">
                 <h2>Unit 2 Quiz</h2>
-                <p>Equilibrium Diagrams & Phase Transformations</p>
+                <p>Equilibrium Diagrams &amp; Phase Transformations</p>
             </div>
             <span class="badge">54 Questions</span>
         </a>
@@ -225,7 +240,7 @@
         <a href="unit3.html" class="quiz-card">
             <div class="quiz-info">
                 <h2>Unit 3 Quiz</h2>
-                <p>Ferrous & Non-Ferrous Alloys</p>
+                <p>Ferrous &amp; Non-Ferrous Alloys</p>
             </div>
             <span class="badge">127 Questions</span>
         </a>
@@ -233,7 +248,7 @@
         <a href="unit4.html" class="quiz-card">
             <div class="quiz-info">
                 <h2>Unit 4 Quiz</h2>
-                <p>Heat Treatment & Surface Hardening</p>
+                <p>Heat Treatment &amp; Surface Hardening</p>
             </div>
             <span class="badge">94 Questions</span>
         </a>
@@ -241,7 +256,7 @@
         <a href="unit5.html" class="quiz-card">
             <div class="quiz-info">
                 <h2>Unit 5 Quiz</h2>
-                <p>Powder Metallurgy & Non-Metallic Materials</p>
+                <p>Powder Metallurgy &amp; Non-Metallic Materials</p>
             </div>
             <span class="badge">30 Questions</span>
         </a>
@@ -249,7 +264,7 @@
         <a href="unit6.html" class="quiz-card">
             <div class="quiz-info">
                 <h2>Unit 6 Quiz</h2>
-                <p>Refractories, Insulating Materials & Fuels</p>
+                <p>Refractories, Insulating Materials &amp; Fuels</p>
             </div>
             <span class="badge">85 Questions</span>
         </a>
@@ -260,7 +275,7 @@
                 <div class="folder-title-group">
                     <span class="folder-icon">📁</span>
                     <div class="quiz-info">
-                        <h2>Mock Tests & Final Question Banks</h2>
+                        <h2>Mock Tests &amp; Final Question Banks</h2>
                         <p>Click to expand full mock exams and comprehensive question banks</p>
                     </div>
                 </div>
@@ -289,8 +304,8 @@
 
                 <a href="emt final quiz.html" class="quiz-card" style="border-color: #af52de; background: #faf5fc;">
                     <div class="quiz-info">
-                        <h2 style="color: #8940a5;">EMT Units 4, 5 & 6 Quiz</h2>
-                        <p>Heat Treatment, Powder Metallurgy, Refractories & Fuels</p>
+                        <h2 style="color: #8940a5;">EMT Units 4, 5 &amp; 6 Quiz</h2>
+                        <p>Heat Treatment, Powder Metallurgy, Refractories &amp; Fuels</p>
                     </div>
                     <span class="badge" style="background: #af52de; color: white;">72 Questions</span>
                 </a>
@@ -303,5 +318,910 @@
     </footer>
 </div>
 
+</body>
+</html>
+```[cite: 16]
+
+---
+
+### 2. Complete `mistakes-quiz.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mistakes Practice Quiz - EMT</title>
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --card: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --blue: #0071e3;
+      --blue-soft: rgba(0, 113, 227, 0.1);
+      --green: #1e8e3e;
+      --green-bg: rgba(30, 142, 62, 0.12);
+      --red: #d93025;
+      --red-bg: rgba(217, 48, 37, 0.12);
+      --amber: #b06000;
+      --amber-bg: rgba(176, 96, 0, 0.12);
+      --border: #d2d2d7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .header-left h1 {
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .pill {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .pill.ok {
+      background: var(--green-bg);
+      border-color: rgba(30, 142, 62, 0.35);
+      color: var(--green);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button, a.btn-link {
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 9px 15px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    button:hover:not(:disabled), a.btn-link:hover {
+      border-color: var(--blue);
+      background: #f0f6ff;
+    }
+
+    button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    button.primary {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    button.primary:hover:not(:disabled) {
+      background: #0062c4;
+    }
+
+    button.danger {
+      background: var(--red-bg);
+      border-color: rgba(217, 48, 37, 0.35);
+      color: var(--red);
+    }
+
+    button.success {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+
+    main {
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 28px 18px 48px;
+      flex: 1;
+    }
+
+    .hidden { display: none !important; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      margin-bottom: 18px;
+    }
+
+    .setup-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    @media (max-width: 700px) {
+      .setup-grid { grid-template-columns: 1fr; }
+    }
+
+    .mini-stat {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    .mini-stat .label {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .mini-stat .val {
+      font-size: 22px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .unit-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 20px;
+    }
+
+    .chk-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .q-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .q-prompt {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .options-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .opt-btn {
+      width: 100%;
+      text-align: left;
+      justify-content: flex-start;
+      padding: 14px 16px;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .opt-btn:hover:not(:disabled) {
+      border-color: var(--blue);
+      background: var(--blue-soft);
+    }
+
+    .opt-btn.selected {
+      border-color: var(--blue);
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .opt-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .opt-btn.selected .opt-letter {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .q-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .pal-btn {
+      padding: 7px 0;
+      font-size: 12px;
+      border-radius: 7px;
+    }
+
+    .pal-btn.current {
+      outline: 2px solid var(--blue);
+      outline-offset: -1px;
+    }
+
+    .pal-btn.done {
+      background: var(--blue-soft);
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    .stats-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 720px) {
+      .stats-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .review-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 12px;
+    }
+
+    .review-card.is-right { border-left-color: var(--green); }
+    .review-card.is-wrong { border-left-color: var(--red); }
+    .review-card.is-skip { border-left-color: var(--amber); }
+
+    .rev-opts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 640px) {
+      .rev-opts { grid-template-columns: 1fr; }
+    }
+
+    .rev-opt {
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+    }
+
+    .rev-opt.correct-ans {
+      background: var(--green-bg);
+      border-color: rgba(30, 142, 62, 0.4);
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .rev-opt.picked-wrong {
+      background: var(--red-bg);
+      border-color: rgba(217, 48, 37, 0.4);
+      color: var(--red);
+      font-weight: 600;
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .filter-bar button.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <h1>Mistakes Practice Quiz</h1>
+    <span id="poolBadge" class="pill">Checking Pool...</span>
+    <span id="modeBadge" class="pill hidden">All Mistakes</span>
+  </div>
+  <div class="header-right">
+    <a href="index.html" class="btn-link">← Back to index.html</a>
+  </div>
+</header>
+
+<main>
+  <!-- SETUP / START VIEW -->
+  <section id="setupView" class="card">
+    <h2 style="font-size: 20px; font-weight: 700;">Practice Your Missed Questions</h2>
+    <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">
+      Built from the questions you got wrong in your report, paired with the full real options from your pool. Questions and options are freshly shuffled every time you start.
+    </p>
+
+    <div class="setup-grid">
+      <div class="mini-stat">
+        <div class="label">Total Missed Questions</div>
+        <div id="totalMistakesVal" class="val">0</div>
+      </div>
+      <div class="mini-stat">
+        <div class="label">Selected Units Count</div>
+        <div id="selectedCountVal" class="val" style="color: var(--blue);">0</div>
+      </div>
+      <div class="mini-stat">
+        <div class="label">Remaining Wrong Drill</div>
+        <div id="wrongQueueVal" class="val" style="color: var(--red);">0</div>
+      </div>
+    </div>
+
+    <div style="font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px;">
+      Filter by Unit
+    </div>
+    <div id="unitChips" class="unit-filter-row"></div>
+
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <button id="btnStartQuiz" class="primary" onclick="startQuiz('all')">Start Shuffled Quiz</button>
+      <button id="btnStartWrongDrill" class="danger" onclick="startQuiz('wrong')" disabled>
+        Solve Wrong Questions (<span id="btnWrongCount">0</span>)
+      </button>
+    </div>
+  </section>
+
+  <!-- ACTIVE QUIZ VIEW -->
+  <section id="quizView" class="hidden">
+    <div class="card">
+      <div class="q-header">
+        <span id="qIndexPill" class="pill" style="color: var(--text);">Question 1 / 10</span>
+        <span id="qUnitPill" class="pill">Unit 1</span>
+        <span id="qPdfRefPill" class="pill">PDF Q#</span>
+      </div>
+
+      <div id="qText" class="q-prompt"></div>
+      <div id="qOptions" class="options-stack"></div>
+
+      <div class="q-footer">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button id="btnPrev" onclick="stepQuestion(-1)">← Previous</button>
+          <button onclick="clearCurrentAnswer()">Clear Choice</button>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button id="btnNext" class="primary" onclick="stepQuestion(1)">Next →</button>
+          <button class="success" onclick="finishQuiz()">Submit Quiz</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="padding: 18px 22px;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <strong style="font-size: 14px;">Question Navigator</strong>
+        <button style="padding: 5px 11px; font-size: 12px;" onclick="backToSetup()">Change Units / Exit</button>
+      </div>
+      <div id="questionPalette" class="palette"></div>
+    </div>
+  </section>
+
+  <!-- RESULTS & REVIEW VIEW -->
+  <section id="resultsView" class="hidden">
+    <div class="card" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;">
+      <div>
+        <h2 style="font-size: 20px; font-weight: 700;">Quiz Results &amp; Review</h2>
+        <p style="font-size: 13px; color: var(--muted);">Review every question below or immediately re-quiz only the ones you missed.</p>
+      </div>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <button id="btnSolveWrongAfter" class="danger" onclick="startQuiz('wrong')" disabled>
+          Solve Wrong Questions (<span id="afterWrongCount">0</span>)
+        </button>
+        <button class="primary" onclick="startQuiz('current')">Shuffle &amp; Retry This Set</button>
+        <button onclick="backToSetup()">All Units Setup</button>
+      </div>
+    </div>
+
+    <div class="stats-4">
+      <div class="mini-stat" style="background: var(--card);">
+        <div class="label">Score</div>
+        <div id="resScore" class="val" style="color: var(--blue);">0 / 0</div>
+      </div>
+      <div class="mini-stat" style="background: var(--card);">
+        <div class="label">Accuracy</div>
+        <div id="resAcc" class="val">0%</div>
+      </div>
+      <div class="mini-stat" style="background: var(--card);">
+        <div class="label">Correct</div>
+        <div id="resCorrect" class="val" style="color: var(--green);">0</div>
+      </div>
+      <div class="mini-stat" style="background: var(--card);">
+        <div class="label">Wrong / Skipped</div>
+        <div id="resWrong" class="val" style="color: var(--red);">0</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="filter-bar">
+        <button class="active" onclick="setReviewFilter('all', this)">All (<span id="cntAll">0</span>)</button>
+        <button onclick="setReviewFilter('wrong', this)">Wrong &amp; Skipped (<span id="cntWrong">0</span>)</button>
+        <button onclick="setReviewFilter('correct', this)">Correct (<span id="cntCorrect">0</span>)</button>
+      </div>
+      <div id="reviewList"></div>
+    </div>
+  </section>
+</main>
+
+<!-- Load masterPool.js if present in the same folder -->
+<script src="masterPool.js"></script>
+<script>
+  const MISTAKE_SPECS = [
+    // Unit 1
+    { unit: 1, pdfQ: "Q17",  match: "brittleness of metals", q: "Which of the following statements is true about brittleness of metals?", opts: ["All metals are brittle", "Metals are generally non-brittle", "Metals are more brittle than non-metals", "Metals are amorphous and brittle"], ans: 1 },
+    { unit: 1, pdfQ: "Q380", match: "springs or shock absorbers", q: "Which property is most important for materials used in springs or shock absorbers?", opts: ["Malleability", "Toughness", "Resilience", "Brittleness"], ans: 2 },
+
+    // Unit 2
+    { unit: 2, pdfQ: "Q32",  match: "0.8% carbon and 723", q: "At 0.8% carbon and 723°C, the structure formed is called:", opts: ["Cementite", "Ferrite", "Pearlite", "Austenite"], ans: 2 },
+    { unit: 2, pdfQ: "Q45",  match: "room temperature and 912", q: "What is the phase name of iron between room temperature and 912°C?", opts: ["Austenite", "Martensite", "δ-ferrite", "α-ferrite"], ans: 3 },
+    { unit: 2, pdfQ: "Q128", match: "eutectoid temperature in the iron-carbon", q: "The eutectoid temperature in the iron-carbon diagram is:", opts: ["1495°C", "1147°C", "723°C", "1130°C"], ans: 2 },
+    { unit: 2, pdfQ: "Q131", match: "existence of delta iron", q: "What is the temperature range for the existence of delta iron?", opts: ["Room temperature to 910°C", "910°C to 1404°C", "1404°C to 1539°C", "1539°C to 1700°C"], ans: 2 },
+    { unit: 2, pdfQ: "Q152", match: "gamma iron exist", q: "Between which temperatures does gamma iron exist?", opts: ["Room temperature to 910°C", "910°C to 1404°C", "1404°C to 1539°C", "1539°C to 1800°C"], ans: 1 },
+    { unit: 2, pdfQ: "Q261", match: "upper critical temperature a3", q: "The upper critical temperature A3 is the temperature below which:", opts: ["Austenite starts to form in hypereutectoid alloys", "Ferrite starts to form from austenite in hypo eutectoid alloys", "Cementite starts to form from austenite in hypereutectoid alloys", "Pearlite forms from austenite"], ans: 1 },
+    { unit: 2, pdfQ: "Q298", match: "eutectic reaction occur in fe-c", q: "At what temperature does the eutectic reaction occur in Fe-C diagram?", opts: ["1147°C", "723°C", "1495°C", "910°C"], ans: 0 },
+    { unit: 2, pdfQ: "Q397", match: "1395°c to 1539°c", q: "What phase of iron exists between 1395°C to 1539°C?", opts: ["α-ferrite", "γ-Austenite", "δ-ferrite", "Liquid iron"], ans: 2 },
+
+    // Unit 3
+    { unit: 3, pdfQ: "Q2",   match: "white cast iron serves as the raw material", q: "White cast iron serves as the raw material for:", opts: ["Gray cast iron", "Malleable cast iron", "Stainless steel", "Wrought iron"], ans: 1 },
+    { unit: 3, pdfQ: "Q104", match: "nodular graphite structure by adding", q: "Nodular cast iron gets its nodular graphite structure by adding:", opts: ["Chromium or nickel", "Manganese or cerium", "Vanadium or molybdenum", "Copper or aluminum"], ans: 1 },
+    { unit: 3, pdfQ: "Q109", match: "corrosion-resistant steel", q: "Which application is NOT typically made from corrosion-resistant steel?", opts: ["Springs", "Surgical instruments", "Cutlery", "Cast iron pipes"], ans: 3 },
+    { unit: 3, pdfQ: "Q136", match: "not a characteristic of nodular cast iron", q: "Which of the following is NOT a characteristic of nodular cast iron?", opts: ["Highly ductile", "Poor machinability", "High corrosion resistance", "Good creep properties at high temperature"], ans: 1 },
+    { unit: 3, pdfQ: "Q153", match: "increasing wear resistance by forming powerful carbides", q: "Which alloying element is known for increasing wear resistance by forming powerful carbides?", opts: ["Cobalt", "Vanadium", "Chromium", "Copper"], ans: 1 },
+    { unit: 3, pdfQ: "Q156", match: "brass is known for having", q: "Brass is known for having:", opts: ["Low ductile strength", "High ductile strength", "Being very soft and malleable", "High electrical resistance"], ans: 1 },
+    { unit: 3, pdfQ: "Q196", match: "glassy inclusions", q: "Which type of iron contains glassy inclusions?", opts: ["Cast iron", "Wrought iron", "Pig iron", "Pure iron"], ans: 1 },
+    { unit: 3, pdfQ: "Q213", match: "white cast iron is", q: "White cast iron is:", opts: ["Highly machinable", "Not machinable", "Easily forged", "Highly ductile"], ans: 1 },
+    { unit: 3, pdfQ: "Q246", match: "surgical instruments", q: "Which of the following is a property of the steel used in surgical instruments?", opts: ["Poor corrosion resistance", "Magnetic in nature", "Cannot be welded", "Brittle"], ans: 1 },
+    { unit: 3, pdfQ: "Q258", match: "promote nitriding and acts as a deoxidizer", q: "The addition of which element helps promote nitriding and acts as a deoxidizer?", opts: ["Aluminum", "Manganese", "Nickel", "Silicon"], ans: 0 },
+    { unit: 3, pdfQ: "Q290", match: "low carbon steel", q: "What is the typical carbon content range in low carbon steel?", opts: ["0.02% - 0.1%", "0.15% - 0.30%", "0.4% - 0.6%", "0.6% - 1.4%"], ans: 1 },
+    { unit: 3, pdfQ: "Q304", match: "property of cast iron", q: "Which of the following is a property of cast iron?", opts: ["Highly ductile", "Very brittle", "Easily rolled and drawn at room temperature", "Low compressive strength"], ans: 1 },
+    { unit: 3, pdfQ: "Q335", match: "milling cutters, chisels, and shear blades", q: "Which steel type is used to make milling cutters, chisels, and shear blades?", opts: ["Low carbon steel", "Medium carbon steel", "High carbon steel", "Cast iron"], ans: 2 },
+    { unit: 3, pdfQ: "Q343", match: "maximum allowable sulfur content in nodular cast iron", q: "What is the maximum allowable sulfur content in nodular cast iron?", opts: ["0.5%", "0.1%", "0.03%", "1%"], ans: 2 },
+    { unit: 3, pdfQ: "Q372", match: "carbon content range in nodular cast iron", q: "What is the typical carbon content range in nodular cast iron?", opts: ["0.05% - 0.3%", "3.0% - 4.0%", "5.0% - 6.0%", "1.0% - 2.0%"], ans: 1 },
+    { unit: 3, pdfQ: "Q389", match: "admiralty brass is often used in", q: "Admiralty brass is often used in:", opts: ["Heat exchangers", "Ceramic production", "Glass bottles", "Wooden furniture"], ans: 0 },
+    { unit: 3, pdfQ: "Q391", match: "carbon content range in hsla steels", q: "What is the typical carbon content range in HSLA steels?", opts: ["0.5% - 1%", "0.05% - 0.25%", "0.25% - 0.6%", "1% - 2%"], ans: 1 },
+    { unit: 3, pdfQ: "Q401", match: "red hardness and fatigue strength of steel", q: "Which element improves the red hardness and fatigue strength of steel?", opts: ["Tungsten", "Aluminum", "Cobalt", "Boron"], ans: 2 },
+    { unit: 3, pdfQ: "Q431", match: "property is true for brass", q: "Which property is true for brass?", opts: ["Poor corrosion resistance", "Good corrosion resistance", "Magnetic", "Non-ductile"], ans: 1 },
+    { unit: 3, pdfQ: "Q433", match: "1.5% to 2%", q: "Which element is present in HSLA steel in the range of 1.5% to 2%?", opts: ["Chromium", "Manganese", "Vanadium", "Zirconium"], ans: 1 },
+
+    // Unit 4
+    { unit: 4, pdfQ: "Q71",  match: "low-temperature tempering is generally carried out", q: "Low-temperature tempering is generally carried out around:", opts: ["150-250°C", "400-500°C", "700-800°C", "900-1000°C"], ans: 0 },
+    { unit: 4, pdfQ: "Q73",  match: "tempering is generally performed at a temperature", q: "Tempering is generally performed at a temperature:", opts: ["Above the melting point", "Above Ac1", "Below Ac1", "At room temperature"], ans: 2 },
+    { unit: 4, pdfQ: "Q161", match: "rapid cooling after heating to produce a hard structure", q: "Which heat-treatment process involves rapid cooling after heating to produce a hard structure?", opts: ["Annealing", "Normalizing", "Hardening", "Tempering"], ans: 2 },
+    { unit: 4, pdfQ: "Q219", match: "during hardening, steel is cooled", q: "During hardening, steel is cooled:", opts: ["Very slowly in the furnace", "Slowly in air", "Rapidly by quenching", "At room temperature without cooling"], ans: 2 },
+    { unit: 4, pdfQ: "Q263", match: "selective hardening of the surface", q: "Which process is particularly suitable for selective hardening of the surface of a component?", opts: ["Flame hardening", "Full annealing", "Normalizing", "Tempering"], ans: 0 },
+    { unit: 4, pdfQ: "Q302 / Q320", match: "principal microstructure produced by hardening", q: "The principal microstructure produced by hardening suitable carbon steel is:", opts: ["Ferrite", "Pearlite", "Martensite", "Cementite"], ans: 2 },
+    { unit: 4, pdfQ: "Q402", match: "high surface hardness with minimum distortion", q: "A precision component requires high surface hardness with minimum distortion. Which process would generally be preferred?", opts: ["Carburizing", "Nitriding", "Cyaniding", "Full annealing"], ans: 1 },
+    { unit: 4, pdfQ: "Q439", match: "hypo eutectoid steel is normalized by heating", q: "Hypo eutectoid steel is normalized by heating approximately:", opts: ["Below Ac1", "Ac1 - 30°C", "Ac3 + 30-50°C", "Below room temperature"], ans: 2 },
+
+    // Unit 5
+    { unit: 5, pdfQ: "Q310", match: "interconnected pores with a lower-melting-point metal", q: "A sintered component needs improved density by filling its interconnected pores with a lower-melting-point metal. Which process is selected?", opts: ["Infiltration", "Impregnation", "Blending", "Compacting"], ans: 0 },
+
+    // Unit 6
+    { unit: 6, pdfQ: "Q1",   match: "heavy fuel oil, but pumping is difficult", q: "A furnace uses heavy fuel oil, but pumping is difficult at low temperature. Which property should be investigated?", opts: ["Viscosity", "Refractoriness", "Porosity", "Hardness"], ans: 0 },
+    { unit: 6, pdfQ: "Q44",  match: "gas-fired furnace requires a clean fuel with high calorific value", q: "A gas-fired furnace requires a clean fuel with high calorific value. Which fuel is suitable?", opts: ["Natural gas", "Producer gas", "Blast furnace gas", "Air"], ans: 0 },
+    { unit: 6, pdfQ: "Q72",  match: "pulverized coal means coal converted into", q: "Pulverized coal means coal converted into:", opts: ["Large lumps", "Fine powder", "Liquid form", "Briquettes only"], ans: 1 },
+    { unit: 6, pdfQ: "Q97",  match: "water gas mainly consists of", q: "Water gas mainly consists of:", opts: ["Carbon monoxide and hydrogen", "Methane and nitrogen", "Propane and butane", "Carbon dioxide and oxygen"], ans: 0 },
+    { unit: 6, pdfQ: "Q236", match: "natural gas is mainly used in industries as", q: "Natural gas is mainly used in industries as:", opts: ["A cooling agent", "A gaseous fuel", "A lubricant", "A refractory material"], ans: 1 },
+    { unit: 6, pdfQ: "Q429", match: "coal tar obtained during coke production", q: "Coal tar obtained during coke production is mainly used as a source of:", opts: ["Organic chemicals", "Refractory bricks only", "Oxygen", "Nitrogen"], ans: 0 }
+  ];
+
+  const UNIT_NAMES = {
+    1: "Unit 1: Materials",
+    2: "Unit 2: Fe-Fe3C",
+    3: "Unit 3: Ferrous & Non-Ferrous",
+    4: "Unit 4: Heat Treatment",
+    5: "Unit 5: Powder Metallurgy",
+    6: "Unit 6: Refractories & Fuels"
+  };
+
+  let masterMistakes = [];
+  let selectedUnits = new Set([1, 2, 3, 4, 5, 6]);
+  let wrongIdsPool = new Set();
+
+  let activeSession = [];
+  let currentIdx = 0;
+  let answersByIdx = {};
+  let lastResults = [];
+  let activeFilter = "all";
+
+  function normalizeText(str) {
+    return (str || "").toLowerCase().replace(/\s+/g, " ").trim();
+  }
+
+  function loadMistakeBank() {
+    const pool = (typeof masterPool !== "undefined" && Array.isArray(masterPool)) ? masterPool : [];
+    const badge = document.getElementById("poolBadge");
+
+    let matchedFromPool = 0;
+    masterMistakes = MISTAKE_SPECS.map((spec, idx) => {
+      const needle = normalizeText(spec.match);
+      const found = pool.find(item =>
+        Number(item.unit) === spec.unit &&
+        normalizeText(item.q).includes(needle) &&
+        Array.isArray(item.opts) &&
+        item.opts.length >= 2
+      );
+
+      if (found) matchedFromPool++;
+
+      return {
+        id: idx,
+        pdfQ: spec.pdfQ,
+        unit: spec.unit,
+        q: found ? found.q : spec.q,
+        opts: found ? [...found.opts] : [...spec.opts],
+        ans: found ? Number(found.ans) : spec.ans
+      };
+    });
+
+    if (pool.length > 0) {
+      badge.textContent = `Pool Synced (${matchedFromPool}/${masterMistakes.length} from masterPool.js)`;
+      badge.className = "pill ok";
+    } else {
+      badge.textContent = `Built-in Pool (${masterMistakes.length} Qs)`;
+      badge.className = "pill";
+    }
+  }
+
+  function shuffle(arr) {
+    const copy = [...arr];
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  function buildPreparedQuestions(items) {
+    return shuffle(items).map(item => {
+      const shuffledOpts = shuffle(
+        item.opts.map((text, origIdx) => ({ text, origIdx }))
+      );
+      return {
+        ...item,
+        shuffledOpts
+      };
+    });
+  }
+
+  function renderSetup() {
+    document.getElementById("totalMistakesVal").textContent = masterMistakes.length;
+
+    const chipsWrap = document.getElementById("unitChips");
+    chipsWrap.innerHTML = "";
+    [1, 2, 3, 4, 5, 6].forEach(u => {
+      const count = masterMistakes.filter(m => m.unit === u).length;
+      const label = document.createElement("label");
+      label.className = "chk-chip";
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.checked = selectedUnits.has(u);
+      cb.onchange = () => {
+        if (cb.checked) selectedUnits.add(u);
+        else selectedUnits.delete(u);
+        updateSetupCounts();
+      };
+      label.appendChild(cb);
+      label.appendChild(document.createTextNode(`${UNIT_NAMES[u]} (${count})`));
+      chipsWrap.appendChild(label);
+    });
+
+    updateSetupCounts();
+  }
+
+  function updateSetupCounts() {
+    const filtered = masterMistakes.filter(m => selectedUnits.has(m.unit));
+    document.getElementById("selectedCountVal").textContent = filtered.length;
+    document.getElementById("btnStartQuiz").disabled = filtered.length === 0;
+
+    const wrongCount = wrongIdsPool.size;
+    document.getElementById("wrongQueueVal").textContent = wrongCount;
+    document.getElementById("btnWrongCount").textContent = wrongCount;
+    document.getElementById("btnStartWrongDrill").disabled = wrongCount === 0;
+  }
+
+  function showView(viewId) {
+    ["setupView", "quizView", "resultsView"].forEach(id => {
+      document.getElementById(id).classList.toggle("hidden", id !== viewId);
+    });
+  }
+
+  function backToSetup() {
+    document.getElementById("modeBadge").classList.add("hidden");
+    renderSetup();
+    showView("setupView");
+  }
+
+  function startQuiz(mode) {
+    let sourceItems = [];
+    const modeBadge = document.getElementById("modeBadge");
+
+    if (mode === "wrong") {
+      sourceItems = masterMistakes.filter(m => wrongIdsPool.has(m.id));
+      modeBadge.textContent = `Wrong Questions Drill (${sourceItems.length})`;
+      modeBadge.className = "pill";
+    } else if (mode === "current") {
+      sourceItems = lastResults.map(r => masterMistakes.find(m => m.id === r.id)).filter(Boolean);
+      modeBadge.textContent = `Retry Set (${sourceItems.length})`;
+      modeBadge.className = "pill";
+    } else {
+      sourceItems = masterMistakes.filter(m => selectedUnits.has(m.unit));
+      modeBadge.textContent = `All Selected Mistakes (${sourceItems.length})`;
+      modeBadge.className = "pill";
+    }
+
+    if (!sourceItems.length) return;
+
+    activeSession = buildPreparedQuestions(sourceItems);
+    currentIdx = 0;
+    answersByIdx = {};
+
+    modeBadge.classList.remove("hidden");
+    showView("quizView");
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    const qObj = activeSession[currentIdx];
+    const total = activeSession.length;
+
+    document.getElementById("qIndexPill").textContent = `Question ${currentIdx + 1} / ${total}`;
+    document.getElementById("qUnitPill").textContent = UNIT_NAMES[qObj.unit];
+    document.getElementById("qPdfRefPill").textContent = `Report ${qObj.pdfQ}`;
+    document.getElementById("qText").textContent = qObj.q;
+
+    const optsBox = document.getElementById("qOptions");
+    optsBox.innerHTML = "";
+    const letters = ["A", "B", "C", "D", "E"];
+
+    qObj.shuffledOpts.forEach((opt, i) => {
+      const btn = document.createElement("button");
+      btn.className = "opt-btn";
+      if (answersByIdx[currentIdx] === opt.origIdx) {
+        btn.classList.add("selected");
+      }
+      btn.innerHTML = `<span class="opt-letter">${letters[i] || i + 1}</span><span>${opt.text}</span>`;
+      btn.onclick = () => {
+        answersByIdx[currentIdx] = opt.origIdx;
+        renderQuestion();
+      };
+      optsBox.appendChild(btn);
+    });
+
+    document.getElementById("btnPrev").disabled = currentIdx === 0;
+    document.getElementById("btnNext").disabled = currentIdx === total - 1;
+
+    renderPalette();
+  }
+
+  function renderPalette() {
+    const pal = document.getElementById("questionPalette");
+    pal.innerHTML = "";
+    activeSession.forEach((_, i) => {
+      const btn = document.createElement("button");
+      btn.className = "pal-btn";
+      if (i === currentIdx) btn.classList.add("current");
+      if (answersByIdx[i] !== undefined) btn.classList.add("done");
+      btn.textContent = i + 1;
+      btn.onclick = () => {
+        currentIdx = i;
+        renderQuestion();
+      };
+      pal.appendChild(btn);
+    });
+  }
+
+  function stepQuestion(delta) {
+    const next = currentIdx + delta;
+    if (next >= 0 && next < activeSession.length) {
+      currentIdx = next;
+      renderQuestion();
+    }
+  }
+
+  function clearCurrentAnswer() {
+    delete answersByIdx[currentIdx];
+    renderQuestion();
+  }
+
+  function finishQuiz() {
+    let correct = 0;
+    let wrongOrSkip = 0;
+    const wrongThisRun = new Set();
+
+    lastResults = activeSession.map((qObj, idx) => {
+      const pickedOrig = answersByIdx[idx];
+      const isSkipped = pickedOrig === undefined;
+      const isCorrect = !isSkipped && pickedOrig === qObj.ans;
+
+      if (isCorrect) {
+        correct++;
+        wrongIdsPool.delete(qObj.id);
+      } else {
+        wrongOrSkip++;
+        wrongIdsPool.add(qObj.id);
+        wrongThisRun.add(qObj.id);
+      }
+
+      return {
+        ...qObj,
+        pickedOrig,
+        isSkipped,
+        isCorrect
+      };
+    });
+
+    const total = lastResults.length;
+    const acc = total ? Math.round((correct / total) * 100) : 0;
+
+    document.getElementById("resScore").textContent = `${correct} / ${total}`;
+    document.getElementById("resAcc").textContent = `${acc}%`;
+    document.getElementById("resCorrect").textContent = correct;
+    document.getElementById("resWrong").textContent = wrongOrSkip;
+
+    document.getElementById("cntAll").textContent = total;
+    document.getElementById("cntWrong").textContent = wrongOrSkip;
+    document.getElementById("cntCorrect").textContent = correct;
+
+    const afterWrongBtn = document.getElementById("btnSolveWrongAfter");
+    document.getElementById("afterWrongCount").textContent = wrongThisRun.size;
+    afterWrongBtn.disabled = wrongThisRun.size === 0;
+
+    activeFilter = "all";
+    document.querySelectorAll(".filter-bar button").forEach((b, idx) => b.classList.toggle("active", idx === 0));
+    renderReviewList();
+    showView("resultsView");
+  }
+
+  function setReviewFilter(type, btn) {
+    activeFilter = type;
+    document.querySelectorAll(".filter-bar button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    renderReviewList();
+  }
+
+  function renderReviewList() {
+    const list = document.getElementById("reviewList");
+    list.innerHTML = "";
+
+    const items = lastResults.filter(r => {
+      if (activeFilter === "wrong") return !r.isCorrect;
+      if (activeFilter === "correct") return r.isCorrect;
+      return true;
+    });
+
+    if (!items.length) {
+      list.innerHTML = `<p style="color: var(--muted); font-size: 14px;">No questions match this filter.</p>`;
+      return;
+    }
+
+    items.forEach((r, i) => {
+      const card = document.createElement("div");
+      const statusCls = r.isCorrect ? "is-right" : (r.isSkipped ? "is-skip" : "is-wrong");
+      const statusText = r.isCorrect ? "Correct" : (r.isSkipped ? "Skipped" : "Wrong");
+      const statusColor = r.isCorrect ? "var(--green)" : (r.isSkipped ? "var(--amber)" : "var(--red)");
+
+      card.className = `review-card ${statusCls}`;
+
+      const optsHtml = r.opts.map((optText, oIdx) => {
+        let cls = "rev-opt";
+        let note = "";
+        if (oIdx === r.ans) {
+          cls += " correct-ans";
+          note = " (Correct Answer)";
+        } else if (oIdx === r.pickedOrig && !r.isCorrect) {
+          cls += " picked-wrong";
+          note = " (Your Choice)";
+        }
+        return `<div class="${cls}">${optText}${note}</div>`;
+      }).join("");
+
+      card.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;">
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <span class="pill">#${i + 1}</span>
+            <span class="pill">${UNIT_NAMES[r.unit]}</span>
+            <span class="pill">${r.pdfQ}</span>
+          </div>
+          <span style="font-size: 12px; font-weight: 700; color: ${statusColor};">${statusText}</span>
+        </div>
+        <div style="font-weight: 600; font-size: 15px;">${r.q}</div>
+        <div class="rev-opts">${optsHtml}</div>
+      `;
+
+      list.appendChild(card);
+    });
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    loadMistakeBank();
+    renderSetup();
+  });
+</script>
 </body>
 </html>
